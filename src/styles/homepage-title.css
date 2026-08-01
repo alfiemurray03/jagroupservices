@@ -1,0 +1,9 @@
+/* Keep the JA Group Services Ltd homepage title on one line at desktop widths. */
+@media (min-width: 1024px) {
+  html:has(head link[rel="canonical"][href="https://jagroupservices.co.uk/"])
+    .min-h-screen > section:first-child h1 {
+    max-width: none;
+    white-space: nowrap;
+    font-size: clamp(3rem, 3.45vw, 3.75rem);
+  }
+}
