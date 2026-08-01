@@ -1,19 +1,19 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ChevronDown, Menu, Phone, X } from 'lucide-react';
 
 import { useLanguage } from '@/components/LanguageProvider';
 import ThemeToggle from '@/components/ThemeToggle';
-import { t } from '@/lib/translations';
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
+import { t } from '@/lib/translations';
 
 const navigationLinkClass =
-  'rounded-lg px-3.5 py-2 text-sm font-medium text-muted-foreground transition-all duration-150 hover:bg-muted hover:text-foreground';
+  'rounded-xl px-3.5 py-2 text-sm font-medium text-muted-foreground transition-all duration-150 hover:bg-muted hover:text-foreground';
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -21,19 +21,31 @@ export default function Header() {
 
   const closeMobileMenu = () => setMobileMenuOpen(false);
 
+  useEffect(() => {
+    if (!mobileMenuOpen) return;
+
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') closeMobileMenu();
+    };
+
+    window.addEventListener('keydown', closeOnEscape);
+    return () => window.removeEventListener('keydown', closeOnEscape);
+  }, [mobileMenuOpen]);
+
   return (
-    <header className="sticky top-0 z-50 border-b border-border bg-card shadow-sm">
+    <header className="relative sticky top-0 z-50 border-b border-border bg-card/95 shadow-sm backdrop-blur-xl">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex h-16 items-center justify-between gap-4 md:h-[72px]">
+        <div className="flex h-16 items-center justify-between gap-3 md:h-[72px]">
           <Link
             to="/"
-            className="group flex shrink-0 items-center gap-2.5"
+            className="group flex min-w-0 shrink items-center"
             aria-label="JA Group Services Ltd — home"
+            onClick={closeMobileMenu}
           >
             <img
-              src="/media/pages-unknown-ja-group-services-ltd-a68f987b.jpg"
+              src="/images/367f316379e78929865b1677b6370686.jpg"
               alt="JA Group Services Ltd"
-              className="h-12 w-auto max-w-[180px] shrink-0 object-contain md:h-14 md:max-w-[210px]"
+              className="h-10 w-auto max-w-[165px] shrink-0 object-contain sm:h-11 sm:max-w-[190px] md:h-12 md:max-w-[220px]"
             />
           </Link>
 
@@ -114,12 +126,12 @@ export default function Header() {
             <ThemeToggle />
           </div>
 
-          <div className="flex items-center gap-2 xl:hidden">
+          <div className="flex shrink-0 items-center gap-2 xl:hidden">
             <ThemeToggle />
             <button
               type="button"
               onClick={() => setMobileMenuOpen((open) => !open)}
-              className="flex h-10 w-10 items-center justify-center rounded-xl text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+              className="flex h-10 w-10 items-center justify-center rounded-xl border border-border text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
               aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
               aria-expanded={mobileMenuOpen}
               aria-controls="mobile-menu"
@@ -131,37 +143,73 @@ export default function Header() {
       </div>
 
       {mobileMenuOpen && (
-        <div id="mobile-menu" className="border-t border-border bg-card px-4 py-4 xl:hidden">
-          <nav className="mx-auto flex max-w-7xl flex-col gap-1" aria-label="Mobile navigation">
+        <div
+          id="mobile-menu"
+          className="absolute left-0 right-0 top-full max-h-[calc(100dvh-4rem)] overflow-y-auto overscroll-contain border-t border-border bg-card shadow-2xl xl:hidden"
+        >
+          <nav className="mx-auto flex max-w-7xl flex-col gap-1 px-4 py-4 sm:px-6" aria-label="Mobile navigation">
             <a
               href="tel:02038342790"
-              className="mb-2 flex min-h-12 items-center gap-2 rounded-xl bg-muted px-4 py-3 text-sm font-semibold text-foreground"
+              className="mb-2 flex min-h-12 items-center gap-2 rounded-xl border border-border bg-muted px-4 py-3 text-sm font-semibold text-foreground"
             >
               <Phone className="h-4 w-4 text-primary" />
               020 3834 2790
             </a>
 
-            <Link to="/" onClick={closeMobileMenu} className="flex min-h-12 items-center rounded-xl px-4 py-3 text-sm font-medium text-foreground hover:bg-muted">Home</Link>
-            <Link to="/about-us" onClick={closeMobileMenu} className="flex min-h-12 items-center rounded-xl px-4 py-3 text-sm font-medium text-foreground hover:bg-muted">About</Link>
+            <MobileLink to="/" onClick={closeMobileMenu}>Home</MobileLink>
+            <MobileLink to="/about-us" onClick={closeMobileMenu}>About</MobileLink>
 
-            <div className="rounded-2xl border border-border bg-muted/40 p-3">
-              <p className="px-2 pb-2 text-xs font-semibold uppercase tracking-widest text-muted-foreground">Operating Brands</p>
-              <a href="https://profilecentre.jagroupservices.co.uk/" target="_blank" rel="noopener noreferrer" onClick={closeMobileMenu} className="block rounded-xl px-3 py-2.5 text-sm text-foreground hover:bg-muted">Profile Centre</a>
-              <a href="https://planyx.jagroupservices.co.uk/" target="_blank" rel="noopener noreferrer" onClick={closeMobileMenu} className="block rounded-xl px-3 py-2.5 text-sm text-foreground hover:bg-muted">Planyx</a>
-              <a href="https://jadomainhub.jagroupservices.co.uk/" target="_blank" rel="noopener noreferrer" onClick={closeMobileMenu} className="block rounded-xl px-3 py-2.5 text-sm text-foreground hover:bg-muted">JA Domain Hub</a>
-            </div>
+            <MobileGroup title="Operating Brands">
+              <MobileExternalLink href="https://profilecentre.jagroupservices.co.uk/" onClick={closeMobileMenu}>Profile Centre</MobileExternalLink>
+              <MobileExternalLink href="https://planyx.jagroupservices.co.uk/" onClick={closeMobileMenu}>Planyx</MobileExternalLink>
+              <MobileExternalLink href="https://jadomainhub.jagroupservices.co.uk/" onClick={closeMobileMenu}>JA Domain Hub</MobileExternalLink>
+            </MobileGroup>
 
-            <div className="mt-1 rounded-2xl border border-border bg-muted/40 p-3">
-              <p className="px-2 pb-2 text-xs font-semibold uppercase tracking-widest text-muted-foreground">Divisions</p>
-              <Link to="/about-our-divisions" onClick={closeMobileMenu} className="block rounded-xl px-3 py-2.5 text-sm text-foreground hover:bg-muted">About Our Divisions</Link>
-              <Link to="/our-group-structure" onClick={closeMobileMenu} className="block rounded-xl px-3 py-2.5 text-sm text-foreground hover:bg-muted">Our Group Structure</Link>
-            </div>
+            <MobileGroup title="Divisions">
+              <MobileLink to="/about-our-divisions" onClick={closeMobileMenu}>About Our Divisions</MobileLink>
+              <MobileLink to="/our-group-structure" onClick={closeMobileMenu}>Our Group Structure</MobileLink>
+            </MobileGroup>
 
-            <Link to="/partner-with-us" onClick={closeMobileMenu} className="mt-1 flex min-h-12 items-center rounded-xl px-4 py-3 text-sm font-medium text-foreground hover:bg-muted">Partner With Us</Link>
-            <Link to="/contactus" onClick={closeMobileMenu} className="flex min-h-12 items-center rounded-xl px-4 py-3 text-sm font-medium text-foreground hover:bg-muted">{t('header.contact', language)}</Link>
+            <MobileLink to="/partner-with-us" onClick={closeMobileMenu}>Partner With Us</MobileLink>
+            <MobileLink to="/contactus" onClick={closeMobileMenu}>{t('header.contact', language)}</MobileLink>
           </nav>
         </div>
       )}
     </header>
+  );
+}
+
+function MobileGroup({ title, children }: { title: string; children: React.ReactNode }) {
+  return (
+    <div className="my-1 rounded-2xl border border-border bg-muted/40 p-2">
+      <p className="px-2 pb-1.5 pt-1 text-xs font-semibold uppercase tracking-widest text-muted-foreground">{title}</p>
+      {children}
+    </div>
+  );
+}
+
+function MobileLink({ to, onClick, children }: { to: string; onClick: () => void; children: React.ReactNode }) {
+  return (
+    <Link
+      to={to}
+      onClick={onClick}
+      className="flex min-h-12 items-center rounded-xl px-3 py-3 text-sm font-medium text-foreground transition-colors hover:bg-muted"
+    >
+      {children}
+    </Link>
+  );
+}
+
+function MobileExternalLink({ href, onClick, children }: { href: string; onClick: () => void; children: React.ReactNode }) {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      onClick={onClick}
+      className="flex min-h-12 items-center rounded-xl px-3 py-3 text-sm font-medium text-foreground transition-colors hover:bg-muted"
+    >
+      {children}
+    </a>
   );
 }
