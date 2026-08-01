@@ -104,7 +104,7 @@ export default function Footer() {
           <div>
             <Link to="/" className="mb-4 inline-flex items-center" aria-label="JA Group Services Ltd — home">
               <img
-                src="/images/367f316379e78929865b1677b6370686.jpg"
+                src="/images/ja-group-services-light.webp"
                 alt="JA Group Services Ltd"
                 className="site-logo-light h-14 w-auto max-w-[220px] object-contain"
               />
