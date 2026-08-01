@@ -15,7 +15,9 @@ import {
   Users,
   Workflow,
 } from 'lucide-react';
+import type { LucideIcon } from 'lucide-react';
 import { motion } from 'motion/react';
+import type { ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 
 import { Button } from '@/components/ui/button';
@@ -215,7 +217,7 @@ export default function AboutOurDivisionsPage() {
           button="Visit Planyx"
         />
 
-        <section className="border-b border-border bg-background py-14 sm:py-18 lg:py-22">
+        <section className="border-b border-border bg-background py-14 sm:py-16 lg:py-20">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-14">
               <motion.div
@@ -281,7 +283,7 @@ export default function AboutOurDivisionsPage() {
           </div>
         </section>
 
-        <section className="border-b border-border bg-secondary py-14 sm:py-18 lg:py-22">
+        <section className="border-b border-border bg-secondary py-14 sm:py-16 lg:py-20">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="mx-auto mb-10 max-w-3xl text-center">
               <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/10">
@@ -312,7 +314,7 @@ export default function AboutOurDivisionsPage() {
           </div>
         </section>
 
-        <section className="border-b border-border bg-background py-14 sm:py-18 lg:py-22">
+        <section className="border-b border-border bg-background py-14 sm:py-16 lg:py-20">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="mx-auto mb-10 max-w-3xl text-center">
               <h2 className="mb-4 text-3xl font-bold text-foreground sm:text-4xl">Clear responsibilities</h2>
@@ -388,7 +390,7 @@ export default function AboutOurDivisionsPage() {
 type BrandSectionProps = {
   eyebrow: string;
   title: string;
-  icon: typeof Users;
+  icon: LucideIcon;
   accent: 'blue' | 'violet';
   alternate?: boolean;
   description: readonly string[];
@@ -426,7 +428,7 @@ function BrandSection({
         };
 
   return (
-    <section className={`border-b border-border py-14 sm:py-18 lg:py-22 ${alternate ? 'bg-secondary' : 'bg-background'}`}>
+    <section className={`border-b border-border py-14 sm:py-16 lg:py-20 ${alternate ? 'bg-secondary' : 'bg-background'}`}>
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-14">
           <motion.div
@@ -510,8 +512,8 @@ function InfoPanel({
   emphasis = false,
 }: {
   title: string;
-  icon: typeof Users;
-  children: React.ReactNode;
+  icon: LucideIcon;
+  children: ReactNode;
   emphasis?: boolean;
 }) {
   return (
@@ -530,7 +532,7 @@ function ResponsibilityCard({
   title,
   items,
 }: {
-  icon: typeof LifeBuoy;
+  icon: LucideIcon;
   title: string;
   items: readonly string[];
 }) {
