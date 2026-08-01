@@ -94,16 +94,16 @@ export default function HomePage() {
   return (
     <>
       <Helmet>
-        <title>JA Group Services Ltd — Digital Identity, Domains &amp; Business Services</title>
+        <title>JA Group Services Ltd — Digital Platforms &amp; Customer Services</title>
         <meta
           name="description"
-          content="JA Group Services Ltd supports digital identity, online presence, domains, profile pages, and structured business services through focused operating brands: Profile Centre, Planyx and JA Domain Hub."
+          content="JA Group Services Ltd develops, operates and manages digital platforms and customer services. We combine our own technology, central support functions and selected partner services to provide practical online solutions for individuals and organisations."
         />
         <link rel="canonical" href="https://jagroupservices.co.uk/" />
-        <meta property="og:title" content="JA Group Services Ltd — Digital Identity, Domains & Business Services" />
+        <meta property="og:title" content="JA Group Services Ltd — Digital Platforms & Customer Services" />
         <meta
           property="og:description"
-          content="JA Group Services Ltd supports digital identity, online presence, domains, profile pages, and structured business services through focused operating brands."
+          content="JA Group Services Ltd develops, operates and manages digital platforms and customer services. We combine our own technology, central support functions and selected partner services to provide practical online solutions for individuals and organisations."
         />
         <meta property="og:url" content="https://jagroupservices.co.uk/" />
         <meta property="og:type" content="website" />
@@ -134,14 +134,17 @@ export default function HomePage() {
                   {t('hero.title', language)}
                 </motion.h1>
 
-                <motion.p
-                  className="max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg"
+                <motion.div
+                  className="max-w-xl space-y-3 text-base leading-relaxed text-muted-foreground sm:text-lg"
                   initial={{ opacity: 0, y: 12 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.45, delay: 0.18 }}
                 >
-                  JA Group Services Ltd supports digital identity, online presence, domains, profile pages, and structured business services through focused operating brands.
-                </motion.p>
+                  <p>JA Group Services Ltd develops, operates and manages digital platforms and customer services.</p>
+                  <p>
+                    We combine our own technology, central support functions and selected partner services to provide practical online solutions for individuals and organisations.
+                  </p>
+                </motion.div>
 
                 <motion.div
                   className="flex flex-col gap-3 sm:flex-row"
