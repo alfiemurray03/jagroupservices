@@ -1,0 +1,12 @@
+/*
+ * Slightly reduce the visual scale on wide desktop screens.
+ *
+ * The website uses rem-based typography, spacing and component sizing, so a
+ * 15px root size gives the desktop layout a subtle ~6% reduction without
+ * using CSS zoom or affecting tablets and mobile devices.
+ */
+@media (min-width: 1280px) {
+  html {
+    font-size: 15px;
+  }
+}
