@@ -1,0 +1,143 @@
+{
+  "pages/home/hero-background": {
+    "mediaType": "image",
+    "currentUrl": "https://media.gettyimages.com/id/2249200373/photo/digital-wave-background-and-program-code-machine-learning-ai-and-big-data-concept-large.jpg?b=1&s=2048x2048&w=0&k=20&c=E2EXiA7sgf3SinZNjAFIG_oiYJO3h8IclXyCKNbyTrE=",
+    "searchQuery": "abstract blue technology network digital corporate background",
+    "alternatives": [
+      "https://media.gettyimages.com/id/2238858369/photo/dark-blue-turquoise-teal-cyan-aqua-mint-green-abstract-background-geometric-pattern-color.jpg?b=1&s=2048x2048&w=0&k=20&c=iYlx5vFwt2-EFtonsVF0XDvpvBgP3tZMLDNoh0MSU1o=",
+      "https://media.gettyimages.com/id/2211272342/photo/intro-motion-graphic-futuristic-abstract-digital-glowing-trails-line-and-grid-technology.jpg?b=1&s=2048x2048&w=0&k=20&c=EQFPumRs4lrltzcA08aABaGoeNq3H3n5vQIpsBZoPPg="
+    ],
+    "userModified": false,
+    "createdAt": "2026-02-21T17:00:07.132Z",
+    "lastUpdated": "2026-02-23T15:22:07.445Z",
+    "requestedSize": {
+      "width": 1920,
+      "height": 1080,
+      "fit": "cover"
+    },
+    "orientations": "horizontal",
+    "compositions": "abstract"
+  },
+  "pages/home/head-office-video": {
+    "mediaType": "video",
+    "currentUrl": "https://blobby.wsimg.com/getty/videos/2212776370",
+    "thumbnailUrl": "https://media.gettyimages.com/id/2212776370/video/business-team-meeting-in-modern-office-conference-room.mp4?b=1&s=192_srp&k=20&c=jSc33eSFo1_D9WBCLqt7qsbZLnrn42AHi0Tu5BjASzU=",
+    "searchQuery": "modern corporate office interior workspace business professionals working meeting room collaboration",
+    "alternatives": [],
+    "userModified": false,
+    "createdAt": "2026-02-21T19:18:53.172Z",
+    "lastUpdated": "2026-02-21T19:20:10.434Z",
+    "requestedSize": {
+      "width": 1920,
+      "height": 1080,
+      "fit": "cover"
+    }
+  },
+  "pages/home/company-intro-video": {
+    "mediaType": "video",
+    "currentUrl": "https://blobby.wsimg.com/getty/videos/2147548151",
+    "thumbnailUrl": "https://media.gettyimages.com/id/2147548151/video/collaboration-laptop-and-colleagues-in-office-for-data-in-business-meeting-and-smile-for.mp4?b=1&s=192_srp&k=20&c=fuIAisuQrSBUYuhX75rpFR5P44hSIxaUu-6dYFv2_Lg=",
+    "searchQuery": "professional corporate office business team meeting modern workplace",
+    "alternatives": [],
+    "userModified": false,
+    "createdAt": "2026-02-23T03:50:13.562Z",
+    "lastUpdated": "2026-02-23T03:50:13.562Z",
+    "requestedSize": {
+      "width": 1200,
+      "height": 675,
+      "fit": "cover"
+    }
+  },
+  "pages/home/corporate-office": {
+    "mediaType": "image",
+    "currentUrl": "https://media.gettyimages.com/id/2256831424/photo/london-canary-wharf-skyline-across-river-thames-on-cloudy-day.jpg?b=1&s=2048x2048&w=0&k=20&c=_CMBH5re495GjdOhF_YNX3p1fsWT9RfJPDO_d9-gdhE=",
+    "searchQuery": "london city skyline business district modern architecture",
+    "alternatives": [
+      "https://media.gettyimages.com/id/2236593172/photo/london-business-district-skyline-at-night-reflecting-on-the-river-thames-featuring-modern.jpg?b=1&s=2048x2048&w=0&k=20&c=U-qmDDHUyW4gG4KEP928j5MfYrOawx7VSIJr85CqznE=",
+      "https://media.gettyimages.com/id/2194809561/photo/wide-angle-of-sun-setting-over-london-gherkin.jpg?b=1&s=2048x2048&w=0&k=20&c=D8oeuem6X9PgTXGA524XfLN4arMyAETGtupfi9wGg4Q="
+    ],
+    "userModified": false,
+    "createdAt": "2026-02-23T15:17:30.171Z",
+    "lastUpdated": "2026-02-23T15:22:11.428Z",
+    "requestedSize": {
+      "width": 800,
+      "height": 600,
+      "fit": "cover"
+    },
+    "orientations": "horizontal",
+    "compositions": "wide_shot"
+  },
+  "pages/home/team-collaboration": {
+    "mediaType": "image",
+    "currentUrl": "https://media.gettyimages.com/id/2244739794/photo/open-plan-office-interior-with-brick-walls-wooden-ceiling-and-desks.jpg?b=1&s=2048x2048&w=0&k=20&c=AxIPd0aLzZXpWLPXfebKkGh57IBD7FYlxSsZhV4WCKY=",
+    "searchQuery": "modern corporate office interior workspace desks computers no people",
+    "alternatives": [
+      "https://media.gettyimages.com/id/1436060043/photo/an-empty-office-with-computer-equipment.jpg?b=1&s=2048x2048&w=0&k=20&c=jvSBr6Q7qUZN1XWMuhW937dctvlj2rp0mqbPSx0_8Vw=",
+      "https://media.gettyimages.com/id/2237056505/photo/modern-industrial-loft-office-interior-empty-open-plan-workspace-with-brick-walls-and-wooden.jpg?b=1&s=2048x2048&w=0&k=20&c=NYPgi-lnZmXQe7nXM-YxjzxR5TaBd0OucDHEMDJftLE="
+    ],
+    "userModified": false,
+    "createdAt": "2026-02-23T15:17:34.094Z",
+    "lastUpdated": "2026-02-23T15:20:16.491Z",
+    "requestedSize": {
+      "width": 600,
+      "height": 400,
+      "fit": "cover"
+    },
+    "orientations": "horizontal",
+    "compositions": "wide_shot"
+  },
+  "pages/home/governance": {
+    "mediaType": "image",
+    "currentUrl": "https://media.gettyimages.com/id/175598824/photo/blank-paper-on-desk-with-a-pen.jpg?b=1&s=2048x2048&w=0&k=20&c=rZXr-ORDo4FLDKV5sy136_3z-PupM9MNLHh4SzelpKE=",
+    "searchQuery": "corporate documents legal papers contracts business desk no people",
+    "alternatives": [
+      "https://media.gettyimages.com/id/168271652/photo/lease-agreement.jpg?b=1&s=2048x2048&w=0&k=20&c=PRm9g1NvQ4uE4wCEwzDbHWUX3fRskzldosjLxOnYJLs=",
+      "https://media.gettyimages.com/id/171152738/photo/contract-documents-and-personal-organizer-on-the-office-desk.jpg?b=1&s=2048x2048&w=0&k=20&c=QZIt80e7abRDexxqneCODZfnQ8roHhI5Bq2MJrXkuxQ="
+    ],
+    "userModified": false,
+    "createdAt": "2026-02-23T15:17:37.923Z",
+    "lastUpdated": "2026-02-23T15:20:19.948Z",
+    "requestedSize": {
+      "width": 600,
+      "height": 400,
+      "fit": "cover"
+    },
+    "orientations": "horizontal"
+  },
+  "pages/partners-tide/tide-partners": {
+    "mediaType": "image",
+    "currentUrl": "/airo-assets/uploads/pages-partners-tide-tide-partners-e0f35513.png",
+    "searchQuery": "",
+    "alternatives": [
+      "/airo-assets/uploads/pages-partners-tide-tide-partners-e0f35513.png"
+    ],
+    "userModified": false,
+    "sourceRef": "src/pages/partners-tide.tsx:245",
+    "createdAt": "2026-04-07T23:15:39.558Z",
+    "lastUpdated": "2026-04-07T23:15:39.558Z"
+  },
+  "pages/partners-tide/tide": {
+    "mediaType": "image",
+    "currentUrl": "/airo-assets/uploads/pages-partners-tide-tide-765dc866.png",
+    "searchQuery": "",
+    "alternatives": [
+      "/airo-assets/uploads/pages-partners-tide-tide-765dc866.png"
+    ],
+    "userModified": false,
+    "sourceRef": "src/pages/partners-tide.tsx:520",
+    "createdAt": "2026-04-07T23:22:29.661Z",
+    "lastUpdated": "2026-04-07T23:22:29.661Z"
+  },
+  "pages/unknown/ja-group-services-ltd": {
+    "mediaType": "image",
+    "currentUrl": "/airo-assets/uploads/pages-unknown-ja-group-services-ltd-a68f987b.jpg",
+    "searchQuery": "",
+    "alternatives": [
+      "/airo-assets/uploads/pages-unknown-ja-group-services-ltd-a68f987b.jpg"
+    ],
+    "userModified": false,
+    "sourceRef": "src/layouts/parts/Header.tsx:26",
+    "createdAt": "2026-04-07T23:36:34.654Z",
+    "lastUpdated": "2026-04-07T23:36:34.654Z"
+  }
+}

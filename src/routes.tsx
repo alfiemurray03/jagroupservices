@@ -1,0 +1,126 @@
+import { RouteObject } from 'react-router-dom';
+import { lazy } from 'react';
+import HomePage from './pages/index';
+
+import AboutUsPage from './pages/about-us';
+import AboutOurDivisionsPage from './pages/about-our-divisions';
+import OurGroupStructurePage from './pages/our-group-structure';
+import CookiesPolicyPage from './pages/cookies-policy';
+import ContactUsPage from './pages/contact-us';
+import ComplaintsPolicyPage from './pages/complaints-policy';
+import PrivacyPolicyPage from './pages/privacy-policy';
+import TermsOfServicePage from './pages/terms-of-service';
+import AnnouncementsPage from './pages/announcements';
+import SitemapPage from './pages/sitemap';
+import PartnerWithUsPage from './pages/partner-with-us';
+
+// Admin pages
+import AdminLoginPage from './pages/admin/login';
+import AdminDashboardPage from './pages/admin/dashboard';
+import AdminPoliciesPage from './pages/admin/policies';
+import AdminPolicyEditPage from './pages/admin/policy-edit';
+import AdminPagesPage from './pages/admin/pages';
+import AdminNavigationPage from './pages/admin/navigation';
+import AdminSeoPage from './pages/admin/seo';
+
+import AdminSetupPage from './pages/admin/setup';
+
+// Lazy load components for code splitting
+const isDevelopment = import.meta.env.MODE === 'development';
+const NotFoundPage = isDevelopment ? lazy(() => import('../export-plugins/PageNotFound')) : lazy(() => import('./pages/_404'));
+
+export const routes: RouteObject[] = [
+  {
+    path: '/',
+    element: <HomePage />,
+  },
+  {
+    path: '/about-us',
+    element: <AboutUsPage />,
+  },
+  {
+    path: '/about-our-divisions',
+    element: <AboutOurDivisionsPage />,
+  },
+  {
+    path: '/our-group-structure',
+    element: <OurGroupStructurePage />,
+  },
+  {
+    path: '/partner-with-us',
+    element: <PartnerWithUsPage />,
+  },
+  {
+    path: '/cookies-policy',
+    element: <CookiesPolicyPage />,
+  },
+  {
+    path: '/contactus',
+    element: <ContactUsPage />,
+  },
+  {
+    path: '/complaints-policy',
+    element: <ComplaintsPolicyPage />,
+  },
+  {
+    path: '/privacy-policy',
+    element: <PrivacyPolicyPage />,
+  },
+  {
+    path: '/terms-of-service',
+    element: <TermsOfServicePage />,
+  },
+  {
+    path: '/announcements',
+    element: <AnnouncementsPage />,
+  },
+  {
+    path: '/sitemap',
+    element: <SitemapPage />,
+  },
+  // Admin routes (no RootLayout header/footer — handled by AdminLayout)
+  {
+    path: '/admin/login',
+    element: <AdminLoginPage />,
+  },
+  {
+    path: '/admin/dashboard',
+    element: <AdminDashboardPage />,
+  },
+  {
+    path: '/admin/policies',
+    element: <AdminPoliciesPage />,
+  },
+  {
+    path: '/admin/policies/:id',
+    element: <AdminPolicyEditPage />,
+  },
+  {
+    path: '/admin/pages',
+    element: <AdminPagesPage />,
+  },
+  {
+    path: '/admin/navigation',
+    element: <AdminNavigationPage />,
+  },
+  {
+    path: '/admin/setup',
+    element: <AdminSetupPage />,
+  },
+  {
+    path: '/admin/seo',
+    element: <AdminSeoPage />,
+  },
+  {
+    path: '*',
+    element: <NotFoundPage />,
+  },
+];
+
+// Standalone routes (no header/footer)
+export const standaloneRoutes: RouteObject[] = [];
+
+// Types for type-safe navigation
+export type Path = '/' | '/about-us' | '/about-our-divisions' | '/our-group-structure' | '/partner-with-us' | '/cookies-policy' | '/contactus' | '/complaints-policy' | '/privacy-policy' | '/terms-of-service' | '/announcements' | '/sitemap' | '/admin/login' | '/admin/dashboard';
+
+export type Params = Record<string, string | undefined>;
