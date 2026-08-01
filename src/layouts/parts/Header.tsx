@@ -10,6 +10,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
+import { DARK_THEME_LOGO } from '@/lib/site-logos';
 import { t } from '@/lib/translations';
 
 const navigationLinkClass =
@@ -35,7 +36,7 @@ export default function Header() {
   return (
     <header className="relative sticky top-0 z-50 border-b border-border bg-card/95 shadow-sm backdrop-blur-xl">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex h-16 items-center justify-between gap-3 md:h-[72px]">
+        <div className="flex h-16 items-center justify-between gap-3 md:h-[76px]">
           <Link
             to="/"
             className="group flex min-w-0 shrink items-center"
@@ -45,7 +46,12 @@ export default function Header() {
             <img
               src="/images/367f316379e78929865b1677b6370686.jpg"
               alt="JA Group Services Ltd"
-              className="h-10 w-auto max-w-[165px] shrink-0 object-contain sm:h-11 sm:max-w-[190px] md:h-12 md:max-w-[220px]"
+              className="site-logo-light h-11 w-auto max-w-[190px] shrink-0 object-contain sm:h-12 sm:max-w-[220px] md:h-14 md:max-w-[250px]"
+            />
+            <img
+              src={DARK_THEME_LOGO}
+              alt="JA Group Services Ltd"
+              className="site-logo-dark h-[58px] w-auto max-w-[190px] shrink-0 object-contain sm:h-16 sm:max-w-[220px] md:h-[68px] md:max-w-[245px]"
             />
           </Link>
 
