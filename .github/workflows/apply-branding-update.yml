@@ -1,0 +1,181 @@
+name: Apply branding and contact update
+
+on:
+  push:
+    branches:
+      - update-operating-brands-contact-email
+    paths:
+      - .github/workflows/apply-branding-update.yml
+
+permissions:
+  contents: write
+
+jobs:
+  apply-update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out branch
+        uses: actions/checkout@v4
+        with:
+          ref: update-operating-brands-contact-email
+          fetch-depth: 0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Apply website updates
+        shell: python
+        run: |
+          from pathlib import Path
+
+          source_files = [
+              p for p in Path('src').rglob('*')
+              if p.is_file() and p.suffix in {'.ts', '.tsx', '.js', '.jsx'}
+          ]
+
+          for path in source_files:
+              text = path.read_text(encoding='utf-8')
+              updated = (
+                  text
+                  .replace('hello@jagroupservices.co.uk', 'contact@jagroupservices.co.uk')
+                  .replace('info@jagroupservices.co.uk', 'contact@jagroupservices.co.uk')
+                  .replace('feedback@jagroupservices.co.uk', 'contact@jagroupservices.co.uk')
+                  .replace('https://japrofilestudio.jagroupservices.co.uk/', 'https://profilecentre.jagroupservices.co.uk/')
+                  .replace('JA Profile Studio', 'Profile Centre')
+              )
+              if updated != text:
+                  path.write_text(updated, encoding='utf-8')
+
+          # Header: add Planyx to desktop and mobile brand menus when absent.
+          path = Path('src/layouts/parts/Header.tsx')
+          text = path.read_text(encoding='utf-8')
+          if 'https://planyx.jagroupservices.co.uk/' not in text:
+              desktop_needle = '''                <DropdownMenuItem asChild>\n                  <a\n                    href="https://jadomainhub.jagroupservices.co.uk/"'''
+              desktop_insert = '''                <DropdownMenuItem asChild>\n                  <a\n                    href="https://planyx.jagroupservices.co.uk/"\n                    target="_blank"\n                    rel="noopener noreferrer"\n                    className="cursor-pointer">\n                    <div>\n                      <div className="font-medium">Planyx</div>\n                      <div className="text-xs text-muted-foreground">Experience and itinerary planning</div>\n                    </div>\n                  </a>\n                </DropdownMenuItem>\n'''
+              text = text.replace(desktop_needle, desktop_insert + desktop_needle, 1)
+
+              mobile_needle = '''                  <a\n                  href="https://jadomainhub.jagroupservices.co.uk/"'''
+              mobile_insert = '''                  <a\n                  href="https://planyx.jagroupservices.co.uk/"\n                  target="_blank"\n                  rel="noopener noreferrer"\n                  className="block text-muted-foreground hover:text-foreground transition-colors py-2 text-sm"\n                  onClick={() => setMobileMenuOpen(false)}>\n                    Planyx\n                  </a>\n'''
+              text = text.replace(mobile_needle, mobile_insert + mobile_needle, 1)
+              path.write_text(text, encoding='utf-8')
+
+          # Footer: add Planyx to the public operating-brand list.
+          path = Path('src/layouts/parts/Footer.tsx')
+          text = path.read_text(encoding='utf-8')
+          if 'https://planyx.jagroupservices.co.uk/' not in text:
+              needle = '''              <li>\n                <a\n                  href="https://jadomainhub.jagroupservices.co.uk/"'''
+              insert = '''              <li>\n                <a\n                  href="https://planyx.jagroupservices.co.uk/"\n                  target="_blank"\n                  rel="noopener noreferrer"\n                  className="text-[#0A1F44]/70 hover:text-[#0A1F44] transition-colors text-sm inline-block hover:underline underline-offset-4"\n                >\n                  Planyx\n                </a>\n                <p className="text-[#0A1F44]/50 text-xs mt-1">Experience and itinerary planning</p>\n              </li>\n'''
+              text = text.replace(needle, insert + needle, 1)
+              path.write_text(text, encoding='utf-8')
+
+          # Homepage: update the brand count and add Planyx as a third card.
+          path = Path('src/pages/index.tsx')
+          text = path.read_text(encoding='utf-8')
+          text = text.replace(
+              'focused operating brands: Profile Centre and JA Domain Hub.',
+              'focused operating brands: Profile Centre, Planyx and JA Domain Hub.'
+          )
+          text = text.replace(
+              "value: 'Profile Centre & JA Domain Hub'",
+              "value: 'Profile Centre, Planyx & JA Domain Hub'"
+          )
+          text = text.replace(
+              'operates two focused brands, each serving a distinct area of digital business.',
+              'operates three focused brands, each serving a distinct area of digital business.'
+          )
+          text = text.replace(
+              'grid grid-cols-1 md:grid-cols-2 gap-8',
+              'grid grid-cols-1 md:grid-cols-3 gap-8',
+              1
+          )
+          text = text.replace(
+              'A proprietary digital profile platform developed, owned, operated, and managed by JA Group Services Ltd. Create professional digital profile pages with links, QR codes, contact options, media, documents, themes, and organisation profile tools.',
+              'A digital profile platform operated by JA Group Services Ltd. Create and manage professional profile pages with links, QR codes, contact options, media, documents, themes and organisation tools.'
+          )
+          if 'Visit Planyx' not in text:
+              needle = '''                {/* JA Domain Hub */}\n                <motion.div'''
+              insert = '''                {/* Planyx */}\n                <motion.div\n                  className="bg-white rounded-3xl border border-gray-100 shadow-sm overflow-hidden hover:shadow-lg transition-all"\n                  initial={{ opacity: 0, y: 24 }}\n                  whileInView={{ opacity: 1, y: 0 }}\n                  viewport={{ once: true }}\n                  transition={{ duration: 0.5, delay: 0.1 }}\n                  whileHover={{ y: -4 }}>\n                  <div className="bg-gradient-to-br from-[#312E81] to-[#7C3AED] p-8 text-white">\n                    <div className="w-12 h-12 bg-white/20 rounded-2xl flex items-center justify-center mb-4">\n                      <Globe2 className="h-6 w-6 text-white" />\n                    </div>\n                    <h3 className="text-2xl font-bold mb-2">Planyx</h3>\n                    <p className="text-white/80 text-sm">An operating brand of JA Group Services Ltd</p>\n                  </div>\n                  <div className="p-8 space-y-5">\n                    <p className="text-gray-600 leading-relaxed">\n                      An experience and itinerary planning platform that helps customers organise travel, days out and activities while exploring selected affiliate partner options.\n                    </p>\n                    <div className="flex flex-wrap gap-2">\n                      {['Itinerary Planning', 'Experiences', 'Shared Plans', 'Partner Discovery'].map((tag) => (\n                        <span key={tag} className="bg-[#F3E8FF] text-[#6D28D9] border border-[#DDD6FE] px-3 py-1 rounded-full text-xs font-semibold">\n                          {tag}\n                        </span>\n                      ))}\n                    </div>\n                    <a href="https://planyx.jagroupservices.co.uk/" target="_blank" rel="noopener noreferrer">\n                      <Button size="lg" className="bg-[#6D28D9] hover:bg-[#5B21B6] text-white font-bold px-8 py-5 text-base w-full">\n                        Visit Planyx\n                        <ExternalLink className="ml-2 h-4 w-4" />\n                      </Button>\n                    </a>\n                  </div>\n                </motion.div>\n\n                {/* JA Domain Hub */}\n                <motion.div'''
+              text = text.replace(needle, insert, 1)
+          path.write_text(text, encoding='utf-8')
+
+          # Divisions page: reflect three operating brands and add Planyx details.
+          path = Path('src/pages/about-our-divisions.tsx')
+          text = path.read_text(encoding='utf-8')
+          text = text.replace(
+              'Building2, Globe2, Users, CheckCircle, ExternalLink, ArrowRight',
+              'Building2, Globe2, Users, CheckCircle, ExternalLink, ArrowRight, Compass'
+          )
+          text = text.replace(
+              'operates two focused brands: Profile Centre, a proprietary digital profile platform, and JA Domain Hub, a domain support and GoDaddy reseller storefront.',
+              'operates three focused brands: Profile Centre, Planyx and JA Domain Hub.'
+          )
+          text = text.replace(
+              'Learn about Profile Centre and JA Domain Hub — the two operating brands of JA Group Services Ltd.',
+              'Learn about Profile Centre, Planyx and JA Domain Hub — operating brands of JA Group Services Ltd.'
+          )
+          text = text.replace('operates two focused brands, each serving', 'operates three focused brands, each serving')
+          text = text.replace(
+              'A proprietary digital profile platform developed, owned, operated, and managed by JA Group Services Ltd. Profile Centre is focused on personal profiles, organisation profiles, QR sharing, digital profile pages, and profile subscriptions.',
+              'A digital profile platform developed and operated by JA Group Services Ltd. Profile Centre is focused on personal profiles, organisation profiles, QR sharing, digital profile pages and profile subscriptions.'
+          )
+          text = text.replace('Custom domain guidance for Profile Centre', 'Custom domain guidance for Profile Centre')
+          if 'Visit Planyx' not in text:
+              needle = '''        {/* JA Domain Hub */}\n        <section className="bg-[#F8FAFF] py-20 lg:py-28 border-b border-gray-100">'''
+              insert = '''        {/* Planyx */}\n        <section className="bg-[#F8FAFF] py-20 lg:py-28 border-b border-gray-100">\n          <div className="container mx-auto px-4">\n            <div className="max-w-5xl mx-auto">\n              <motion.div\n                initial={{ opacity: 0, y: 24 }}\n                whileInView={{ opacity: 1, y: 0 }}\n                viewport={{ once: true }}\n                transition={{ duration: 0.6 }}\n                className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start"\n              >\n                <div className="space-y-6">\n                  <div className="inline-flex items-center gap-2 bg-[#6D28D9]/10 text-[#6D28D9] px-4 py-2 rounded-full text-sm font-medium">\n                    <Compass className="h-4 w-4" />\n                    Operating brand of JA Group Services Ltd\n                  </div>\n                  <h2 className="text-3xl md:text-4xl font-bold text-[#0A1F44]">Planyx</h2>\n                  <p className="text-gray-600 leading-relaxed text-lg">\n                    Planyx is an experience and itinerary planning platform operated by JA Group Services Ltd. It helps customers organise travel, days out, activities and shared plans in one place.\n                  </p>\n                  <p className="text-gray-600 leading-relaxed">\n                    Customers can build structured plans and explore selected experiences available through authorised affiliate partners. Planyx is a planning platform and is not a travel agency.\n                  </p>\n                  <div className="pt-2">\n                    <a href="https://planyx.jagroupservices.co.uk/" target="_blank" rel="noopener noreferrer">\n                      <Button size="lg" className="bg-[#6D28D9] hover:bg-[#5B21B6] text-white font-bold px-8 py-5">\n                        Visit Planyx\n                        <ExternalLink className="ml-2 h-4 w-4" />\n                      </Button>\n                    </a>\n                  </div>\n                </div>\n\n                <div className="space-y-4">\n                  <h3 className="font-bold text-[#0A1F44] text-lg mb-4">Services Offered</h3>\n                  {[\n                    'Travel and experience itinerary planning',\n                    'Days out and activity planning',\n                    'Personal and organisation accounts',\n                    'Shared and collaborative plans',\n                    'Structured experience builders',\n                    'Selected affiliate partner discovery',\n                    'Read-only and editable plan sharing',\n                  ].map((item, i) => (\n                    <motion.div\n                      key={i}\n                      initial={{ opacity: 0, x: -10 }}\n                      whileInView={{ opacity: 1, x: 0 }}\n                      viewport={{ once: true }}\n                      transition={{ duration: 0.3, delay: i * 0.04 }}\n                      className="flex items-center gap-3"\n                    >\n                      <CheckCircle className="h-4 w-4 text-[#6D28D9] shrink-0" />\n                      <span className="text-gray-700 text-sm">{item}</span>\n                    </motion.div>\n                  ))}\n                </div>\n              </motion.div>\n            </div>\n          </div>\n        </section>\n\n        {/* JA Domain Hub */}\n        <section className="bg-white py-20 lg:py-28 border-b border-gray-100">'''
+              text = text.replace(needle, insert, 1)
+          path.write_text(text, encoding='utf-8')
+
+          # Sitemap: add Planyx if it is not already listed.
+          path = Path('src/pages/sitemap.tsx')
+          text = path.read_text(encoding='utf-8')
+          if 'https://planyx.jagroupservices.co.uk/' not in text:
+              needle = "        { path: 'https://jadomainhub.jagroupservices.co.uk/', label: 'JA Domain Hub', icon: Globe, internal: false },"
+              insert = "        { path: 'https://planyx.jagroupservices.co.uk/', label: 'Planyx', icon: Globe, internal: false },\n"
+              text = text.replace(needle, insert + needle, 1)
+              path.write_text(text, encoding='utf-8')
+
+          # Partnership wording should reflect all current operating brands.
+          path = Path('src/pages/partner-with-us.tsx')
+          text = path.read_text(encoding='utf-8')
+          text = text.replace(
+              'JA Group Services Ltd, Profile Centre, or JA Domain Hub.',
+              'JA Group Services Ltd, Profile Centre, Planyx or JA Domain Hub.'
+          )
+          path.write_text(text, encoding='utf-8')
+
+          # Fail clearly if old public contact aliases or former brand references remain.
+          remaining = []
+          for path in source_files:
+              text = path.read_text(encoding='utf-8')
+              for value in (
+                  'hello@jagroupservices.co.uk',
+                  'info@jagroupservices.co.uk',
+                  'feedback@jagroupservices.co.uk',
+                  'JA Profile Studio',
+                  'japrofilestudio.jagroupservices.co.uk',
+              ):
+                  if value in text:
+                      remaining.append(f'{path}: {value}')
+          if remaining:
+              raise SystemExit('Old references remain:\n' + '\n'.join(remaining))
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build website
+        run: npm run build
+
+      - name: Commit generated source updates
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src
+          if git diff --cached --quiet; then
+            echo "No source changes were required."
+          else
+            git commit -m "Update operating brands and public contact email"
+            git push origin HEAD:update-operating-brands-contact-email
+          fi
