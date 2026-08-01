@@ -1,0 +1,140 @@
+:root {
+  --page-section: 214 100% 97%;
+}
+
+.dark {
+  --background: 222 47% 8%;
+  --foreground: 210 40% 96%;
+  --card: 222 39% 13%;
+  --card-foreground: 210 40% 96%;
+  --popover: 222 39% 13%;
+  --popover-foreground: 210 40% 96%;
+  --primary: 217 91% 65%;
+  --primary-foreground: 222 47% 8%;
+  --secondary: 220 34% 16%;
+  --secondary-foreground: 210 40% 94%;
+  --muted: 220 30% 18%;
+  --muted-foreground: 215 20% 72%;
+  --border: 217 25% 25%;
+  --input: 217 25% 22%;
+  --ring: 217 91% 65%;
+  --page-section: 220 34% 16%;
+}
+
+html,
+body,
+#app {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+img,
+svg,
+video,
+canvas {
+  max-width: 100%;
+}
+
+/* Separate the page canvas, alternate sections and cards in dark mode. */
+.dark .min-h-screen.bg-white,
+.dark section.bg-white,
+.dark .bg-background {
+  background-color: hsl(var(--background)) !important;
+}
+
+.dark [class~="bg-[#FAFAF9]"],
+.dark section[class~="bg-[#F8FAFF]"],
+.dark .bg-secondary {
+  background-color: hsl(var(--secondary)) !important;
+}
+
+.dark div.bg-white,
+.dark article.bg-white,
+.dark .bg-card,
+.dark [class~="bg-white/40"],
+.dark [class~="bg-white/80"],
+.dark [class~="bg-white/90"],
+.dark [class~="bg-white/95"] {
+  background-color: hsl(var(--card)) !important;
+}
+
+.dark [class~="text-[#0A1F44]"],
+.dark [class~="text-[#1A1A1A]"],
+.dark .text-black,
+.dark .text-gray-800,
+.dark .text-gray-900,
+.dark .text-foreground,
+.dark .text-card-foreground {
+  color: hsl(var(--foreground)) !important;
+}
+
+.dark [class~="text-[#0A1F44]/80"],
+.dark [class~="text-[#0A1F44]/70"],
+.dark [class~="text-[#0A1F44]/60"],
+.dark [class~="text-[#0A1F44]/50"],
+.dark [class~="text-[#1A1A1A]/80"],
+.dark [class~="text-[#1A1A1A]/70"],
+.dark [class~="text-[#1A1A1A]/60"],
+.dark [class~="text-[#1A1A1A]/50"],
+.dark .text-gray-400,
+.dark .text-gray-500,
+.dark .text-gray-600,
+.dark .text-gray-700,
+.dark .text-slate-400,
+.dark .text-slate-500,
+.dark .text-slate-600,
+.dark .text-slate-700,
+.dark .text-muted-foreground {
+  color: hsl(var(--muted-foreground)) !important;
+}
+
+.dark [class~="border-[#0A1F44]/10"],
+.dark [class~="border-[#0A1F44]/20"],
+.dark .border-gray-100,
+.dark .border-gray-200,
+.dark .border-white\/10,
+.dark .border-white\/20,
+.dark .border-border {
+  border-color: hsl(var(--border)) !important;
+}
+
+.dark .shadow-sm,
+.dark .shadow-md,
+.dark .shadow-lg,
+.dark .shadow-xl,
+.dark .shadow-2xl {
+  --tw-shadow-color: hsl(0 0% 0% / 0.38);
+}
+
+/* Keep intentionally coloured hero and CTA areas bright and readable. */
+.dark .text-white,
+.dark [class~="text-white/90"],
+.dark [class~="text-white/85"],
+.dark [class~="text-white/80"],
+.dark [class~="text-white/70"],
+.dark [class~="text-white/60"] {
+  color: rgb(255 255 255 / var(--tw-text-opacity, 1)) !important;
+}
+
+@media (max-width: 767px) {
+  body {
+    min-width: 0;
+  }
+
+  h1 {
+    overflow-wrap: anywhere;
+  }
+
+  section {
+    scroll-margin-top: 4rem;
+  }
+
+  [role="dialog"] {
+    overscroll-behavior: contain;
+  }
+
+  button,
+  a {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
