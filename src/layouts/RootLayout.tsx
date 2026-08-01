@@ -5,6 +5,7 @@ import Header from '@/layouts/parts/Header';
 import Website from '@/layouts/Website';
 import { AppBottomNav } from '@/components/AppBottomNav';
 import { AppHeader } from '@/components/AppHeader';
+import FooterCorporateDisclosure from '@/components/FooterCorporateDisclosure';
 import ScrollToTop from '@/components/ScrollToTop';
 import { useLocation } from 'react-router-dom';
 
@@ -126,6 +127,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
       <Header />
       {children}
       <Footer />
+      <FooterCorporateDisclosure />
       <CookieBannerErrorBoundary>
         <Suspense fallback={null}>
           <CookieBanner />
