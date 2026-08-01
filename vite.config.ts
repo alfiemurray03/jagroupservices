@@ -23,6 +23,8 @@ function extractHostname(value: string): string {
 
 function serverBundlePlugin(): Plugin {
   let built = false;
+  const databaseConfigPath = path.resolve(__dirname, "src/server/db/config-env.ts");
+  const databaseDirectory = path.resolve(__dirname, "src/server/db");
   return {
     name: "server-bundle",
     apply: "build",
@@ -31,7 +33,7 @@ function serverBundlePlugin(): Plugin {
       built = true;
       console.log("Bundling server code with esbuild...");
       await esbuild.build({
-        entryPoints: [path.resolve(__dirname, "dist", "app.js")],
+        entryPoints: [path.resolve(__dirname, "src/server/entry.ts")],
         bundle: true,
         platform: "node",
         target: "node22",
@@ -41,12 +43,21 @@ function serverBundlePlugin(): Plugin {
         sourcemap: true,
         // Remap the Airo-managed db/config.ts to the env-var implementation so
         // the production bundle reads DB_HOST/DB_USER/etc. instead of
-        // /alloc/config.json. The source file is marked TREAT AS IMMUTABLE so
-        // we substitute it at bundle time rather than editing it directly.
-        alias: {
-          [path.resolve(__dirname, "src/server/db/config.js")]:
-          path.resolve(__dirname, "src/server/db/config-env.ts")
-        },
+        // /alloc/config.json. esbuild's alias option only accepts package-like
+        // names, so use a resolver for these source imports instead.
+        plugins: [{
+          name: "database-config-env",
+          setup(build) {
+            build.onResolve(
+              { filter: /^(?:@\/server\/db\/config|\.\/config(?:\.js)?)$/ },
+              (args) => {
+                const isDatabaseConfigImport =
+                  args.path.startsWith("@/") || path.dirname(args.importer) === databaseDirectory;
+                return isDatabaseConfigImport ? { path: databaseConfigPath } : null;
+              }
+            );
+          }
+        }],
         banner: {
           js: `import { createRequire } from 'module';
 const require = createRequire(import.meta.url);`
