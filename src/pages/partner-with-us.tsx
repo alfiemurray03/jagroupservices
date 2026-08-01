@@ -1,78 +1,130 @@
 import { Helmet } from '@dr.pogodin/react-helmet';
+import type { LucideIcon } from 'lucide-react';
+import {
+  ArrowRight,
+  BadgeCheck,
+  Building2,
+  CheckCircle2,
+  Clock3,
+  FileCheck2,
+  Handshake,
+  Mail,
+  Network,
+  Scale,
+  SearchCheck,
+  ShieldCheck,
+  Store,
+  Workflow,
+} from 'lucide-react';
 import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Handshake, Building2, Globe, Users, CheckCircle, Mail, AlertCircle } from 'lucide-react';
+
 import { Button } from '@/components/ui/button';
 
 const site = 'https://jagroupservices.co.uk';
 const url = `${site}/partner-with-us`;
-const title = 'Partner With Us — JA Group Services Ltd';
-const description = 'We welcome appropriate partnership enquiries from service providers, platforms, and organisations that align with our operating standards and customer needs.';
+const title = 'Partner With Us — Coming Soon | JA Group Services Ltd';
+const description =
+  'JA Group Services Ltd is developing a formal partnership programme for selected technology, reseller, affiliate, supplier and commercial relationships. Public applications are not yet open.';
 
-const partnershipTypes = [
+const partnershipAreas = [
   {
-    icon: Building2,
-    title: 'Service Providers',
-    desc: 'Businesses offering complementary services that add value to our customers and operating brands.',
+    icon: Network,
+    title: 'Technology and platform providers',
+    description:
+      'Potential integrations, infrastructure services and authorised platforms that can support or extend our digital services.',
   },
   {
-    icon: Globe,
-    title: 'Platform Integrations',
-    desc: 'Technology platforms and digital tools that can be integrated with or referenced alongside our services.',
-  },
-  {
-    icon: Users,
-    title: 'Reseller & Affiliate',
-    desc: 'Reseller arrangements and affiliate opportunities where appropriate referral structures can be established.',
+    icon: Store,
+    title: 'Reseller and service arrangements',
+    description:
+      'Structured arrangements where JA Group Services Ltd may facilitate, resell or support access to an authorised third-party service.',
   },
   {
     icon: Handshake,
-    title: 'Service Collaborations',
-    desc: 'Collaborative arrangements with organisations whose services align with our customer base and operating standards.',
+    title: 'Affiliate and referral relationships',
+    description:
+      'Transparent referral or affiliate arrangements for relevant products, experiences or services that may benefit our users.',
   },
   {
     icon: Building2,
-    title: 'Supplier Relationships',
-    desc: 'Suppliers of products or services that support the operation and growth of JA Group Services Ltd and its brands.',
+    title: 'Suppliers and commercial collaborations',
+    description:
+      'Suppliers, professional service providers and organisations that can support the Company’s operations or future service development.',
   },
-  {
-    icon: Globe,
-    title: 'B2B Enquiries',
-    desc: 'Business-to-business enquiries from organisations seeking a structured working relationship with JA Group Services Ltd.',
-  },
-];
+] as const;
 
-const eligibleOrganisations = [
-  'Registered businesses operating in the UK or internationally',
-  'Platforms and technology providers with relevant services',
-  'Organisations with a clear, legitimate business purpose',
-  'Suppliers with products or services relevant to our operations',
-  'Affiliate and referral partners with appropriate audience alignment',
-  'B2B service providers seeking a structured working arrangement',
-];
-
-const assessmentCriteria = [
+const plannedStandards = [
   {
-    title: 'Alignment with our operating standards',
-    desc: 'The partnership must align with the professional and ethical standards maintained by JA Group Services Ltd and its operating brands.',
-  },
-  {
-    title: 'Relevance to our customer base',
-    desc: 'The service or product must be relevant and genuinely useful to the customers and users of JA Group Services Ltd, Profile Centre, Planyx or JA Domain Hub.',
-  },
-  {
-    title: 'Clear and transparent terms',
-    desc: 'Any partnership arrangement must be clearly defined, with transparent terms agreed in writing before any public association is made.',
-  },
-  {
+    icon: BadgeCheck,
     title: 'Legitimate business standing',
-    desc: 'The applying organisation must be a legitimately registered and operating business with verifiable credentials.',
+    description:
+      'Organisations will need a clear legal identity, verifiable contact information and a genuine business purpose.',
   },
   {
-    title: 'No conflict of interest',
-    desc: 'The partnership must not create a conflict of interest with our existing operations, brands, or customer commitments.',
+    icon: SearchCheck,
+    title: 'Clear customer value',
+    description:
+      'The proposed relationship should solve a real need or add meaningful value to our platforms, services or customers.',
   },
-];
+  {
+    icon: Scale,
+    title: 'Lawful and responsible operation',
+    description:
+      'The organisation and proposed activity must comply with applicable law, regulation and relevant industry requirements.',
+  },
+  {
+    icon: ShieldCheck,
+    title: 'Security and data protection',
+    description:
+      'Appropriate security, privacy, data-processing and incident-management arrangements will be expected where relevant.',
+  },
+  {
+    icon: Workflow,
+    title: 'Defined responsibilities',
+    description:
+      'Customer support, service delivery, complaints, billing and escalation responsibilities must be clear before launch.',
+  },
+  {
+    icon: FileCheck2,
+    title: 'Written approval and agreement',
+    description:
+      'No partnership will be treated as approved until the required internal approval has been completed and written terms are agreed.',
+  },
+] as const;
+
+const plannedProcess = [
+  {
+    number: '01',
+    title: 'Expression of interest',
+    description:
+      'Once launched, organisations will provide basic information about their business and proposed relationship.',
+  },
+  {
+    number: '02',
+    title: 'Initial suitability review',
+    description:
+      'JA Group Services Ltd will consider relevance, customer value, business fit and any obvious conflicts or risks.',
+  },
+  {
+    number: '03',
+    title: 'Due diligence and assessment',
+    description:
+      'Where appropriate, legal identity, service standards, security, data protection, commercial terms and operational responsibilities will be reviewed.',
+  },
+  {
+    number: '04',
+    title: 'Approval and written terms',
+    description:
+      'The proposal will be referred for the required internal approval, including Board approval where the matter is reserved or material.',
+  },
+  {
+    number: '05',
+    title: 'Onboarding and ongoing review',
+    description:
+      'Approved relationships will be documented, introduced carefully and reviewed against the agreed standards and responsibilities.',
+  },
+] as const;
 
 export default function PartnerWithUsPage() {
   return (
@@ -88,27 +140,62 @@ export default function PartnerWithUsPage() {
         <meta name="twitter:card" content="summary_large_image" />
       </Helmet>
 
-      <main className="bg-background text-foreground">
+      <main className="min-h-screen bg-background text-foreground">
         <section className="relative overflow-hidden border-b border-white/10 bg-gradient-to-br from-[#07152E] via-[#0A1F44] to-[#1A3FA8] py-16 sm:py-20 lg:py-24">
-          <div className="absolute -right-20 -top-28 h-80 w-80 rounded-full bg-blue-400/15 blur-3xl" />
-          <div className="absolute -bottom-32 -left-20 h-80 w-80 rounded-full bg-cyan-300/10 blur-3xl" />
+          <div className="pointer-events-none absolute inset-0">
+            <div className="absolute -right-20 -top-28 h-80 w-80 rounded-full bg-blue-400/15 blur-3xl" />
+            <div className="absolute -bottom-32 -left-20 h-80 w-80 rounded-full bg-cyan-300/10 blur-3xl" />
+          </div>
+
           <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <motion.div
+              className="mx-auto max-w-4xl text-center"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.55 }}
-              className="mx-auto max-w-3xl text-center"
+              transition={{ duration: 0.5 }}
             >
-              <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-sm font-semibold text-white shadow-sm backdrop-blur-sm">
+              <div className="mb-6 inline-flex flex-wrap items-center justify-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-sm font-semibold text-white backdrop-blur-sm">
                 <Handshake className="h-4 w-4" />
-                Partnership Enquiries
+                Partnership Programme
+                <span className="rounded-full bg-amber-300 px-2.5 py-0.5 text-xs font-extrabold uppercase tracking-wide text-amber-950">
+                  Coming Soon
+                </span>
               </div>
-              <h1 className="text-4xl font-bold leading-tight text-white sm:text-5xl lg:text-6xl">
+
+              <h1 className="text-4xl font-extrabold leading-tight text-white sm:text-5xl lg:text-6xl">
                 Partner with JA Group Services Ltd
               </h1>
-              <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-white/80 sm:text-lg lg:text-xl">
-                We welcome appropriate partnership enquiries from service providers, platforms, and organisations that align with our operating standards and customer needs.
+
+              <p className="mx-auto mt-5 max-w-3xl text-base leading-relaxed text-white/80 sm:text-lg lg:text-xl">
+                We are developing a formal and transparent pathway for selected technology, reseller, affiliate, supplier and commercial relationships.
               </p>
+
+              <div className="mx-auto mt-8 max-w-3xl rounded-2xl border border-white/15 bg-white/10 p-5 text-left backdrop-blur-sm sm:p-6">
+                <div className="flex items-start gap-3">
+                  <Clock3 className="mt-0.5 h-6 w-6 shrink-0 text-amber-300" />
+                  <div>
+                    <h2 className="font-bold text-white">Public applications are not yet open</h2>
+                    <p className="mt-2 text-sm leading-relaxed text-white/75 sm:text-base">
+                      The public partnership programme, application process and onboarding framework are still being prepared. We are not currently accepting formal applications through this website.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
+                <Button asChild size="lg" className="min-h-12 bg-blue-600 px-7 font-bold text-white hover:bg-blue-500">
+                  <a href="#programme">
+                    See What Is Planned
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </a>
+                </Button>
+                <Button asChild size="lg" variant="outline" className="min-h-12 border-white/35 bg-white/5 px-7 font-semibold text-white hover:bg-white/10 hover:text-white">
+                  <a href="mailto:hello@jagroupservices.co.uk?subject=Future%20Partnership%20Interest">
+                    <Mail className="mr-2 h-4 w-4" />
+                    Register Early Interest
+                  </a>
+                </Button>
+              </div>
             </motion.div>
           </div>
         </section>
@@ -116,51 +203,118 @@ export default function PartnerWithUsPage() {
         <section className="border-b border-border bg-background py-14 sm:py-16 lg:py-20">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <SectionHeading
-              title="Partnership Types"
-              description="We consider a range of partnership arrangements depending on the nature of the opportunity and alignment with our services."
+              eyebrow="Current status"
+              title="What “coming soon” means"
+              description="We want this page to be useful without suggesting that a programme already exists when it does not."
             />
 
-            <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-              {partnershipTypes.map(({ icon: Icon, title: itemTitle, desc }, index) => (
+            <div className="grid gap-6 lg:grid-cols-2">
+              <StatusCard
+                title="Not available yet"
+                icon={Clock3}
+                items={[
+                  'There is no public partnership application form or partner portal at present.',
+                  'Submitting an email does not create an application, approval or commercial commitment.',
+                  'We cannot promise a launch date or guarantee that every proposed partnership type will be offered.',
+                  'No organisation may describe itself as an approved partner without written confirmation from JA Group Services Ltd.',
+                ]}
+              />
+
+              <StatusCard
+                title="What continues normally"
+                icon={CheckCircle2}
+                items={[
+                  'Existing authorised supplier, reseller, affiliate and technology arrangements continue under their existing terms.',
+                  'JA Group Services Ltd may still speak directly with organisations about specific business needs or opportunities.',
+                  'General supplier and corporate enquiries can still be sent through our normal contact channels.',
+                  'Early expressions of interest may be recorded for future consideration when the programme is ready.',
+                ]}
+              />
+            </div>
+          </div>
+        </section>
+
+        <section id="programme" className="scroll-mt-24 border-b border-border bg-secondary py-14 sm:py-16 lg:py-20">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <SectionHeading
+              eyebrow="Future opportunities"
+              title="Partnership areas we expect to consider"
+              description="These are indicative areas only. Final eligibility, scope and availability will be confirmed when the programme launches."
+            />
+
+            <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+              {partnershipAreas.map(({ icon: Icon, title: itemTitle, description: copy }, index) => (
                 <motion.article
                   key={itemTitle}
+                  className="rounded-2xl border border-border bg-card p-6 text-card-foreground shadow-sm"
                   initial={{ opacity: 0, y: 18 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: index * 0.06 }}
-                  className="rounded-2xl border border-border bg-card p-6 text-card-foreground shadow-sm transition-all hover:-translate-y-1 hover:border-primary/35 hover:shadow-lg"
                 >
                   <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-primary/10">
                     <Icon className="h-5 w-5 text-primary" />
                   </div>
-                  <h2 className="mb-2 text-lg font-bold text-foreground">{itemTitle}</h2>
-                  <p className="text-sm leading-relaxed text-muted-foreground">{desc}</p>
+                  <h3 className="mb-2 text-lg font-bold text-card-foreground">{itemTitle}</h3>
+                  <p className="text-sm leading-relaxed text-muted-foreground">{copy}</p>
                 </motion.article>
               ))}
             </div>
           </div>
         </section>
 
-        <section className="border-b border-border bg-secondary/40 py-14 sm:py-16 lg:py-20">
-          <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+        <section className="border-b border-border bg-background py-14 sm:py-16 lg:py-20">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <SectionHeading
-              title="Who Can Apply"
-              description="We consider enquiries from a range of organisations, provided they meet our basic criteria."
+              eyebrow="Programme development"
+              title="What we are building"
+              description="The aim is to create a controlled process that protects customers, the Company and prospective partners."
             />
 
-            <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-              {eligibleOrganisations.map((item, index) => (
-                <motion.div
-                  key={item}
-                  initial={{ opacity: 0, x: -10 }}
-                  whileInView={{ opacity: 1, x: 0 }}
+            <div className="grid gap-5 md:grid-cols-3">
+              <ProgrammeCard
+                icon={Workflow}
+                title="A structured entry route"
+                description="A clear method for organisations to explain their proposal, provide supporting information and understand what happens next."
+              />
+              <ProgrammeCard
+                icon={SearchCheck}
+                title="Proportionate due diligence"
+                description="Checks appropriate to the proposed relationship, including legal identity, business standing, security, data protection and operational risk."
+              />
+              <ProgrammeCard
+                icon={FileCheck2}
+                title="Documented accountability"
+                description="Written responsibilities, commercial terms, customer-support routes, escalation arrangements and internal approval before public launch."
+              />
+            </div>
+          </div>
+        </section>
+
+        <section className="border-b border-border bg-secondary py-14 sm:py-16 lg:py-20">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <SectionHeading
+              eyebrow="Planned standards"
+              title="What future partners will be expected to demonstrate"
+              description="These principles will guide the final partnership framework and may be expanded or adjusted before launch."
+            />
+
+            <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+              {plannedStandards.map(({ icon: Icon, title: itemTitle, description: copy }, index) => (
+                <motion.article
+                  key={itemTitle}
+                  className="rounded-2xl border border-border bg-card p-6 text-card-foreground shadow-sm"
+                  initial={{ opacity: 0, y: 18 }}
+                  whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.35, delay: index * 0.05 }}
-                  className="flex items-start gap-3 rounded-2xl border border-border bg-card p-4 shadow-sm"
+                  transition={{ duration: 0.4, delay: index * 0.05 }}
                 >
-                  <CheckCircle className="mt-0.5 h-5 w-5 shrink-0 text-primary" />
-                  <p className="text-sm leading-relaxed text-card-foreground">{item}</p>
-                </motion.div>
+                  <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-primary/10">
+                    <Icon className="h-5 w-5 text-primary" />
+                  </div>
+                  <h3 className="mb-2 text-lg font-bold text-card-foreground">{itemTitle}</h3>
+                  <p className="text-sm leading-relaxed text-muted-foreground">{copy}</p>
+                </motion.article>
               ))}
             </div>
           </div>
@@ -169,26 +323,27 @@ export default function PartnerWithUsPage() {
         <section className="border-b border-border bg-background py-14 sm:py-16 lg:py-20">
           <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
             <SectionHeading
-              title="What We Look For"
-              description="We assess all partnership enquiries against a consistent set of criteria."
+              eyebrow="Planned journey"
+              title="How the future review process is expected to work"
+              description="The final process may change before launch, but no partnership will move directly from an enquiry to public promotion."
             />
 
             <div className="space-y-4">
-              {assessmentCriteria.map((item, index) => (
+              {plannedProcess.map(({ number, title: itemTitle, description: copy }, index) => (
                 <motion.article
-                  key={item.title}
-                  initial={{ opacity: 0, y: 10 }}
+                  key={number}
+                  className="grid gap-4 rounded-2xl border border-border bg-card p-5 text-card-foreground shadow-sm sm:grid-cols-[auto_1fr] sm:items-start sm:p-6"
+                  initial={{ opacity: 0, y: 14 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.35, delay: index * 0.05 }}
-                  className="flex items-start gap-4 rounded-2xl border border-border bg-card p-5 shadow-sm"
                 >
-                  <div className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-sm font-bold text-primary">
-                    {index + 1}
+                  <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-primary/10 text-sm font-extrabold text-primary">
+                    {number}
                   </div>
                   <div>
-                    <h2 className="mb-1 font-semibold text-foreground">{item.title}</h2>
-                    <p className="text-sm leading-relaxed text-muted-foreground">{item.desc}</p>
+                    <h3 className="font-bold text-card-foreground">{itemTitle}</h3>
+                    <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{copy}</p>
                   </div>
                 </motion.article>
               ))}
@@ -196,28 +351,24 @@ export default function PartnerWithUsPage() {
           </div>
         </section>
 
-        <section className="border-b border-border bg-secondary/40 py-10 sm:py-12">
-          <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-            <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4 }}
-              className="flex items-start gap-4 rounded-2xl border border-amber-400/35 bg-card p-5 shadow-sm sm:p-6"
-            >
-              <AlertCircle className="mt-0.5 h-6 w-6 shrink-0 text-amber-500" />
-              <div>
-                <h2 className="mb-2 font-semibold text-foreground">Important Notice</h2>
-                <p className="text-sm leading-relaxed text-muted-foreground">
-                  A partnership enquiry or referral arrangement with JA Group Services Ltd does not imply endorsement of any third-party product, service, or organisation unless formally stated in writing by JA Group Services Ltd. All partnerships are subject to review, approval, and formal agreement before any public association is made.
-                </p>
+        <section className="border-b border-border bg-secondary py-12 sm:py-14">
+          <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+            <div className="rounded-2xl border border-amber-400/35 bg-card p-5 text-card-foreground shadow-sm sm:p-6">
+              <div className="flex items-start gap-3">
+                <ShieldCheck className="mt-0.5 h-6 w-6 shrink-0 text-amber-500" />
+                <div>
+                  <h2 className="font-bold text-card-foreground">Important transparency notice</h2>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                    An expression of interest is not a partnership application, offer, endorsement, appointment or agreement. It does not create exclusivity, authority to act for JA Group Services Ltd, or permission to use the Company’s brands or intellectual property. Any future relationship will remain subject to due diligence, the required internal approval and written agreement.
+                  </p>
+                </div>
               </div>
-            </motion.div>
+            </div>
           </div>
         </section>
 
         <section className="relative overflow-hidden bg-gradient-to-br from-[#07152E] via-[#0A1F44] to-[#1A3FA8] py-16 sm:py-20">
-          <div className="absolute -right-16 top-0 h-64 w-64 rounded-full bg-blue-300/10 blur-3xl" />
+          <div className="pointer-events-none absolute -right-16 top-0 h-64 w-64 rounded-full bg-blue-300/10 blur-3xl" />
           <div className="relative mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
             <motion.div
               initial={{ opacity: 0, y: 18 }}
@@ -225,22 +376,27 @@ export default function PartnerWithUsPage() {
               viewport={{ once: true }}
               transition={{ duration: 0.45 }}
             >
-              <h2 className="text-3xl font-bold text-white sm:text-4xl">Submit a Partnership Enquiry</h2>
+              <Clock3 className="mx-auto mb-4 h-10 w-10 text-amber-300" />
+              <h2 className="text-3xl font-bold text-white sm:text-4xl">Register an early interest</h2>
               <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-white/80 sm:text-lg">
-                To submit a partnership enquiry, please contact us directly. Include details about your organisation, the type of partnership you are proposing, and how it aligns with our services.
+                Organisations may send a brief note for future reference. Please include your legal business name, website, contact details and a short explanation of the proposed relationship.
               </p>
+              <p className="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-white/65">
+                We may acknowledge or retain the information, but we cannot guarantee a detailed review or response before the programme launches.
+              </p>
+
               <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
-                <Button asChild size="lg" className="w-full bg-blue-600 px-8 py-6 text-base font-bold text-white hover:bg-blue-500 sm:w-auto">
-                  <Link to="/contactus">
-                    Contact Us
-                    <ArrowRight className="ml-2 h-5 w-5" />
-                  </Link>
-                </Button>
-                <Button asChild size="lg" variant="outline" className="w-full border-white/35 bg-white/5 px-6 py-6 text-base font-semibold text-white hover:bg-white/10 hover:text-white sm:w-auto">
-                  <a href="mailto:contact@jagroupservices.co.uk" className="min-w-0">
-                    <Mail className="mr-2 h-5 w-5 shrink-0" />
-                    <span className="break-all">contact@jagroupservices.co.uk</span>
+                <Button asChild size="lg" className="min-h-12 bg-blue-600 px-7 font-bold text-white hover:bg-blue-500">
+                  <a href="mailto:hello@jagroupservices.co.uk?subject=Future%20Partnership%20Interest">
+                    <Mail className="mr-2 h-5 w-5" />
+                    Email Early Interest
                   </a>
+                </Button>
+                <Button asChild size="lg" variant="outline" className="min-h-12 border-white/35 bg-white/5 px-7 font-semibold text-white hover:bg-white/10 hover:text-white">
+                  <Link to="/contactus">
+                    General Contact Details
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Link>
                 </Button>
               </div>
             </motion.div>
@@ -251,17 +407,81 @@ export default function PartnerWithUsPage() {
   );
 }
 
-function SectionHeading({ title: heading, description: copy }: { title: string; description: string }) {
+function SectionHeading({
+  eyebrow,
+  title: heading,
+  description: copy,
+}: {
+  eyebrow: string;
+  title: string;
+  description: string;
+}) {
   return (
     <motion.div
+      className="mx-auto mb-10 max-w-3xl text-center sm:mb-12"
       initial={{ opacity: 0, y: 16 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.4 }}
-      className="mx-auto mb-10 max-w-3xl text-center sm:mb-12"
     >
+      <p className="mb-2 text-sm font-bold uppercase tracking-[0.18em] text-primary">{eyebrow}</p>
       <h2 className="text-3xl font-bold text-foreground sm:text-4xl">{heading}</h2>
       <p className="mx-auto mt-3 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">{copy}</p>
     </motion.div>
+  );
+}
+
+function StatusCard({
+  title: heading,
+  icon: Icon,
+  items,
+}: {
+  title: string;
+  icon: LucideIcon;
+  items: readonly string[];
+}) {
+  return (
+    <article className="rounded-3xl border border-border bg-card p-6 text-card-foreground shadow-sm sm:p-8">
+      <div className="mb-5 flex items-center gap-3">
+        <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-primary/10">
+          <Icon className="h-5 w-5 text-primary" />
+        </div>
+        <h3 className="text-xl font-bold text-card-foreground">{heading}</h3>
+      </div>
+      <ul className="space-y-3">
+        {items.map((item) => (
+          <li key={item} className="flex items-start gap-3 text-sm leading-relaxed text-muted-foreground">
+            <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
+    </article>
+  );
+}
+
+function ProgrammeCard({
+  icon: Icon,
+  title: heading,
+  description: copy,
+}: {
+  icon: LucideIcon;
+  title: string;
+  description: string;
+}) {
+  return (
+    <motion.article
+      className="rounded-2xl border border-border bg-card p-6 text-card-foreground shadow-sm"
+      initial={{ opacity: 0, y: 18 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.4 }}
+    >
+      <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-primary/10">
+        <Icon className="h-5 w-5 text-primary" />
+      </div>
+      <h3 className="mb-2 text-lg font-bold text-card-foreground">{heading}</h3>
+      <p className="text-sm leading-relaxed text-muted-foreground">{copy}</p>
+    </motion.article>
   );
 }
