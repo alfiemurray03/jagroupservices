@@ -9,6 +9,7 @@ import './styles/globals.css';
 import './styles/theme-fixes.css';
 import './styles/logo-size-adjustments.css';
 import './styles/homepage-title.css';
+import './styles/desktop-density.css';
 
 // Register Service Worker with update checking
 import { HelmetProvider } from "@dr.pogodin/react-helmet";
