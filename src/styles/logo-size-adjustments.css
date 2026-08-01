@@ -1,32 +1,30 @@
-/* Slightly reduce the JA Group Services logos without changing their assets. */
-header .site-logo-light {
-  height: 2.5rem !important;
-  max-width: 175px !important;
-}
-
+/* Keep the light and dark JA Group Services logos visually consistent. */
+header .site-logo-light,
 header .site-logo-dark {
-  height: 3.25rem !important;
-  max-width: 185px !important;
+  width: 175px !important;
+  height: auto !important;
+  max-width: 175px !important;
+  object-fit: contain;
 }
 
-footer .site-logo-light {
-  height: 3rem !important;
-  max-width: 195px !important;
-}
-
+footer .site-logo-light,
 footer .site-logo-dark {
-  height: 4.25rem !important;
-  max-width: 245px !important;
+  width: 195px !important;
+  height: auto !important;
+  max-width: 195px !important;
+  object-fit: contain;
 }
 
 @media (max-width: 639px) {
-  header .site-logo-light {
-    height: 2.25rem !important;
+  header .site-logo-light,
+  header .site-logo-dark {
+    width: 160px !important;
     max-width: 160px !important;
   }
 
-  header .site-logo-dark {
-    height: 3rem !important;
-    max-width: 170px !important;
+  footer .site-logo-light,
+  footer .site-logo-dark {
+    width: 180px !important;
+    max-width: 180px !important;
   }
 }
