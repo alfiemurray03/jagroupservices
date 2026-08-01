@@ -44,7 +44,7 @@ export default function Header() {
             onClick={closeMobileMenu}
           >
             <img
-              src="/images/367f316379e78929865b1677b6370686.jpg"
+              src="/images/ja-group-services-light.webp"
               alt="JA Group Services Ltd"
               className="site-logo-light h-11 w-auto max-w-[190px] shrink-0 object-contain sm:h-12 sm:max-w-[220px] md:h-14 md:max-w-[250px]"
             />
