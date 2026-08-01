@@ -107,13 +107,33 @@ canvas {
 }
 
 /* Keep intentionally coloured hero and CTA areas bright and readable. */
-.dark .text-white,
-.dark [class~="text-white/90"],
-.dark [class~="text-white/85"],
-.dark [class~="text-white/80"],
-.dark [class~="text-white/70"],
+.text-white\/85,
+[class~="text-white/85"] {
+  color: rgb(255 255 255 / 0.85) !important;
+}
+
+.dark .text-white {
+  color: rgb(255 255 255) !important;
+}
+
+.dark [class~="text-white/90"] {
+  color: rgb(255 255 255 / 0.90) !important;
+}
+
+.dark [class~="text-white/85"] {
+  color: rgb(255 255 255 / 0.85) !important;
+}
+
+.dark [class~="text-white/80"] {
+  color: rgb(255 255 255 / 0.80) !important;
+}
+
+.dark [class~="text-white/70"] {
+  color: rgb(255 255 255 / 0.70) !important;
+}
+
 .dark [class~="text-white/60"] {
-  color: rgb(255 255 255 / var(--tw-text-opacity, 1)) !important;
+  color: rgb(255 255 255 / 0.60) !important;
 }
 
 @media (max-width: 767px) {
