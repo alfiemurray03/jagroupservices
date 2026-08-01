@@ -5,6 +5,7 @@ import { Cookie, ExternalLink, Info, Settings as SettingsIcon, Shield, X } from 
 import { LanguageSwitcher, useLanguage } from '@/components/LanguageProvider';
 import { Button } from '@/components/ui/button';
 import { Switch } from '@/components/ui/switch';
+import { DARK_THEME_LOGO } from '@/lib/site-logos';
 import { t } from '@/lib/translations';
 
 declare global {
@@ -101,11 +102,16 @@ export default function Footer() {
       <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-[1.25fr_repeat(3,minmax(0,1fr))]">
           <div>
-            <Link to="/" className="mb-4 inline-block" aria-label="JA Group Services Ltd — home">
+            <Link to="/" className="mb-4 inline-flex items-center" aria-label="JA Group Services Ltd — home">
               <img
                 src="/images/367f316379e78929865b1677b6370686.jpg"
                 alt="JA Group Services Ltd"
-                className="h-14 w-auto max-w-[210px] object-contain"
+                className="site-logo-light h-14 w-auto max-w-[220px] object-contain"
+              />
+              <img
+                src={DARK_THEME_LOGO}
+                alt="JA Group Services Ltd"
+                className="site-logo-dark h-20 w-auto max-w-[280px] object-contain"
               />
             </Link>
             <p className="mb-3 text-sm leading-relaxed text-muted-foreground">
