@@ -311,7 +311,7 @@ export default function TermsOfServicePage() {
                       {/* Section 20 */}
                       <h2 className="text-2xl font-bold text-[#0A1F44] mt-8 mb-4">20. Complaints and Feedback</h2>
                       <p className="mb-4">20.1 Formal complaints must be submitted to: <a href="mailto:complaints@jagroupservices.co.uk" className="text-[#2563EB] hover:underline">complaints@jagroupservices.co.uk</a></p>
-                      <p className="mb-4">20.2 General feedback, suggestions, or comments should be submitted to: <a href="mailto:feedback@jagroupservices.co.uk" className="text-[#2563EB] hover:underline">feedback@jagroupservices.co.uk</a></p>
+                      <p className="mb-4">20.2 General feedback, suggestions, or comments should be submitted to: <a href="mailto:contact@jagroupservices.co.uk" className="text-[#2563EB] hover:underline">contact@jagroupservices.co.uk</a></p>
                       <p className="mb-4">20.3 Communications submitted to the incorrect channel may be redirected or may not be treated as formal complaints.</p>
                       <p className="mb-4">20.4 Complaints will be handled in accordance with the Company's Complaints Policy.</p>
 
@@ -381,7 +381,7 @@ export default function TermsOfServicePage() {
                       <p className="mb-2">London</p>
                       <p className="mb-2">W1W 5PF</p>
                       <p className="mb-4">United Kingdom</p>
-                      <p className="mb-4">Email: <a href="mailto:hello@jagroupservices.co.uk" className="text-[#2563EB] hover:underline">hello@jagroupservices.co.uk</a></p>
+                      <p className="mb-4">Email: <a href="mailto:contact@jagroupservices.co.uk" className="text-[#2563EB] hover:underline">contact@jagroupservices.co.uk</a></p>
                     </div>
                   </CardContent>
                 </Card>

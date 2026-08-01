@@ -15,7 +15,7 @@ export default function HomePage() {
         <title>JA Group Services Ltd — Digital Identity, Domains & Business Services</title>
         <meta
           name="description"
-          content="JA Group Services Ltd supports digital identity, online presence, domains, profile pages, and structured business services through focused operating brands: JA Profile Studio and JA Domain Hub." />
+          content="JA Group Services Ltd supports digital identity, online presence, domains, profile pages, and structured business services through focused operating brands: Profile Centre, Planyx and JA Domain Hub." />
         <link rel="canonical" href="https://jagroupservices.co.uk/" />
         <meta property="og:title" content="JA Group Services Ltd — Digital Identity, Domains & Business Services" />
         <meta property="og:description" content="JA Group Services Ltd supports digital identity, online presence, domains, profile pages, and structured business services through focused operating brands." />
@@ -95,7 +95,7 @@ export default function HomePage() {
                   {[
                     { icon: Building2, label: 'UK Registered', value: 'Company No. 16314179', color: '#1A3FA8' },
                     { icon: Shield, label: 'ICO Registered', value: 'ZB877370', color: '#0891B2' },
-                    { icon: Globe2, label: 'Operating Brands', value: 'JA Profile Studio & JA Domain Hub', color: '#7C3AED' },
+                    { icon: Globe2, label: 'Operating Brands', value: 'Profile Centre, Planyx & JA Domain Hub', color: '#7C3AED' },
                     { icon: Award, label: 'Service Focus', value: 'Digital Identity & Domains', color: '#059669' },
                   ].map((stat, i) => {
                     const Icon = stat.icon;
@@ -135,13 +135,13 @@ export default function HomePage() {
                 transition={{ duration: 0.45 }}>
                 <h2 className="text-3xl md:text-4xl font-bold text-[#0A1F44] mb-4">Our Operating Brands</h2>
                 <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-                  JA Group Services Ltd operates two focused brands, each serving a distinct area of digital business.
+                  JA Group Services Ltd operates three focused brands, each serving a distinct area of digital business.
                 </p>
               </motion.div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
 
-                {/* JA Profile Studio */}
+                {/* Profile Centre */}
                 <motion.div
                   className="bg-white rounded-3xl border border-gray-100 shadow-sm overflow-hidden hover:shadow-lg transition-all"
                   initial={{ opacity: 0, y: 24 }}
@@ -153,12 +153,12 @@ export default function HomePage() {
                     <div className="w-12 h-12 bg-white/20 rounded-2xl flex items-center justify-center mb-4">
                       <Users className="h-6 w-6 text-white" />
                     </div>
-                    <h3 className="text-2xl font-bold mb-2">JA Profile Studio</h3>
+                    <h3 className="text-2xl font-bold mb-2">Profile Centre</h3>
                     <p className="text-white/80 text-sm">An operating brand of JA Group Services Ltd</p>
                   </div>
                   <div className="p-8 space-y-5">
                     <p className="text-gray-600 leading-relaxed">
-                      A proprietary digital profile platform developed, owned, operated, and managed by JA Group Services Ltd. Create professional digital profile pages with links, QR codes, contact options, media, documents, themes, and organisation profile tools.
+                      A digital profile platform operated by JA Group Services Ltd. Create and manage professional profile pages with links, QR codes, contact options, media, documents, themes and organisation tools.
                     </p>
                     <div className="flex flex-wrap gap-2">
                       {['Personal Profiles', 'Organisation Profiles', 'QR Sharing', 'Digital Identity'].map((tag) => (
@@ -167,9 +167,44 @@ export default function HomePage() {
                         </span>
                       ))}
                     </div>
-                    <a href="https://japrofilestudio.jagroupservices.co.uk/" target="_blank" rel="noopener noreferrer">
+                    <a href="https://profilecentre.jagroupservices.co.uk/" target="_blank" rel="noopener noreferrer">
                       <Button size="lg" className="bg-[#1A3FA8] hover:bg-[#153588] text-white font-bold px-8 py-5 text-base w-full">
-                        Visit JA Profile Studio
+                        Visit Profile Centre
+                        <ExternalLink className="ml-2 h-4 w-4" />
+                      </Button>
+                    </a>
+                  </div>
+                </motion.div>
+
+                {/* Planyx */}
+                <motion.div
+                  className="bg-white rounded-3xl border border-gray-100 shadow-sm overflow-hidden hover:shadow-lg transition-all"
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.1 }}
+                  whileHover={{ y: -4 }}>
+                  <div className="bg-gradient-to-br from-[#312E81] to-[#7C3AED] p-8 text-white">
+                    <div className="w-12 h-12 bg-white/20 rounded-2xl flex items-center justify-center mb-4">
+                      <Globe2 className="h-6 w-6 text-white" />
+                    </div>
+                    <h3 className="text-2xl font-bold mb-2">Planyx</h3>
+                    <p className="text-white/80 text-sm">An operating brand of JA Group Services Ltd</p>
+                  </div>
+                  <div className="p-8 space-y-5">
+                    <p className="text-gray-600 leading-relaxed">
+                      An experience and itinerary planning platform that helps customers organise travel, days out and activities while exploring selected affiliate partner options.
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      {['Itinerary Planning', 'Experiences', 'Shared Plans', 'Partner Discovery'].map((tag) => (
+                        <span key={tag} className="bg-[#F3E8FF] text-[#6D28D9] border border-[#DDD6FE] px-3 py-1 rounded-full text-xs font-semibold">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                    <a href="https://planyx.jagroupservices.co.uk/" target="_blank" rel="noopener noreferrer">
+                      <Button size="lg" className="bg-[#6D28D9] hover:bg-[#5B21B6] text-white font-bold px-8 py-5 text-base w-full">
+                        Visit Planyx
                         <ExternalLink className="ml-2 h-4 w-4" />
                       </Button>
                     </a>
@@ -341,13 +376,13 @@ export default function HomePage() {
                       <p className="text-white font-semibold text-sm">020 3834 2790</p>
                     </div>
                   </a>
-                  <a href="mailto:info@jagroupservices.co.uk" className="flex items-center gap-4 bg-white/10 border border-white/20 rounded-2xl px-6 py-4 hover:bg-white/15 transition-all">
+                  <a href="mailto:contact@jagroupservices.co.uk" className="flex items-center gap-4 bg-white/10 border border-white/20 rounded-2xl px-6 py-4 hover:bg-white/15 transition-all">
                     <div className="w-10 h-10 bg-white/15 rounded-xl flex items-center justify-center shrink-0">
                       <Mail className="h-5 w-5 text-white" />
                     </div>
                     <div>
                       <p className="text-white/60 text-xs mb-0.5">Email</p>
-                      <p className="text-white font-semibold text-sm">info@jagroupservices.co.uk</p>
+                      <p className="text-white font-semibold text-sm">contact@jagroupservices.co.uk</p>
                     </div>
                   </a>
                 </motion.div>

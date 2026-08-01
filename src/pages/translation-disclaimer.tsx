@@ -405,9 +405,9 @@ export default function TranslationDisclaimerPage() {
                             Contact Us
                           </Button>
                         </Link>
-                        <a href="mailto:info@jagroupservices.co.uk">
+                        <a href="mailto:contact@jagroupservices.co.uk">
                           <Button size="lg" variant="outline">
-                            Email: info@jagroupservices.co.uk
+                            Email: contact@jagroupservices.co.uk
                           </Button>
                         </a>
                       </div>

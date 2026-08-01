@@ -416,10 +416,10 @@ export default function CookiesPolicyPage() {
                     <div>
                       <p className="text-sm font-semibold text-[#0A1F44] mb-1">Email:</p>
                       <a
-                        href="mailto:hello@jagroupservices.co.uk"
+                        href="mailto:contact@jagroupservices.co.uk"
                         className="text-[#2563EB] hover:underline"
                       >
-                        hello@jagroupservices.co.uk
+                        contact@jagroupservices.co.uk
                       </a>
                     </div>
                     <div>

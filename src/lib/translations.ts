@@ -352,7 +352,7 @@ export const translations: Record<SupportedLanguage, Record<TranslationKey, stri
     'contact.title': 'Ready to Get Started?',
     'contact.subtitle': 'Have questions about JA Group Services or our divisions? We\'re here to help.',
     'contact.phone': '020 3834 2790',
-    'contact.email': 'hello@jagroupservices.co.uk',
+    'contact.email': 'contact@jagroupservices.co.uk',
     'contact.cta.primary': 'Contact Us Today',
     'contact.cta.secondary': 'Learn More About Us',
     
@@ -646,7 +646,7 @@ export const translations: Record<SupportedLanguage, Record<TranslationKey, stri
     'contact.title': 'Pronto para Começar?',
     'contact.subtitle': 'Tem perguntas sobre JA Group Services ou nossas divisões? Estamos aqui para ajudar.',
     'contact.phone': '020 3834 2790',
-    'contact.email': 'hello@jagroupservices.co.uk',
+    'contact.email': 'contact@jagroupservices.co.uk',
     'contact.cta.primary': 'Contacte-nos Hoje',
     'contact.cta.secondary': 'Saiba Mais Sobre Nós',
     
@@ -940,7 +940,7 @@ export const translations: Record<SupportedLanguage, Record<TranslationKey, stri
     'contact.title': '¿Listo para Comenzar?',
     'contact.subtitle': '¿Tiene preguntas sobre JA Group Services o nuestras divisiones? Estamos aquí para ayudar.',
     'contact.phone': '020 3834 2790',
-    'contact.email': 'hello@jagroupservices.co.uk',
+    'contact.email': 'contact@jagroupservices.co.uk',
     'contact.cta.primary': 'Contáctenos Hoy',
     'contact.cta.secondary': 'Conozca Más Sobre Nosotros',
     
@@ -1234,7 +1234,7 @@ export const translations: Record<SupportedLanguage, Record<TranslationKey, stri
     'contact.title': 'Prêt à Commencer?',
     'contact.subtitle': 'Vous avez des questions sur JA Group Services ou nos divisions? Nous sommes là pour vous aider.',
     'contact.phone': '020 3834 2790',
-    'contact.email': 'hello@jagroupservices.co.uk',
+    'contact.email': 'contact@jagroupservices.co.uk',
     'contact.cta.primary': 'Contactez-nous Aujourd\'hui',
     'contact.cta.secondary': 'En Savoir Plus Sur Nous',
     
@@ -1528,7 +1528,7 @@ export const translations: Record<SupportedLanguage, Record<TranslationKey, stri
     'contact.title': 'Yn Barod i Ddechrau?',
     'contact.subtitle': 'Oes gennych gwestiynau am JA Group Services neu ein hadrannau? Rydym yma i helpu.',
     'contact.phone': '020 3834 2790',
-    'contact.email': 'hello@jagroupservices.co.uk',
+    'contact.email': 'contact@jagroupservices.co.uk',
     'contact.cta.primary': 'Cysylltwch â Ni Heddiw',
     'contact.cta.secondary': 'Dysgu Mwy Amdanom',
     

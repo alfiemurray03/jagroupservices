@@ -388,8 +388,8 @@ export default function JSDSGroupPage() {
                       <div className="space-y-2 text-sm text-[#0A1F44]/70">
                         <div className="flex items-center gap-2">
                           <Mail className="w-4 h-4 text-[#2563EB]" />
-                          <a href="mailto:hello@jagroupservices.co.uk" className="text-[#2563EB] hover:underline font-medium">
-                            hello@jagroupservices.co.uk
+                          <a href="mailto:contact@jagroupservices.co.uk" className="text-[#2563EB] hover:underline font-medium">
+                            contact@jagroupservices.co.uk
                           </a>
                         </div>
                         <div className="flex items-center gap-2">
