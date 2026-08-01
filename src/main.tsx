@@ -6,6 +6,7 @@ import { SplashScreen } from './components/SplashScreen';
 import { PWAInstallPrompt } from './components/PWAInstallPrompt';
 import { AutoRefresh } from './components/AutoRefresh';
 import './styles/globals.css';
+import './styles/theme-fixes.css';
 
 // Register Service Worker with update checking
 import { HelmetProvider } from "@dr.pogodin/react-helmet";
