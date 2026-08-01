@@ -6,48 +6,6 @@ import { Card, CardContent } from '@/components/ui/card';
 import { useLanguage } from '@/components/LanguageProvider';
 import { t } from '@/lib/translations';
 
-const contactCards = [
-  {
-    icon: Phone,
-    title: 'Phone',
-    content: (
-      <a href="tel:02038342790" className="font-semibold text-primary transition-colors hover:underline">
-        020 3834 2790
-      </a>
-    ),
-  },
-  {
-    icon: Mail,
-    title: 'Email',
-    content: (
-      <a href="mailto:contact@jagroupservices.co.uk" className="break-all font-semibold text-primary transition-colors hover:underline">
-        contact@jagroupservices.co.uk
-      </a>
-    ),
-  },
-  {
-    icon: MapPin,
-    title: 'Address',
-    content: (
-      <p className="text-sm leading-relaxed text-muted-foreground">
-        167-169 Great Portland Street<br />
-        5th Floor<br />
-        London, W1W 5PF
-      </p>
-    ),
-  },
-  {
-    icon: Clock,
-    title: 'Business Hours',
-    content: (
-      <p className="text-sm leading-relaxed text-muted-foreground">
-        Monday - Friday<br />
-        9:00 AM - 5:00 PM GMT
-      </p>
-    ),
-  },
-];
-
 const contactReasons = [
   {
     icon: Building2,
@@ -68,6 +26,48 @@ const contactReasons = [
 
 export default function ContactUsPage() {
   const { language } = useLanguage();
+
+  const contactCards = [
+    {
+      icon: Phone,
+      title: t('contactPage.info.phone', language),
+      content: (
+        <a href="tel:02038342790" className="font-semibold text-primary transition-colors hover:underline">
+          020 3834 2790
+        </a>
+      ),
+    },
+    {
+      icon: Mail,
+      title: t('contactPage.info.email', language),
+      content: (
+        <a href="mailto:contact@jagroupservices.co.uk" className="break-all font-semibold text-primary transition-colors hover:underline">
+          contact@jagroupservices.co.uk
+        </a>
+      ),
+    },
+    {
+      icon: MapPin,
+      title: t('contactPage.info.address', language),
+      content: (
+        <p className="text-sm leading-relaxed text-muted-foreground">
+          167-169 Great Portland Street<br />
+          5th Floor<br />
+          London, W1W 5PF
+        </p>
+      ),
+    },
+    {
+      icon: Clock,
+      title: 'Business Hours',
+      content: (
+        <p className="text-sm leading-relaxed text-muted-foreground">
+          Monday - Friday<br />
+          9:00 AM - 5:00 PM GMT
+        </p>
+      ),
+    },
+  ];
 
   return (
     <>
