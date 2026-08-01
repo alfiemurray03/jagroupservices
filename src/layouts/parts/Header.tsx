@@ -60,13 +60,25 @@ export default function Header() {
               <DropdownMenuContent className="w-[260px] bg-white/95 backdrop-blur-md border-white/20">
                 <DropdownMenuItem asChild>
                   <a
-                    href="https://japrofilestudio.jagroupservices.co.uk/"
+                    href="https://profilecentre.jagroupservices.co.uk/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="cursor-pointer">
                     <div>
-                      <div className="font-medium">JA Profile Studio</div>
+                      <div className="font-medium">Profile Centre</div>
                       <div className="text-xs text-muted-foreground">Digital profile platform</div>
+                    </div>
+                  </a>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <a
+                    href="https://planyx.jagroupservices.co.uk/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="cursor-pointer">
+                    <div>
+                      <div className="font-medium">Planyx</div>
+                      <div className="text-xs text-muted-foreground">Experience and itinerary planning</div>
                     </div>
                   </a>
                 </DropdownMenuItem>
@@ -167,12 +179,20 @@ export default function Header() {
                 <div className="text-foreground text-sm font-medium py-2">Operating Brands</div>
                 <div className="pl-4 space-y-2">
                   <a
-                  href="https://japrofilestudio.jagroupservices.co.uk/"
+                  href="https://profilecentre.jagroupservices.co.uk/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="block text-muted-foreground hover:text-foreground transition-colors py-2 text-sm"
                   onClick={() => setMobileMenuOpen(false)}>
-                    JA Profile Studio
+                    Profile Centre
+                  </a>
+                  <a
+                  href="https://planyx.jagroupservices.co.uk/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block text-muted-foreground hover:text-foreground transition-colors py-2 text-sm"
+                  onClick={() => setMobileMenuOpen(false)}>
+                    Planyx
                   </a>
                   <a
                   href="https://jadomainhub.jagroupservices.co.uk/"

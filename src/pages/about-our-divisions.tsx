@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { Building2, Globe2, Users, CheckCircle, ExternalLink, ArrowRight } from 'lucide-react';
+import { Building2, Globe2, Users, CheckCircle, ExternalLink, ArrowRight, Compass } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import { Helmet } from '@dr.pogodin/react-helmet';
@@ -12,10 +12,10 @@ export default function AboutOurDivisionsPage() {
     <>
       <Helmet>
         <title>About Our Divisions — JA Group Services Ltd</title>
-        <meta name="description" content="JA Group Services Ltd operates two focused brands: JA Profile Studio, a proprietary digital profile platform, and JA Domain Hub, a domain support and GoDaddy reseller storefront." />
+        <meta name="description" content="JA Group Services Ltd operates three focused brands: Profile Centre, Planyx and JA Domain Hub." />
         <link rel="canonical" href={url} />
         <meta property="og:title" content="About Our Divisions — JA Group Services Ltd" />
-        <meta property="og:description" content="Learn about JA Profile Studio and JA Domain Hub — the two operating brands of JA Group Services Ltd." />
+        <meta property="og:description" content="Learn about Profile Centre, Planyx and JA Domain Hub — operating brands of JA Group Services Ltd." />
         <meta property="og:url" content={url} />
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />
@@ -35,13 +35,13 @@ export default function AboutOurDivisionsPage() {
                 About Our Divisions
               </h1>
               <p className="text-white/80 text-xl leading-relaxed">
-                JA Group Services Ltd operates two focused brands, each serving a distinct area of digital business for individuals and organisations.
+                JA Group Services Ltd operates three focused brands, each serving a distinct area of digital business for individuals and organisations.
               </p>
             </motion.div>
           </div>
         </section>
 
-        {/* JA Profile Studio */}
+        {/* Profile Centre */}
         <section className="bg-white py-20 lg:py-28 border-b border-gray-100">
           <div className="container mx-auto px-4">
             <div className="max-w-5xl mx-auto">
@@ -57,17 +57,17 @@ export default function AboutOurDivisionsPage() {
                     <Users className="h-4 w-4" />
                     Operating brand of JA Group Services Ltd
                   </div>
-                  <h2 className="text-3xl md:text-4xl font-bold text-[#0A1F44]">JA Profile Studio</h2>
+                  <h2 className="text-3xl md:text-4xl font-bold text-[#0A1F44]">Profile Centre</h2>
                   <p className="text-gray-600 leading-relaxed text-lg">
-                    A proprietary digital profile platform developed, owned, operated, and managed by JA Group Services Ltd. JA Profile Studio is focused on personal profiles, organisation profiles, QR sharing, digital profile pages, and profile subscriptions.
+                    A digital profile platform developed and operated by JA Group Services Ltd. Profile Centre is focused on personal profiles, organisation profiles, QR sharing, digital profile pages and profile subscriptions.
                   </p>
                   <p className="text-gray-600 leading-relaxed">
-                    JA Profile Studio helps individuals, businesses, and organisations create professional digital profile pages with links, QR codes, contact options, media, documents, themes, and organisation profile tools.
+                    Profile Centre helps individuals, businesses, and organisations create professional digital profile pages with links, QR codes, contact options, media, documents, themes, and organisation profile tools.
                   </p>
                   <div className="pt-2">
-                    <a href="https://japrofilestudio.jagroupservices.co.uk/" target="_blank" rel="noopener noreferrer">
+                    <a href="https://profilecentre.jagroupservices.co.uk/" target="_blank" rel="noopener noreferrer">
                       <Button size="lg" className="bg-[#1A3FA8] hover:bg-[#153588] text-white font-bold px-8 py-5">
-                        Visit JA Profile Studio
+                        Visit Profile Centre
                         <ExternalLink className="ml-2 h-4 w-4" />
                       </Button>
                     </a>
@@ -109,8 +109,70 @@ export default function AboutOurDivisionsPage() {
           </div>
         </section>
 
-        {/* JA Domain Hub */}
+        {/* Planyx */}
         <section className="bg-[#F8FAFF] py-20 lg:py-28 border-b border-gray-100">
+          <div className="container mx-auto px-4">
+            <div className="max-w-5xl mx-auto">
+              <motion.div
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+                className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start"
+              >
+                <div className="space-y-6">
+                  <div className="inline-flex items-center gap-2 bg-[#6D28D9]/10 text-[#6D28D9] px-4 py-2 rounded-full text-sm font-medium">
+                    <Compass className="h-4 w-4" />
+                    Operating brand of JA Group Services Ltd
+                  </div>
+                  <h2 className="text-3xl md:text-4xl font-bold text-[#0A1F44]">Planyx</h2>
+                  <p className="text-gray-600 leading-relaxed text-lg">
+                    Planyx is an experience and itinerary planning platform operated by JA Group Services Ltd. It helps customers organise travel, days out, activities and shared plans in one place.
+                  </p>
+                  <p className="text-gray-600 leading-relaxed">
+                    Customers can build structured plans and explore selected experiences available through authorised affiliate partners. Planyx is a planning platform and is not a travel agency.
+                  </p>
+                  <div className="pt-2">
+                    <a href="https://planyx.jagroupservices.co.uk/" target="_blank" rel="noopener noreferrer">
+                      <Button size="lg" className="bg-[#6D28D9] hover:bg-[#5B21B6] text-white font-bold px-8 py-5">
+                        Visit Planyx
+                        <ExternalLink className="ml-2 h-4 w-4" />
+                      </Button>
+                    </a>
+                  </div>
+                </div>
+
+                <div className="space-y-4">
+                  <h3 className="font-bold text-[#0A1F44] text-lg mb-4">Services Offered</h3>
+                  {[
+                    'Travel and experience itinerary planning',
+                    'Days out and activity planning',
+                    'Personal and organisation accounts',
+                    'Shared and collaborative plans',
+                    'Structured experience builders',
+                    'Selected affiliate partner discovery',
+                    'Read-only and editable plan sharing',
+                  ].map((item, i) => (
+                    <motion.div
+                      key={i}
+                      initial={{ opacity: 0, x: -10 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.3, delay: i * 0.04 }}
+                      className="flex items-center gap-3"
+                    >
+                      <CheckCircle className="h-4 w-4 text-[#6D28D9] shrink-0" />
+                      <span className="text-gray-700 text-sm">{item}</span>
+                    </motion.div>
+                  ))}
+                </div>
+              </motion.div>
+            </div>
+          </div>
+        </section>
+
+        {/* JA Domain Hub */}
+        <section className="bg-white py-20 lg:py-28 border-b border-gray-100">
           <div className="container mx-auto px-4">
             <div className="max-w-5xl mx-auto">
               <motion.div
@@ -154,7 +216,7 @@ export default function AboutOurDivisionsPage() {
                     'DNS setup guidance',
                     'Business email setup guidance',
                     'Website and profile connection support',
-                    'Custom domain guidance for JA Profile Studio',
+                    'Custom domain guidance for Profile Centre',
                     'Domain renewal and ownership guidance',
                     'Online presence setup support',
                     'Domain portfolio organisation',

@@ -49,7 +49,7 @@ export default async function handler(req: Request, res: Response) {
     // Email content
     const mailOptions = {
       from: smtpUser,
-      to: 'hello@jagroupservices.co.uk',
+      to: 'contact@jagroupservices.co.uk',
       replyTo: email,
       subject: `Contact Form: ${subject}`,
       html: `

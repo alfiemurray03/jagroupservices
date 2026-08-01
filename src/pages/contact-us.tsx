@@ -75,10 +75,10 @@ export default function ContactUsPage() {
                     </div>
                     <h3 className="text-lg font-semibold text-[#0A1F44] mb-2">{t('contactPage.info.email', language)}</h3>
                     <a
-                      href="mailto:hello@jagroupservices.co.uk"
+                      href="mailto:contact@jagroupservices.co.uk"
                       className="text-[#2563EB] hover:underline"
                     >
-                      hello@jagroupservices.co.uk
+                      contact@jagroupservices.co.uk
                     </a>
                   </CardContent>
                 </Card>

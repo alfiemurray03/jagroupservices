@@ -41,7 +41,8 @@ export default function SitemapPage() {
       category: 'Operating Brands',
       icon: Globe,
       links: [
-        { path: 'https://japrofilestudio.jagroupservices.co.uk/', label: 'JA Profile Studio', icon: Users, internal: false },
+        { path: 'https://profilecentre.jagroupservices.co.uk/', label: 'Profile Centre', icon: Users, internal: false },
+        { path: 'https://planyx.jagroupservices.co.uk/', label: 'Planyx', icon: Globe, internal: false },
         { path: 'https://jadomainhub.jagroupservices.co.uk/', label: 'JA Domain Hub', icon: Globe, internal: false },
       ],
     },

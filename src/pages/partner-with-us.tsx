@@ -186,7 +186,7 @@ export default function PartnerWithUsPage() {
                   },
                   {
                     title: 'Relevance to our customer base',
-                    desc: 'The service or product must be relevant and genuinely useful to the customers and users of JA Group Services Ltd, JA Profile Studio, or JA Domain Hub.'
+                    desc: 'The service or product must be relevant and genuinely useful to the customers and users of JA Group Services Ltd, Profile Centre, Planyx or JA Domain Hub.'
                   },
                   {
                     title: 'Clear and transparent terms',
@@ -272,14 +272,14 @@ export default function PartnerWithUsPage() {
                       <ArrowRight className="ml-2 h-5 w-5" />
                     </Button>
                   </Link>
-                  <a href="mailto:info@jagroupservices.co.uk">
+                  <a href="mailto:contact@jagroupservices.co.uk">
                     <Button
                       size="lg"
                       variant="outline"
                       className="border-2 border-white text-white hover:bg-white/10 px-10 py-6 text-lg font-bold"
                     >
                       <Mail className="mr-2 h-5 w-5" />
-                      info@jagroupservices.co.uk
+                      contact@jagroupservices.co.uk
                     </Button>
                   </a>
                 </div>

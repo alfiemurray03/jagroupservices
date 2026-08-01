@@ -195,14 +195,25 @@ export default function Footer() {
             <ul className="space-y-3">
               <li>
                 <a
-                  href="https://japrofilestudio.jagroupservices.co.uk/"
+                  href="https://profilecentre.jagroupservices.co.uk/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-[#0A1F44]/70 hover:text-[#0A1F44] transition-colors text-sm inline-block hover:underline underline-offset-4"
                 >
-                  JA Profile Studio
+                  Profile Centre
                 </a>
                 <p className="text-[#0A1F44]/50 text-xs mt-1">Digital profile platform</p>
+              </li>
+              <li>
+                <a
+                  href="https://planyx.jagroupservices.co.uk/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[#0A1F44]/70 hover:text-[#0A1F44] transition-colors text-sm inline-block hover:underline underline-offset-4"
+                >
+                  Planyx
+                </a>
+                <p className="text-[#0A1F44]/50 text-xs mt-1">Experience and itinerary planning</p>
               </li>
               <li>
                 <a
