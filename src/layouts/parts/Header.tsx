@@ -1,96 +1,73 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Menu, X, Phone } from 'lucide-react';
+import { ChevronDown, Menu, Phone, X } from 'lucide-react';
 
 import { useLanguage } from '@/components/LanguageProvider';
+import ThemeToggle from '@/components/ThemeToggle';
 import { t } from '@/lib/translations';
-
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuTrigger } from
-'@/components/ui/dropdown-menu';
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
 
-// Updated: 2026-02-25 - Clean production header
+const navigationLinkClass =
+  'rounded-lg px-3.5 py-2 text-sm font-medium text-muted-foreground transition-all duration-150 hover:bg-muted hover:text-foreground';
+
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { language } = useLanguage();
 
+  const closeMobileMenu = () => setMobileMenuOpen(false);
+
   return (
-    <header className="sticky top-0 z-50 w-full bg-white/40 backdrop-blur-lg border-b border-white/10">
-      <div className="container mx-auto px-4">
-        <div className="flex h-24 md:h-28 lg:h-32 items-center justify-between">
-          {/* Logo */}
-          <Link to="/" className="flex items-center space-x-3">
+    <header className="sticky top-0 z-50 border-b border-border bg-card shadow-sm">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="flex h-16 items-center justify-between gap-4 md:h-[72px]">
+          <Link
+            to="/"
+            className="group flex shrink-0 items-center gap-2.5"
+            aria-label="JA Group Services Ltd — home"
+          >
             <img
               src="/media/pages-unknown-ja-group-services-ltd-a68f987b.jpg"
               alt="JA Group Services Ltd"
-              className="h-20 md:h-24 lg:h-28 w-auto" />
-
+              className="h-12 w-auto max-w-[180px] shrink-0 object-contain md:h-14 md:max-w-[210px]"
+            />
           </Link>
 
-          {/* Phone Number - Desktop Only */}
-          <a
-            href="tel:02038342790"
-            className="hidden md:flex items-center gap-2 text-[#0A1F44] hover:text-primary transition-colors font-medium">
-
-            <Phone className="h-5 w-5" />
-            <span className="text-sm lg:text-base">020 3834 2790</span>
-          </a>
-
-          {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-2">
-            <Link
-              to="/"
-              className="text-foreground hover:text-primary transition-colors px-4 py-2 text-sm font-medium">
-              Home
-            </Link>
-
-            <Link
-              to="/about-us"
-              className="text-foreground hover:text-primary transition-colors px-4 py-2 text-sm font-medium">
-              About
-            </Link>
+          <nav className="hidden items-center gap-1 xl:flex" aria-label="Main navigation">
+            <Link to="/" className={navigationLinkClass}>Home</Link>
+            <Link to="/about-us" className={navigationLinkClass}>About</Link>
 
             <DropdownMenu>
-              <DropdownMenuTrigger className="text-foreground hover:text-primary transition-colors px-4 py-2 text-sm font-medium bg-transparent border-none outline-none">
+              <DropdownMenuTrigger className={`${navigationLinkClass} flex items-center gap-1 outline-none`}>
                 Operating Brands
+                <ChevronDown className="h-3.5 w-3.5" />
               </DropdownMenuTrigger>
-              <DropdownMenuContent className="w-[260px] bg-white/95 backdrop-blur-md border-white/20">
-                <DropdownMenuItem asChild>
-                  <a
-                    href="https://profilecentre.jagroupservices.co.uk/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="cursor-pointer">
+              <DropdownMenuContent className="w-[280px] rounded-2xl border-border bg-popover p-1.5 text-popover-foreground shadow-xl">
+                <DropdownMenuItem asChild className="rounded-xl p-3 focus:bg-muted">
+                  <a href="https://profilecentre.jagroupservices.co.uk/" target="_blank" rel="noopener noreferrer" className="cursor-pointer">
                     <div>
-                      <div className="font-medium">Profile Centre</div>
+                      <div className="font-semibold">Profile Centre</div>
                       <div className="text-xs text-muted-foreground">Digital profile platform</div>
                     </div>
                   </a>
                 </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <a
-                    href="https://planyx.jagroupservices.co.uk/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="cursor-pointer">
+                <DropdownMenuItem asChild className="rounded-xl p-3 focus:bg-muted">
+                  <a href="https://planyx.jagroupservices.co.uk/" target="_blank" rel="noopener noreferrer" className="cursor-pointer">
                     <div>
-                      <div className="font-medium">Planyx</div>
+                      <div className="font-semibold">Planyx</div>
                       <div className="text-xs text-muted-foreground">Experience and itinerary planning</div>
                     </div>
                   </a>
                 </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <a
-                    href="https://jadomainhub.jagroupservices.co.uk/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="cursor-pointer">
+                <DropdownMenuItem asChild className="rounded-xl p-3 focus:bg-muted">
+                  <a href="https://jadomainhub.jagroupservices.co.uk/" target="_blank" rel="noopener noreferrer" className="cursor-pointer">
                     <div>
-                      <div className="font-medium">JA Domain Hub</div>
-                      <div className="text-xs text-muted-foreground">Domain support & GoDaddy reseller</div>
+                      <div className="font-semibold">JA Domain Hub</div>
+                      <div className="text-xs text-muted-foreground">Domain support &amp; GoDaddy reseller</div>
                     </div>
                   </a>
                 </DropdownMenuItem>
@@ -98,22 +75,23 @@ export default function Header() {
             </DropdownMenu>
 
             <DropdownMenu>
-              <DropdownMenuTrigger className="text-foreground hover:text-primary transition-colors px-4 py-2 text-sm font-medium bg-transparent border-none outline-none">
+              <DropdownMenuTrigger className={`${navigationLinkClass} flex items-center gap-1 outline-none`}>
                 Divisions
+                <ChevronDown className="h-3.5 w-3.5" />
               </DropdownMenuTrigger>
-              <DropdownMenuContent className="w-[220px] bg-white/95 backdrop-blur-md border-white/20">
-                <DropdownMenuItem asChild>
+              <DropdownMenuContent className="w-[260px] rounded-2xl border-border bg-popover p-1.5 text-popover-foreground shadow-xl">
+                <DropdownMenuItem asChild className="rounded-xl p-3 focus:bg-muted">
                   <Link to="/about-our-divisions" className="cursor-pointer">
                     <div>
-                      <div className="font-medium">About Our Divisions</div>
+                      <div className="font-semibold">About Our Divisions</div>
                       <div className="text-xs text-muted-foreground">Overview of our operating brands</div>
                     </div>
                   </Link>
                 </DropdownMenuItem>
-                <DropdownMenuItem asChild>
+                <DropdownMenuItem asChild className="rounded-xl p-3 focus:bg-muted">
                   <Link to="/our-group-structure" className="cursor-pointer">
                     <div>
-                      <div className="font-medium">Our Group Structure</div>
+                      <div className="font-semibold">Our Group Structure</div>
                       <div className="text-xs text-muted-foreground">Company and brand structure</div>
                     </div>
                   </Link>
@@ -121,125 +99,69 @@ export default function Header() {
               </DropdownMenuContent>
             </DropdownMenu>
 
-            <Link
-              to="/partner-with-us"
-              className="text-foreground hover:text-primary transition-colors px-4 py-2 text-sm font-medium">
-              Partner With Us
-            </Link>
-
-            <Link
-              to="/contactus"
-              className="text-foreground hover:text-primary transition-colors px-4 py-2 text-sm font-medium">
-              {t('header.contact', language)}
-            </Link>
+            <Link to="/partner-with-us" className={navigationLinkClass}>Partner With Us</Link>
+            <Link to="/contactus" className={navigationLinkClass}>{t('header.contact', language)}</Link>
           </nav>
 
-          {/* Mobile Menu Button */}
-          <button
-            className="lg:hidden text-foreground p-2"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            aria-label="Toggle menu">
-
-            {mobileMenuOpen ?
-            <X className="h-6 w-6" /> :
-
-            <Menu className="h-6 w-6" />
-            }
-          </button>
-        </div>
-
-        {/* Mobile Navigation */}
-        {mobileMenuOpen &&
-        <div className="lg:hidden py-4 border-t border-border">
-            {/* Phone Number - Mobile */}
+          <div className="hidden items-center gap-2.5 xl:flex">
             <a
-            href="tel:02038342790"
-            className="flex items-center gap-2 text-[#0A1F44] hover:text-primary transition-colors font-medium py-3 border-b border-border mb-4">
+              href="tel:02038342790"
+              className="flex items-center gap-2 rounded-xl border border-border bg-muted px-3 py-2 text-sm font-semibold text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
+            >
+              <Phone className="h-4 w-4 text-primary" />
+              <span>020 3834 2790</span>
+            </a>
+            <ThemeToggle />
+          </div>
 
-              <Phone className="h-5 w-5" />
-              <span className="text-base">020 3834 2790</span>
+          <div className="flex items-center gap-2 xl:hidden">
+            <ThemeToggle />
+            <button
+              type="button"
+              onClick={() => setMobileMenuOpen((open) => !open)}
+              className="flex h-10 w-10 items-center justify-center rounded-xl text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+              aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
+              aria-expanded={mobileMenuOpen}
+              aria-controls="mobile-menu"
+            >
+              {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {mobileMenuOpen && (
+        <div id="mobile-menu" className="border-t border-border bg-card px-4 py-4 xl:hidden">
+          <nav className="mx-auto flex max-w-7xl flex-col gap-1" aria-label="Mobile navigation">
+            <a
+              href="tel:02038342790"
+              className="mb-2 flex min-h-12 items-center gap-2 rounded-xl bg-muted px-4 py-3 text-sm font-semibold text-foreground"
+            >
+              <Phone className="h-4 w-4 text-primary" />
+              020 3834 2790
             </a>
 
-            <nav className="flex flex-col space-y-4">
-              <Link
-              to="/"
-              className="text-foreground hover:text-primary transition-colors py-2 text-sm font-medium"
-              onClick={() => setMobileMenuOpen(false)}>
-                Home
-              </Link>
+            <Link to="/" onClick={closeMobileMenu} className="flex min-h-12 items-center rounded-xl px-4 py-3 text-sm font-medium text-foreground hover:bg-muted">Home</Link>
+            <Link to="/about-us" onClick={closeMobileMenu} className="flex min-h-12 items-center rounded-xl px-4 py-3 text-sm font-medium text-foreground hover:bg-muted">About</Link>
 
-              <Link
-              to="/about-us"
-              className="text-foreground hover:text-primary transition-colors py-2 text-sm font-medium"
-              onClick={() => setMobileMenuOpen(false)}>
-                About
-              </Link>
+            <div className="rounded-2xl border border-border bg-muted/40 p-3">
+              <p className="px-2 pb-2 text-xs font-semibold uppercase tracking-widest text-muted-foreground">Operating Brands</p>
+              <a href="https://profilecentre.jagroupservices.co.uk/" target="_blank" rel="noopener noreferrer" onClick={closeMobileMenu} className="block rounded-xl px-3 py-2.5 text-sm text-foreground hover:bg-muted">Profile Centre</a>
+              <a href="https://planyx.jagroupservices.co.uk/" target="_blank" rel="noopener noreferrer" onClick={closeMobileMenu} className="block rounded-xl px-3 py-2.5 text-sm text-foreground hover:bg-muted">Planyx</a>
+              <a href="https://jadomainhub.jagroupservices.co.uk/" target="_blank" rel="noopener noreferrer" onClick={closeMobileMenu} className="block rounded-xl px-3 py-2.5 text-sm text-foreground hover:bg-muted">JA Domain Hub</a>
+            </div>
 
-              <div className="space-y-2">
-                <div className="text-foreground text-sm font-medium py-2">Operating Brands</div>
-                <div className="pl-4 space-y-2">
-                  <a
-                  href="https://profilecentre.jagroupservices.co.uk/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block text-muted-foreground hover:text-foreground transition-colors py-2 text-sm"
-                  onClick={() => setMobileMenuOpen(false)}>
-                    Profile Centre
-                  </a>
-                  <a
-                  href="https://planyx.jagroupservices.co.uk/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block text-muted-foreground hover:text-foreground transition-colors py-2 text-sm"
-                  onClick={() => setMobileMenuOpen(false)}>
-                    Planyx
-                  </a>
-                  <a
-                  href="https://jadomainhub.jagroupservices.co.uk/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block text-muted-foreground hover:text-foreground transition-colors py-2 text-sm"
-                  onClick={() => setMobileMenuOpen(false)}>
-                    JA Domain Hub
-                  </a>
-                </div>
-              </div>
+            <div className="mt-1 rounded-2xl border border-border bg-muted/40 p-3">
+              <p className="px-2 pb-2 text-xs font-semibold uppercase tracking-widest text-muted-foreground">Divisions</p>
+              <Link to="/about-our-divisions" onClick={closeMobileMenu} className="block rounded-xl px-3 py-2.5 text-sm text-foreground hover:bg-muted">About Our Divisions</Link>
+              <Link to="/our-group-structure" onClick={closeMobileMenu} className="block rounded-xl px-3 py-2.5 text-sm text-foreground hover:bg-muted">Our Group Structure</Link>
+            </div>
 
-              <div className="space-y-2">
-                <div className="text-foreground text-sm font-medium py-2">Divisions</div>
-                <div className="pl-4 space-y-2">
-                  <Link
-                  to="/about-our-divisions"
-                  className="block text-muted-foreground hover:text-foreground transition-colors py-2 text-sm"
-                  onClick={() => setMobileMenuOpen(false)}>
-                    About Our Divisions
-                  </Link>
-                  <Link
-                  to="/our-group-structure"
-                  className="block text-muted-foreground hover:text-foreground transition-colors py-2 text-sm"
-                  onClick={() => setMobileMenuOpen(false)}>
-                    Our Group Structure
-                  </Link>
-                </div>
-              </div>
-
-              <Link
-              to="/partner-with-us"
-              className="text-foreground hover:text-primary transition-colors py-2 text-sm font-medium"
-              onClick={() => setMobileMenuOpen(false)}>
-                Partner With Us
-              </Link>
-
-              <Link
-              to="/contactus"
-              className="text-foreground hover:text-primary transition-colors py-2 text-sm font-medium"
-              onClick={() => setMobileMenuOpen(false)}>
-                {t('header.contact', language)}
-              </Link>
-            </nav>
-          </div>
-        }
-      </div>
-    </header>);
-
+            <Link to="/partner-with-us" onClick={closeMobileMenu} className="mt-1 flex min-h-12 items-center rounded-xl px-4 py-3 text-sm font-medium text-foreground hover:bg-muted">Partner With Us</Link>
+            <Link to="/contactus" onClick={closeMobileMenu} className="flex min-h-12 items-center rounded-xl px-4 py-3 text-sm font-medium text-foreground hover:bg-muted">{t('header.contact', language)}</Link>
+          </nav>
+        </div>
+      )}
+    </header>
+  );
 }
