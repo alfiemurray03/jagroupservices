@@ -35,6 +35,18 @@ canvas {
   max-width: 100%;
 }
 
+.site-logo-dark {
+  display: none;
+}
+
+.dark .site-logo-light {
+  display: none;
+}
+
+.dark .site-logo-dark {
+  display: block;
+}
+
 /* Separate the page canvas, alternate sections and cards in dark mode. */
 .dark .min-h-screen.bg-white,
 .dark section.bg-white,
