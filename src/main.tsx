@@ -7,6 +7,7 @@ import { PWAInstallPrompt } from './components/PWAInstallPrompt';
 import { AutoRefresh } from './components/AutoRefresh';
 import './styles/globals.css';
 import './styles/theme-fixes.css';
+import './styles/logo-size-adjustments.css';
 
 // Register Service Worker with update checking
 import { HelmetProvider } from "@dr.pogodin/react-helmet";
@@ -26,7 +27,7 @@ if ('serviceWorker' in navigator) {
         if (newWorker) {
           newWorker.addEventListener('statechange', () => {
             if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
-              // New service worker available, reload to get latest version
+              // New version available, reload to get latest version
               console.log('New version available! Reloading...');
               window.location.reload();
             }
