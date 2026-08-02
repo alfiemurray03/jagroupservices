@@ -1,0 +1,5 @@
+Contact: mailto:it@jagroupservices.co.uk
+Policy: https://jagroupservices.co.uk/security-and-vulnerability-disclosure
+Canonical: https://jagroupservices.co.uk/.well-known/security.txt
+Preferred-Languages: en, cy, pt, es, fr
+Expires: 2027-08-02T23:59:59Z
