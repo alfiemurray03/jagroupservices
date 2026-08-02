@@ -1,0 +1,110 @@
+@media print {
+  @page {
+    size: A4;
+    margin: 16mm 15mm 18mm;
+  }
+
+  html,
+  body {
+    background: #ffffff !important;
+    color: #111827 !important;
+    font-family: Arial, Helvetica, sans-serif !important;
+    font-size: 10.5pt !important;
+    line-height: 1.45 !important;
+  }
+
+  body {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .print-hidden,
+  .print-control,
+  header,
+  footer,
+  nav,
+  [role="dialog"],
+  [data-radix-popper-content-wrapper] {
+    display: none !important;
+  }
+
+  .public-document,
+  .public-document main,
+  .public-document section {
+    background: #ffffff !important;
+    color: #111827 !important;
+  }
+
+  .print-hero {
+    border: 0 !important;
+    padding: 0 0 9mm !important;
+    background: #ffffff !important;
+  }
+
+  .print-hero * {
+    color: #111827 !important;
+    text-shadow: none !important;
+  }
+
+  .print-hero h1 {
+    margin: 0 0 5mm !important;
+    font-size: 24pt !important;
+    line-height: 1.1 !important;
+  }
+
+  .print-hero p {
+    margin-top: 0 !important;
+  }
+
+  .public-document > section:not(.print-hero) {
+    border: 0 !important;
+    padding: 0 !important;
+  }
+
+  .print-section {
+    break-inside: avoid-page;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    background: #ffffff !important;
+    color: #111827 !important;
+    padding: 0 0 7mm !important;
+  }
+
+  .print-section h2,
+  .print-section h3,
+  .print-section p,
+  .print-section li,
+  .print-section span,
+  .print-section a {
+    color: #111827 !important;
+  }
+
+  .print-section h2 {
+    break-after: avoid-page;
+    font-size: 15pt !important;
+    margin: 0 0 3mm !important;
+  }
+
+  .print-section p,
+  .print-section li {
+    orphans: 3;
+    widows: 3;
+  }
+
+  .print-section a {
+    text-decoration: none !important;
+  }
+
+  .print-section a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: 8.5pt;
+    overflow-wrap: anywhere;
+  }
+
+  .public-document svg,
+  .public-document .absolute,
+  .public-document .pointer-events-none {
+    display: none !important;
+  }
+}

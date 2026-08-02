@@ -1,44 +1,32 @@
 import { motion } from 'motion/react';
-import { Search } from 'lucide-react';
+
+import { LanguageSwitcher } from '@/components/LanguageProvider';
+import ThemeToggle from '@/components/ThemeToggle';
+import { DARK_THEME_LOGO } from '@/lib/site-logos';
 
 interface AppHeaderProps {
   title: string;
-  showSearch?: boolean;
 }
 
-export function AppHeader({ title, showSearch = false }: AppHeaderProps) {
-
+export function AppHeader({ title }: AppHeaderProps) {
   return (
     <motion.header
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      className="sticky top-0 z-40 bg-gradient-to-r from-[#0A1F44] to-[#2563EB] text-white shadow-lg safe-area-inset-top"
+      className="print-hidden sticky top-0 z-40 border-b border-border bg-card/95 text-card-foreground shadow-lg backdrop-blur-xl safe-area-inset-top"
     >
-      <div className="px-4 py-4">
-        <div className="flex items-center justify-between">
-          {/* Logo and Title */}
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-full bg-white p-1.5 shadow-lg">
-              <img
-                src="/images/367f316379e78929865b1677b6370686.jpg"
-                alt="JA Group"
-                className="w-full h-full object-contain"
-              />
-            </div>
-            <div>
-              <h1 className="text-lg font-bold">{title}</h1>
-              <p className="text-xs text-white/80">JA Group Services</p>
-            </div>
+      <div className="flex min-h-16 items-center justify-between gap-3 px-4 py-2">
+        <div className="flex min-w-0 items-center gap-3">
+          <img src="/images/ja-group-services-light.webp" alt="JA Group Services Ltd" className="site-logo-light h-10 w-auto max-w-[145px] object-contain" />
+          <img src={DARK_THEME_LOGO} alt="JA Group Services Ltd" className="site-logo-dark h-12 w-auto max-w-[155px] object-contain" />
+          <div className="hidden min-w-0 sm:block">
+            <h1 className="truncate text-sm font-bold text-foreground">{title}</h1>
+            <p className="text-[11px] text-muted-foreground">JA Group Services Ltd</p>
           </div>
-
-          {/* Action Buttons */}
-          <div className="flex items-center gap-2">
-            {showSearch && (
-              <button className="p-2 hover:bg-white/10 rounded-full transition-colors">
-                <Search className="h-5 w-5" />
-              </button>
-            )}
-          </div>
+        </div>
+        <div className="flex shrink-0 items-center gap-2">
+          <LanguageSwitcher compact />
+          <ThemeToggle />
         </div>
       </div>
     </motion.header>
