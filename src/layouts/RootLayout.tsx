@@ -7,6 +7,7 @@ import { AppBottomNav } from '@/components/AppBottomNav';
 import { AppHeader } from '@/components/AppHeader';
 import FooterCorporateDisclosure from '@/components/FooterCorporateDisclosure';
 import ScrollToTop from '@/components/ScrollToTop';
+import CentralCustomerServiceAssistant from '@/components/CentralCustomerServiceAssistant';
 import { useLocation } from 'react-router-dom';
 
 // Lazy load CookieBanner - if blocked by ad blockers, the app continues without it
@@ -111,6 +112,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
           </main>
           <AppBottomNav />
         </div>
+        <CentralCustomerServiceAssistant />
         <CookieBannerErrorBoundary>
           <Suspense fallback={null}>
             <CookieBanner />
@@ -128,6 +130,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
       {children}
       <Footer />
       <FooterCorporateDisclosure />
+      <CentralCustomerServiceAssistant />
       <CookieBannerErrorBoundary>
         <Suspense fallback={null}>
           <CookieBanner />
