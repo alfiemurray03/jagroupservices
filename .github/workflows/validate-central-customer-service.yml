@@ -29,5 +29,11 @@ jobs:
       - name: Validate customer service contract
         run: node tests/central-customer-service-bridge.test.mjs
 
+      - name: Validate public translations and policies
+        run: npm test -- --run src/lib/public-site-content.test.ts
+
+      - name: Type-check website
+        run: npm run type-check
+
       - name: Build production website
         run: npm run build
