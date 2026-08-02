@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ChevronDown, Menu, Phone, X } from 'lucide-react';
 
+import CustomerWebsitesMenu, { MobileCustomerWebsitesMenu } from '@/components/CustomerWebsitesMenu';
 import { useLanguage } from '@/components/LanguageProvider';
 import ThemeToggle from '@/components/ThemeToggle';
 import {
@@ -61,39 +62,6 @@ export default function Header() {
 
             <DropdownMenu>
               <DropdownMenuTrigger className={`${navigationLinkClass} flex items-center gap-1 outline-none`}>
-                Operating Brands
-                <ChevronDown className="h-3.5 w-3.5" />
-              </DropdownMenuTrigger>
-              <DropdownMenuContent className="w-[280px] rounded-2xl border-border bg-popover p-1.5 text-popover-foreground shadow-xl">
-                <DropdownMenuItem asChild className="rounded-xl p-3 focus:bg-muted">
-                  <a href="https://profilecentre.jagroupservices.co.uk/" target="_blank" rel="noopener noreferrer" className="cursor-pointer">
-                    <div>
-                      <div className="font-semibold">Profile Centre</div>
-                      <div className="text-xs text-muted-foreground">Digital profile platform</div>
-                    </div>
-                  </a>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild className="rounded-xl p-3 focus:bg-muted">
-                  <a href="https://planyx.jagroupservices.co.uk/" target="_blank" rel="noopener noreferrer" className="cursor-pointer">
-                    <div>
-                      <div className="font-semibold">Planyx</div>
-                      <div className="text-xs text-muted-foreground">Experience and itinerary planning</div>
-                    </div>
-                  </a>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild className="rounded-xl p-3 focus:bg-muted">
-                  <a href="https://jadomainhub.jagroupservices.co.uk/" target="_blank" rel="noopener noreferrer" className="cursor-pointer">
-                    <div>
-                      <div className="font-semibold">JA Domain Hub</div>
-                      <div className="text-xs text-muted-foreground">Domain support &amp; GoDaddy reseller</div>
-                    </div>
-                  </a>
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
-
-            <DropdownMenu>
-              <DropdownMenuTrigger className={`${navigationLinkClass} flex items-center gap-1 outline-none`}>
                 Divisions
                 <ChevronDown className="h-3.5 w-3.5" />
               </DropdownMenuTrigger>
@@ -130,6 +98,7 @@ export default function Header() {
               <span>020 3834 2790</span>
             </a>
             <ThemeToggle />
+            <CustomerWebsitesMenu />
           </div>
 
           <div className="flex shrink-0 items-center gap-2 xl:hidden">
@@ -164,12 +133,7 @@ export default function Header() {
 
             <MobileLink to="/" onClick={closeMobileMenu}>Home</MobileLink>
             <MobileLink to="/about-us" onClick={closeMobileMenu}>About</MobileLink>
-
-            <MobileGroup title="Operating Brands">
-              <MobileExternalLink href="https://profilecentre.jagroupservices.co.uk/" onClick={closeMobileMenu}>Profile Centre</MobileExternalLink>
-              <MobileExternalLink href="https://planyx.jagroupservices.co.uk/" onClick={closeMobileMenu}>Planyx</MobileExternalLink>
-              <MobileExternalLink href="https://jadomainhub.jagroupservices.co.uk/" onClick={closeMobileMenu}>JA Domain Hub</MobileExternalLink>
-            </MobileGroup>
+            <MobileCustomerWebsitesMenu onNavigate={closeMobileMenu} />
 
             <MobileGroup title="Divisions">
               <MobileLink to="/about-our-divisions" onClick={closeMobileMenu}>About Our Divisions</MobileLink>
@@ -203,19 +167,5 @@ function MobileLink({ to, onClick, children }: { to: string; onClick: () => void
     >
       {children}
     </Link>
-  );
-}
-
-function MobileExternalLink({ href, onClick, children }: { href: string; onClick: () => void; children: React.ReactNode }) {
-  return (
-    <a
-      href={href}
-      target="_blank"
-      rel="noopener noreferrer"
-      onClick={onClick}
-      className="flex min-h-12 items-center rounded-xl px-3 py-3 text-sm font-medium text-foreground transition-colors hover:bg-muted"
-    >
-      {children}
-    </a>
   );
 }
