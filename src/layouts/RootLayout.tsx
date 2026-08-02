@@ -8,6 +8,7 @@ import { AppHeader } from '@/components/AppHeader';
 import FooterCorporateDisclosure from '@/components/FooterCorporateDisclosure';
 import ScrollToTop from '@/components/ScrollToTop';
 import CentralCustomerServiceAssistant from '@/components/CentralCustomerServiceAssistant';
+import HeadOfficeLaunchGate from '@/components/HeadOfficeLaunchGate';
 import { useLocation } from 'react-router-dom';
 
 // Lazy load CookieBanner - if blocked by ad blockers, the app continues without it
@@ -105,6 +106,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
     return (
       <Website>
         <ScrollToTop />
+        <HeadOfficeLaunchGate />
         <div className="min-h-screen bg-gray-50">
           <AppHeader title={getPageTitle()} />
           <main className="pb-8">
@@ -126,6 +128,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <Website>
       <ScrollToTop />
+      <HeadOfficeLaunchGate />
       <Header />
       {children}
       <Footer />
