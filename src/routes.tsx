@@ -1,18 +1,7 @@
-import { RouteObject } from 'react-router-dom';
 import { lazy } from 'react';
-import HomePage from './pages/index';
+import type { RouteObject } from 'react-router-dom';
 
-import AboutUsPage from './pages/about-us';
-import AboutOurDivisionsPage from './pages/about-our-divisions';
-import OurGroupStructurePage from './pages/our-group-structure';
-import CookiesPolicyPage from './pages/cookies-policy';
-import ContactUsPage from './pages/contact-us';
-import ComplaintsPolicyPage from './pages/complaints-policy';
-import PrivacyPolicyPage from './pages/privacy-policy';
-import TermsOfServicePage from './pages/terms-of-service';
-import AnnouncementsPage from './pages/announcements';
-import SitemapPage from './pages/sitemap';
-import PartnerWithUsPage from './pages/partner-with-us';
+import PublicContentPage from './pages/PublicContentPage';
 
 // Admin pages
 import AdminLoginPage from './pages/admin/login';
@@ -22,63 +11,43 @@ import AdminPolicyEditPage from './pages/admin/policy-edit';
 import AdminPagesPage from './pages/admin/pages';
 import AdminNavigationPage from './pages/admin/navigation';
 import AdminSeoPage from './pages/admin/seo';
-
 import AdminSetupPage from './pages/admin/setup';
 
-// Lazy load components for code splitting
 const isDevelopment = import.meta.env.MODE === 'development';
-const NotFoundPage = isDevelopment ? lazy(() => import('../export-plugins/PageNotFound')) : lazy(() => import('./pages/_404'));
+const NotFoundPage = isDevelopment
+  ? lazy(() => import('../export-plugins/PageNotFound'))
+  : lazy(() => import('./pages/_404'));
+
+const publicRoute = (path: string, pageId: string): RouteObject => ({
+  path,
+  element: <PublicContentPage pageId={pageId} />,
+});
 
 export const routes: RouteObject[] = [
-  {
-    path: '/',
-    element: <HomePage />,
-  },
-  {
-    path: '/about-us',
-    element: <AboutUsPage />,
-  },
-  {
-    path: '/about-our-divisions',
-    element: <AboutOurDivisionsPage />,
-  },
-  {
-    path: '/our-group-structure',
-    element: <OurGroupStructurePage />,
-  },
-  {
-    path: '/partner-with-us',
-    element: <PartnerWithUsPage />,
-  },
-  {
-    path: '/cookies-policy',
-    element: <CookiesPolicyPage />,
-  },
-  {
-    path: '/contactus',
-    element: <ContactUsPage />,
-  },
-  {
-    path: '/complaints-policy',
-    element: <ComplaintsPolicyPage />,
-  },
-  {
-    path: '/privacy-policy',
-    element: <PrivacyPolicyPage />,
-  },
-  {
-    path: '/terms-of-service',
-    element: <TermsOfServicePage />,
-  },
-  {
-    path: '/announcements',
-    element: <AnnouncementsPage />,
-  },
-  {
-    path: '/sitemap',
-    element: <SitemapPage />,
-  },
-  // Admin routes (no RootLayout header/footer — handled by AdminLayout)
+  publicRoute('/', 'home'),
+  publicRoute('/about-us', 'about'),
+  publicRoute('/about-our-divisions', 'brands'),
+  publicRoute('/our-group-structure', 'structure'),
+  publicRoute('/partner-with-us', 'partner'),
+  publicRoute('/contactus', 'contact'),
+  publicRoute('/contact-us', 'contact'),
+  publicRoute('/trust-and-governance', 'trust'),
+  publicRoute('/corporate', 'trust'),
+  publicRoute('/help-and-support', 'support'),
+  publicRoute('/service-status', 'status'),
+  publicRoute('/announcements', 'announcements'),
+  publicRoute('/former-services', 'former-services'),
+  publicRoute('/terms-of-service', 'terms'),
+  publicRoute('/privacy-policy', 'privacy'),
+  publicRoute('/cookies-policy', 'cookies'),
+  publicRoute('/complaints-policy', 'complaints'),
+  publicRoute('/ip-statement', 'ip'),
+  publicRoute('/accessibility-statement', 'accessibility'),
+  publicRoute('/security-and-vulnerability-disclosure', 'security'),
+  publicRoute('/affiliate-disclosure', 'affiliate'),
+  publicRoute('/sitemap', 'sitemap'),
+
+  // Admin routes (no RootLayout header/footer — handled by App.tsx)
   {
     path: '/admin/login',
     element: <AdminLoginPage />,
@@ -117,10 +86,30 @@ export const routes: RouteObject[] = [
   },
 ];
 
-// Standalone routes (no header/footer)
 export const standaloneRoutes: RouteObject[] = [];
 
-// Types for type-safe navigation
-export type Path = '/' | '/about-us' | '/about-our-divisions' | '/our-group-structure' | '/partner-with-us' | '/cookies-policy' | '/contactus' | '/complaints-policy' | '/privacy-policy' | '/terms-of-service' | '/announcements' | '/sitemap' | '/admin/login' | '/admin/dashboard';
+export type Path =
+  | '/'
+  | '/about-us'
+  | '/about-our-divisions'
+  | '/our-group-structure'
+  | '/partner-with-us'
+  | '/contactus'
+  | '/trust-and-governance'
+  | '/help-and-support'
+  | '/service-status'
+  | '/announcements'
+  | '/former-services'
+  | '/terms-of-service'
+  | '/privacy-policy'
+  | '/cookies-policy'
+  | '/complaints-policy'
+  | '/ip-statement'
+  | '/accessibility-statement'
+  | '/security-and-vulnerability-disclosure'
+  | '/affiliate-disclosure'
+  | '/sitemap'
+  | '/admin/login'
+  | '/admin/dashboard';
 
 export type Params = Record<string, string | undefined>;
