@@ -190,7 +190,7 @@ export default function PartnerWithUsPage() {
                   </a>
                 </Button>
                 <Button asChild size="lg" variant="outline" className="min-h-12 border-white/35 bg-white/5 px-7 font-semibold text-white hover:bg-white/10 hover:text-white">
-                  <a href="mailto:hello@jagroupservices.co.uk?subject=Future%20Partnership%20Interest">
+                  <a href="mailto:contact@jagroupservices.co.uk?subject=Future%20Partnership%20Interest">
                     <Mail className="mr-2 h-4 w-4" />
                     Register Early Interest
                   </a>
@@ -387,7 +387,7 @@ export default function PartnerWithUsPage() {
 
               <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
                 <Button asChild size="lg" className="min-h-12 bg-blue-600 px-7 font-bold text-white hover:bg-blue-500">
-                  <a href="mailto:hello@jagroupservices.co.uk?subject=Future%20Partnership%20Interest">
+                  <a href="mailto:contact@jagroupservices.co.uk?subject=Future%20Partnership%20Interest">
                     <Mail className="mr-2 h-5 w-5" />
                     Email Early Interest
                   </a>

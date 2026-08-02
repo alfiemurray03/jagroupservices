@@ -1,0 +1,6 @@
+/* Keep published email addresses readable as a single, uninterrupted address. */
+a[href^="mailto:"] {
+  white-space: nowrap !important;
+  overflow-wrap: normal !important;
+  word-break: normal !important;
+}
