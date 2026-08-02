@@ -1,273 +1,140 @@
 import { useEffect, useState } from 'react';
+import { Cookie } from 'lucide-react';
 
+import { useLanguage } from '@/components/LanguageProvider';
 import { Button } from '@/components/ui/button';
+import { L, text } from '@/lib/public-site-content';
 
-const COOKIE_CONSENT_KEY = 'c2_analytics_consent';
-const COOKIE_CONSENT_EXPIRES_DAYS = 365;
+const CONSENT_KEY = 'c2_analytics_consent';
+const DAYS = 365;
 
-// Helper functions for cookie management
-function setCookie(name: string, value: string, days: number) {
-  const date = new Date();
-  date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-  const expires = `expires=${date.toUTCString()}`;
-  // Set cookie with SameSite=Lax for better compatibility across domains
-  document.cookie = `${name}=${value};${expires};path=/;SameSite=Lax;Secure`;
-}
-
-function getCookie(name: string): string | null {
-  const nameEQ = name + "=";
-  const ca = document.cookie.split(';');
-  for (let i = 0; i < ca.length; i++) {
-    let c = ca[i];
-    while (c.charAt(0) === ' ') c = c.substring(1, c.length);
-    if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
-  }
-  return null;
-}
-
-function deleteCookie(name: string) {
-  document.cookie = `${name}=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/;SameSite=Lax;Secure`;
-}
-
-interface CookieConsent {
-  analytics: boolean;
-  timestamp: number;
-}
+const labels = {
+  title: L('Your privacy choices', 'Eich dewisiadau preifatrwydd', 'As suas escolhas de privacidade', 'Sus opciones de privacidad', 'Vos choix de confidentialité'),
+  body: L(
+    'We use strictly necessary technologies to operate and secure the website. Optional analytics will only load after you agree.',
+    'Rydym yn defnyddio technolegau hollol angenrheidiol i weithredu a diogelu’r wefan. Dim ond ar ôl i chi gytuno y bydd dadansoddeg ddewisol yn llwytho.',
+    'Utilizamos tecnologias estritamente necessárias para operar e proteger o site. A análise opcional só será carregada depois do seu consentimento.',
+    'Utilizamos tecnologías estrictamente necesarias para operar y proteger el sitio. Las analíticas opcionales solo se cargarán después de que acepte.',
+    'Nous utilisons des technologies strictement nécessaires au fonctionnement et à la sécurité du site. Les outils d’analyse facultatifs ne sont chargés qu’après votre accord.'
+  ),
+  reject: L('Reject optional', 'Gwrthod dewisol', 'Rejeitar opcionais', 'Rechazar opcionales', 'Refuser les facultatifs'),
+  settings: L('Cookie settings', 'Gosodiadau cwcis', 'Definições de cookies', 'Configuración de cookies', 'Paramètres des cookies'),
+  accept: L('Accept analytics', 'Derbyn dadansoddeg', 'Aceitar análise', 'Aceptar analíticas', 'Accepter l’analyse'),
+};
 
 declare global {
   interface Window {
+    dataLayer?: unknown[];
     _signalsDataLayer?: unknown[];
+    __SCC_INIT__?: boolean;
     revokeAnalyticsConsent?: () => void;
     openCookieSettings?: () => void;
-    __SCC_INIT__?: boolean;
-    dataLayer?: unknown[];
   }
 }
 
-// Load Google Analytics
-async function initGoogleAnalytics(): Promise<void> {
-  if (typeof window === 'undefined') return;
-  
+function setConsent(analytics: boolean) {
+  const value = JSON.stringify({ analytics, timestamp: Date.now() });
+  const expiry = new Date(Date.now() + DAYS * 24 * 60 * 60 * 1000).toUTCString();
+  document.cookie = `${CONSENT_KEY}=${value};expires=${expiry};path=/;SameSite=Lax;Secure`;
+  localStorage.setItem(CONSENT_KEY, value);
+}
+
+function getConsent(): { analytics: boolean; timestamp: number } | null {
+  const cookie = document.cookie
+    .split(';')
+    .map((item) => item.trim())
+    .find((item) => item.startsWith(`${CONSENT_KEY}=`))
+    ?.slice(CONSENT_KEY.length + 1);
+  const raw = cookie || localStorage.getItem(CONSENT_KEY);
+  if (!raw) return null;
+
   try {
-    // Fetch GA ID from backend API
-    const response = await fetch('/api/config/analytics');
-    const data = await response.json();
-    const GA_ID = data.gaId;
-    
-    if (!GA_ID) return;
-
-    // Load gtag.js script
-    const script = document.createElement('script');
-    script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_ID}`;
-    script.async = true;
-    document.head.appendChild(script);
-
-    // Initialize gtag
-    window.dataLayer = window.dataLayer || [];
-    function gtag(...args: unknown[]) {
-      window.dataLayer!.push(args);
-    }
-    gtag('js', new Date());
-    gtag('config', GA_ID, {
-      anonymize_ip: true,
-      cookie_flags: 'SameSite=None;Secure'
-    });
-  } catch (error) {
-    console.error('Failed to initialize Google Analytics:', error);
+    const parsed = JSON.parse(raw);
+    if (typeof parsed.analytics !== 'boolean' || typeof parsed.timestamp !== 'number') return null;
+    return parsed;
+  } catch {
+    return null;
   }
 }
 
-// Inline C2 tracking - loads script and tracks clicks/pageviews
-function initC2Tracking(): void {
-  if (typeof window === 'undefined' || window.__SCC_INIT__) return;
+function clearConsent() {
+  document.cookie = `${CONSENT_KEY}=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/;SameSite=Lax;Secure`;
+  localStorage.removeItem(CONSENT_KEY);
+}
+
+async function loadAnalytics() {
+  if (window.__SCC_INIT__) return;
   window.__SCC_INIT__ = true;
-  window._signalsDataLayer = window._signalsDataLayer || [];
 
-  const track = (eid: string, type: string, label: string, props?: Record<string, unknown>) => {
-    window._signalsDataLayer!.push({
-      schema: 'add_event', version: 'v1',
-      data: { eid, type, event_label: label, custom_properties: { ...props, timestamp: new Date().toISOString(), source: 'airo-app-builder' } }
-    });
-  };
+  try {
+    const response = await fetch('/api/config/analytics', { headers: { Accept: 'application/json' } });
+    const data = response.ok ? await response.json() : {};
+    const gaId = typeof data.gaId === 'string' ? data.gaId.trim() : '';
 
-  const getSection = (el: HTMLElement): string => {
-    if (el.closest('header')) return 'header';
-    if (el.closest('footer')) return 'footer';
-    if (el.closest('nav')) return 'nav';
-    if (el.closest('main')) return 'main';
-    return 'page';
-  };
-
-  const getDevice = (): string => {
-    const w = window.innerWidth;
-    return w < 768 ? 'mobile' : w < 1024 ? 'tablet' : 'desktop';
-  };
-
-  // Initial events
-  track('airo.website.session', 'session', 'start', { page_path: location.pathname, referrer: document.referrer });
-  track('airo.website.pageview', 'pageview', document.title, { page_path: location.pathname, referrer: document.referrer });
-
-  // Click tracking
-  // Capture phase (true) ensures we track clicks even if event.stopPropagation() is called
-  document.addEventListener('click', (e) => {
-    const el = (e.target as HTMLElement)?.closest('a, button, [role="button"]') as HTMLElement;
-    if (!el) return;
-    const text = el.textContent?.trim()?.substring(0, 100) || '';
-    const href = (el as HTMLAnchorElement).href || '';
-    const type = el.tagName.toLowerCase() === 'a' ? 'link' : 'button';
-
-    let isExternal: boolean | undefined;
-    if (href) {
-      try {
-        isExternal = new URL(href, location.origin).origin !== location.origin;
-      } catch {
-        // Malformed URL, treat as internal
-      }
+    if (gaId) {
+      const script = document.createElement('script');
+      script.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(gaId)}`;
+      script.async = true;
+      document.head.appendChild(script);
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push(['js', new Date()]);
+      window.dataLayer.push(['config', gaId, { anonymize_ip: true }]);
     }
-
-    track('airo.website.click', 'click', text || type, {
-      element_type: type,
-      element_text: text,
-      element_id: el.id || undefined,
-      section: getSection(el),
-      page_path: location.pathname,
-      page_title: document.title,
-      href: href || undefined,
-      is_external: href ? isExternal : undefined,
-      device: getDevice(),
-      viewport_width: window.innerWidth
-    });
-  }, true);
-
-  // Route tracking
-  let lastUrl = location.href;
-  const trackPage = () => {
-    if (location.href !== lastUrl) {
-      track('airo.website.pageview', 'pageview', document.title, { page_path: location.pathname, referrer: lastUrl });
-      lastUrl = location.href;
-    }
-  };
-  window.addEventListener('popstate', trackPage);
-  const push = history.pushState, replace = history.replaceState;
-  history.pushState = (...args) => { push.apply(history, args); setTimeout(trackPage, 0); };
-  history.replaceState = (...args) => { replace.apply(history, args); setTimeout(trackPage, 0); };
-
-  // Load SCC script
-  const h = location.hostname;
-  const url = h === 'localhost' || h.includes('dev-airoapp')
-    ? 'https://img1.dev-wsimg.com/signals/js/clients/scc-c2/scc-c2.js'
-    : h.includes('test-airoapp')
-      ? 'https://img1.test-wsimg.com/signals/js/clients/scc-c2/scc-c2.min.js'
-      : 'https://img1.wsimg.com/signals/js/clients/scc-c2/scc-c2.min.js';
-  const script = document.createElement('script');
-  script.src = url;
-  script.async = true;
-  document.head.appendChild(script);
+  } catch (error) {
+    console.warn('Optional analytics could not be loaded.', error);
+  }
 }
 
-/**
- * Cookie banner component for C2 analytics consent
- *
- * Displays a consent banner for C2 analytics tracking. Manages user consent
- * preferences in localStorage and controls whether analytics scripts are loaded.
- */
 export default function CookieBanner() {
-  const [showBanner, setShowBanner] = useState(false);
-  const [isLoaded, setIsLoaded] = useState(false);
+  const { language } = useLanguage();
+  const [visible, setVisible] = useState(false);
 
-  useEffect(function checkConsent() {
-    if (typeof window === 'undefined') return;
-
-    // Check both cookie and localStorage for backwards compatibility
-    const cookieData = getCookie(COOKIE_CONSENT_KEY);
-    const localStorageData = localStorage.getItem(COOKIE_CONSENT_KEY);
-    const consentData = cookieData || localStorageData;
-
-    if (!consentData) {
-      setShowBanner(true);
-      setIsLoaded(true);
-      return;
+  useEffect(() => {
+    const consent = getConsent();
+    if (!consent || (Date.now() - consent.timestamp) / 86_400_000 > DAYS) {
+      clearConsent();
+      setVisible(true);
+    } else if (consent.analytics) {
+      void loadAnalytics();
     }
 
-    try {
-      const consent: CookieConsent = JSON.parse(consentData);
-      const daysSinceConsent = (Date.now() - consent.timestamp) / (1000 * 60 * 60 * 24);
+    window.revokeAnalyticsConsent = () => {
+      clearConsent();
+      setVisible(true);
+    };
+    window.openCookieSettings = () => window.dispatchEvent(new CustomEvent('openCookieSettings'));
 
-      if (daysSinceConsent > COOKIE_CONSENT_EXPIRES_DAYS) {
-        deleteCookie(COOKIE_CONSENT_KEY);
-        localStorage.removeItem(COOKIE_CONSENT_KEY);
-        setShowBanner(true);
-      } else if (consent.analytics) {
-        initC2Tracking();
-        initGoogleAnalytics();
-      }
-    } catch {
-      deleteCookie(COOKIE_CONSENT_KEY);
-      localStorage.removeItem(COOKIE_CONSENT_KEY);
-      setShowBanner(true);
-    }
-
-    setIsLoaded(true);
-  }, []);
-
-  function saveConsent(analytics: boolean) {
-    const consentData = JSON.stringify({ analytics, timestamp: Date.now() });
-    // Save to both cookie and localStorage for maximum compatibility
-    setCookie(COOKIE_CONSENT_KEY, consentData, COOKIE_CONSENT_EXPIRES_DAYS);
-    localStorage.setItem(COOKIE_CONSENT_KEY, consentData);
-    if (analytics) {
-      initC2Tracking();
-      initGoogleAnalytics();
-    }
-    setShowBanner(false);
-  }
-
-  function revokeConsent() {
-    if (typeof window === 'undefined') return;
-    deleteCookie(COOKIE_CONSENT_KEY);
-    localStorage.removeItem(COOKIE_CONSENT_KEY);
-    setShowBanner(true);
-  }
-
-  function openSettings() {
-    if (typeof window === 'undefined') return;
-    // Trigger the footer's cookie settings dialog
-    const event = new CustomEvent('openCookieSettings');
-    window.dispatchEvent(event);
-  }
-
-  useEffect(function exposeRevokeFunction() {
-    if (typeof window === 'undefined') return;
-    window.revokeAnalyticsConsent = revokeConsent;
-    window.openCookieSettings = openSettings;
-    return () => { 
+    return () => {
       delete window.revokeAnalyticsConsent;
       delete window.openCookieSettings;
     };
   }, []);
 
-  if (!isLoaded || !showBanner) return null;
+  const choose = (analytics: boolean) => {
+    setConsent(analytics);
+    setVisible(false);
+    if (analytics) void loadAnalytics();
+  };
+
+  if (!visible) return null;
 
   return (
-    <div
-      className="fixed bottom-0 left-0 right-0 z-50 bg-[#0A1F44]/95 backdrop-blur-sm border-t border-white/10 shadow-lg"
-      role="alertdialog"
-      aria-live="polite"
-      aria-label="Cookie consent banner"
-      aria-describedby="cookie-banner-description"
-    >
-      <div className="max-w-7xl mx-auto px-4 py-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-          <div className="flex-1">
-            <p id="cookie-banner-description" className="text-sm text-white">
-              We use cookies to improve your experience. We use essential cookies to make this website work and optional cookies to help us understand how the site is used, improve performance, and support our services.{' '}
-              <a href="/cookies-policy" className="underline hover:text-white/80">Cookie Policy</a>
-            </p>
+    <div className="print-hidden fixed inset-x-0 bottom-0 z-[110] p-3 sm:p-5" role="region" aria-label={text(labels.title, language)}>
+      <div className="mx-auto max-w-5xl rounded-2xl border border-border bg-card p-4 text-card-foreground shadow-2xl sm:p-5">
+        <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+          <div className="flex max-w-3xl items-start gap-3">
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary/10">
+              <Cookie className="h-5 w-5 text-primary" />
+            </div>
+            <div>
+              <h2 className="font-bold text-foreground">{text(labels.title, language)}</h2>
+              <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{text(labels.body, language)}</p>
+            </div>
           </div>
-          <div className="flex items-center gap-3 flex-shrink-0">
-            <Button size="sm" variant="outline" onClick={() => saveConsent(false)} className="whitespace-nowrap border-white/20 text-white hover:bg-white/10">Decline</Button>
-            <Button size="sm" variant="outline" onClick={openSettings} className="whitespace-nowrap border-white/20 text-white hover:bg-white/10">Settings</Button>
-            <Button size="sm" onClick={() => saveConsent(true)} className="whitespace-nowrap bg-[#2563EB] hover:bg-[#2563EB]/90 text-white" autoFocus>Accept</Button>
+          <div className="flex flex-col gap-2 sm:flex-row lg:shrink-0">
+            <Button variant="outline" onClick={() => choose(false)}>{text(labels.reject, language)}</Button>
+            <Button variant="outline" onClick={() => window.dispatchEvent(new CustomEvent('openCookieSettings'))}>{text(labels.settings, language)}</Button>
+            <Button onClick={() => choose(true)}>{text(labels.accept, language)}</Button>
           </div>
         </div>
       </div>
