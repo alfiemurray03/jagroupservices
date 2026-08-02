@@ -42,9 +42,9 @@ function unavailableConfig() {
     maintenanceEnabled: true,
     assistantName: 'JA Group Services Customer Service',
     greeting: 'Customer Service is available through our published contact channels.',
-    maintenanceMessage: 'Live Head Office chat is temporarily unavailable on this website. Please email hello@jagroupservices.co.uk or call 020 3834 2790.',
+    maintenanceMessage: 'Live Head Office chat is temporarily unavailable on this website. Please email contact@jagroupservices.co.uk or call 020 3834 2790.',
     contactOptions: {
-      email: 'hello@jagroupservices.co.uk',
+      email: 'contact@jagroupservices.co.uk',
       phone: '020 3834 2790',
     },
   };
@@ -110,7 +110,7 @@ export async function onRequest(context) {
     if (method === 'GET' && path === 'knowledge') {
       return json({ success: true, connected: false, articles: [] });
     }
-    return json({ success: false, error: 'Live Head Office chat is temporarily unavailable. Please email hello@jagroupservices.co.uk or call 020 3834 2790.' }, 503);
+    return json({ success: false, error: 'Live Head Office chat is temporarily unavailable. Please email contact@jagroupservices.co.uk or call 020 3834 2790.' }, 503);
   }
 
   const controller = new AbortController();
