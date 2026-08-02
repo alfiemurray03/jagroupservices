@@ -13,7 +13,7 @@ assert.match(bridge, /64_000/);
 assert.match(bridge, /unavailableConfig/);
 assert.match(bridge, /assistantEnabled: true/);
 assert.match(bridge, /maintenanceEnabled: true/);
-assert.match(bridge, /hello@jagroupservices\.co\.uk/);
+assert.match(bridge, /contact@jagroupservices\.co\.uk/);
 assert.match(bridge, /020 3834 2790/);
 assert.doesNotMatch(bridge, /Bearer\s+[A-Za-z0-9._-]{20,}/);
 
