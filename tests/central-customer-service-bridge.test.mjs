@@ -10,6 +10,11 @@ assert.match(bridge, /CUSTOMEROPS_API_KEY/);
 assert.match(bridge, /\/api\/v1\/platform\/support\//);
 assert.match(bridge, /sameOrigin/);
 assert.match(bridge, /64_000/);
+assert.match(bridge, /unavailableConfig/);
+assert.match(bridge, /assistantEnabled: true/);
+assert.match(bridge, /maintenanceEnabled: true/);
+assert.match(bridge, /hello@jagroupservices\.co\.uk/);
+assert.match(bridge, /020 3834 2790/);
 assert.doesNotMatch(bridge, /Bearer\s+[A-Za-z0-9._-]{20,}/);
 
 assert.match(assistant, /JA Group Services Support Assistant/);
@@ -18,4 +23,4 @@ assert.match(assistant, /Head Office Customer Adviser/);
 assert.match(assistant, /conversations\/\$\{encodeURIComponent\(sessionId\.current\)\}\/messages/);
 assert.match(layout, /CentralCustomerServiceAssistant/);
 
-console.log('JA Group Services central customer service bridge checks passed.');
+console.log('JA Group Services central customer service visibility checks passed.');
