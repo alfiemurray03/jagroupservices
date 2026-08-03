@@ -3,6 +3,9 @@ import { lazy } from 'react';
 import HomePage from './pages/index';
 
 import AboutUsPage from './pages/about-us';
+import MeetTheTeamPage from './pages/meet-the-team';
+import JackNicolauSousaDaSilvaPage from './pages/team/jack-nicolau-sousa-da-silva';
+import AlfieThomasHolywoodMurrayPage from './pages/team/alfie-thomas-holywood-murray';
 import AboutOurDivisionsPage from './pages/about-our-divisions';
 import OurGroupStructurePage from './pages/our-group-structure';
 import CookiesPolicyPage from './pages/cookies-policy';
@@ -37,6 +40,18 @@ export const routes: RouteObject[] = [
   {
     path: '/about-us',
     element: <AboutUsPage />,
+  },
+  {
+    path: '/meet-the-team',
+    element: <MeetTheTeamPage />,
+  },
+  {
+    path: '/team/jack-nicolau-sousa-da-silva',
+    element: <JackNicolauSousaDaSilvaPage />,
+  },
+  {
+    path: '/team/alfie-thomas-holywood-murray',
+    element: <AlfieThomasHolywoodMurrayPage />,
   },
   {
     path: '/about-our-divisions',
@@ -121,6 +136,6 @@ export const routes: RouteObject[] = [
 export const standaloneRoutes: RouteObject[] = [];
 
 // Types for type-safe navigation
-export type Path = '/' | '/about-us' | '/about-our-divisions' | '/our-group-structure' | '/partner-with-us' | '/cookies-policy' | '/contactus' | '/complaints-policy' | '/privacy-policy' | '/terms-of-service' | '/announcements' | '/sitemap' | '/admin/login' | '/admin/dashboard';
+export type Path = '/' | '/about-us' | '/meet-the-team' | '/team/jack-nicolau-sousa-da-silva' | '/team/alfie-thomas-holywood-murray' | '/about-our-divisions' | '/our-group-structure' | '/partner-with-us' | '/cookies-policy' | '/contactus' | '/complaints-policy' | '/privacy-policy' | '/terms-of-service' | '/announcements' | '/sitemap' | '/admin/login' | '/admin/dashboard';
 
 export type Params = Record<string, string | undefined>;
