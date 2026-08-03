@@ -8,6 +8,13 @@ import JackNicolauSousaDaSilvaPage from './pages/team/jack-nicolau-sousa-da-silv
 import AlfieThomasHolywoodMurrayPage from './pages/team/alfie-thomas-holywood-murray';
 import AboutOurDivisionsPage from './pages/about-our-divisions';
 import OurGroupStructurePage from './pages/our-group-structure';
+import ServicesPage from './pages/services';
+import CustomerSupportPage from './pages/customer-support';
+import AccessibilityStatementPage from './pages/accessibility-statement';
+import SecurityPage from './pages/security';
+import PrivacyCentrePage from './pages/privacy-centre';
+import GovernancePage from './pages/governance';
+import SafeguardingPage from './pages/safeguarding';
 import CookiesPolicyPage from './pages/cookies-policy';
 import ContactUsPage from './pages/contact-us';
 import ComplaintsPolicyPage from './pages/complaints-policy';
@@ -60,6 +67,34 @@ export const routes: RouteObject[] = [
   {
     path: '/our-group-structure',
     element: <OurGroupStructurePage />,
+  },
+  {
+    path: '/services',
+    element: <ServicesPage />,
+  },
+  {
+    path: '/customer-support',
+    element: <CustomerSupportPage />,
+  },
+  {
+    path: '/accessibility-statement',
+    element: <AccessibilityStatementPage />,
+  },
+  {
+    path: '/security',
+    element: <SecurityPage />,
+  },
+  {
+    path: '/privacy-centre',
+    element: <PrivacyCentrePage />,
+  },
+  {
+    path: '/governance',
+    element: <GovernancePage />,
+  },
+  {
+    path: '/safeguarding',
+    element: <SafeguardingPage />,
   },
   {
     path: '/partner-with-us',
@@ -136,6 +171,6 @@ export const routes: RouteObject[] = [
 export const standaloneRoutes: RouteObject[] = [];
 
 // Types for type-safe navigation
-export type Path = '/' | '/about-us' | '/meet-the-team' | '/team/jack-nicolau-sousa-da-silva' | '/team/alfie-thomas-holywood-murray' | '/about-our-divisions' | '/our-group-structure' | '/partner-with-us' | '/cookies-policy' | '/contactus' | '/complaints-policy' | '/privacy-policy' | '/terms-of-service' | '/announcements' | '/sitemap' | '/admin/login' | '/admin/dashboard';
+export type Path = '/' | '/about-us' | '/meet-the-team' | '/team/jack-nicolau-sousa-da-silva' | '/team/alfie-thomas-holywood-murray' | '/about-our-divisions' | '/our-group-structure' | '/services' | '/customer-support' | '/accessibility-statement' | '/security' | '/privacy-centre' | '/governance' | '/safeguarding' | '/partner-with-us' | '/cookies-policy' | '/contactus' | '/complaints-policy' | '/privacy-policy' | '/terms-of-service' | '/announcements' | '/sitemap' | '/admin/login' | '/admin/dashboard';
 
 export type Params = Record<string, string | undefined>;

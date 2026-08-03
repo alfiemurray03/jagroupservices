@@ -17,6 +17,19 @@ import { t } from '@/lib/translations';
 const navigationLinkClass =
   'rounded-xl px-3.5 py-2 text-sm font-medium text-muted-foreground transition-all duration-150 hover:bg-muted hover:text-foreground';
 
+function DesktopMenuItem({ to, title, description }: { to: string; title: string; description: string }) {
+  return (
+    <DropdownMenuItem asChild className="rounded-xl p-3 focus:bg-muted">
+      <Link to={to} className="cursor-pointer">
+        <div>
+          <div className="font-semibold">{title}</div>
+          <div className="text-xs text-muted-foreground">{description}</div>
+        </div>
+      </Link>
+    </DropdownMenuItem>
+  );
+}
+
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { language } = useLanguage();
@@ -58,58 +71,38 @@ export default function Header() {
 
           <nav className="hidden items-center gap-1 xl:flex" aria-label="Main navigation">
             <Link to="/" className={navigationLinkClass}>Home</Link>
+            <Link to="/services" className={navigationLinkClass}>Services</Link>
 
             <DropdownMenu>
               <DropdownMenuTrigger className={`${navigationLinkClass} flex items-center gap-1 outline-none`}>
-                About
+                Company
                 <ChevronDown className="h-3.5 w-3.5" />
               </DropdownMenuTrigger>
-              <DropdownMenuContent className="w-[260px] rounded-2xl border-border bg-popover p-1.5 text-popover-foreground shadow-xl">
-                <DropdownMenuItem asChild className="rounded-xl p-3 focus:bg-muted">
-                  <Link to="/about-us" className="cursor-pointer">
-                    <div>
-                      <div className="font-semibold">About Us</div>
-                      <div className="text-xs text-muted-foreground">Who we are and how we operate</div>
-                    </div>
-                  </Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild className="rounded-xl p-3 focus:bg-muted">
-                  <Link to="/meet-the-team" className="cursor-pointer">
-                    <div>
-                      <div className="font-semibold">Meet the Team</div>
-                      <div className="text-xs text-muted-foreground">Meet our company leadership</div>
-                    </div>
-                  </Link>
-                </DropdownMenuItem>
+              <DropdownMenuContent className="w-[290px] rounded-2xl border-border bg-popover p-1.5 text-popover-foreground shadow-xl">
+                <DesktopMenuItem to="/about-us" title="About Us" description="Who we are and how we operate" />
+                <DesktopMenuItem to="/meet-the-team" title="Meet the Team" description="Meet our company leadership" />
+                <DesktopMenuItem to="/about-our-divisions" title="Divisions and Platforms" description="Overview of our operating services" />
+                <DesktopMenuItem to="/our-group-structure" title="Our Group Structure" description="Company and brand structure" />
+                <DesktopMenuItem to="/governance" title="Governance" description="Authority, oversight and accountability" />
               </DropdownMenuContent>
             </DropdownMenu>
 
             <DropdownMenu>
               <DropdownMenuTrigger className={`${navigationLinkClass} flex items-center gap-1 outline-none`}>
-                Divisions
+                Support
                 <ChevronDown className="h-3.5 w-3.5" />
               </DropdownMenuTrigger>
-              <DropdownMenuContent className="w-[260px] rounded-2xl border-border bg-popover p-1.5 text-popover-foreground shadow-xl">
-                <DropdownMenuItem asChild className="rounded-xl p-3 focus:bg-muted">
-                  <Link to="/about-our-divisions" className="cursor-pointer">
-                    <div>
-                      <div className="font-semibold">About Our Divisions</div>
-                      <div className="text-xs text-muted-foreground">Overview of our operating brands</div>
-                    </div>
-                  </Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild className="rounded-xl p-3 focus:bg-muted">
-                  <Link to="/our-group-structure" className="cursor-pointer">
-                    <div>
-                      <div className="font-semibold">Our Group Structure</div>
-                      <div className="text-xs text-muted-foreground">Company and brand structure</div>
-                    </div>
-                  </Link>
-                </DropdownMenuItem>
+              <DropdownMenuContent className="w-[300px] rounded-2xl border-border bg-popover p-1.5 text-popover-foreground shadow-xl">
+                <DesktopMenuItem to="/customer-support" title="Customer Support Centre" description="Accounts, billing and service support" />
+                <DesktopMenuItem to="/privacy-centre" title="Privacy Centre" description="Personal data rights and DPO contact" />
+                <DesktopMenuItem to="/security" title="Security and Disclosure" description="Report vulnerabilities and security concerns" />
+                <DesktopMenuItem to="/accessibility-statement" title="Accessibility" description="Accessibility objectives and feedback" />
+                <DesktopMenuItem to="/safeguarding" title="Safeguarding and Trust" description="Raise welfare and safety concerns" />
+                <DesktopMenuItem to="/complaints-policy" title="Complaints" description="Read our formal complaints process" />
               </DropdownMenuContent>
             </DropdownMenu>
 
-            <Link to="/partner-with-us" className={navigationLinkClass}>Partner With Us</Link>
+            <Link to="/partner-with-us" className={navigationLinkClass}>Partner</Link>
             <Link to="/contactus" className={navigationLinkClass}>{t('header.contact', language)}</Link>
           </nav>
 
@@ -156,18 +149,26 @@ export default function Header() {
             </a>
 
             <MobileLink to="/" onClick={closeMobileMenu}>Home</MobileLink>
+            <MobileLink to="/services" onClick={closeMobileMenu}>Our Services</MobileLink>
 
-            <MobileGroup title="About">
+            <MobileGroup title="Company">
               <MobileLink to="/about-us" onClick={closeMobileMenu}>About Us</MobileLink>
               <MobileLink to="/meet-the-team" onClick={closeMobileMenu}>Meet the Team</MobileLink>
+              <MobileLink to="/about-our-divisions" onClick={closeMobileMenu}>Divisions and Platforms</MobileLink>
+              <MobileLink to="/our-group-structure" onClick={closeMobileMenu}>Our Group Structure</MobileLink>
+              <MobileLink to="/governance" onClick={closeMobileMenu}>Governance</MobileLink>
+            </MobileGroup>
+
+            <MobileGroup title="Support and Trust">
+              <MobileLink to="/customer-support" onClick={closeMobileMenu}>Customer Support Centre</MobileLink>
+              <MobileLink to="/privacy-centre" onClick={closeMobileMenu}>Privacy Centre</MobileLink>
+              <MobileLink to="/security" onClick={closeMobileMenu}>Security and Disclosure</MobileLink>
+              <MobileLink to="/accessibility-statement" onClick={closeMobileMenu}>Accessibility Statement</MobileLink>
+              <MobileLink to="/safeguarding" onClick={closeMobileMenu}>Safeguarding and Trust</MobileLink>
+              <MobileLink to="/complaints-policy" onClick={closeMobileMenu}>Complaints Policy</MobileLink>
             </MobileGroup>
 
             <MobileCustomerWebsitesMenu onNavigate={closeMobileMenu} />
-
-            <MobileGroup title="Divisions">
-              <MobileLink to="/about-our-divisions" onClick={closeMobileMenu}>About Our Divisions</MobileLink>
-              <MobileLink to="/our-group-structure" onClick={closeMobileMenu}>Our Group Structure</MobileLink>
-            </MobileGroup>
 
             <MobileLink to="/partner-with-us" onClick={closeMobileMenu}>Partner With Us</MobileLink>
             <MobileLink to="/contactus" onClick={closeMobileMenu}>{t('header.contact', language)}</MobileLink>

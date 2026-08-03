@@ -1,14 +1,72 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-79FS3MK55Y"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+      (function () {
+        var consentKey = 'c2_analytics_consent';
 
-      gtag('config', 'G-79FS3MK55Y');
+        function getCookie(name) {
+          var prefix = name + '=';
+          var cookie = document.cookie
+            .split(';')
+            .map(function (item) { return item.trim(); })
+            .find(function (item) { return item.indexOf(prefix) === 0; });
+
+          if (!cookie) return null;
+          var value = cookie.substring(prefix.length);
+
+          try {
+            return decodeURIComponent(value);
+          } catch (error) {
+            return value;
+          }
+        }
+
+        function readConsent() {
+          var saved = getCookie(consentKey) || localStorage.getItem(consentKey);
+          if (!saved) return { functional: false, analytics: false };
+
+          try {
+            var parsed = JSON.parse(saved);
+            return {
+              functional: parsed.functional === true,
+              analytics: parsed.analytics === true,
+            };
+          } catch (error) {
+            return { functional: false, analytics: false };
+          }
+        }
+
+        function loadScript(src, id) {
+          if (id && document.getElementById(id)) return;
+          var script = document.createElement('script');
+          script.async = true;
+          script.src = src;
+          if (id) script.id = id;
+          document.head.appendChild(script);
+        }
+
+        var consent = readConsent();
+
+        if (consent.analytics) {
+          window.dataLayer = window.dataLayer || [];
+          window.gtag = window.gtag || function () { window.dataLayer.push(arguments); };
+          window.gtag('js', new Date());
+          window.gtag('config', 'G-79FS3MK55Y', { anonymize_ip: true });
+          loadScript('https://www.googletagmanager.com/gtag/js?id=G-79FS3MK55Y', 'google-analytics-tag');
+        }
+
+        if (consent.functional) {
+          loadScript('//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js', 'trustpilot-widget-script');
+
+          window.TrustpilotObject = 'tp';
+          window.tp = window.tp || function () {
+            (window.tp.q = window.tp.q || []).push(arguments);
+          };
+          loadScript('https://invitejs.trustpilot.com/tp.min.js', 'trustpilot-invitation-script');
+          window.tp('register', 'X9yj5o97kVRIPTnT');
+        }
+      })();
     </script>
 
     <meta charset="UTF-8" />
@@ -39,16 +97,6 @@
       })();
     </script>
 
-    <!-- Trustpilot Widget Script -->
-    <script type="text/javascript" src="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js" async></script>
-
-    <!-- Trustpilot Invitation Script -->
-    <script>
-      (function(w,d,s,r,n){w.TrustpilotObject=n;w[n]=w[n]||function(){(w[n].q=w[n].q||[]).push(arguments)};
-        a=d.createElement(s);a.async=1;a.src=r;a.type='text/java'+s;f=d.getElementsByTagName(s)[0];
-        f.parentNode.insertBefore(a,f)})(window,document,'script', 'https://invitejs.trustpilot.com/tp.min.js', 'tp');
-      tp('register', 'X9yj5o97kVRIPTnT');
-    </script>
     <link rel="stylesheet" href="/src/styles/globals.css" />
   </head>
   <body class="fs-unmask-airo-app-builder">

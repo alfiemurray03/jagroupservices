@@ -1,200 +1,188 @@
+import { Helmet } from '@dr.pogodin/react-helmet';
+import {
+  Accessibility,
+  AlertCircle,
+  Building2,
+  Cookie,
+  ExternalLink,
+  FileText,
+  Globe,
+  Handshake,
+  Headphones,
+  Home,
+  Mail,
+  Megaphone,
+  Network,
+  Scale,
+  Shield,
+  ShieldCheck,
+  Users,
+} from 'lucide-react';
+import type { LucideIcon } from 'lucide-react';
 import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
-import { 
-  Home, 
-  Building2, 
-  Users, 
-  Network, 
-  FileText, 
-  Shield, 
-  Cookie, 
-  Mail, 
-  Scale, 
-  Globe, 
-  Megaphone,
-  AlertCircle,
-  Handshake,
-  ExternalLink
-} from 'lucide-react';
-import { Card, CardContent } from '@/components/ui/card';
-import { useLanguage } from '@/components/LanguageProvider';
-import { t } from '@/lib/translations';
+
+interface SitemapLink {
+  path: string;
+  label: string;
+  icon: LucideIcon;
+  internal: boolean;
+}
+
+const siteStructure: readonly {
+  category: string;
+  description: string;
+  icon: LucideIcon;
+  links: readonly SitemapLink[];
+}[] = [
+  {
+    category: 'Main and Services',
+    description: 'Start here to understand the Company, explore services or make contact.',
+    icon: Home,
+    links: [
+      { path: '/', label: 'Home', icon: Home, internal: true },
+      { path: '/services', label: 'Our Services', icon: Globe, internal: true },
+      { path: '/partner-with-us', label: 'Partner With Us', icon: Handshake, internal: true },
+      { path: '/contactus', label: 'Contact Us', icon: Mail, internal: true },
+      { path: '/announcements', label: 'Announcements', icon: Megaphone, internal: true },
+    ],
+  },
+  {
+    category: 'Company',
+    description: 'Corporate identity, leadership, divisions and governance.',
+    icon: Building2,
+    links: [
+      { path: '/about-us', label: 'About Us', icon: Building2, internal: true },
+      { path: '/meet-the-team', label: 'Meet the Team', icon: Users, internal: true },
+      { path: '/about-our-divisions', label: 'Divisions and Platforms', icon: Globe, internal: true },
+      { path: '/our-group-structure', label: 'Our Group Structure', icon: Network, internal: true },
+      { path: '/governance', label: 'Governance and Corporate Information', icon: Scale, internal: true },
+    ],
+  },
+  {
+    category: 'Support and Trust',
+    description: 'Customer help, personal data rights, security, accessibility and safeguarding.',
+    icon: Headphones,
+    links: [
+      { path: '/customer-support', label: 'Customer Support Centre', icon: Headphones, internal: true },
+      { path: '/privacy-centre', label: 'Privacy Centre', icon: Shield, internal: true },
+      { path: '/security', label: 'Security and Vulnerability Disclosure', icon: ShieldCheck, internal: true },
+      { path: '/accessibility-statement', label: 'Accessibility Statement', icon: Accessibility, internal: true },
+      { path: '/safeguarding', label: 'Safeguarding and Trust', icon: Users, internal: true },
+      { path: '/complaints-policy', label: 'Complaints Policy', icon: AlertCircle, internal: true },
+    ],
+  },
+  {
+    category: 'Operating Brands',
+    description: 'Customer-facing platforms and trading services operated within the group structure.',
+    icon: Globe,
+    links: [
+      { path: 'https://profilecentre.jagroupservices.co.uk/', label: 'Profile Centre', icon: Users, internal: false },
+      { path: 'https://planyx.jagroupservices.co.uk/', label: 'Planyx', icon: Globe, internal: false },
+      { path: 'https://jadomainhub.jagroupservices.co.uk/', label: 'JA Domain Hub', icon: Globe, internal: false },
+    ],
+  },
+  {
+    category: 'Legal and Policies',
+    description: 'Terms, privacy information, cookie information and formal policies.',
+    icon: Scale,
+    links: [
+      { path: '/terms-of-service', label: 'Terms of Service', icon: FileText, internal: true },
+      { path: '/privacy-policy', label: 'Privacy Policy', icon: Shield, internal: true },
+      { path: '/cookies-policy', label: 'Cookies Policy', icon: Cookie, internal: true },
+      { path: '/complaints-policy', label: 'Complaints Policy', icon: AlertCircle, internal: true },
+    ],
+  },
+] as const;
 
 export default function SitemapPage() {
-  const { language } = useLanguage();
-  const siteStructure = [
-    {
-      category: 'Main Pages',
-      icon: Home,
-      links: [
-        { path: '/', label: 'Home', icon: Home, internal: true },
-        { path: '/about-us', label: 'About Us', icon: Building2, internal: true },
-        { path: '/about-our-divisions', label: 'About Our Divisions', icon: Users, internal: true },
-        { path: '/our-group-structure', label: 'Our Group Structure', icon: Network, internal: true },
-        { path: '/partner-with-us', label: 'Partner With Us', icon: Handshake, internal: true },
-        { path: '/contactus', label: 'Contact Us', icon: Mail, internal: true },
-        { path: '/corporate', label: 'Corporate', icon: Building2, internal: true },
-        { path: '/announcements', label: 'Announcements', icon: Megaphone, internal: true },
-      ],
-    },
-    {
-      category: 'Operating Brands',
-      icon: Globe,
-      links: [
-        { path: 'https://profilecentre.jagroupservices.co.uk/', label: 'Profile Centre', icon: Users, internal: false },
-        { path: 'https://planyx.jagroupservices.co.uk/', label: 'Planyx', icon: Globe, internal: false },
-        { path: 'https://jadomainhub.jagroupservices.co.uk/', label: 'JA Domain Hub', icon: Globe, internal: false },
-      ],
-    },
-    {
-      category: 'Legal & Policies',
-      icon: Scale,
-      links: [
-        { path: '/terms-of-service', label: 'Terms of Service', icon: FileText, internal: true },
-        { path: '/privacy-policy', label: 'Privacy Policy', icon: Shield, internal: true },
-        { path: '/cookies-policy', label: 'Cookies Policy', icon: Cookie, internal: true },
-        { path: '/complaints-policy', label: 'Complaints Policy', icon: AlertCircle, internal: true },
-      ],
-    },
-  ];
-
   return (
     <>
-      <title>Sitemap — JA Group Services Ltd</title>
-      <meta name="description" content="Complete sitemap of JA Group Services Ltd website. Find all pages and navigate easily through our website." />
-      <link rel="canonical" href="https://jagroupservices.co.uk/sitemap" />
+      <Helmet>
+        <title>Sitemap | JA Group Services Ltd</title>
+        <meta name="description" content="Browse the complete JA Group Services Ltd website structure, including services, company information, support, trust and legal pages." />
+        <link rel="canonical" href="https://jagroupservices.co.uk/sitemap" />
+      </Helmet>
 
-      <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100">
-        {/* Hero Section */}
-        <section className="relative bg-gradient-to-br from-[#0A1F44] to-[#1e3a5f] text-white py-20 lg:py-32">
-          <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0zNiAxOGMzLjMxNCAwIDYgMi42ODYgNiA2cy0yLjY4NiA2LTYgNi02LTIuNjg2LTYtNiAyLjY4Ni02IDYtNnoiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLW9wYWNpdHk9Ii4wNSIvPjwvZz48L3N2Zz4=')] opacity-10"></div>
-          
-          <div className="container mx-auto px-4 relative z-10">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="max-w-3xl mx-auto text-center"
-            >
-              <div className="inline-block px-4 py-2 bg-[#2563EB]/20 rounded-full mb-6">
-                <span className="text-sm font-semibold text-[#60A5FA]">{t('sitemapPage.badge', language)}</span>
+      <main className="min-h-screen bg-background text-foreground">
+        <section className="relative overflow-hidden bg-[#071a38] py-16 text-white sm:py-20 lg:py-24">
+          <div className="pointer-events-none absolute -right-24 -top-24 h-96 w-96 rounded-full bg-blue-500/20 blur-3xl" />
+          <div className="relative mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
+            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
+              <div className="mx-auto inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-semibold">
+                <Network className="h-4 w-4" />
+                Website Directory
               </div>
-              <h1 className="text-4xl lg:text-5xl font-bold mb-6">
-                {t('sitemapPage.title', language)}
-              </h1>
-              <p className="text-xl text-white/80 leading-relaxed">
-                {t('sitemapPage.subtitle', language)}
+              <h1 className="mt-6 text-4xl font-extrabold sm:text-5xl lg:text-6xl">Sitemap</h1>
+              <p className="mx-auto mt-5 max-w-3xl text-base leading-relaxed text-white/80 sm:text-lg">
+                Find company information, services, support routes, policies and customer-facing platforms from one structured directory.
               </p>
             </motion.div>
           </div>
         </section>
 
-        {/* Sitemap Content */}
-        <section className="py-16 lg:py-20">
-          <div className="container mx-auto px-4">
-            <div className="max-w-6xl mx-auto space-y-12">
-              {siteStructure.map((section, sectionIndex) => {
-                const SectionIcon = section.icon;
-                return (
-                  <motion.div
-                    key={section.category}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: sectionIndex * 0.1 }}
-                  >
-                    <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow">
-                      <CardContent className="p-8">
-                        {/* Category Header */}
-                        <div className="flex items-center gap-3 mb-6 pb-4 border-b border-[#0A1F44]/10">
-                          <div className="w-12 h-12 bg-[#2563EB]/10 rounded-lg flex items-center justify-center">
-                            <SectionIcon className="w-6 h-6 text-[#2563EB]" />
-                          </div>
-                          <h2 className="text-2xl font-bold text-[#0A1F44]">
-                            {section.category}
-                          </h2>
-                        </div>
+        <section className="py-14 sm:py-16 lg:py-20">
+          <div className="mx-auto max-w-7xl space-y-7 px-4 sm:px-6 lg:px-8">
+            {siteStructure.map((section, sectionIndex) => {
+              const SectionIcon = section.icon;
 
-                        {/* Links Grid */}
-                        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-                          {section.links.map((link, linkIndex) => {
-                            const LinkIcon = link.icon;
-                            const isExternal = !link.internal;
-                            return (
-                              <motion.div
-                                key={link.path}
-                                initial={{ opacity: 0, x: -10 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                transition={{ duration: 0.3, delay: linkIndex * 0.05 }}
-                              >
-                                {isExternal ? (
-                                  <a
-                                    href={link.path}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="flex items-center gap-3 p-4 rounded-lg bg-slate-50 hover:bg-[#2563EB]/5 border border-transparent hover:border-[#2563EB]/20 transition-all group"
-                                  >
-                                    <div className="w-8 h-8 bg-white rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-[#2563EB]/10 transition-colors">
-                                      <LinkIcon className="w-4 h-4 text-[#0A1F44]/60 group-hover:text-[#2563EB] transition-colors" />
-                                    </div>
-                                    <span className="text-sm text-[#0A1F44] group-hover:text-[#2563EB] transition-colors font-medium flex-1">
-                                      {link.label}
-                                    </span>
-                                    <ExternalLink className="w-3 h-3 text-[#0A1F44]/40 group-hover:text-[#2563EB]" />
-                                  </a>
-                                ) : (
-                                <Link
-                                  to={link.path}
-                                  className="flex items-center gap-3 p-4 rounded-lg bg-slate-50 hover:bg-[#2563EB]/5 border border-transparent hover:border-[#2563EB]/20 transition-all group"
-                                >
-                                  <div className="w-8 h-8 bg-white rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-[#2563EB]/10 transition-colors">
-                                    <LinkIcon className="w-4 h-4 text-[#0A1F44]/60 group-hover:text-[#2563EB] transition-colors" />
-                                  </div>
-                                  <span className="text-sm text-[#0A1F44] group-hover:text-[#2563EB] transition-colors font-medium">
-                                    {link.label}
-                                  </span>
-                                </Link>
-                                )}
-                              </motion.div>
-                            );
-                          })}
-                        </div>
-                      </CardContent>
-                    </Card>
-                  </motion.div>
-                );
-              })}
-            </div>
-          </div>
-        </section>
-
-        {/* Help Section */}
-        <section className="py-16 lg:py-20">
-          <div className="container mx-auto px-4">
-            <div className="max-w-3xl mx-auto text-center">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
-              >
-                <h3 className="text-2xl font-bold text-[#0A1F44] mb-4">
-                  Need Help Finding Something?
-                </h3>
-                <p className="text-[#0A1F44]/70 mb-6">
-                  If you can't find what you're looking for, please contact us and we'll be happy to assist.
-                </p>
-                <Link
-                  to="/contactus"
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-[#2563EB] text-white rounded-lg hover:bg-[#2563EB]/90 transition-colors"
+              return (
+                <motion.section
+                  key={section.category}
+                  className="rounded-3xl border border-border bg-card p-6 text-card-foreground shadow-sm sm:p-8"
+                  initial={{ opacity: 0, y: 18 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: sectionIndex * 0.04 }}
                 >
-                  <Mail className="w-4 h-4" />
-                  Contact Us
-                </Link>
-              </motion.div>
-            </div>
+                  <div className="mb-6 flex flex-col gap-4 border-b border-border pb-6 sm:flex-row sm:items-center">
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-primary/10">
+                      <SectionIcon className="h-6 w-6 text-primary" />
+                    </div>
+                    <div>
+                      <h2 className="text-2xl font-bold text-card-foreground">{section.category}</h2>
+                      <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{section.description}</p>
+                    </div>
+                  </div>
+
+                  <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">
+                    {section.links.map((link) => {
+                      const LinkIcon = link.icon;
+                      const className =
+                        'group flex min-h-16 items-center gap-3 rounded-2xl border border-border bg-muted/35 p-4 transition-all hover:border-primary/30 hover:bg-primary/5';
+                      const content = (
+                        <>
+                          <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-card">
+                            <LinkIcon className="h-4 w-4 text-muted-foreground transition-colors group-hover:text-primary" />
+                          </div>
+                          <span className="flex-1 text-sm font-semibold text-foreground transition-colors group-hover:text-primary">{link.label}</span>
+                          {!link.internal && <ExternalLink className="h-4 w-4 text-muted-foreground" />}
+                        </>
+                      );
+
+                      return link.internal ? (
+                        <Link key={link.path} to={link.path} className={className}>{content}</Link>
+                      ) : (
+                        <a key={link.path} href={link.path} target="_blank" rel="noopener noreferrer" className={className}>{content}</a>
+                      );
+                    })}
+                  </div>
+                </motion.section>
+              );
+            })}
           </div>
         </section>
-      </div>
+
+        <section className="border-t border-border bg-secondary py-14 text-center">
+          <div className="mx-auto max-w-3xl px-4 sm:px-6">
+            <h2 className="text-3xl font-bold text-foreground">Need help finding the right route?</h2>
+            <p className="mt-4 leading-relaxed text-muted-foreground">The Customer Support Centre can direct account, billing, privacy, security, safeguarding and general enquiries.</p>
+            <Link to="/customer-support" className="mt-7 inline-flex min-h-11 items-center rounded-xl bg-primary px-6 py-3 font-semibold text-primary-foreground transition-colors hover:bg-primary/90">
+              Open Customer Support
+            </Link>
+          </div>
+        </section>
+      </main>
     </>
   );
 }
