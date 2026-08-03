@@ -5,6 +5,7 @@ import App from './App';
 import { SplashScreen } from './components/SplashScreen';
 import { PWAInstallPrompt } from './components/PWAInstallPrompt';
 import { AutoRefresh } from './components/AutoRefresh';
+import { installJAIDFederatedSignOut } from './lib/ja-id-federated-sign-out';
 import './styles/globals.css';
 import './styles/theme-fixes.css';
 import './styles/logo-size-adjustments.css';
@@ -42,6 +43,8 @@ if ('serviceWorker' in navigator) {
     });
   });
 }
+
+installJAIDFederatedSignOut();
 
 // Add robots meta tag only in development mode
 if (import.meta.env.MODE === 'development') {
