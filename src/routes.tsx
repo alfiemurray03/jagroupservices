@@ -23,6 +23,7 @@ import TermsOfServicePage from './pages/terms-of-service';
 import AnnouncementsPage from './pages/announcements';
 import SitemapPage from './pages/sitemap';
 import PartnerWithUsPage from './pages/partner-with-us';
+import JAGroupServicesIDPage from './pages/ja-group-services-id';
 
 // Admin pages
 import AdminLoginPage from './pages/admin/login';
@@ -43,6 +44,10 @@ export const routes: RouteObject[] = [
   {
     path: '/',
     element: <HomePage />,
+  },
+  {
+    path: '/id',
+    element: <JAGroupServicesIDPage />,
   },
   {
     path: '/about-us',
@@ -171,6 +176,6 @@ export const routes: RouteObject[] = [
 export const standaloneRoutes: RouteObject[] = [];
 
 // Types for type-safe navigation
-export type Path = '/' | '/about-us' | '/meet-the-team' | '/team/jack-nicolau-sousa-da-silva' | '/team/alfie-thomas-holywood-murray' | '/about-our-divisions' | '/our-group-structure' | '/services' | '/customer-support' | '/accessibility-statement' | '/security' | '/privacy-centre' | '/governance' | '/safeguarding' | '/partner-with-us' | '/cookies-policy' | '/contactus' | '/complaints-policy' | '/privacy-policy' | '/terms-of-service' | '/announcements' | '/sitemap' | '/admin/login' | '/admin/dashboard';
+export type Path = '/' | '/id' | '/about-us' | '/meet-the-team' | '/team/jack-nicolau-sousa-da-silva' | '/team/alfie-thomas-holywood-murray' | '/about-our-divisions' | '/our-group-structure' | '/services' | '/customer-support' | '/accessibility-statement' | '/security' | '/privacy-centre' | '/governance' | '/safeguarding' | '/partner-with-us' | '/cookies-policy' | '/contactus' | '/complaints-policy' | '/privacy-policy' | '/terms-of-service' | '/announcements' | '/sitemap' | '/admin/login' | '/admin/dashboard';
 
 export type Params = Record<string, string | undefined>;

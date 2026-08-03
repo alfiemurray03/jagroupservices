@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ChevronDown, Menu, Phone, X } from 'lucide-react';
+import { ChevronDown, CircleUserRound, Menu, Phone, X } from 'lucide-react';
 
 import CustomerWebsitesMenu, { MobileCustomerWebsitesMenu } from '@/components/CustomerWebsitesMenu';
 import { useLanguage } from '@/components/LanguageProvider';
@@ -107,6 +107,13 @@ export default function Header() {
           </nav>
 
           <div className="hidden items-center gap-2.5 xl:flex">
+            <Link
+              to="/id"
+              className="inline-flex min-h-10 items-center gap-2 rounded-xl bg-primary px-3.5 py-2 text-sm font-semibold text-primary-foreground shadow-sm transition hover:bg-primary/90"
+            >
+              <CircleUserRound className="h-4 w-4" />
+              JA Group Services ID
+            </Link>
             <a
               href="tel:02038342790"
               className="flex items-center gap-2 rounded-xl border border-border bg-muted px-3 py-2 text-sm font-semibold text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
@@ -119,6 +126,14 @@ export default function Header() {
           </div>
 
           <div className="flex shrink-0 items-center gap-2 xl:hidden">
+            <Link
+              to="/id"
+              onClick={closeMobileMenu}
+              className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary text-primary-foreground shadow-sm transition hover:bg-primary/90"
+              aria-label="Open JA Group Services ID"
+            >
+              <CircleUserRound className="h-5 w-5" />
+            </Link>
             <ThemeToggle />
             <button
               type="button"
@@ -140,6 +155,14 @@ export default function Header() {
           className="absolute left-0 right-0 top-full max-h-[calc(100dvh-4rem)] overflow-y-auto overscroll-contain border-t border-border bg-card shadow-2xl xl:hidden"
         >
           <nav className="mx-auto flex max-w-7xl flex-col gap-1 px-4 py-4 sm:px-6" aria-label="Mobile navigation">
+            <Link
+              to="/id"
+              onClick={closeMobileMenu}
+              className="mb-2 flex min-h-12 items-center gap-3 rounded-xl bg-primary px-4 py-3 text-sm font-semibold text-primary-foreground"
+            >
+              <CircleUserRound className="h-5 w-5" />
+              JA Group Services ID Dashboard
+            </Link>
             <a
               href="tel:02038342790"
               className="mb-2 flex min-h-12 items-center gap-2 rounded-xl border border-border bg-muted px-4 py-3 text-sm font-semibold text-foreground"

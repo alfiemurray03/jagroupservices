@@ -75,6 +75,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
   const getPageTitle = () => {
     const titles: Record<string, string> = {
       '/': 'Home',
+      '/id': 'JA Group Services ID',
       '/about-us': 'About Us',
       '/meet-the-team': 'Meet the Team',
       '/about-our-divisions': 'Divisions and Platforms',
