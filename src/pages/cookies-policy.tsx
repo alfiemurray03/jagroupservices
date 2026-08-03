@@ -1,9 +1,9 @@
 import {
   BarChart3,
-  Browser,
   CalendarClock,
   Cookie,
   ExternalLink,
+  MonitorSmartphone,
   Settings2,
   ShieldCheck,
   SlidersHorizontal,
@@ -82,7 +82,7 @@ const sections = [
           'The website stores the selected categories and the date of the choice for up to 12 months, after which a fresh choice may be requested.',
       },
       {
-        icon: Browser,
+        icon: MonitorSmartphone,
         title: 'Browser controls',
         description:
           'Visitors can also delete or block cookies through browser settings. Blocking essential storage may affect preferences or parts of the website experience.',
