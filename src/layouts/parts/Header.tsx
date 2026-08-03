@@ -15,7 +15,7 @@ import { DARK_THEME_LOGO } from '@/lib/site-logos';
 import { t } from '@/lib/translations';
 
 const navigationLinkClass =
-  'rounded-xl px-3.5 py-2 text-sm font-medium text-muted-foreground transition-all duration-150 hover:bg-muted hover:text-foreground';
+  'whitespace-nowrap rounded-xl px-3 py-2 text-sm font-medium text-muted-foreground transition-all duration-150 hover:bg-muted hover:text-foreground';
 
 function DesktopMenuItem({ to, title, description }: { to: string; title: string; description: string }) {
   return (
@@ -49,27 +49,27 @@ export default function Header() {
 
   return (
     <header className="relative sticky top-0 z-50 border-b border-border bg-card/95 shadow-sm backdrop-blur-xl">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-[1500px] px-4 sm:px-6 2xl:px-7">
         <div className="flex h-16 items-center justify-between gap-3 md:h-[76px]">
           <Link
             to="/"
-            className="group flex min-w-0 shrink items-center"
+            className="group flex min-w-0 shrink-0 items-center"
             aria-label="JA Group Services Ltd — home"
             onClick={closeMobileMenu}
           >
             <img
               src="/images/ja-group-services-light.webp"
               alt="JA Group Services Ltd"
-              className="site-logo-light h-11 w-auto max-w-[190px] shrink-0 object-contain sm:h-12 sm:max-w-[220px] md:h-14 md:max-w-[250px]"
+              className="site-logo-light h-11 w-auto max-w-[190px] shrink-0 object-contain sm:h-12 sm:max-w-[220px] md:h-14 2xl:max-w-[225px]"
             />
             <img
               src={DARK_THEME_LOGO}
               alt="JA Group Services Ltd"
-              className="site-logo-dark h-[58px] w-auto max-w-[190px] shrink-0 object-contain sm:h-16 sm:max-w-[220px] md:h-[68px] md:max-w-[245px]"
+              className="site-logo-dark h-[58px] w-auto max-w-[190px] shrink-0 object-contain sm:h-16 sm:max-w-[220px] md:h-[68px] 2xl:max-w-[225px]"
             />
           </Link>
 
-          <nav className="hidden items-center gap-1 xl:flex" aria-label="Main navigation">
+          <nav className="hidden min-w-0 items-center justify-center gap-0.5 2xl:flex" aria-label="Main navigation">
             <Link to="/" className={navigationLinkClass}>Home</Link>
             <Link to="/services" className={navigationLinkClass}>Services</Link>
 
@@ -106,17 +106,17 @@ export default function Header() {
             <Link to="/contactus" className={navigationLinkClass}>{t('header.contact', language)}</Link>
           </nav>
 
-          <div className="hidden items-center gap-2.5 xl:flex">
+          <div className="hidden shrink-0 items-center gap-2 2xl:flex">
             <Link
               to="/id/sign-in"
-              className="inline-flex min-h-10 items-center gap-2 rounded-xl bg-primary px-3.5 py-2 text-sm font-semibold text-primary-foreground shadow-sm transition hover:bg-primary/90"
+              className="inline-flex min-h-10 shrink-0 items-center gap-2 whitespace-nowrap rounded-xl bg-primary px-3.5 py-2 text-sm font-semibold text-primary-foreground shadow-sm transition hover:bg-primary/90"
             >
               <CircleUserRound className="h-4 w-4" />
               Sign in
             </Link>
             <a
               href="tel:02038342790"
-              className="flex items-center gap-2 rounded-xl border border-border bg-muted px-3 py-2 text-sm font-semibold text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
+              className="flex shrink-0 items-center gap-2 whitespace-nowrap rounded-xl border border-border bg-muted px-3 py-2 text-sm font-semibold text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
             >
               <Phone className="h-4 w-4 text-primary" />
               <span>020 3834 2790</span>
@@ -125,7 +125,7 @@ export default function Header() {
             <CustomerWebsitesMenu />
           </div>
 
-          <div className="flex shrink-0 items-center gap-2 xl:hidden">
+          <div className="flex shrink-0 items-center gap-2 2xl:hidden">
             <Link
               to="/id/sign-in"
               onClick={closeMobileMenu}
@@ -152,7 +152,7 @@ export default function Header() {
       {mobileMenuOpen && (
         <div
           id="mobile-menu"
-          className="absolute left-0 right-0 top-full max-h-[calc(100dvh-4rem)] overflow-y-auto overscroll-contain border-t border-border bg-card shadow-2xl xl:hidden"
+          className="absolute left-0 right-0 top-full max-h-[calc(100dvh-4rem)] overflow-y-auto overscroll-contain border-t border-border bg-card shadow-2xl 2xl:hidden"
         >
           <nav className="mx-auto flex max-w-7xl flex-col gap-1 px-4 py-4 sm:px-6" aria-label="Mobile navigation">
             <Link
