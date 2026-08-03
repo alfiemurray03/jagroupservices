@@ -12,6 +12,7 @@ import './styles/logo-size-adjustments.css';
 import './styles/homepage-title.css';
 import './styles/desktop-density.css';
 import './styles/email-addresses.css';
+import './styles/header-responsive.css';
 
 // Register Service Worker with update checking
 import { HelmetProvider } from "@dr.pogodin/react-helmet";
