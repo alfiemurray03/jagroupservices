@@ -4,7 +4,10 @@ import {
   getMetadata,
   getOidcConfig,
   json,
+  parseCookies,
+  verifySignedPayload,
 } from './_shared.js';
+import { closeConnectedSession } from './_connected-sessions.js';
 
 const DEFAULT_POST_LOGOUT_REDIRECT_URI = 'https://jagroupservices.co.uk/id/sign-in';
 
@@ -17,7 +20,28 @@ function postLogoutRedirectUri(env) {
   return url.toString();
 }
 
-async function federatedSignOut(env) {
+async function currentSession(request, env) {
+  try {
+    const config = getOidcConfig(env);
+    const value = parseCookies(request)[SESSION_COOKIE];
+    return verifySignedPayload(value, config.signingSecret);
+  } catch {
+    return null;
+  }
+}
+
+async function closeCentralSession(request, env) {
+  const session = await currentSession(request, env);
+  if (!session?.sessionReference) return;
+  try {
+    await closeConnectedSession(env, session.sessionReference, 'Customer signed out of the JA Group Services ID Dashboard.');
+  } catch (error) {
+    console.error('ja-id.central-session.close.failed', error);
+  }
+}
+
+async function federatedSignOut(request, env) {
+  await closeCentralSession(request, env);
   const config = getOidcConfig(env);
   const metadata = await getMetadata(config);
   const endpoint = String(metadata.end_session_endpoint || '').trim();
@@ -37,9 +61,9 @@ async function federatedSignOut(env) {
   });
 }
 
-export async function onRequestGet({ env }) {
+export async function onRequestGet({ request, env }) {
   try {
-    return await federatedSignOut(env);
+    return await federatedSignOut(request, env);
   } catch (error) {
     console.error('ja-id.federated-sign-out.failed', error);
     return new Response(null, {
@@ -59,6 +83,8 @@ export async function onRequestPost({ request, env }) {
   if (origin && origin !== requestUrl.origin) {
     return json({ error: 'invalid_origin' }, 403);
   }
+
+  await closeCentralSession(request, env);
 
   try {
     const config = getOidcConfig(env);
