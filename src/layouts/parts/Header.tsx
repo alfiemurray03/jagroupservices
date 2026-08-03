@@ -17,6 +17,16 @@ import { t } from '@/lib/translations';
 const navigationLinkClass =
   'whitespace-nowrap rounded-xl px-3 py-2 text-sm font-medium text-muted-foreground transition-all duration-150 hover:bg-muted hover:text-foreground';
 
+type HeaderIdentityUser = {
+  name?: string;
+  email?: string;
+};
+
+type HeaderSessionResponse = {
+  authenticated?: boolean;
+  user?: HeaderIdentityUser;
+};
+
 function DesktopMenuItem({ to, title, description }: { to: string; title: string; description: string }) {
   return (
     <DropdownMenuItem asChild className="rounded-xl p-3 focus:bg-muted">
@@ -32,9 +42,32 @@ function DesktopMenuItem({ to, title, description }: { to: string; title: string
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [identityUser, setIdentityUser] = useState<HeaderIdentityUser | null>(null);
   const { language } = useLanguage();
 
   const closeMobileMenu = () => setMobileMenuOpen(false);
+
+  useEffect(() => {
+    const controller = new AbortController();
+
+    fetch('/api/id/session', {
+      credentials: 'include',
+      cache: 'no-store',
+      headers: { Accept: 'application/json' },
+      signal: controller.signal,
+    })
+      .then((response) => response.json() as Promise<HeaderSessionResponse>)
+      .then((data) => {
+        if (data.authenticated && data.user) setIdentityUser(data.user);
+        else setIdentityUser(null);
+      })
+      .catch((error) => {
+        if (error instanceof DOMException && error.name === 'AbortError') return;
+        setIdentityUser(null);
+      });
+
+    return () => controller.abort();
+  }, []);
 
   useEffect(() => {
     if (!mobileMenuOpen) return;
@@ -46,6 +79,13 @@ export default function Header() {
     window.addEventListener('keydown', closeOnEscape);
     return () => window.removeEventListener('keydown', closeOnEscape);
   }, [mobileMenuOpen]);
+
+  const signedIn = Boolean(identityUser);
+  const accountDestination = signedIn ? '/id/dashboard' : '/id/sign-in';
+  const accountLabel = identityUser?.name?.trim() || 'Sign in';
+  const accountAccessibleLabel = signedIn
+    ? `Open the JA Group Services ID Dashboard for ${accountLabel}`
+    : 'Sign in to JA Group Services ID';
 
   return (
     <header className="relative sticky top-0 z-50 border-b border-border bg-card/95 shadow-sm backdrop-blur-xl">
@@ -108,11 +148,13 @@ export default function Header() {
 
           <div className="hidden shrink-0 items-center gap-2 2xl:flex">
             <Link
-              to="/id/sign-in"
-              className="inline-flex min-h-10 shrink-0 items-center gap-2 whitespace-nowrap rounded-xl bg-primary px-3.5 py-2 text-sm font-semibold text-primary-foreground shadow-sm transition hover:bg-primary/90"
+              to={accountDestination}
+              title={signedIn ? accountLabel : undefined}
+              aria-label={accountAccessibleLabel}
+              className="inline-flex min-h-10 min-w-0 shrink-0 items-center gap-2 whitespace-nowrap rounded-xl bg-primary px-3.5 py-2 text-sm font-semibold text-primary-foreground shadow-sm transition hover:bg-primary/90"
             >
-              <CircleUserRound className="h-4 w-4" />
-              Sign in
+              <CircleUserRound className="h-4 w-4 shrink-0" />
+              <span className="max-w-[9rem] truncate xl:max-w-[11rem] 2xl:max-w-[13rem]">{accountLabel}</span>
             </Link>
             <a
               href="tel:02038342790"
@@ -127,10 +169,11 @@ export default function Header() {
 
           <div className="flex shrink-0 items-center gap-2 2xl:hidden">
             <Link
-              to="/id/sign-in"
+              to={accountDestination}
               onClick={closeMobileMenu}
+              title={signedIn ? accountLabel : undefined}
               className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary text-primary-foreground shadow-sm transition hover:bg-primary/90"
-              aria-label="Sign in to JA Group Services ID"
+              aria-label={accountAccessibleLabel}
             >
               <CircleUserRound className="h-5 w-5" />
             </Link>
@@ -156,12 +199,16 @@ export default function Header() {
         >
           <nav className="mx-auto flex max-w-7xl flex-col gap-1 px-4 py-4 sm:px-6" aria-label="Mobile navigation">
             <Link
-              to="/id/sign-in"
+              to={accountDestination}
               onClick={closeMobileMenu}
-              className="mb-2 flex min-h-12 items-center gap-3 rounded-xl bg-primary px-4 py-3 text-sm font-semibold text-primary-foreground"
+              title={signedIn ? accountLabel : undefined}
+              className="mb-2 flex min-h-12 min-w-0 items-center gap-3 rounded-xl bg-primary px-4 py-3 text-sm font-semibold text-primary-foreground"
+              aria-label={accountAccessibleLabel}
             >
-              <CircleUserRound className="h-5 w-5" />
-              Sign in to JA Group Services ID
+              <CircleUserRound className="h-5 w-5 shrink-0" />
+              <span className="truncate">
+                {signedIn ? accountLabel : 'Sign in to JA Group Services ID'}
+              </span>
             </Link>
             <a
               href="tel:02038342790"
