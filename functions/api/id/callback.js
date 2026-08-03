@@ -13,6 +13,7 @@ import {
   verifyIdToken,
   verifySignedPayload,
 } from './_shared.js';
+import { registerConnectedSession } from './_connected-sessions.js';
 
 function callbackRedirect(location, cookies = []) {
   const headers = new Headers({
@@ -73,6 +74,27 @@ export async function onRequestGet({ request, env }) {
     const maxAge = Math.max(60, Math.min(SESSION_MAX_AGE_SECONDS, tokenExpiresAt - now));
     const issuedAt = now;
     const expiresAt = now + maxAge;
+    const issuedAtIso = new Date(issuedAt * 1000).toISOString();
+    const expiresAtIso = new Date(expiresAt * 1000).toISOString();
+    const sessionReference = `jag-${crypto.randomUUID()}`;
+    let centralSessionId = null;
+
+    try {
+      const registered = await registerConnectedSession(
+        request,
+        env,
+        user,
+        sessionReference,
+        issuedAtIso,
+        expiresAtIso,
+      );
+      centralSessionId = registered?.session?.id || null;
+    } catch (error) {
+      // Head Office is authoritative once connected, but an operations outage must
+      // not prevent Microsoft from completing a valid customer sign-in. The session
+      // endpoint retries registration on the next authenticated request.
+      console.error('ja-id.central-session.register.failed', error);
+    }
 
     const session = await signPayload(
       {
@@ -81,6 +103,8 @@ export async function onRequestGet({ request, env }) {
         exp: expiresAt,
         authTime: Number(claims.auth_time || issuedAt),
         authenticationContext: String(claims.acr || claims.tfp || ''),
+        sessionReference,
+        centralSessionId,
       },
       config.signingSecret,
     );
