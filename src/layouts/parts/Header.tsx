@@ -58,7 +58,31 @@ export default function Header() {
 
           <nav className="hidden items-center gap-1 xl:flex" aria-label="Main navigation">
             <Link to="/" className={navigationLinkClass}>Home</Link>
-            <Link to="/about-us" className={navigationLinkClass}>About</Link>
+
+            <DropdownMenu>
+              <DropdownMenuTrigger className={`${navigationLinkClass} flex items-center gap-1 outline-none`}>
+                About
+                <ChevronDown className="h-3.5 w-3.5" />
+              </DropdownMenuTrigger>
+              <DropdownMenuContent className="w-[260px] rounded-2xl border-border bg-popover p-1.5 text-popover-foreground shadow-xl">
+                <DropdownMenuItem asChild className="rounded-xl p-3 focus:bg-muted">
+                  <Link to="/about-us" className="cursor-pointer">
+                    <div>
+                      <div className="font-semibold">About Us</div>
+                      <div className="text-xs text-muted-foreground">Who we are and how we operate</div>
+                    </div>
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild className="rounded-xl p-3 focus:bg-muted">
+                  <Link to="/meet-the-team" className="cursor-pointer">
+                    <div>
+                      <div className="font-semibold">Meet the Team</div>
+                      <div className="text-xs text-muted-foreground">Meet our company leadership</div>
+                    </div>
+                  </Link>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
 
             <DropdownMenu>
               <DropdownMenuTrigger className={`${navigationLinkClass} flex items-center gap-1 outline-none`}>
@@ -132,7 +156,12 @@ export default function Header() {
             </a>
 
             <MobileLink to="/" onClick={closeMobileMenu}>Home</MobileLink>
-            <MobileLink to="/about-us" onClick={closeMobileMenu}>About</MobileLink>
+
+            <MobileGroup title="About">
+              <MobileLink to="/about-us" onClick={closeMobileMenu}>About Us</MobileLink>
+              <MobileLink to="/meet-the-team" onClick={closeMobileMenu}>Meet the Team</MobileLink>
+            </MobileGroup>
+
             <MobileCustomerWebsitesMenu onNavigate={closeMobileMenu} />
 
             <MobileGroup title="Divisions">
