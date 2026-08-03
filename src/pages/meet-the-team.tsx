@@ -95,9 +95,18 @@ export default function MeetTheTeamPage() {
                       <h3 className="text-2xl font-bold tracking-tight text-card-foreground">
                         {member.name}
                       </h3>
-                      <p className="mt-2 font-semibold text-primary">{member.role}</p>
-                      <p className="mt-1 flex items-center gap-2 text-sm text-muted-foreground">
-                        <Building2 className="h-4 w-4" />
+                      <div className="mt-3 space-y-1.5">
+                        {member.roles.map((role, roleIndex) => (
+                          <p
+                            key={role}
+                            className={roleIndex === 0 ? 'font-semibold text-primary' : 'text-sm font-medium text-foreground'}
+                          >
+                            {role}
+                          </p>
+                        ))}
+                      </div>
+                      <p className="mt-3 flex items-start gap-2 text-sm text-muted-foreground">
+                        <Building2 className="mt-0.5 h-4 w-4 shrink-0" />
                         {member.company}
                       </p>
                     </div>
