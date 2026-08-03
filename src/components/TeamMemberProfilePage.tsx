@@ -12,15 +12,16 @@ interface TeamMemberProfilePageProps {
 
 export default function TeamMemberProfilePage({ member }: TeamMemberProfilePageProps) {
   const url = `https://jagroupservices.co.uk/team/${member.slug}`;
-  const description = `${member.name}, ${member.role} of ${member.company}.`;
+  const primaryRole = member.roles[0];
+  const description = `${member.name}: ${member.roles.join('; ')}.`;
 
   return (
     <>
       <Helmet>
-        <title>{member.name} – {member.role} | JA Group Services Ltd</title>
+        <title>{member.name} – {primaryRole} | JA Group Services Ltd</title>
         <meta name="description" content={description} />
         <link rel="canonical" href={url} />
-        <meta property="og:title" content={`${member.name} – ${member.role}`} />
+        <meta property="og:title" content={`${member.name} – ${primaryRole}`} />
         <meta property="og:description" content={description} />
         <meta property="og:url" content={url} />
         <meta property="og:type" content="profile" />
@@ -56,9 +57,18 @@ export default function TeamMemberProfilePage({ member }: TeamMemberProfilePageP
                   <h1 className="text-3xl font-bold tracking-tight text-card-foreground sm:text-4xl">
                     {member.name}
                   </h1>
-                  <p className="mt-3 text-lg font-semibold text-primary">{member.role}</p>
-                  <p className="mt-2 flex items-center gap-2 text-sm text-muted-foreground">
-                    <Building2 className="h-4 w-4" />
+                  <div className="mt-4 space-y-2">
+                    {member.roles.map((role, roleIndex) => (
+                      <p
+                        key={role}
+                        className={roleIndex === 0 ? 'text-lg font-semibold text-primary' : 'font-medium text-foreground'}
+                      >
+                        {role}
+                      </p>
+                    ))}
+                  </div>
+                  <p className="mt-4 flex items-start gap-2 text-sm text-muted-foreground">
+                    <Building2 className="mt-0.5 h-4 w-4 shrink-0" />
                     {member.company}
                   </p>
                 </div>
