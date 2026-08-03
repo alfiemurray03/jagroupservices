@@ -1,4 +1,4 @@
-import { useState, type ComponentType } from 'react';
+import { useEffect, useState, type ComponentType } from 'react';
 import { Helmet } from '@dr.pogodin/react-helmet';
 import {
   Activity,
@@ -14,6 +14,7 @@ import {
   LifeBuoy,
   LockKeyhole,
   LogIn,
+  LogOut,
   Mail,
   MapPin,
   MonitorSmartphone,
@@ -23,7 +24,7 @@ import {
   Smartphone,
   UserRoundCog,
 } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 type DashboardSection =
   | 'overview'
@@ -43,6 +44,26 @@ interface NavigationItem {
   icon: IconType;
 }
 
+interface IdentityUser {
+  id: string;
+  objectId: string;
+  tenantId: string;
+  name: string;
+  email: string;
+  identityProvider: string;
+}
+
+interface IdentitySession {
+  authenticated: true;
+  user: IdentityUser;
+  session: {
+    issuedAt: string;
+    expiresAt: string;
+    authTime: string;
+    authenticationContext: string | null;
+  };
+}
+
 const navigationItems: NavigationItem[] = [
   { id: 'overview', label: 'Overview', description: 'Your central account at a glance', icon: CircleUserRound },
   { id: 'personal-details', label: 'Personal details', description: 'The information shared with connected services', icon: UserRoundCog },
@@ -54,14 +75,39 @@ const navigationItems: NavigationItem[] = [
 ];
 
 const connectedServices = [
-  { name: 'Profile Centre', description: 'Digital profiles and identity presentation', status: 'Connection ready' },
-  { name: 'Planyx', description: 'Experience and itinerary planning', status: 'Connection ready' },
-  { name: 'JA Domain Hub', description: 'Domains and managed website services', status: 'Connection ready' },
+  { name: 'Profile Centre', description: 'Digital profiles and identity presentation', status: 'Central connection planned' },
+  { name: 'Planyx', description: 'Experience and itinerary planning', status: 'Central connection planned' },
+  { name: 'JA Domain Hub', description: 'Domains and managed website services', status: 'Central connection planned' },
   { name: 'Dealt With', description: 'Connected customer service platform', status: 'Planned' },
 ];
 
-const signInUrl = String(import.meta.env.VITE_JA_ID_SIGN_IN_URL || '').trim();
-const microsoftConnectionReady = /^https:\/\//i.test(signInUrl);
+function formatDate(value: string) {
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return 'Unavailable';
+  return new Intl.DateTimeFormat('en-GB', {
+    dateStyle: 'medium',
+    timeStyle: 'short',
+  }).format(date);
+}
+
+function authErrorMessage(code: string | null) {
+  switch (code) {
+    case 'access_denied':
+      return 'Microsoft sign-in was cancelled or access was not granted.';
+    case 'configuration':
+      return 'The JA Group Services ID connection is not fully configured yet.';
+    case 'metadata':
+      return 'Microsoft identity services could not be reached.';
+    case 'state':
+      return 'The sign-in request expired. Please start again.';
+    case 'token':
+      return 'Microsoft could not complete the secure sign-in exchange.';
+    case 'authentication':
+      return 'The sign-in could not be completed securely.';
+    default:
+      return null;
+  }
+}
 
 function SectionHeading({ title, description }: { title: string; description: string }) {
   return (
@@ -72,16 +118,16 @@ function SectionHeading({ title, description }: { title: string; description: st
   );
 }
 
-function LockedValue({ label, icon: Icon }: { label: string; icon: IconType }) {
+function DetailValue({ label, value, icon: Icon }: { label: string; value: string; icon: IconType }) {
   return (
-    <div className="rounded-2xl border border-border bg-muted/35 p-4">
-      <div className="flex items-center gap-3">
+    <div className="min-w-0 rounded-2xl border border-border bg-muted/35 p-4">
+      <div className="flex min-w-0 items-center gap-3">
         <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
           <Icon className="h-5 w-5" />
         </div>
         <div className="min-w-0">
           <p className="text-xs font-semibold uppercase tracking-[0.14em] text-muted-foreground">{label}</p>
-          <p className="mt-1 text-sm font-semibold text-foreground">Sign in to view</p>
+          <p className="mt-1 break-words text-sm font-semibold text-foreground [overflow-wrap:anywhere]">{value}</p>
         </div>
       </div>
     </div>
@@ -114,7 +160,19 @@ function ActionCard({
   );
 }
 
-function SignInPanel() {
+function SignInPanel({
+  identitySession,
+  loading,
+  signingOut,
+  error,
+  onSignOut,
+}: {
+  identitySession: IdentitySession | null;
+  loading: boolean;
+  signingOut: boolean;
+  error: string | null;
+  onSignOut: () => Promise<void>;
+}) {
   return (
     <div className="overflow-hidden rounded-3xl border border-primary/25 bg-card shadow-lg">
       <div className="bg-[#071a38] px-6 py-7 text-white sm:px-8">
@@ -124,33 +182,46 @@ function SignInPanel() {
               <ShieldCheck className="h-4 w-4" />
               Secure customer access
             </div>
-            <h2 className="mt-4 text-2xl font-bold text-white sm:text-3xl">Sign in to your central account</h2>
-            <p className="mt-2 max-w-2xl leading-relaxed text-white/78">
-              Your JA Group Services ID will be the single place to manage your main personal details, security, sessions and connected services.
+            <h2 className="mt-4 text-2xl font-bold text-white sm:text-3xl">
+              {identitySession ? `Welcome, ${identitySession.user.name}` : 'Sign in to your central account'}
+            </h2>
+            <p className="mt-2 max-w-2xl break-words leading-relaxed text-white/78 [overflow-wrap:anywhere]">
+              {identitySession
+                ? `You are securely signed in using ${identitySession.user.email || 'your JA Group Services ID'}.`
+                : 'Use your JA Group Services ID to access your central personal details, security, sessions and connected services.'}
             </p>
           </div>
           <div className="shrink-0">
-            {microsoftConnectionReady ? (
+            {loading ? (
+              <div className="inline-flex min-h-12 items-center justify-center rounded-xl bg-white/15 px-5 py-3 font-semibold text-white/75">
+                Checking secure session…
+              </div>
+            ) : identitySession ? (
+              <button
+                type="button"
+                onClick={() => void onSignOut()}
+                disabled={signingOut}
+                className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-xl border border-white/55 bg-white/10 px-5 py-3 font-semibold text-white transition hover:bg-white/20 disabled:cursor-wait disabled:opacity-70 sm:w-auto"
+              >
+                <LogOut className="h-5 w-5" />
+                {signingOut ? 'Signing out…' : 'Sign out'}
+              </button>
+            ) : (
               <a
-                href={signInUrl}
+                href="/api/id/sign-in"
                 className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-xl bg-white px-5 py-3 font-semibold text-[#071a38] shadow-sm transition hover:bg-blue-50 sm:w-auto"
               >
                 <LogIn className="h-5 w-5" />
                 Sign in with Microsoft
               </a>
-            ) : (
-              <button
-                type="button"
-                disabled
-                className="inline-flex min-h-12 w-full cursor-not-allowed items-center justify-center gap-2 rounded-xl bg-white/15 px-5 py-3 font-semibold text-white/70 sm:w-auto"
-                title="Microsoft External ID connection is awaiting deployment configuration"
-              >
-                <LogIn className="h-5 w-5" />
-                Sign-in connection pending
-              </button>
             )}
           </div>
         </div>
+        {error && (
+          <div className="mt-5 rounded-2xl border border-red-200/35 bg-red-950/30 px-4 py-3 text-sm leading-relaxed text-red-50">
+            {error}
+          </div>
+        )}
       </div>
       <div className="grid gap-4 px-6 py-6 sm:grid-cols-3 sm:px-8">
         <div className="flex gap-3">
@@ -159,7 +230,7 @@ function SignInPanel() {
         </div>
         <div className="flex gap-3">
           <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-primary" />
-          <p className="text-sm leading-relaxed text-muted-foreground">Personal details are edited centrally, not separately on each brand.</p>
+          <p className="text-sm leading-relaxed text-muted-foreground">Main personal details will be edited centrally rather than separately on each brand.</p>
         </div>
         <div className="flex gap-3">
           <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-primary" />
@@ -170,62 +241,62 @@ function SignInPanel() {
   );
 }
 
-function OverviewSection() {
+function OverviewSection({ identitySession }: { identitySession: IdentitySession | null }) {
   return (
     <>
       <SectionHeading
         title="Account overview"
-        description="This will become the customer’s main control centre for their JA Group Services ID. Personal information remains protected until Microsoft sign-in is completed."
+        description="Your JA Group Services ID is the central identity used across connected customer services."
       />
       <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-        <LockedValue label="Account holder" icon={CircleUserRound} />
-        <LockedValue label="Unique Customer Number" icon={KeyRound} />
-        <LockedValue label="Account status" icon={ShieldCheck} />
-        <LockedValue label="Connected services" icon={Building2} />
+        <DetailValue label="Account holder" icon={CircleUserRound} value={identitySession?.user.name || 'Sign in to view'} />
+        <DetailValue label="Unique Customer Number" icon={KeyRound} value={identitySession ? 'Awaiting central customer record' : 'Sign in to view'} />
+        <DetailValue label="Account status" icon={ShieldCheck} value={identitySession ? 'Microsoft session active' : 'Signed out'} />
+        <DetailValue label="Connected services" icon={Building2} value={identitySession ? 'Connections being prepared' : 'Sign in to view'} />
       </div>
       <div className="mt-6 grid gap-5 lg:grid-cols-3">
         <ActionCard
           icon={UserRoundCog}
           title="Keep your details consistent"
-          description="Update your central name, email address, telephone number and address once. Connected brands will display the latest authorised information in read-only form."
-          action="Sign in required"
+          description="Update central identity information once. Connected brands will display the latest authorised information in read-only form when the customer record service is connected."
+          action={identitySession ? 'Central customer record required' : 'Sign in required'}
         />
         <ActionCard
           icon={ShieldCheck}
           title="Control account security"
-          description="Manage password routes, authentication methods, security alerts and recovery settings for your JA Group Services ID."
-          action="Sign in required"
+          description="Microsoft External ID now performs the secure sign-in. Further authentication and recovery controls will be added as the identity service develops."
+          action={identitySession ? 'Microsoft identity connected' : 'Sign in required'}
         />
         <ActionCard
           icon={MonitorSmartphone}
           title="Review signed-in sessions"
-          description="See the devices and JA services using your account, revoke individual sessions or sign out across connected services."
-          action="Sign in required"
+          description="The current JA Group Services website session is shown now. Group-wide brand session control will follow when each service is connected."
+          action={identitySession ? 'Current session available' : 'Sign in required'}
         />
       </div>
     </>
   );
 }
 
-function PersonalDetailsSection() {
+function PersonalDetailsSection({ identitySession }: { identitySession: IdentitySession | null }) {
   return (
     <>
       <SectionHeading
         title="Personal details"
-        description="These are the central identity details that connected brand websites will display in full but will not be permitted to edit."
+        description="Connected brand websites will display central identity details in full but will not be permitted to edit them."
       />
       <div className="grid gap-4 sm:grid-cols-2">
-        <LockedValue label="Full name" icon={CircleUserRound} />
-        <LockedValue label="Primary email address" icon={Mail} />
-        <LockedValue label="Telephone number" icon={Phone} />
-        <LockedValue label="Address" icon={MapPin} />
+        <DetailValue label="Full name" icon={CircleUserRound} value={identitySession?.user.name || 'Sign in to view'} />
+        <DetailValue label="Primary email address" icon={Mail} value={identitySession?.user.email || (identitySession ? 'Not supplied by Microsoft' : 'Sign in to view')} />
+        <DetailValue label="Telephone number" icon={Phone} value={identitySession ? 'Awaiting central customer record' : 'Sign in to view'} />
+        <DetailValue label="Address" icon={MapPin} value={identitySession ? 'Awaiting central customer record' : 'Sign in to view'} />
       </div>
       <div className="mt-6 rounded-3xl border border-border bg-card p-6 shadow-sm">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
           <div>
             <h3 className="text-lg font-bold text-card-foreground">Central editing only</h3>
             <p className="mt-2 max-w-3xl leading-relaxed text-muted-foreground">
-              Planyx, Profile Centre, JA Domain Hub and other connected services will show these details as read-only. Customers will return here whenever they need to make a change.
+              Microsoft has verified the signed-in identity. Editing, telephone, address and UCN functions will activate when this dashboard is connected to the central customer record shared with Head Office.
             </p>
           </div>
           <span className="inline-flex shrink-0 items-center gap-2 rounded-full bg-primary/10 px-3 py-1.5 text-sm font-semibold text-primary">
@@ -238,40 +309,80 @@ function PersonalDetailsSection() {
   );
 }
 
-function SecuritySection() {
+function SecuritySection({ identitySession }: { identitySession: IdentitySession | null }) {
   return (
     <>
       <SectionHeading
         title="Security settings"
-        description="Microsoft External ID will handle authentication. The dashboard will provide the customer-facing controls while Head Office keeps administrative and recovery authority."
+        description="Microsoft External ID handles authentication, while this dashboard provides customer-facing controls and Head Office retains administrative recovery authority."
       />
+      {identitySession && (
+        <div className="mb-6 grid gap-4 sm:grid-cols-2">
+          <DetailValue label="Identity provider" icon={ShieldCheck} value={identitySession.user.identityProvider} />
+          <DetailValue label="Last authenticated" icon={Activity} value={formatDate(identitySession.session.authTime)} />
+        </div>
+      )}
       <div className="grid gap-5 md:grid-cols-2">
-        <ActionCard icon={KeyRound} title="Password and sign-in" description="Open Microsoft’s secure password and sign-in journey without JA Group Services storing or displaying the customer’s password." action="Microsoft sign-in required" />
-        <ActionCard icon={Smartphone} title="Verification methods" description="Review and manage available authentication and recovery methods, subject to Microsoft External ID capabilities and security checks." action="Microsoft sign-in required" />
-        <ActionCard icon={Bell} title="Security notifications" description="Receive warnings about important changes, unfamiliar activity, session revocations and recovery actions." action="Account connection required" />
-        <ActionCard icon={Activity} title="Recent security activity" description="Review customer-visible events without exposing internal Head Office notes, markers or investigation details." action="Account connection required" />
+        <ActionCard icon={KeyRound} title="Password and sign-in" description="Passwords remain entirely within Microsoft’s secure identity system and are never stored or displayed by JA Group Services." action={identitySession ? 'Managed by Microsoft' : 'Sign in required'} />
+        <ActionCard icon={Smartphone} title="Verification methods" description="Authentication and recovery methods will be presented here where supported by Microsoft External ID and JA security policy." action="Further integration required" />
+        <ActionCard icon={Bell} title="Security notifications" description="Important sign-in, recovery and account-change notifications will be recorded and delivered through the central identity service." action="Central record required" />
+        <ActionCard icon={Activity} title="Recent security activity" description="Customers will see appropriate security events without exposing internal Head Office notes, markers or investigations." action="Central audit service required" />
       </div>
     </>
   );
 }
 
-function SessionsSection() {
+function SessionsSection({
+  identitySession,
+  signingOut,
+  onSignOut,
+}: {
+  identitySession: IdentitySession | null;
+  signingOut: boolean;
+  onSignOut: () => Promise<void>;
+}) {
   return (
     <>
       <SectionHeading
         title="Sessions and devices"
-        description="This area will combine central JA application sessions with Microsoft sign-in controls, allowing customers to manage access across connected services."
+        description="The current secure JA Group Services website session is available now. Sessions from connected brands will appear here as those services adopt the central session register."
       />
       <div className="rounded-3xl border border-border bg-card p-6 shadow-sm sm:p-8">
-        <div className="flex flex-col items-center py-8 text-center">
-          <div className="flex h-16 w-16 items-center justify-center rounded-3xl bg-primary/10 text-primary">
-            <Laptop className="h-8 w-8" />
+        {identitySession ? (
+          <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+            <div className="flex min-w-0 items-start gap-4">
+              <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-primary/10 text-primary">
+                <Laptop className="h-7 w-7" />
+              </div>
+              <div className="min-w-0">
+                <div className="flex flex-wrap items-center gap-2">
+                  <h3 className="text-xl font-bold text-card-foreground">This browser</h3>
+                  <span className="rounded-full bg-green-500/10 px-2.5 py-1 text-xs font-semibold text-green-700 dark:text-green-300">Active now</span>
+                </div>
+                <p className="mt-2 text-sm text-muted-foreground">JA Group Services ID Dashboard</p>
+                <p className="mt-1 text-sm text-muted-foreground">Started {formatDate(identitySession.session.issuedAt)}</p>
+                <p className="mt-1 text-sm text-muted-foreground">Expires {formatDate(identitySession.session.expiresAt)}</p>
+              </div>
+            </div>
+            <button
+              type="button"
+              onClick={() => void onSignOut()}
+              disabled={signingOut}
+              className="inline-flex min-h-11 shrink-0 items-center justify-center gap-2 rounded-xl border border-border bg-muted px-4 py-2.5 font-semibold text-foreground transition hover:bg-secondary disabled:cursor-wait disabled:opacity-70"
+            >
+              <LogOut className="h-4 w-4" />
+              {signingOut ? 'Signing out…' : 'Sign out this session'}
+            </button>
           </div>
-          <h3 className="mt-5 text-xl font-bold text-card-foreground">Sign in to view active sessions</h3>
-          <p className="mt-2 max-w-xl leading-relaxed text-muted-foreground">
-            Once connected, each session will show the service, device, browser, approximate location, sign-in time and last activity. Customers will be able to revoke one session or sign out everywhere.
-          </p>
-        </div>
+        ) : (
+          <div className="flex flex-col items-center py-8 text-center">
+            <div className="flex h-16 w-16 items-center justify-center rounded-3xl bg-primary/10 text-primary">
+              <Laptop className="h-8 w-8" />
+            </div>
+            <h3 className="mt-5 text-xl font-bold text-card-foreground">Sign in to view active sessions</h3>
+            <p className="mt-2 max-w-xl leading-relaxed text-muted-foreground">Your current secure dashboard session will appear here after Microsoft sign-in.</p>
+          </div>
+        )}
       </div>
     </>
   );
@@ -282,7 +393,7 @@ function ServicesSection() {
     <>
       <SectionHeading
         title="Connected services"
-        description="Customers will see which JA Group Services brands are linked to their central identity and can open each service from one place."
+        description="This will show which JA Group Services brands are linked to the central identity and provide one place to open each service."
       />
       <div className="grid gap-4 md:grid-cols-2">
         {connectedServices.map((service) => (
@@ -297,7 +408,7 @@ function ServicesSection() {
                   <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{service.description}</p>
                 </div>
               </div>
-              <span className="shrink-0 rounded-full bg-muted px-3 py-1 text-xs font-semibold text-muted-foreground">{service.status}</span>
+              <span className="max-w-32 shrink-0 rounded-full bg-muted px-3 py-1 text-center text-xs font-semibold text-muted-foreground">{service.status}</span>
             </div>
           </article>
         ))}
@@ -306,7 +417,7 @@ function ServicesSection() {
   );
 }
 
-function PrivacySection() {
+function PrivacySection({ identitySession }: { identitySession: IdentitySession | null }) {
   return (
     <>
       <SectionHeading
@@ -314,12 +425,12 @@ function PrivacySection() {
         description="Group-wide communication choices and customer data requests will be available here, while service-specific preferences remain within the relevant brand."
       />
       <div className="grid gap-5 md:grid-cols-2">
-        <ActionCard icon={Bell} title="Communication preferences" description="Manage group-wide service updates and optional marketing choices from one central account." action="Sign in required" />
-        <ActionCard icon={FileText} title="Data protection requests" description="Request access, correction or other data-protection assistance through the appropriate JA Group Services process." action="Sign in required" />
+        <ActionCard icon={Bell} title="Communication preferences" description="Manage group-wide service updates and optional marketing choices from one central account." action={identitySession ? 'Central record required' : 'Sign in required'} />
+        <ActionCard icon={FileText} title="Data protection requests" description="Request access, correction or other data-protection assistance through the appropriate JA Group Services process." action={identitySession ? 'Request workflow to be connected' : 'Sign in required'} />
       </div>
       <div className="mt-6 rounded-3xl border border-primary/20 bg-primary/5 p-6">
-        <p className="font-semibold text-foreground">Need information before signing in?</p>
-        <p className="mt-2 leading-relaxed text-muted-foreground">The public Privacy Centre explains your rights and how JA Group Services handles personal information.</p>
+        <p className="font-semibold text-foreground">Need information about your rights?</p>
+        <p className="mt-2 leading-relaxed text-muted-foreground">The public Privacy Centre explains how JA Group Services handles personal information.</p>
         <Link to="/privacy-centre" className="mt-4 inline-flex items-center gap-2 font-semibold text-primary hover:underline">
           Open the Privacy Centre
           <ArrowRight className="h-4 w-4" />
@@ -334,18 +445,22 @@ function SupportSection() {
     <>
       <SectionHeading
         title="Help and account recovery"
-        description="Normal Microsoft self-service recovery will come first. Where that fails, the customer will be directed to JA Group Services Customer Services for verified Head Office assistance."
+        description="Normal Microsoft self-service recovery comes first. Where that fails, Customer Services can route the customer into the Head Office recovery process."
       />
       <div className="grid gap-5 md:grid-cols-2">
         <article className="rounded-3xl border border-border bg-card p-6 shadow-sm">
           <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/10 text-primary"><KeyRound className="h-6 w-6" /></div>
           <h3 className="mt-5 text-lg font-bold text-card-foreground">Forgotten password</h3>
-          <p className="mt-2 leading-relaxed text-muted-foreground">Customers will use Microsoft’s secure forgotten-password process. JA Group Services will never display or retrieve a customer’s password.</p>
+          <p className="mt-2 leading-relaxed text-muted-foreground">Use the forgotten-password option shown by Microsoft during sign-in. JA Group Services never displays or retrieves a customer’s password.</p>
+          <a href="/api/id/sign-in" className="mt-5 inline-flex items-center gap-2 font-semibold text-primary hover:underline">
+            Open Microsoft sign-in
+            <ArrowRight className="h-4 w-4" />
+          </a>
         </article>
         <article className="rounded-3xl border border-border bg-card p-6 shadow-sm">
           <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/10 text-primary"><LifeBuoy className="h-6 w-6" /></div>
           <h3 className="mt-5 text-lg font-bold text-card-foreground">Cannot use normal recovery</h3>
-          <p className="mt-2 leading-relaxed text-muted-foreground">Customer Services can open a recovery case for Head Office verification and authorised assistance where the usual Microsoft options cannot be used.</p>
+          <p className="mt-2 leading-relaxed text-muted-foreground">Customer Services can open a recovery case for Head Office verification and authorised assistance where Microsoft’s normal options cannot be used.</p>
           <Link to="/customer-support" className="mt-5 inline-flex items-center gap-2 font-semibold text-primary hover:underline">
             Open Customer Support
             <ArrowRight className="h-4 w-4" />
@@ -356,27 +471,95 @@ function SupportSection() {
   );
 }
 
-function DashboardContent({ section }: { section: DashboardSection }) {
+function DashboardContent({
+  section,
+  identitySession,
+  signingOut,
+  onSignOut,
+}: {
+  section: DashboardSection;
+  identitySession: IdentitySession | null;
+  signingOut: boolean;
+  onSignOut: () => Promise<void>;
+}) {
   switch (section) {
     case 'personal-details':
-      return <PersonalDetailsSection />;
+      return <PersonalDetailsSection identitySession={identitySession} />;
     case 'security':
-      return <SecuritySection />;
+      return <SecuritySection identitySession={identitySession} />;
     case 'sessions':
-      return <SessionsSection />;
+      return <SessionsSection identitySession={identitySession} signingOut={signingOut} onSignOut={onSignOut} />;
     case 'services':
       return <ServicesSection />;
     case 'privacy':
-      return <PrivacySection />;
+      return <PrivacySection identitySession={identitySession} />;
     case 'support':
       return <SupportSection />;
     default:
-      return <OverviewSection />;
+      return <OverviewSection identitySession={identitySession} />;
   }
 }
 
 export default function JAGroupServicesIDPage() {
   const [activeSection, setActiveSection] = useState<DashboardSection>('overview');
+  const [identitySession, setIdentitySession] = useState<IdentitySession | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [signingOut, setSigningOut] = useState(false);
+  const [sessionError, setSessionError] = useState<string | null>(null);
+  const location = useLocation();
+  const callbackError = authErrorMessage(new URLSearchParams(location.search).get('auth_error'));
+
+  useEffect(() => {
+    let cancelled = false;
+
+    async function loadSession() {
+      try {
+        const response = await fetch('/api/id/session', {
+          credentials: 'include',
+          headers: { accept: 'application/json' },
+        });
+        const data = await response.json();
+        if (cancelled) return;
+
+        if (response.ok && data.authenticated) {
+          setIdentitySession(data as IdentitySession);
+          setSessionError(null);
+        } else if (response.status === 503) {
+          setSessionError('The secure identity service is temporarily unavailable.');
+        } else {
+          setIdentitySession(null);
+        }
+      } catch {
+        if (!cancelled) setSessionError('The secure identity service could not be reached.');
+      } finally {
+        if (!cancelled) setLoading(false);
+      }
+    }
+
+    void loadSession();
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  async function handleSignOut() {
+    setSigningOut(true);
+    try {
+      const response = await fetch('/api/id/sign-out', {
+        method: 'POST',
+        credentials: 'include',
+        headers: { accept: 'application/json' },
+      });
+      if (!response.ok) throw new Error('Sign-out failed');
+      setIdentitySession(null);
+      setActiveSection('overview');
+      setSessionError(null);
+    } catch {
+      setSessionError('We could not end the session. Please try again.');
+    } finally {
+      setSigningOut(false);
+    }
+  }
 
   return (
     <>
@@ -409,7 +592,13 @@ export default function JAGroupServicesIDPage() {
 
         <section className="border-b border-border bg-background py-8">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <SignInPanel />
+            <SignInPanel
+              identitySession={identitySession}
+              loading={loading}
+              signingOut={signingOut}
+              error={callbackError || sessionError}
+              onSignOut={handleSignOut}
+            />
           </div>
         </section>
 
@@ -445,7 +634,12 @@ export default function JAGroupServicesIDPage() {
             </aside>
 
             <div className="min-w-0 rounded-3xl border border-border bg-background p-5 shadow-sm sm:p-7 lg:p-8">
-              <DashboardContent section={activeSection} />
+              <DashboardContent
+                section={activeSection}
+                identitySession={identitySession}
+                signingOut={signingOut}
+                onSignOut={handleSignOut}
+              />
             </div>
           </div>
         </section>
