@@ -28,7 +28,7 @@ export async function onRequestGet({ request, env }) {
 
   try {
     if (url.searchParams.get('error')) {
-      return callbackRedirect('/id?auth_error=access_denied', [clearCookie(FLOW_COOKIE)]);
+      return callbackRedirect('/id/sign-in?auth_error=access_denied', [clearCookie(FLOW_COOKIE)]);
     }
 
     const code = String(url.searchParams.get('code') || '');
@@ -85,12 +85,12 @@ export async function onRequestGet({ request, env }) {
       config.signingSecret,
     );
 
-    return callbackRedirect(String(flow.returnTo || '/id'), [
+    return callbackRedirect(String(flow.returnTo || '/id/dashboard'), [
       cookie(SESSION_COOKIE, session, maxAge),
       clearCookie(FLOW_COOKIE),
     ]);
   } catch (error) {
     console.error('ja-id.callback.failed', error);
-    return callbackRedirect(`/id?auth_error=${encodeURIComponent(safeErrorCode(error))}`, [clearCookie(FLOW_COOKIE)]);
+    return callbackRedirect(`/id/sign-in?auth_error=${encodeURIComponent(safeErrorCode(error))}`, [clearCookie(FLOW_COOKIE)]);
   }
 }
