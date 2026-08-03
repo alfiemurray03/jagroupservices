@@ -26,7 +26,7 @@ export async function onRequestGet({ env }) {
         nonce,
         verifier,
         redirectUri: config.redirectUri,
-        returnTo: '/id',
+        returnTo: '/id/dashboard',
         exp: expiresAt,
       },
       config.signingSecret,
@@ -50,6 +50,6 @@ export async function onRequestGet({ env }) {
     });
   } catch (error) {
     console.error('ja-id.sign-in.failed', error);
-    return redirect('/id?auth_error=configuration');
+    return redirect('/id/sign-in?auth_error=configuration');
   }
 }

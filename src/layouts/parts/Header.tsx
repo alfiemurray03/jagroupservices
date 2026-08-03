@@ -108,11 +108,11 @@ export default function Header() {
 
           <div className="hidden items-center gap-2.5 xl:flex">
             <Link
-              to="/id"
+              to="/id/sign-in"
               className="inline-flex min-h-10 items-center gap-2 rounded-xl bg-primary px-3.5 py-2 text-sm font-semibold text-primary-foreground shadow-sm transition hover:bg-primary/90"
             >
               <CircleUserRound className="h-4 w-4" />
-              JA Group Services ID
+              Sign in
             </Link>
             <a
               href="tel:02038342790"
@@ -127,10 +127,10 @@ export default function Header() {
 
           <div className="flex shrink-0 items-center gap-2 xl:hidden">
             <Link
-              to="/id"
+              to="/id/sign-in"
               onClick={closeMobileMenu}
               className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary text-primary-foreground shadow-sm transition hover:bg-primary/90"
-              aria-label="Open JA Group Services ID"
+              aria-label="Sign in to JA Group Services ID"
             >
               <CircleUserRound className="h-5 w-5" />
             </Link>
@@ -156,12 +156,12 @@ export default function Header() {
         >
           <nav className="mx-auto flex max-w-7xl flex-col gap-1 px-4 py-4 sm:px-6" aria-label="Mobile navigation">
             <Link
-              to="/id"
+              to="/id/sign-in"
               onClick={closeMobileMenu}
               className="mb-2 flex min-h-12 items-center gap-3 rounded-xl bg-primary px-4 py-3 text-sm font-semibold text-primary-foreground"
             >
               <CircleUserRound className="h-5 w-5" />
-              JA Group Services ID Dashboard
+              Sign in to JA Group Services ID
             </Link>
             <a
               href="tel:02038342790"
