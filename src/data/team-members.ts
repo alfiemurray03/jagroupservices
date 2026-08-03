@@ -2,7 +2,7 @@ export interface TeamMember {
   slug: string;
   name: string;
   firstName: string;
-  role: string;
+  roles: readonly string[];
   company: string;
   profile: readonly string[];
   phone: string;
@@ -14,31 +14,40 @@ export interface TeamMember {
 export const teamMembers: readonly TeamMember[] = [
   {
     slug: 'jack-nicolau-sousa-da-silva',
-    name: 'Jack Nicolau Sousa Da Silva',
+    name: 'Mr Jack Nicolau Sousa Da Silva',
     firstName: 'Jack',
-    role: 'Group Chief Executive Officer',
-    company: 'JA Group Services Ltd',
+    roles: [
+      'Group Chief Executive Officer, JSDS Group Ltd',
+      'Representative of the Corporate Director (JSDS Group Ltd)',
+      'Chairman to the Board of Directors and Shareholders at JA Group Services Ltd',
+    ],
+    company: 'JSDS Group Ltd and JA Group Services Ltd',
     profile: [
-      'Jack Nicolau Sousa Da Silva serves as Group Chief Executive Officer of JA Group Services Ltd and provides strategic leadership across the organisation. He oversees service development, digital infrastructure and long-term growth initiatives.',
-      'Jack Nicolau Sousa Da Silva also serves as a Director of JSDS Group Ltd, which acts as the corporate director of JA Group Services Ltd.',
+      'Mr Jack Nicolau Sousa Da Silva serves as Group Chief Executive Officer of JSDS Group Ltd.',
+      'He represents JSDS Group Ltd in its capacity as the corporate director of JA Group Services Ltd and serves as Chairman to the Board of Directors and Shareholders at JA Group Services Ltd.',
     ],
     phone: '020 3834 2790',
     phoneHref: '02038342790',
-    email: 'Jack@jagroupservices.co.uk',
+    email: 'jack@jagroupservices.co.uk',
     website: 'jagroupservices.co.uk',
   },
   {
     slug: 'alfie-thomas-holywood-murray',
-    name: 'Alfie Thomas Holywood Murray',
+    name: 'Mr Alfie Thomas Holywood Murray (Lord)',
     firstName: 'Alfie',
-    role: 'Chief Executive Officer',
+    roles: [
+      'Company Director',
+      'Chief Executive Officer (DPO)',
+      'Director of Data Protection | Data Protection Officer',
+    ],
     company: 'JA Group Services Ltd',
     profile: [
-      'Alfie Thomas Holywood Murray serves as Chief Executive Officer of JA Group Services Ltd and oversees operational management and service delivery across the organisation.',
+      'Mr Alfie Thomas Holywood Murray (Lord) serves as a Company Director and Chief Executive Officer of JA Group Services Ltd.',
+      'He also serves as Director of Data Protection and Data Protection Officer, with responsibility for the Company’s data protection governance, compliance and accountability arrangements.',
     ],
     phone: '020 3834 2790',
     phoneHref: '02038342790',
-    email: 'Alfie@jagroupservices.co.uk',
+    email: 'alfie@jagroupservices.co.uk',
     website: 'jagroupservices.co.uk',
   },
 ] as const;
