@@ -36,7 +36,9 @@
     font-size: 0.8rem;
   }
 
-  header nav[aria-label='Main navigation'] + div > a[href='/id/sign-in'] {
+  header nav[aria-label='Main navigation'] + div > a[href='/id/sign-in'],
+  header nav[aria-label='Main navigation'] + div > a[href='/id/dashboard'] {
+    max-width: 11rem;
     padding-left: 0.75rem;
     padding-right: 0.75rem;
   }
