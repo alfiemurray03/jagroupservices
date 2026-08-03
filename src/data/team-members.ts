@@ -33,7 +33,7 @@ export const teamMembers: readonly TeamMember[] = [
   },
   {
     slug: 'alfie-thomas-holywood-murray',
-    name: 'Mr Alfie Thomas Holywood Murray (Lord)',
+    name: 'Mr Alfie Thomas Holywood Murray',
     firstName: 'Alfie',
     roles: [
       'Company Director',
@@ -42,7 +42,7 @@ export const teamMembers: readonly TeamMember[] = [
     ],
     company: 'JA Group Services Ltd',
     profile: [
-      'Mr Alfie Thomas Holywood Murray (Lord) serves as a Company Director and Chief Executive Officer of JA Group Services Ltd.',
+      'Mr Alfie Thomas Holywood Murray serves as a Company Director and Chief Executive Officer of JA Group Services Ltd.',
       'He also serves as Director of Data Protection and Data Protection Officer, with responsibility for the Company’s data protection governance, compliance and accountability arrangements.',
     ],
     phone: '020 3834 2790',
