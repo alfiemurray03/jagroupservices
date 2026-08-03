@@ -6,6 +6,8 @@ import { routes, standaloneRoutes } from './routes';
 import Spinner from './components/Spinner';
 import { LanguageProvider } from './components/LanguageProvider';
 import { AdminAuthProvider } from './components/admin/AdminAuthContext';
+import JAGroupServicesIDSignInPage from './pages/ja-group-services-id-sign-in';
+import JAGroupServicesIDDashboardPage from './pages/ja-group-services-id-dashboard';
 
 const SpinnerFallback = () => (
   <div className="flex justify-center py-8 h-screen items-center">
@@ -36,6 +38,16 @@ const AdminOutletDev = () => (
   </AiroErrorBoundary>
 );
 
+const wrapStandalone = (element: React.ReactNode) => (
+  import.meta.env.MODE === 'development' ? (
+    <AiroErrorBoundary>
+      <Suspense fallback={<SpinnerFallback />}>{element}</Suspense>
+    </AiroErrorBoundary>
+  ) : (
+    <Suspense fallback={<SpinnerFallback />}>{element}</Suspense>
+  )
+);
+
 // Create router with layout wrapper
 const router = createBrowserRouter([
   {
@@ -55,7 +67,10 @@ const router = createBrowserRouter([
         </RootLayout>
       </Suspense>
     ),
-    children: publicRoutes,
+    children: [
+      { path: '/id/sign-in', element: <JAGroupServicesIDSignInPage /> },
+      ...publicRoutes,
+    ],
   },
   // Admin routes — no RootLayout
   {
@@ -67,20 +82,14 @@ const router = createBrowserRouter([
       path: (r.path as string).replace(/^\/admin\/?/, '') || undefined,
     })),
   },
+  {
+    path: '/id/dashboard',
+    element: wrapStandalone(<JAGroupServicesIDDashboardPage />),
+  },
   // Standalone routes (no layout)
   ...standaloneRoutes.map(route => ({
     ...route,
-    element: import.meta.env.MODE === 'development' ? (
-      <AiroErrorBoundary>
-        <Suspense fallback={<SpinnerFallback />}>
-          {route.element}
-        </Suspense>
-      </AiroErrorBoundary>
-    ) : (
-      <Suspense fallback={<SpinnerFallback />}>
-        {route.element}
-      </Suspense>
-    ),
+    element: wrapStandalone(route.element),
   })),
 ]);
 
