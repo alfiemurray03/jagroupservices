@@ -32,6 +32,9 @@ export interface SeoRoute {
 export const seoRoutes: SeoRoute[] = [
   { path: "/", changefreq: "weekly", priority: 1.0 },
   { path: "/about-us", changefreq: "monthly", priority: 0.8 },
+  { path: "/meet-the-team", changefreq: "monthly", priority: 0.8 },
+  { path: "/team/jack-nicolau-sousa-da-silva", changefreq: "monthly", priority: 0.6 },
+  { path: "/team/alfie-thomas-holywood-murray", changefreq: "monthly", priority: 0.6 },
   { path: "/about-our-divisions", changefreq: "monthly", priority: 0.8 },
   { path: "/our-group-structure", changefreq: "monthly", priority: 0.8 },
   { path: "/partner-with-us", changefreq: "monthly", priority: 0.8 },
