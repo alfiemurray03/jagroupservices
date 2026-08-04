@@ -2,6 +2,7 @@ import {
   BadgePoundSterling,
   CircleHelp,
   FileWarning,
+  GraduationCap,
   Handshake,
   Headphones,
   KeyRound,
@@ -34,6 +35,20 @@ const sections = [
         linkLabel: 'Contact customer support',
       },
       {
+        icon: GraduationCap,
+        title: 'Aptenvo learner and enrolment support',
+        description:
+          'Help with Aptenvo course information, enrolment, access instructions, learner administration or provider escalation.',
+        items: [
+          'Include the course title and enrolment reference',
+          'Explain whether the issue concerns enrolment, access, completion or certification',
+          'Provider-controlled learning or assessment matters may need to be escalated',
+        ],
+        href: 'https://aptenvo.jagroupservices.co.uk/',
+        linkLabel: 'Visit Aptenvo',
+        external: true,
+      },
+      {
         icon: KeyRound,
         title: 'Account access and recovery',
         description:
@@ -46,8 +61,8 @@ const sections = [
         icon: BadgePoundSterling,
         title: 'Billing and payments',
         description:
-          'Questions about quotations, Stripe payment links, invoices, renewals, subscriptions or payment records.',
-        items: ['Include the invoice or payment reference', 'State the relevant service', 'Never email full card details'],
+          'Questions about quotations, Stripe payment links, invoices, course enrolments, renewals, subscriptions or payment records.',
+        items: ['Include the invoice, enrolment or payment reference', 'State the relevant service', 'Never email full card details'],
         href: '/contactus',
         linkLabel: 'Raise a billing enquiry',
       },
@@ -91,7 +106,7 @@ const sections = [
         icon: Handshake,
         title: 'Partnership and supplier enquiries',
         description:
-          'Commercial partnerships, supplier introductions, platform integrations and other business-to-business discussions.',
+          'Commercial partnerships, supplier introductions, training-provider relationships, platform integrations and other business-to-business discussions.',
         href: '/partner-with-us',
         linkLabel: 'Partner with us',
       },
@@ -116,13 +131,13 @@ const sections = [
         icon: FileWarning,
         title: 'Describe the issue clearly',
         description:
-          'Explain what happened, when it happened, which service was involved and what you expected to happen instead.',
+          'Explain what happened, when it happened, which service or Aptenvo course was involved and what you expected to happen instead.',
       },
       {
         icon: LifeBuoy,
         title: 'Include useful references',
         description:
-          'Provide account, ticket, invoice, order or complaint references where available. Do not send passwords, one-time codes or full payment-card details.',
+          'Provide account, ticket, invoice, order, enrolment or complaint references where available. Do not send passwords, one-time codes or full payment-card details.',
       },
       {
         icon: ShieldCheck,
@@ -134,7 +149,7 @@ const sections = [
         icon: Headphones,
         title: 'Tell us the outcome sought',
         description:
-          'State whether you need information, a correction, technical help, an investigation, an explanation or another specific resolution.',
+          'State whether you need information, a correction, technical help, learner support, an investigation, an explanation or another specific resolution.',
       },
     ],
   },
@@ -145,20 +160,20 @@ export default function CustomerSupportPage() {
     <CorporateInformationPage
       title="Customer Support Centre"
       pageTitle="Customer Support Centre | JA Group Services Ltd"
-      description="Find the correct support route for accounts, billing, complaints, privacy, security, safeguarding and general customer enquiries."
+      description="Find the correct support route for Aptenvo courses and enrolments, accounts, billing, complaints, privacy, security, safeguarding and general customer enquiries."
       canonicalPath="/customer-support"
       badge="Help and Support"
       heroIcon={Headphones}
-      introduction="The Customer Support Centre directs customers, service users and business contacts to the right team, policy or escalation route across JA Group Services Ltd and its operating services."
+      introduction="The Customer Support Centre directs customers, Aptenvo learners, service users and business contacts to the right team, policy or escalation route across JA Group Services Ltd and its operating brands."
       notice={{
         icon: ShieldCheck,
         title: 'Keep account and payment information secure',
         description:
-          'We will never ask you to send a password, one-time authentication code or full payment-card number by email. Where identity verification is required, we will explain the appropriate process.',
+          'We will never ask you to send a password, one-time authentication code or full payment-card number by email. Where identity or enrolment verification is required, we will explain the appropriate process.',
       }}
       sections={sections}
       closingTitle="Still unsure where your enquiry belongs?"
-      closingDescription="Send the details to our general contact route and identify the relevant platform or service. We will direct the matter to the appropriate process."
+      closingDescription="Send the details to our general contact route and identify the relevant brand, platform, service or Aptenvo course. We will direct the matter to the appropriate process."
       actions={[
         { label: 'Contact JA Group Services', href: '/contactus' },
         { label: 'Email contact@jagroupservices.co.uk', href: 'mailto:contact@jagroupservices.co.uk', variant: 'outline' },
