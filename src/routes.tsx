@@ -1,6 +1,6 @@
 import { RouteObject } from 'react-router-dom';
 import { lazy } from 'react';
-import HomePage from './pages/index';
+import HomePage from './pages/home-with-aptenvo';
 
 import AboutUsPage from './pages/about-us';
 import MeetTheTeamPage from './pages/meet-the-team';
