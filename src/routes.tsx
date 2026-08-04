@@ -6,7 +6,7 @@ import AboutUsPage from './pages/about-us';
 import MeetTheTeamPage from './pages/meet-the-team';
 import JackNicolauSousaDaSilvaPage from './pages/team/jack-nicolau-sousa-da-silva';
 import AlfieThomasHolywoodMurrayPage from './pages/team/alfie-thomas-holywood-murray';
-import AboutOurDivisionsPage from './pages/about-our-divisions';
+import AboutOurDivisionsPage from './pages/brands';
 import OurGroupStructurePage from './pages/our-group-structure';
 import ServicesPage from './pages/services';
 import CustomerSupportPage from './pages/customer-support';
