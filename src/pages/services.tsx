@@ -6,11 +6,11 @@ import {
   CreditCard,
   FileSearch,
   Globe2,
+  GraduationCap,
   Headphones,
   Layers3,
   LifeBuoy,
   MonitorCog,
-  Network,
   ReceiptText,
   Settings2,
   ShieldCheck,
@@ -78,6 +78,20 @@ const sections = [
         ],
         href: 'https://jadomainhub.jagroupservices.co.uk/',
         linkLabel: 'Visit JA Domain Hub',
+        external: true,
+      },
+      {
+        icon: GraduationCap,
+        title: 'Online Learning and eLearning',
+        description:
+          'Selected online learning and workplace-training courses made available through Aptenvo and approved external training providers.',
+        items: [
+          'Adult and organisation course enrolments',
+          'Course information and first-line learner support',
+          'Provider-delivered learning, assessment and certification',
+        ],
+        href: 'https://aptenvo.jagroupservices.co.uk/',
+        linkLabel: 'Visit Aptenvo',
         external: true,
       },
       {
@@ -175,20 +189,20 @@ export default function ServicesPage() {
     <CorporateInformationPage
       title="Our Services"
       pageTitle="Our Services | JA Group Services Ltd"
-      description="Explore managed websites, digital platform development, website management, integrations, domain services and bespoke digital solutions from JA Group Services Ltd."
+      description="Explore managed websites, digital platform development, Aptenvo online learning, website management, integrations, domain services and bespoke digital solutions from JA Group Services Ltd."
       canonicalPath="/services"
       badge="Digital Services"
       heroIcon={Layers3}
-      introduction="JA Group Services Ltd develops, manages and supports practical digital services for individuals and organisations. Most business services are priced according to scope, so our team will confirm the requirement before providing a quotation and secure Stripe payment route."
+      introduction="JA Group Services Ltd develops, manages and supports practical digital services for individuals and organisations. Our portfolio includes managed websites, digital platforms, Aptenvo online learning and partner-supported services. Most bespoke business services are priced according to scope, so our team will confirm the requirement before providing a quotation and secure Stripe payment route."
       notice={{
         icon: LifeBuoy,
         title: 'Custom pricing, properly scoped',
         description:
-          'Business and managed services are not sold through an unrestricted public checkout. Contact us first so that we can confirm suitability, responsibilities and pricing before issuing a quotation or payment link.',
+          'Business and managed services are not sold through an unrestricted public checkout. Contact us first so that we can confirm suitability, responsibilities and pricing before issuing a quotation or payment link. Aptenvo course pricing and enrolment arrangements are shown through the Aptenvo service where available.',
       }}
       sections={sections}
       closingTitle="Start with the outcome you need"
-      closingDescription="Tell us what you are trying to build, improve or manage. We will review the request and explain the most appropriate next step."
+      closingDescription="Tell us what you are trying to build, improve, manage or learn. We will review the request and explain the most appropriate next step."
       actions={[
         { label: 'Request a quotation', href: '/contactus' },
         { label: 'Visit Customer Support', href: '/customer-support', variant: 'outline' },
