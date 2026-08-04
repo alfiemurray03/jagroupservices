@@ -70,6 +70,11 @@ function AptenvoPortfolioCard() {
 function addAptenvoToPortfolio(node: ReactNode): ReactNode {
   if (!isValidElement<ElementProps>(node)) return node;
 
+  // Preserve Button's single child exactly. Rebuilding an `asChild` Button
+  // converts its anchor into an array and prevents the original card buttons
+  // from rendering correctly.
+  if (node.type === Button) return node;
+
   const { className, children } = node.props;
   const updatedChildren = Children.map(children, addAptenvoToPortfolio);
   const isPortfolioGrid =
