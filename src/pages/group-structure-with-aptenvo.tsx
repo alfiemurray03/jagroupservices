@@ -6,6 +6,7 @@ import OriginalGroupStructurePage from './our-group-structure';
 type ElementProps = {
   asChild?: boolean;
   children?: ReactNode;
+  [key: string]: unknown;
 };
 
 const textReplacements: Record<string, string> = {
@@ -22,11 +23,21 @@ const textReplacements: Record<string, string> = {
 function enhanceGroupStructure(node: ReactNode): ReactNode {
   if (typeof node === 'string') return textReplacements[node] ?? node;
   if (!isValidElement<ElementProps>(node)) return node;
-  if (node.props.asChild || node.props.children === undefined) return node;
+
+  const replacementProps: Partial<ElementProps> = {};
+  Object.entries(node.props).forEach(([key, value]) => {
+    if (typeof value === 'string' && textReplacements[value]) {
+      replacementProps[key] = textReplacements[value];
+    }
+  });
+
+  if (node.props.asChild || node.props.children === undefined) {
+    return cloneElement(node, replacementProps);
+  }
 
   return cloneElement(
     node,
-    undefined,
+    replacementProps,
     Children.map(node.props.children, enhanceGroupStructure)
   );
 }
