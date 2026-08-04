@@ -178,6 +178,11 @@ export default function Footer() {
                 </a>
               </li>
               <li>
+                <a href="https://aptenvo.jagroupservices.co.uk/" target="_blank" rel="noopener noreferrer" className={`${linkClass} inline-flex items-center gap-1`}>
+                  Aptenvo <ExternalLink className="h-3 w-3" />
+                </a>
+              </li>
+              <li>
                 <a href="https://jadomainhub.jagroupservices.co.uk/" target="_blank" rel="noopener noreferrer" className={`${linkClass} inline-flex items-center gap-1`}>
                   JA Domain Hub <ExternalLink className="h-3 w-3" />
                 </a>
