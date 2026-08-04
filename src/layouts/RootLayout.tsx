@@ -78,7 +78,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
       '/id': 'JA Group Services ID',
       '/about-us': 'About Us',
       '/meet-the-team': 'Meet the Team',
-      '/about-our-divisions': 'Divisions and Platforms',
+      '/about-our-divisions': 'Brands and Divisions',
       '/our-group-structure': 'Our Group Structure',
       '/services': 'Our Services',
       '/customer-support': 'Customer Support',
