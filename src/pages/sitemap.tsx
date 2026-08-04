@@ -7,6 +7,7 @@ import {
   ExternalLink,
   FileText,
   Globe,
+  GraduationCap,
   Handshake,
   Headphones,
   Home,
@@ -49,19 +50,19 @@ const siteStructure: readonly {
   },
   {
     category: 'Company',
-    description: 'Corporate identity, leadership, divisions and governance.',
+    description: 'Corporate identity, leadership, brands, divisions and governance.',
     icon: Building2,
     links: [
       { path: '/about-us', label: 'About Us', icon: Building2, internal: true },
       { path: '/meet-the-team', label: 'Meet the Team', icon: Users, internal: true },
-      { path: '/about-our-divisions', label: 'Divisions and Platforms', icon: Globe, internal: true },
+      { path: '/about-our-divisions', label: 'Brands and Divisions', icon: Globe, internal: true },
       { path: '/our-group-structure', label: 'Our Group Structure', icon: Network, internal: true },
       { path: '/governance', label: 'Governance and Corporate Information', icon: Scale, internal: true },
     ],
   },
   {
     category: 'Support and Trust',
-    description: 'Customer help, personal data rights, security, accessibility and safeguarding.',
+    description: 'Customer and learner help, personal data rights, security, accessibility and safeguarding.',
     icon: Headphones,
     links: [
       { path: '/customer-support', label: 'Customer Support Centre', icon: Headphones, internal: true },
@@ -74,11 +75,12 @@ const siteStructure: readonly {
   },
   {
     category: 'Operating Brands',
-    description: 'Customer-facing platforms and trading services operated within the group structure.',
+    description: 'Customer-facing platforms, learning services and trading operations managed by JA Group Services Ltd.',
     icon: Globe,
     links: [
       { path: 'https://profilecentre.jagroupservices.co.uk/', label: 'Profile Centre', icon: Users, internal: false },
       { path: 'https://planyx.jagroupservices.co.uk/', label: 'Planyx', icon: Globe, internal: false },
+      { path: 'https://aptenvo.jagroupservices.co.uk/', label: 'Aptenvo', icon: GraduationCap, internal: false },
       { path: 'https://jadomainhub.jagroupservices.co.uk/', label: 'JA Domain Hub', icon: Globe, internal: false },
     ],
   },
@@ -100,7 +102,7 @@ export default function SitemapPage() {
     <>
       <Helmet>
         <title>Sitemap | JA Group Services Ltd</title>
-        <meta name="description" content="Browse the complete JA Group Services Ltd website structure, including services, company information, support, trust and legal pages." />
+        <meta name="description" content="Browse the complete JA Group Services Ltd website structure, including Aptenvo, services, operating brands, company information, support, trust and legal pages." />
         <link rel="canonical" href="https://jagroupservices.co.uk/sitemap" />
       </Helmet>
 
@@ -115,7 +117,7 @@ export default function SitemapPage() {
               </div>
               <h1 className="mt-6 text-4xl font-extrabold sm:text-5xl lg:text-6xl">Sitemap</h1>
               <p className="mx-auto mt-5 max-w-3xl text-base leading-relaxed text-white/80 sm:text-lg">
-                Find company information, services, support routes, policies and customer-facing platforms from one structured directory.
+                Find company information, services, support routes, policies and customer-facing brands, including Aptenvo, from one structured directory.
               </p>
             </motion.div>
           </div>
@@ -176,7 +178,7 @@ export default function SitemapPage() {
         <section className="border-t border-border bg-secondary py-14 text-center">
           <div className="mx-auto max-w-3xl px-4 sm:px-6">
             <h2 className="text-3xl font-bold text-foreground">Need help finding the right route?</h2>
-            <p className="mt-4 leading-relaxed text-muted-foreground">The Customer Support Centre can direct account, billing, privacy, security, safeguarding and general enquiries.</p>
+            <p className="mt-4 leading-relaxed text-muted-foreground">The Customer Support Centre can direct Aptenvo course and enrolment enquiries, account, billing, privacy, security, safeguarding and general enquiries.</p>
             <Link to="/customer-support" className="mt-7 inline-flex min-h-11 items-center rounded-xl bg-primary px-6 py-3 font-semibold text-primary-foreground transition-colors hover:bg-primary/90">
               Open Customer Support
             </Link>
