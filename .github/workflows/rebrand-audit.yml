@@ -13,13 +13,14 @@ jobs:
       - name: Find previous public brand names and URLs
         shell: bash
         run: |
-          echo "=== LEGACY BRAND REFERENCES ==="
+          echo "=== LEGACY PUBLIC BRAND REFERENCES ==="
           grep -RInE \
             --exclude-dir=.git \
             --exclude-dir=node_modules \
             --exclude-dir=dist \
             --exclude='package-lock.json' \
             --exclude='rebrand-audit.yml' \
+            --exclude='brands.tsx' \
             'Profile Centre|Planyx|Aptenvo|JA Domain Hub|profilecentre\.jagroupservices\.co\.uk|planyx\.jagroupservices\.co\.uk|aptenvo\.jagroupservices\.co\.uk|jadomainhub\.jagroupservices\.co\.uk' \
-            . || true
-          echo "=== END LEGACY BRAND REFERENCES ==="
+            src public || true
+          echo "=== END LEGACY PUBLIC BRAND REFERENCES ==="
