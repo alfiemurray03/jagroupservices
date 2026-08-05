@@ -61,9 +61,10 @@ type Brand = {
   services: readonly string[];
   audience: string;
   support: string;
-  href: string;
-  button: string;
+  href?: string;
+  button?: string;
   alternate?: boolean;
+  comingSoon?: boolean;
 };
 
 const brands: readonly Brand[] = [
@@ -183,12 +184,13 @@ const brands: readonly Brand[] = [
   {
     name: 'Sousa Murray Sites',
     eyebrow: 'Managed Website Services',
-    classification: 'Customer-facing brand of JA Group Services Ltd',
+    classification: 'Approved forthcoming brand of JA Group Services Ltd',
     icon: Network,
     accent: 'blue',
+    comingSoon: true,
     description: [
-      'Sousa Murray Sites is the dedicated customer-facing brand for Managed Website Services designed, built, configured, maintained or managed directly by JA Group Services Ltd.',
-      'It is separate from the authorised reseller-based domain services presented through Sousa Murray Domains, while both brands remain operated by JA Group Services Ltd.',
+      'Sousa Murray Sites is the approved forthcoming brand for Managed Website Services designed, built, configured, maintained or managed directly by JA Group Services Ltd.',
+      'The Sousa Murray Sites website and customer-facing service area are still being built and have not yet launched. It will remain separate from the authorised reseller-based domain services presented through Sousa Murray Domains.',
     ],
     services: [
       'Managed website design',
@@ -203,9 +205,7 @@ const brands: readonly Brand[] = [
     audience:
       'Individuals, sole traders and organisations seeking a website designed, built, maintained or managed by JA Group Services Ltd.',
     support:
-      'JA Group Services Ltd provides project, website-management, maintenance and customer support for services delivered through Sousa Murray Sites.',
-    href: 'https://sousamurraysites.jagroupservices.co.uk/',
-    button: 'Visit Sousa Murray Sites',
+      'Customer support and service-access arrangements will be confirmed before Sousa Murray Sites launches. Existing Managed Website Service enquiries remain handled by JA Group Services Ltd.',
   },
 ];
 
@@ -426,7 +426,14 @@ function BrandSection({ brand }: { brand: Brand }) {
             </div>
             <div>
               <p className="mb-2 text-sm font-semibold uppercase tracking-[0.18em] text-muted-foreground">{brand.classification}</p>
-              <h2 className="text-3xl font-bold text-foreground sm:text-4xl">{brand.name}</h2>
+              <div className="flex flex-wrap items-center gap-3">
+                <h2 className="text-3xl font-bold text-foreground sm:text-4xl">{brand.name}</h2>
+                {brand.comingSoon && (
+                  <span className="rounded-full border border-border bg-secondary px-3 py-1 text-xs font-semibold text-muted-foreground">
+                    Coming soon
+                  </span>
+                )}
+              </div>
             </div>
 
             <div className="space-y-4 text-base leading-relaxed text-muted-foreground sm:text-lg">
@@ -442,12 +449,18 @@ function BrandSection({ brand }: { brand: Brand }) {
               {brand.support}
             </InfoPanel>
 
-            <a href={brand.href} target="_blank" rel="noopener noreferrer" className="inline-block pt-1">
-              <Button size="lg" className={`min-h-12 px-7 font-bold ${accentClasses.button}`}>
-                {brand.button}
-                <ExternalLink className="ml-2 h-4 w-4" />
+            {brand.comingSoon ? (
+              <Button type="button" size="lg" variant="outline" disabled className="min-h-12 px-7 font-bold">
+                Coming soon
               </Button>
-            </a>
+            ) : (
+              <a href={brand.href} target="_blank" rel="noopener noreferrer" className="inline-block pt-1">
+                <Button size="lg" className={`min-h-12 px-7 font-bold ${accentClasses.button}`}>
+                  {brand.button}
+                  <ExternalLink className="ml-2 h-4 w-4" />
+                </Button>
+              </a>
+            )}
           </motion.div>
 
           <motion.div

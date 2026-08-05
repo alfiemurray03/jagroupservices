@@ -187,6 +187,9 @@ export default function Footer() {
                   Sousa Murray Domains <ExternalLink className="h-3 w-3" />
                 </a>
               </li>
+              <li>
+                <span className={`${linkClass} cursor-default`}>Sousa Murray Sites — Coming soon</span>
+              </li>
             </ul>
           </div>
 

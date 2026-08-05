@@ -82,6 +82,7 @@ const siteStructure: readonly {
       { path: 'https://sousamurrayplaneia.jagroupservices.co.uk/', label: 'Sousa Murray Planeia', icon: Globe, internal: false },
       { path: 'https://sousamurrayelearning.jagroupservices.co.uk/', label: 'Sousa Murray eLearning', icon: GraduationCap, internal: false },
       { path: 'https://sousamurraydomains.jagroupservices.co.uk/', label: 'Sousa Murray Domains', icon: Globe, internal: false },
+      { path: '/about-our-divisions', label: 'Sousa Murray Sites — Coming soon', icon: Globe, internal: true },
     ],
   },
   {

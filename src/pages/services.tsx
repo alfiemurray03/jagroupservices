@@ -31,7 +31,7 @@ const sections = [
         icon: MonitorCog,
         title: 'Managed Websites',
         description:
-          'A fully managed website service for organisations that need a professional online presence without managing the technical work themselves.',
+          'A fully managed website service for organisations that need a professional online presence without managing the technical work themselves. The dedicated Sousa Murray Sites website and customer-facing service area are coming soon and have not yet launched.',
         items: [
           'Website design, build and launch coordination',
           'Managed updates, maintenance and technical administration',
