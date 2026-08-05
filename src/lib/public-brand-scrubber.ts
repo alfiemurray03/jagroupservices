@@ -1,4 +1,9 @@
+const LEGACY_NAMES = '(?:JA Domain Hub|JA Plan Studio|Planyx|JA Profile Studio|Profile Centre|Aptenvo)';
+
 const LEGACY_REPLACEMENTS: Array<[RegExp, string]> = [
+  [new RegExp(`\\s*\\((?:formerly|previously)(?: known as)?\\s+${LEGACY_NAMES}\\)`, 'gi'), ''],
+  [new RegExp(`\\s*[–—-]\\s*(?:formerly|previously)(?: known as)?\\s+${LEGACY_NAMES}`, 'gi'), ''],
+  [new RegExp(`\\b(?:formerly|previously)(?: known as)?\\s+${LEGACY_NAMES}\\b`, 'gi'), ''],
   [/[A-Z0-9._%+-]+@(?:planyx|aptenvo|profilecentre|profilecenter|jadomainhub)\.jagroupservices\.co\.uk/gi, 'contact@jagroupservices.co.uk'],
   [/\b(?:planyx|aptenvo|profilecentre|profilecenter|jadomainhub)@jagroupservices\.co\.uk\b/gi, 'contact@jagroupservices.co.uk'],
   [/https?:\/\/(?:www\.)?planyx\.jagroupservices\.co\.uk/gi, 'https://sousamurrayplaneia.jagroupservices.co.uk'],
