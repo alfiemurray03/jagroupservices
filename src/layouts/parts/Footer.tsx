@@ -198,7 +198,7 @@ export default function Footer() {
             <ul className="space-y-2.5">
               <li><Link to="/about-us" className={linkClass}>About Us</Link></li>
               <li><Link to="/meet-the-team" className={linkClass}>Meet the Team</Link></li>
-              <li><Link to="/about-our-divisions" className={linkClass}>Divisions and Platforms</Link></li>
+              <li><Link to="/about-our-divisions" className={linkClass}>Sousa Murray Brands</Link></li>
               <li><Link to="/our-group-structure" className={linkClass}>Our Group Structure</Link></li>
               <li><Link to="/governance" className={linkClass}>Governance</Link></li>
               <li><Link to="/announcements" className={linkClass}>Announcements</Link></li>

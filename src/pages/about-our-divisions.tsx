@@ -119,7 +119,7 @@ export default function AboutOurDivisionsPage() {
         <meta property="og:title" content="Our Brands and Division — JA Group Services Ltd" />
         <meta
           property="og:description"
-          content="Detailed information about Sousa Murray Profiles, Sousa Murray Planeia and Sousa Murray Domains, including Sousa Murray Domains's first-line customer support and provider-escalation process."
+          content="Detailed information about Sousa Murray Profiles, Sousa Murray Planeia and Sousa Murray Domains, including Sousa Murray Domains’ first-line customer support and provider-escalation process."
         />
         <meta property="og:url" content={url} />
         <meta property="og:type" content="website" />
