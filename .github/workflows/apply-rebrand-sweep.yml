@@ -1,0 +1,80 @@
+name: Apply approved Sousa Murray name sweep
+
+on:
+  push:
+    branches:
+      - rebrand/sousa-murray-corporate-site
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: rebrand/sousa-murray-corporate-site
+          fetch-depth: 0
+
+      - name: Apply approved public name and URL replacements
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          files = [
+              'src/layouts/parts/Footer.tsx',
+              'src/lib/translations.ts',
+              'src/components/CustomerWebsitesMenu.tsx',
+              'src/components/FooterCorporateDisclosure.tsx',
+              'src/pages/index.tsx',
+              'src/pages/customer-support.tsx',
+              'src/pages/services.tsx',
+              'src/pages/jsds-group.tsx',
+              'src/pages/terms-of-service.tsx',
+              'src/pages/about-our-divisions.tsx',
+              'src/pages/ja-group-services-id-dashboard.tsx',
+              'src/pages/sitemap.tsx',
+              'src/pages/about-us.tsx',
+              'src/pages/ja-group-services-id.tsx',
+          ]
+
+          replacements = [
+              ('https://profilecentre.jagroupservices.co.uk/', 'https://sousamurrayprofiles.jagroupservices.co.uk/'),
+              ('https://planyx.jagroupservices.co.uk/', 'https://sousamurrayplaneia.jagroupservices.co.uk/'),
+              ('https://aptenvo.jagroupservices.co.uk/', 'https://sousamurrayelearning.jagroupservices.co.uk/'),
+              ('https://jadomainhub.jagroupservices.co.uk/', 'https://sousamurraydomains.jagroupservices.co.uk/'),
+              ('Profile Centre', 'Sousa Murray Profiles'),
+              ('Planyx', 'Sousa Murray Planeia'),
+              ('Aptenvo', 'Sousa Murray eLearning'),
+              ('JA Domain Hub', 'Sousa Murray Domains'),
+          ]
+
+          changed = []
+          for file_name in files:
+              path = Path(file_name)
+              text = path.read_text(encoding='utf-8')
+              updated = text
+              for old, new in replacements:
+                  updated = updated.replace(old, new)
+              if updated != text:
+                  path.write_text(updated, encoding='utf-8')
+                  changed.append(file_name)
+
+          print('Updated files:')
+          for file_name in changed:
+              print(f'- {file_name}')
+          PY
+
+          rm .github/workflows/apply-rebrand-sweep.yml
+
+      - name: Commit approved sweep
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src .github/workflows/apply-rebrand-sweep.yml
+          git commit -m "Update corporate site references to Sousa Murray brands"
+          git push origin HEAD:rebrand/sousa-murray-corporate-site
