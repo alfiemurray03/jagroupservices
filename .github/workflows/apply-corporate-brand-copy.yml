@@ -1,0 +1,82 @@
+name: Apply corporate Sousa Murray copy
+
+on:
+  push:
+    branches:
+      - rebrand/sousa-murray-corporate-site
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: rebrand/sousa-murray-corporate-site
+          fetch-depth: 0
+      - name: Apply approved corporate copy
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          def replace_required(path_name: str, old: str, new: str) -> None:
+              path = Path(path_name)
+              text = path.read_text(encoding='utf-8')
+              if old not in text:
+                  raise SystemExit(f'Required text not found in {path_name}: {old[:120]!r}')
+              path.write_text(text.replace(old, new, 1), encoding='utf-8')
+
+          replace_required(
+              'src/pages/index.tsx',
+              "const title = 'JA Group Services Ltd | Digital Platforms and Customer Services';\nconst description =\n  'JA Group Services Ltd develops, operates and manages digital platforms and customer services. We combine our own technology, central support functions and selected partner services to provide practical online solutions for individuals and organisations.';",
+              "const title = 'JA Group Services Ltd | Sousa Murray Brands and Digital Services';\nconst description =\n  'JA Group Services Ltd is the legal operating company behind the Sousa Murray master brand and its approved customer-facing digital brands and services.';",
+          )
+          replace_required(
+              'src/pages/index.tsx',
+              "                  Digital platforms · Customer services · Partner-supported solutions",
+              "                  JA Group Services Ltd · Home of the Sousa Murray master brand",
+          )
+          replace_required(
+              'src/pages/index.tsx',
+              "                  <p>JA Group Services Ltd develops, operates and manages digital platforms and customer services.</p>\n                  <p>\n                    We combine our own technology, central support functions and selected partner services to provide practical online solutions for individuals and organisations.\n                  </p>",
+              "                  <p>JA Group Services Ltd is the legal operating company behind the Sousa Murray master brand.</p>\n                  <p>\n                    Through Sousa Murray, the Company operates approved customer-facing brands while retaining central legal responsibility, governance and operational accountability.\n                  </p>",
+          )
+          replace_required(
+              'src/pages/index.tsx',
+              "                    <Link to=\"/about-our-divisions\">Our Brands and Division</Link>",
+              "                    <Link to=\"/about-our-divisions\">Sousa Murray Brands</Link>",
+          )
+          replace_required(
+              'src/pages/index.tsx',
+              "                  One company supporting a focused digital portfolio",
+              "                  One legal company behind the Sousa Murray brand family",
+          )
+          replace_required(
+              'src/pages/index.tsx',
+              "                  JA Group Services Ltd brings its platforms, customer services and operational functions together under one managed company structure. This allows us to maintain consistent support, administration, governance and accountability across the services we operate.",
+              "                  JA Group Services Ltd brings the Sousa Murray brands, customer services and operational functions together under one managed legal company structure. This allows us to maintain consistent support, administration, governance and accountability across the services we operate.",
+          )
+          replace_required(
+              'src/layouts/parts/Footer.tsx',
+              "              <li><Link to=\"/about-our-divisions\" className={linkClass}>Divisions and Platforms</Link></li>",
+              "              <li><Link to=\"/about-our-divisions\" className={linkClass}>Sousa Murray Brands</Link></li>",
+          )
+          replace_required(
+              'src/pages/about-our-divisions.tsx',
+              "Sousa Murray Domains's first-line customer support",
+              "Sousa Murray Domains’ first-line customer support",
+          )
+          PY
+          rm .github/workflows/apply-corporate-brand-copy.yml
+      - name: Commit corporate copy updates
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src .github/workflows/apply-corporate-brand-copy.yml
+          git commit -m "Reflect Sousa Murray master brand across corporate homepage"
+          git push origin HEAD:rebrand/sousa-murray-corporate-site
