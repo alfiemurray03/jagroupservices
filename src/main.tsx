@@ -7,6 +7,7 @@ import { PWAInstallPrompt } from './components/PWAInstallPrompt';
 import { AutoRefresh } from './components/AutoRefresh';
 import { installJAIDFederatedSignOut } from './lib/ja-id-federated-sign-out';
 import { installJAIDConnectedSessionsUI } from './lib/ja-id-connected-sessions-ui';
+import { installPublicBrandScrubber } from './lib/public-brand-scrubber';
 import './styles/globals.css';
 import './styles/theme-fixes.css';
 import './styles/logo-size-adjustments.css';
@@ -107,3 +108,5 @@ function Root() {
     </React.StrictMode>;
 }
 root.render(<HelmetProvider><Root /></HelmetProvider>);
+
+installPublicBrandScrubber();
