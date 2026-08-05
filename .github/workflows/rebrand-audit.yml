@@ -1,0 +1,25 @@
+name: Rebrand legacy-name audit
+
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Find previous public brand names and URLs
+        shell: bash
+        run: |
+          echo "=== LEGACY BRAND REFERENCES ==="
+          grep -RInE \
+            --exclude-dir=.git \
+            --exclude-dir=node_modules \
+            --exclude-dir=dist \
+            --exclude='package-lock.json' \
+            --exclude='rebrand-audit.yml' \
+            'Profile Centre|Planyx|Aptenvo|JA Domain Hub|profilecentre\.jagroupservices\.co\.uk|planyx\.jagroupservices\.co\.uk|aptenvo\.jagroupservices\.co\.uk|jadomainhub\.jagroupservices\.co\.uk' \
+            . || true
+          echo "=== END LEGACY BRAND REFERENCES ==="
