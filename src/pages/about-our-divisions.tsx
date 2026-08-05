@@ -82,9 +82,9 @@ const domainServices = [
 const supportSteps = [
   {
     number: '01',
-    title: 'Contact JA Domain Hub',
+    title: 'Contact Sousa Murray Domains',
     description:
-      'JA Domain Hub is the first point of contact for customer support relating to services purchased or managed through the division.',
+      'Sousa Murray Domains is the first point of contact for customer support relating to services purchased or managed through the division.',
   },
   {
     number: '02',
@@ -102,7 +102,7 @@ const supportSteps = [
     number: '04',
     title: 'We manage the follow-up',
     description:
-      'JA Domain Hub remains the customer-facing contact, explains the outcome and helps coordinate any further action needed to progress the case.',
+      'Sousa Murray Domains remains the customer-facing contact, explains the outcome and helps coordinate any further action needed to progress the case.',
   },
 ] as const;
 
@@ -113,13 +113,13 @@ export default function AboutOurDivisionsPage() {
         <title>Our Brands and Division — JA Group Services Ltd</title>
         <meta
           name="description"
-          content="Learn how JA Group Services Ltd operates Profile Centre, Planyx and JA Domain Hub, including their services, support arrangements and third-party delivery model."
+          content="Learn how JA Group Services Ltd operates Sousa Murray Profiles, Sousa Murray Planeia and Sousa Murray Domains, including their services, support arrangements and third-party delivery model."
         />
         <link rel="canonical" href={url} />
         <meta property="og:title" content="Our Brands and Division — JA Group Services Ltd" />
         <meta
           property="og:description"
-          content="Detailed information about Profile Centre, Planyx and JA Domain Hub, including JA Domain Hub's first-line customer support and provider-escalation process."
+          content="Detailed information about Sousa Murray Profiles, Sousa Murray Planeia and Sousa Murray Domains, including Sousa Murray Domains's first-line customer support and provider-escalation process."
         />
         <meta property="og:url" content={url} />
         <meta property="og:type" content="website" />
@@ -148,7 +148,7 @@ export default function AboutOurDivisionsPage() {
                 Our Brands and Division
               </h1>
               <p className="mx-auto max-w-3xl text-base leading-relaxed text-white/80 sm:text-lg">
-                JA Group Services Ltd operates digital platforms and customer services through Profile Centre, Planyx and JA Domain Hub. Each has a distinct purpose, while customer support, governance and operational accountability remain with JA Group Services Ltd.
+                JA Group Services Ltd operates digital platforms and customer services through Sousa Murray Profiles, Sousa Murray Planeia and Sousa Murray Domains. Each has a distinct purpose, while customer support, governance and operational accountability remain with JA Group Services Ltd.
               </p>
             </motion.div>
           </div>
@@ -186,35 +186,35 @@ export default function AboutOurDivisionsPage() {
 
         <BrandSection
           eyebrow="Digital profile platform"
-          title="Profile Centre"
+          title="Sousa Murray Profiles"
           icon={Users}
           accent="blue"
           description={[
-            'Profile Centre is a digital profile platform developed and operated by JA Group Services Ltd. It gives individuals and organisations a structured place to publish professional information, contact options, links, media and documents.',
+            'Sousa Murray Profiles is a digital profile platform developed and operated by JA Group Services Ltd. It gives individuals and organisations a structured place to publish professional information, contact options, links, media and documents.',
             'The platform is designed to make digital profiles easier to create, maintain and share. Customers manage their information through a central account and can use QR codes, downloadable contact tools and profile links to connect with others.',
           ]}
           services={profileServices}
           audience="Individuals, sole traders, professionals, teams and organisations that want a clear and manageable digital profile."
-          support="JA Group Services Ltd provides customer and account support for Profile Centre, including access, subscriptions, profile administration and platform enquiries."
-          href="https://profilecentre.jagroupservices.co.uk/"
-          button="Visit Profile Centre"
+          support="JA Group Services Ltd provides customer and account support for Sousa Murray Profiles, including access, subscriptions, profile administration and platform enquiries."
+          href="https://sousamurrayprofiles.jagroupservices.co.uk/"
+          button="Visit Sousa Murray Profiles"
         />
 
         <BrandSection
           eyebrow="Experience-planning platform"
-          title="Planyx"
+          title="Sousa Murray Planeia"
           icon={Compass}
           accent="violet"
           alternate
           description={[
-            'Planyx is an experience and itinerary-planning platform operated by JA Group Services Ltd. It helps customers organise travel, days out, activities and shared plans in one structured space.',
-            'Customers can build and share plans while exploring selected activities and experiences made available through affiliate partners. Planyx supports the planning process but does not act as a travel agency or provide the underlying attraction, transport or accommodation service.',
+            'Sousa Murray Planeia is an experience and itinerary-planning platform operated by JA Group Services Ltd. It helps customers organise travel, days out, activities and shared plans in one structured space.',
+            'Customers can build and share plans while exploring selected activities and experiences made available through affiliate partners. Sousa Murray Planeia supports the planning process but does not act as a travel agency or provide the underlying attraction, transport or accommodation service.',
           ]}
           services={planyxServices}
           audience="Individuals, families, groups and organisations planning travel, activities, events or shared experiences."
-          support="JA Group Services Ltd supports Planyx accounts and platform features. Questions about a booking or service completed with an affiliate partner may need to be handled by that partner under its own terms."
-          href="https://planyx.jagroupservices.co.uk/"
-          button="Visit Planyx"
+          support="JA Group Services Ltd supports Sousa Murray Planeia accounts and platform features. Questions about a booking or service completed with an affiliate partner may need to be handled by that partner under its own terms."
+          href="https://sousamurrayplaneia.jagroupservices.co.uk/"
+          button="Visit Sousa Murray Planeia"
         />
 
         <section className="border-b border-border bg-background py-14 sm:py-16 lg:py-20">
@@ -233,12 +233,12 @@ export default function AboutOurDivisionsPage() {
                 </div>
                 <div>
                   <p className="mb-2 text-sm font-semibold uppercase tracking-[0.18em] text-primary">Trading division</p>
-                  <h2 className="text-3xl font-bold text-foreground sm:text-4xl">JA Domain Hub</h2>
+                  <h2 className="text-3xl font-bold text-foreground sm:text-4xl">Sousa Murray Domains</h2>
                 </div>
 
                 <div className="space-y-4 text-base leading-relaxed text-muted-foreground sm:text-lg">
                   <p>
-                    JA Domain Hub is the domain, digital identity and online-presence division operated by JA Group Services Ltd. It provides reseller-based access to authorised domain and related digital services, supported by human customer service and administrative guidance.
+                    Sousa Murray Domains is the domain, digital identity and online-presence division operated by JA Group Services Ltd. It provides reseller-based access to authorised domain and related digital services, supported by human customer service and administrative guidance.
                   </p>
                   <p>
                     The division helps customers search for and manage domains, understand renewals, organise DNS and subdomains, connect services and obtain support when something is unclear or not working as expected.
@@ -250,12 +250,12 @@ export default function AboutOurDivisionsPage() {
                 </InfoPanel>
 
                 <InfoPanel title="Our customer-support responsibility" icon={LifeBuoy} emphasis>
-                  JA Domain Hub is the first point of contact for customer support on all matters relating to services purchased or managed through the division. We investigate and resolve issues ourselves wherever possible. Where provider-level action is needed, we escalate the matter and continue supporting the customer through the process.
+                  Sousa Murray Domains is the first point of contact for customer support on all matters relating to services purchased or managed through the division. We investigate and resolve issues ourselves wherever possible. Where provider-level action is needed, we escalate the matter and continue supporting the customer through the process.
                 </InfoPanel>
 
-                <a href="https://jadomainhub.jagroupservices.co.uk/" target="_blank" rel="noopener noreferrer" className="inline-block pt-1">
+                <a href="https://sousamurraydomains.jagroupservices.co.uk/" target="_blank" rel="noopener noreferrer" className="inline-block pt-1">
                   <Button size="lg" className="min-h-12 bg-[#0A1F44] px-7 font-bold text-white hover:bg-[#12346c]">
-                    Visit JA Domain Hub
+                    Visit Sousa Murray Domains
                     <ExternalLink className="ml-2 h-4 w-4" />
                   </Button>
                 </a>
@@ -273,7 +273,7 @@ export default function AboutOurDivisionsPage() {
                     <Network className="h-5 w-5 text-primary" />
                   </div>
                   <div>
-                    <p className="text-sm font-medium text-muted-foreground">What JA Domain Hub supports</p>
+                    <p className="text-sm font-medium text-muted-foreground">What Sousa Murray Domains supports</p>
                     <h3 className="text-xl font-bold text-card-foreground">Services and administration</h3>
                   </div>
                 </div>
@@ -289,9 +289,9 @@ export default function AboutOurDivisionsPage() {
               <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/10">
                 <Headphones className="h-6 w-6 text-primary" />
               </div>
-              <h2 className="mb-4 text-3xl font-bold text-foreground sm:text-4xl">JA Domain Hub support process</h2>
+              <h2 className="mb-4 text-3xl font-bold text-foreground sm:text-4xl">Sousa Murray Domains support process</h2>
               <p className="text-base leading-relaxed text-muted-foreground sm:text-lg">
-                Customers do not need to work out who is responsible before asking for help. Start with JA Domain Hub and we will assess the issue and follow the correct route.
+                Customers do not need to work out who is responsible before asking for help. Start with Sousa Murray Domains and we will assess the issue and follow the correct route.
               </p>
             </div>
 
@@ -319,14 +319,14 @@ export default function AboutOurDivisionsPage() {
             <div className="mx-auto mb-10 max-w-3xl text-center">
               <h2 className="mb-4 text-3xl font-bold text-foreground sm:text-4xl">Clear responsibilities</h2>
               <p className="text-base leading-relaxed text-muted-foreground sm:text-lg">
-                JA Domain Hub provides the customer relationship, guidance and first-line support. The authorised provider remains responsible for the underlying registrar, platform and infrastructure functions.
+                Sousa Murray Domains provides the customer relationship, guidance and first-line support. The authorised provider remains responsible for the underlying registrar, platform and infrastructure functions.
               </p>
             </div>
 
             <div className="grid gap-6 lg:grid-cols-2">
               <ResponsibilityCard
                 icon={LifeBuoy}
-                title="JA Domain Hub and JA Group Services Ltd"
+                title="Sousa Murray Domains and JA Group Services Ltd"
                 items={[
                   'First point of contact for customer support',
                   'Initial investigation and troubleshooting',
@@ -355,7 +355,7 @@ export default function AboutOurDivisionsPage() {
               <div className="flex items-start gap-3">
                 <ShieldCheck className="mt-0.5 h-5 w-5 shrink-0 text-primary" />
                 <p className="text-sm leading-relaxed text-muted-foreground">
-                  <strong className="text-foreground">Transparency:</strong> JA Domain Hub is not a domain registry, accredited registrar, hosting infrastructure operator or telecommunications provider. It operates as a reseller, facilitator and customer-support division using authorised third-party platforms.
+                  <strong className="text-foreground">Transparency:</strong> Sousa Murray Domains is not a domain registry, accredited registrar, hosting infrastructure operator or telecommunications provider. It operates as a reseller, facilitator and customer-support division using authorised third-party platforms.
                 </p>
               </div>
             </div>

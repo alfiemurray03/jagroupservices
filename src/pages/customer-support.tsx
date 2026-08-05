@@ -36,16 +36,16 @@ const sections = [
       },
       {
         icon: GraduationCap,
-        title: 'Aptenvo learner and enrolment support',
+        title: 'Sousa Murray eLearning learner and enrolment support',
         description:
-          'Help with Aptenvo course information, enrolment, access instructions, learner administration or provider escalation.',
+          'Help with Sousa Murray eLearning course information, enrolment, access instructions, learner administration or provider escalation.',
         items: [
           'Include the course title and enrolment reference',
           'Explain whether the issue concerns enrolment, access, completion or certification',
           'Provider-controlled learning or assessment matters may need to be escalated',
         ],
-        href: 'https://aptenvo.jagroupservices.co.uk/',
-        linkLabel: 'Visit Aptenvo',
+        href: 'https://sousamurrayelearning.jagroupservices.co.uk/',
+        linkLabel: 'Visit Sousa Murray eLearning',
         external: true,
       },
       {
@@ -131,7 +131,7 @@ const sections = [
         icon: FileWarning,
         title: 'Describe the issue clearly',
         description:
-          'Explain what happened, when it happened, which service or Aptenvo course was involved and what you expected to happen instead.',
+          'Explain what happened, when it happened, which service or Sousa Murray eLearning course was involved and what you expected to happen instead.',
       },
       {
         icon: LifeBuoy,
@@ -160,11 +160,11 @@ export default function CustomerSupportPage() {
     <CorporateInformationPage
       title="Customer Support Centre"
       pageTitle="Customer Support Centre | JA Group Services Ltd"
-      description="Find the correct support route for Aptenvo courses and enrolments, accounts, billing, complaints, privacy, security, safeguarding and general customer enquiries."
+      description="Find the correct support route for Sousa Murray eLearning courses and enrolments, accounts, billing, complaints, privacy, security, safeguarding and general customer enquiries."
       canonicalPath="/customer-support"
       badge="Help and Support"
       heroIcon={Headphones}
-      introduction="The Customer Support Centre directs customers, Aptenvo learners, service users and business contacts to the right team, policy or escalation route across JA Group Services Ltd and its operating brands."
+      introduction="The Customer Support Centre directs customers, Sousa Murray eLearning learners, service users and business contacts to the right team, policy or escalation route across JA Group Services Ltd and its operating brands."
       notice={{
         icon: ShieldCheck,
         title: 'Keep account and payment information secure',
@@ -173,7 +173,7 @@ export default function CustomerSupportPage() {
       }}
       sections={sections}
       closingTitle="Still unsure where your enquiry belongs?"
-      closingDescription="Send the details to our general contact route and identify the relevant brand, platform, service or Aptenvo course. We will direct the matter to the appropriate process."
+      closingDescription="Send the details to our general contact route and identify the relevant brand, platform, service or Sousa Murray eLearning course. We will direct the matter to the appropriate process."
       actions={[
         { label: 'Contact JA Group Services', href: '/contactus' },
         { label: 'Email contact@jagroupservices.co.uk', href: 'mailto:contact@jagroupservices.co.uk', variant: 'outline' },

@@ -75,9 +75,9 @@ const navigationItems: NavigationItem[] = [
 ];
 
 const connectedServices = [
-  { name: 'Profile Centre', description: 'Digital profiles and identity presentation', status: 'Central connection planned' },
-  { name: 'Planyx', description: 'Experience and itinerary planning', status: 'Central connection planned' },
-  { name: 'JA Domain Hub', description: 'Domains and managed website services', status: 'Central connection planned' },
+  { name: 'Sousa Murray Profiles', description: 'Digital profiles and identity presentation', status: 'Central connection planned' },
+  { name: 'Sousa Murray Planeia', description: 'Experience and itinerary planning', status: 'Central connection planned' },
+  { name: 'Sousa Murray Domains', description: 'Domains and managed website services', status: 'Central connection planned' },
   { name: 'Dealt With', description: 'Connected customer service platform', status: 'Planned' },
 ];
 

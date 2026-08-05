@@ -107,31 +107,31 @@ const operatingModel = [
 
 const portfolio = [
   {
-    name: 'Profile Centre',
+    name: 'Sousa Murray Profiles',
     type: 'Digital profile platform',
     icon: Users,
     description:
       'A platform for creating and managing professional digital profiles, contact information, links, media, documents and QR-based sharing.',
     highlights: ['Personal and organisation profiles', 'Digital identity tools', 'Profile and sharing controls'],
-    href: 'https://profilecentre.jagroupservices.co.uk/',
+    href: 'https://sousamurrayprofiles.jagroupservices.co.uk/',
   },
   {
-    name: 'Planyx',
+    name: 'Sousa Murray Planeia',
     type: 'Experience and itinerary platform',
     icon: Globe2,
     description:
       'A planning platform that helps users organise travel, days out, activities and shared itineraries while discovering selected partner options.',
     highlights: ['Itinerary planning', 'Shared plans', 'Selected affiliate discovery'],
-    href: 'https://planyx.jagroupservices.co.uk/',
+    href: 'https://sousamurrayplaneia.jagroupservices.co.uk/',
   },
   {
-    name: 'JA Domain Hub',
+    name: 'Sousa Murray Domains',
     type: 'Domain and digital identity support',
     icon: Network,
     description:
       'A customer-facing domain support and reseller service providing access to domain-related products through authorised provider platforms.',
     highlights: ['First-line customer support', 'Domain and account assistance', 'Provider escalation where required'],
-    href: 'https://jadomainhub.jagroupservices.co.uk/',
+    href: 'https://sousamurraydomains.jagroupservices.co.uk/',
   },
 ] as const;
 

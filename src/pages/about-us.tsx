@@ -268,7 +268,7 @@ export default function AboutUsPage() {
                   JA Group Services Ltd is an active private limited company incorporated in England and Wales. The Company is the legal and operational organisation responsible for the platforms, customer services, commercial arrangements and central support functions it manages.
                 </p>
                 <p>
-                  We operate online services for individuals and organisations, including Profile Centre, Planyx and JA Domain Hub. These services have different purposes, but they are supported through a common approach to customer administration, governance, data protection and service management.
+                  We operate online services for individuals and organisations, including Sousa Murray Profiles, Sousa Murray Planeia and Sousa Murray Domains. These services have different purposes, but they are supported through a common approach to customer administration, governance, data protection and service management.
                 </p>
                 <p>
                   Our role varies by service. Some platform functions are developed and managed directly by the Company. Other products or technical services are made available through authorised reseller, affiliate or technology partners.
@@ -295,15 +295,15 @@ export default function AboutUsPage() {
 
               <div className="space-y-3">
                 <ServiceSummary
-                  name="Profile Centre"
+                  name="Sousa Murray Profiles"
                   description="A digital profile platform for individuals and organisations."
                 />
                 <ServiceSummary
-                  name="Planyx"
+                  name="Sousa Murray Planeia"
                   description="An experience and itinerary-planning platform."
                 />
                 <ServiceSummary
-                  name="JA Domain Hub"
+                  name="Sousa Murray Domains"
                   description="A domain, digital identity and online-presence trading division."
                 />
               </div>

@@ -19,7 +19,7 @@ export default function FooterCorporateDisclosure() {
       >
         <p>JA Group Services Ltd is a member of the JSDS Group and is majority-owned by JSDS Group Ltd.</p>
         <p className="mt-2">
-          JA Group Services Ltd operates the trading names and brands Planyx, Profile Centre and JA Domain Hub. These are not separate legal entities.
+          JA Group Services Ltd operates the trading names and brands Sousa Murray Planeia, Sousa Murray Profiles and Sousa Murray Domains. These are not separate legal entities.
         </p>
       </section>
     </div>,
