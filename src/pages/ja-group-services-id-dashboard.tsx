@@ -653,7 +653,7 @@ export default function JAGroupServicesIDDashboardPage() {
           <div className="mt-5 rounded-2xl border border-primary/20 bg-primary/5 p-5">
             <p className="font-semibold text-foreground">Coming next: every connected JA session</p>
             <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
-              Planyx, Profile Centre, JA Domain Hub and future services will report device sessions to the central register so customers and Head Office can revoke them safely.
+              Sousa Murray Planeia, Sousa Murray Profiles, Sousa Murray Domains and future services will report device sessions to the central register so customers and Head Office can revoke them safely.
             </p>
           </div>
         </>
@@ -691,7 +691,7 @@ export default function JAGroupServicesIDDashboardPage() {
               <Building2 className="mx-auto h-10 w-10 text-muted-foreground" />
               <h3 className="mt-4 text-lg font-bold text-card-foreground">No connected services are showing yet</h3>
               <p className="mx-auto mt-2 max-w-xl text-sm leading-relaxed text-muted-foreground">
-                Services will appear automatically as Planyx, Profile Centre, JA Domain Hub and other platforms link to your central customer record.
+                Services will appear automatically as Sousa Murray Planeia, Sousa Murray Profiles, Sousa Murray Domains and other platforms link to your central customer record.
               </p>
             </div>
           )}

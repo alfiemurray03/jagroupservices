@@ -216,7 +216,7 @@ export default function JSDSGroupPage() {
                         <h4 className="font-semibold text-[#0A1F44] mb-2">Primary Division</h4>
                         <img 
                           src="/assets/ja-domain-hub-logo-new.png" 
-                          alt="JA Domain Hub" 
+                          alt="Sousa Murray Domains" 
                           className="h-12 w-auto object-contain"
                         />
                       </div>

@@ -11,13 +11,13 @@ type ElementProps = {
 
 const textReplacements: Record<string, string> = {
   'JA Group Services Ltd develops, operates and manages digital platforms and customer services.':
-    'JA Group Services Ltd develops, operates and manages digital platforms and customer services, including Profile Centre, Planyx, Aptenvo and JA Domain Hub.',
+    'JA Group Services Ltd is the legal operating company behind the Sousa Murray master brand and its approved customer-facing brands.',
   'The Company manages its platforms, operating brands, partnerships and central support functions.':
-    'The Company manages Profile Centre, Planyx, Aptenvo, JA Domain Hub, partnerships and central support functions.',
+    'The Company manages Sousa Murray Domains, Sousa Murray Planeia, Sousa Murray Profiles, Sousa Murray eLearning, the forthcoming Sousa Murray Sites service, partnerships and central support functions.',
   'An active private limited company incorporated in England and Wales. It develops, operates and manages digital platforms and customer services, combining its own technology, central support functions and selected partner services.':
-    'An active private limited company incorporated in England and Wales. It develops, operates and manages Profile Centre, Planyx, Aptenvo, JA Domain Hub and other digital services, combining its own technology, central support functions and selected partner services.',
+    'An active private limited company incorporated in England and Wales. It remains the legal operating company, contracting party and responsible entity behind the Sousa Murray master brand and approved customer-facing brands.',
   'The Company manages customer services, digital platforms, commercial relationships and central operational functions.':
-    'The Company manages customer services, Profile Centre, Planyx, Aptenvo, JA Domain Hub, commercial relationships and central operational functions.',
+    'The Company manages customer services, Sousa Murray Domains, Sousa Murray Planeia, Sousa Murray Profiles, Sousa Murray eLearning, the forthcoming Sousa Murray Sites service, commercial relationships and central operational functions.',
 };
 
 function enhanceGroupStructure(node: ReactNode): ReactNode {
@@ -42,6 +42,6 @@ function enhanceGroupStructure(node: ReactNode): ReactNode {
   );
 }
 
-export default function GroupStructurePageWithAptenvo(): ReactElement {
+export default function GroupStructurePageWithSousaMurrayBrands(): ReactElement {
   return enhanceGroupStructure(OriginalGroupStructurePage()) as ReactElement;
 }

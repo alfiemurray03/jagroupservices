@@ -27,9 +27,15 @@ const url = `${site}/about-our-divisions`;
 const operatingModel = [
   {
     icon: Building2,
-    title: 'One operating company',
+    title: 'One legal operating company',
     description:
-      'JA Group Services Ltd develops, operates and manages the brands, platforms, customer services and central support functions shown on this page.',
+      'JA Group Services Ltd remains the legal operating company, contracting party and entity responsible for the brands and services shown on this page.',
+  },
+  {
+    icon: Layers3,
+    title: 'One master brand',
+    description:
+      'Sousa Murray is the Company’s master brand and trading identity. It is not a separate company, partnership or legal entity.',
   },
   {
     icon: Headphones,
@@ -55,121 +61,151 @@ type Brand = {
   services: readonly string[];
   audience: string;
   support: string;
-  href: string;
-  button: string;
+  href?: string;
+  button?: string;
   alternate?: boolean;
+  comingSoon?: boolean;
 };
 
 const brands: readonly Brand[] = [
   {
-    name: 'Profile Centre',
-    eyebrow: 'Digital profile platform',
-    classification: 'Operating brand of JA Group Services Ltd',
+    name: 'Sousa Murray Profiles',
+    eyebrow: 'Digital profile and contact sharing',
+    classification: 'Customer-facing brand of JA Group Services Ltd',
     icon: Users,
     accent: 'blue',
     description: [
-      'Profile Centre is a digital profile platform developed and operated by JA Group Services Ltd. It gives individuals and organisations a structured place to publish professional information, contact options, links, media and documents.',
-      'Customers can manage their information centrally and use profile links, QR codes and downloadable contact tools to share their details more easily.',
+      'Sousa Murray Profiles, formerly Profile Centre, is the digital profile and contact-sharing platform operated by JA Group Services Ltd.',
+      'The platform may include personal, professional and business profiles, digital contact information, QR-code profile access, digital identity presentation and profile administration.',
     ],
     services: [
-      'Personal and professional digital profile pages',
-      'Organisation profiles and team features',
-      'Links, contact details and social information',
-      'QR code and downloadable contact sharing',
-      'Media, galleries and document attachments',
-      'Themes, branding and presentation tools',
-      'vCard and email-signature tools',
-      'Profile management and subscriptions',
+      'Personal, professional and business profiles',
+      'Digital contact information',
+      'QR-code profile access',
+      'Digital identity presentation',
+      'Profile administration',
+      'Organisation and team profile features',
+      'Contact and link sharing tools',
+      'Customer account and subscription management',
     ],
     audience:
       'Individuals, sole traders, professionals, teams and organisations that want a clear and manageable digital profile.',
     support:
-      'JA Group Services Ltd provides customer and account support for Profile Centre, including access, subscriptions, profile administration and platform enquiries.',
-    href: 'https://profilecentre.jagroupservices.co.uk/',
-    button: 'Visit Profile Centre',
+      'JA Group Services Ltd provides customer and account support for Sousa Murray Profiles, including access, subscriptions, profile administration and platform enquiries.',
+    href: 'https://sousamurrayprofiles.jagroupservices.co.uk/',
+    button: 'Visit Sousa Murray Profiles',
   },
   {
-    name: 'Planyx',
-    eyebrow: 'Experience-planning platform',
-    classification: 'Operating brand of JA Group Services Ltd',
+    name: 'Sousa Murray Planeia',
+    eyebrow: 'Guided planning-builder platform',
+    classification: 'Customer-facing brand of JA Group Services Ltd',
     icon: Compass,
     accent: 'violet',
     alternate: true,
     description: [
-      'Planyx is an experience and itinerary-planning platform operated by JA Group Services Ltd. It helps customers organise travel, days out, activities and shared plans in one structured space.',
-      'Customers can build and share plans while exploring selected activities made available through affiliate partners. Planyx supports planning but does not act as a travel agency or provide the underlying attraction, transport or accommodation service.',
+      'Sousa Murray Planeia, formerly Planyx, is the guided planning-builder platform operated by JA Group Services Ltd.',
+      'It may support customers with day trips, family days out, holidays and travel itineraries, occasions and events, budgets, checklists, accessibility arrangements, emergency and preparation information, and shared planning.',
+      'Sousa Murray Planeia is not a travel agency, package holiday organiser, airline, transport provider, visa provider or hotel provider. Relevant third-party providers are identified where their activities or services are displayed or promoted.',
     ],
     services: [
-      'Travel, experience and day-out planning',
-      'Structured plans with dates and activities',
-      'Individual and organisation accounts',
+      'Day-trip and family-day-out planning',
+      'Holiday and travel itinerary planning',
+      'Occasion and event planning',
+      'Budgets and checklists',
+      'Accessibility arrangements',
+      'Emergency and preparation information',
       'Read-only and editable plan sharing',
-      'Collaborative planning features',
-      'Selected experience discovery',
-      'Affiliate partner links and booking options',
-      'Central management of saved plans and ideas',
+      'Collaborative and shared planning',
     ],
     audience:
-      'Individuals, families, groups and organisations planning travel, activities, events or shared experiences.',
+      'Individuals, families, groups and organisations planning travel, activities, occasions, events or shared experiences.',
     support:
-      'JA Group Services Ltd supports Planyx accounts and platform features. A booking completed with an affiliate partner remains subject to that partner’s own service and terms.',
-    href: 'https://planyx.jagroupservices.co.uk/',
-    button: 'Visit Planyx',
+      'JA Group Services Ltd supports Sousa Murray Planeia accounts and platform features. Third-party activities and services remain subject to the relevant provider’s own terms.',
+    href: 'https://sousamurrayplaneia.jagroupservices.co.uk/',
+    button: 'Visit Sousa Murray Planeia',
   },
   {
-    name: 'Aptenvo',
-    eyebrow: 'Online learning and training',
-    classification: 'Operating brand of JA Group Services Ltd',
+    name: 'Sousa Murray eLearning',
+    eyebrow: 'Authorised e-learning reseller services',
+    classification: 'Customer-facing brand of JA Group Services Ltd',
     icon: GraduationCap,
     accent: 'emerald',
     description: [
-      'Aptenvo is the online learning and training brand operated by JA Group Services Ltd. It provides a customer-facing catalogue and enrolment route for selected eLearning courses for adults and organisations.',
-      'Selected courses are supplied and delivered through approved external training providers, including Highfield Online Training. Aptenvo manages the customer journey, course information, enrolment support and service administration while the relevant provider remains responsible for its course content, learning platform, assessment and certification arrangements.',
+      'Sousa Murray eLearning, formerly Aptenvo, is the authorised third-party e-learning reseller and learner-administration brand operated by JA Group Services Ltd.',
+      'The service may include access to authorised third-party courses, learner enrolment administration, course information, access instructions, reseller-based course sales and associated learner support. JA Group Services Ltd remains the contractual Reseller under the Highfield E-learning Reseller Agreement.',
+      'JA Learning Hub remains closed and is not being reinstated, reopened or revived. Sousa Murray eLearning is not an awarding organisation, approved training centre, regulated education provider, assessment body or qualification issuer.',
     ],
     services: [
-      'Selected online and eLearning courses',
-      'Professional and workplace training topics',
-      'Course catalogue and comparison information',
-      'Individual and organisation enrolments',
-      'Customer account and enrolment support',
-      'Access guidance and service administration',
-      'Provider-supported learning delivery',
+      'Authorised third-party e-learning courses',
+      'Highfield e-learning reseller services',
+      'Learner enrolment administration',
+      'Course information and access instructions',
+      'Reseller-based course sales',
+      'Learner access support',
+      'Customer and operational administration',
       'Course completion and certificate guidance',
     ],
     audience:
-      'Adults, professionals, employers and organisations seeking convenient online training and recognised workplace learning options.',
+      'Adults, professionals, employers and organisations seeking convenient online training and workplace learning options.',
     support:
-      'Aptenvo and JA Group Services Ltd provide first-line customer and enrolment support. Matters controlled by the training provider are referred or escalated to that provider when required.',
-    href: 'https://aptenvo.jagroupservices.co.uk/',
-    button: 'Visit Aptenvo',
+      'Sousa Murray eLearning and JA Group Services Ltd provide first-line customer and learner-administration support. Matters controlled by the training provider are referred or escalated to that provider when required.',
+    href: 'https://sousamurrayelearning.jagroupservices.co.uk/',
+    button: 'Visit Sousa Murray eLearning',
   },
   {
-    name: 'JA Domain Hub',
-    eyebrow: 'Domains and online presence',
-    classification: 'Trading division of JA Group Services Ltd',
+    name: 'Sousa Murray Domains',
+    eyebrow: 'Domain and digital identity services',
+    classification: 'Customer-facing brand of JA Group Services Ltd',
     icon: Globe2,
     accent: 'navy',
     alternate: true,
     description: [
-      'JA Domain Hub is the domain, digital identity and online-presence division operated by JA Group Services Ltd. It provides reseller-based access to authorised domain and related digital services with customer support and administrative guidance.',
-      'The division helps customers search for and manage domains, understand renewals, organise DNS and subdomains, connect services and obtain support when something is unclear or not working as expected.',
+      'Sousa Murray Domains, formerly JA Domain Hub, is the customer-facing brand for the Company’s domain registration support and authorised reseller-based domain services.',
+      'The service includes the Company’s GoDaddy reseller services, the turnkey domain storefront, domain registration, renewal, transfer and management support, digital identity support and related authorised reseller products and services.',
+      'Sousa Murray Domains is not a domain registry, accredited domain registrar, independent hosting infrastructure operator or telecommunications provider. GoDaddy or another relevant third-party provider is identified where it supplies a product or service.',
     ],
     services: [
-      'Domain search, registration and renewals',
-      'Domain transfer and account guidance',
-      'DNS, subdomain and connection support',
-      'Business email and online-presence guidance',
-      'Website and profile-domain connections',
-      'Billing, renewal and product administration',
-      'Authorised reseller products and services',
-      'Provider escalation and ongoing support',
+      'GoDaddy authorised reseller services',
+      'Turnkey domain storefront access',
+      'Domain registration support',
+      'Domain renewal support',
+      'Domain transfer support',
+      'Domain management support',
+      'Digital identity support',
+      'Related authorised reseller products and services',
     ],
     audience:
-      'Individuals, sole traders, small organisations and other customers who want supported access to domain and digital-presence services.',
+      'Individuals, sole traders, small organisations and other customers who want supported access to domain and digital-identity services.',
     support:
-      'JA Domain Hub is the first point of contact for services purchased or managed through the division. We investigate issues directly and escalate provider-level matters where required.',
-    href: 'https://jadomainhub.jagroupservices.co.uk/',
-    button: 'Visit JA Domain Hub',
+      'Sousa Murray Domains is the first point of contact for services purchased or managed through the brand. JA Group Services Ltd investigates issues and escalates provider-level matters where required.',
+    href: 'https://sousamurraydomains.jagroupservices.co.uk/',
+    button: 'Visit Sousa Murray Domains',
+  },
+  {
+    name: 'Sousa Murray Sites',
+    eyebrow: 'Managed Website Services',
+    classification: 'Approved forthcoming brand of JA Group Services Ltd',
+    icon: Network,
+    accent: 'blue',
+    comingSoon: true,
+    description: [
+      'Sousa Murray Sites is the approved forthcoming brand for Managed Website Services designed, built, configured, maintained or managed directly by JA Group Services Ltd.',
+      'The Sousa Murray Sites website and customer-facing service area are still being built and have not yet launched. It will remain separate from the authorised reseller-based domain services presented through Sousa Murray Domains.',
+    ],
+    services: [
+      'Managed website design',
+      'Website construction and configuration',
+      'Website management',
+      'Website maintenance',
+      'Content updates',
+      'Website support',
+      'Associated managed digital services',
+      'Customer-specific project arrangements',
+    ],
+    audience:
+      'Individuals, sole traders and organisations seeking a website designed, built, maintained or managed by JA Group Services Ltd.',
+    support:
+      'Customer support and service-access arrangements will be confirmed before Sousa Murray Sites launches. Existing Managed Website Service enquiries remain handled by JA Group Services Ltd.',
   },
 ];
 
@@ -204,16 +240,16 @@ export default function BrandsPage() {
   return (
     <>
       <Helmet>
-        <title>Our Brands and Divisions — JA Group Services Ltd</title>
+        <title>Sousa Murray Brands — JA Group Services Ltd</title>
         <meta
           name="description"
-          content="Explore Profile Centre, Planyx, Aptenvo and JA Domain Hub, the brands and divisions operated by JA Group Services Ltd."
+          content="Explore the Sousa Murray master brand and the customer-facing brands operated by JA Group Services Ltd."
         />
         <link rel="canonical" href={url} />
-        <meta property="og:title" content="Our Brands and Divisions — JA Group Services Ltd" />
+        <meta property="og:title" content="Sousa Murray Brands — JA Group Services Ltd" />
         <meta
           property="og:description"
-          content="Learn about Profile Centre, Planyx, Aptenvo and JA Domain Hub, including their services, customers and support arrangements."
+          content="Learn about Sousa Murray Domains, Sousa Murray Sites, Sousa Murray Planeia, Sousa Murray Profiles and Sousa Murray eLearning."
         />
         <meta property="og:url" content={url} />
         <meta property="og:type" content="website" />
@@ -236,13 +272,13 @@ export default function BrandsPage() {
             >
               <div className="mx-auto inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-semibold text-white">
                 <Layers3 className="h-4 w-4" />
-                Our operating portfolio
+                The master brand of JA Group Services Ltd
               </div>
               <h1 className="text-4xl font-extrabold leading-tight text-white sm:text-5xl lg:text-6xl">
-                Our Brands and Divisions
+                Sousa Murray Brands
               </h1>
               <p className="mx-auto max-w-3xl text-base leading-relaxed text-white/80 sm:text-lg">
-                JA Group Services Ltd operates Profile Centre, Planyx, Aptenvo and JA Domain Hub. Each has a distinct purpose while customer support, governance and operational accountability remain coordinated through the Company.
+                Sousa Murray is the master brand of JA Group Services Ltd. The five customer-facing brands below each have a distinct purpose while legal responsibility, governance and operational accountability remain with JA Group Services Ltd.
               </p>
             </motion.div>
           </div>
@@ -253,11 +289,11 @@ export default function BrandsPage() {
             <div className="mx-auto mb-10 max-w-3xl text-center">
               <h2 className="mb-4 text-3xl font-bold text-foreground sm:text-4xl">How our operating model works</h2>
               <p className="text-base leading-relaxed text-muted-foreground sm:text-lg">
-                Our brands share central customer support, administration, governance and accountability while retaining their own purpose and customer experience.
+                Sousa Murray provides a consistent public brand family while JA Group Services Ltd remains the legal operating company behind every approved brand and service.
               </p>
             </div>
 
-            <div className="grid gap-5 md:grid-cols-3">
+            <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
               {operatingModel.map(({ icon: Icon, title, description }, index) => (
                 <motion.article
                   key={title}
@@ -290,7 +326,7 @@ export default function BrandsPage() {
               </div>
               <h2 className="mb-4 text-3xl font-bold text-foreground sm:text-4xl">One coordinated support route</h2>
               <p className="text-base leading-relaxed text-muted-foreground sm:text-lg">
-                Customers do not need to work out every supplier relationship before asking for help. Start with the relevant JA Group Services brand and we will assess the issue and follow the correct route.
+                Customers do not need to work out every supplier relationship before asking for help. Start with the relevant Sousa Murray brand and JA Group Services Ltd will assess the issue and follow the correct route.
               </p>
             </div>
 
@@ -327,7 +363,7 @@ export default function BrandsPage() {
             <Building2 className="mx-auto mb-4 h-10 w-10 text-primary" />
             <h2 className="mb-3 text-3xl font-bold text-foreground">Learn more or contact us</h2>
             <p className="mx-auto mb-7 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-              View the corporate structure behind our portfolio or contact JA Group Services Ltd for help choosing a service, resolving an issue or understanding a partner-supported arrangement.
+              View the corporate structure behind the Sousa Murray brand family or contact JA Group Services Ltd for help choosing a service, resolving an issue or understanding a partner-supported arrangement.
             </p>
             <div className="flex flex-col justify-center gap-3 sm:flex-row">
               <Button asChild size="lg" className="min-h-12 bg-[#1A3FA8] px-7 font-bold text-white hover:bg-[#153588]">
@@ -390,7 +426,14 @@ function BrandSection({ brand }: { brand: Brand }) {
             </div>
             <div>
               <p className="mb-2 text-sm font-semibold uppercase tracking-[0.18em] text-muted-foreground">{brand.classification}</p>
-              <h2 className="text-3xl font-bold text-foreground sm:text-4xl">{brand.name}</h2>
+              <div className="flex flex-wrap items-center gap-3">
+                <h2 className="text-3xl font-bold text-foreground sm:text-4xl">{brand.name}</h2>
+                {brand.comingSoon && (
+                  <span className="rounded-full border border-border bg-secondary px-3 py-1 text-xs font-semibold text-muted-foreground">
+                    Coming soon
+                  </span>
+                )}
+              </div>
             </div>
 
             <div className="space-y-4 text-base leading-relaxed text-muted-foreground sm:text-lg">
@@ -406,12 +449,18 @@ function BrandSection({ brand }: { brand: Brand }) {
               {brand.support}
             </InfoPanel>
 
-            <a href={brand.href} target="_blank" rel="noopener noreferrer" className="inline-block pt-1">
-              <Button size="lg" className={`min-h-12 px-7 font-bold ${accentClasses.button}`}>
-                {brand.button}
-                <ExternalLink className="ml-2 h-4 w-4" />
+            {brand.comingSoon ? (
+              <Button type="button" size="lg" variant="outline" disabled className="min-h-12 px-7 font-bold">
+                Coming soon
               </Button>
-            </a>
+            ) : (
+              <a href={brand.href} target="_blank" rel="noopener noreferrer" className="inline-block pt-1">
+                <Button size="lg" className={`min-h-12 px-7 font-bold ${accentClasses.button}`}>
+                  {brand.button}
+                  <ExternalLink className="ml-2 h-4 w-4" />
+                </Button>
+              </a>
+            )}
           </motion.div>
 
           <motion.div

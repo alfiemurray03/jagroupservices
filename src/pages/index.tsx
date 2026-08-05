@@ -26,9 +26,9 @@ import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 
 const site = 'https://jagroupservices.co.uk';
-const title = 'JA Group Services Ltd | Digital Platforms and Customer Services';
+const title = 'JA Group Services Ltd | Sousa Murray Brands and Digital Services';
 const description =
-  'JA Group Services Ltd develops, operates and manages digital platforms and customer services. We combine our own technology, central support functions and selected partner services to provide practical online solutions for individuals and organisations.';
+  'JA Group Services Ltd is the legal operating company behind the Sousa Murray master brand and its approved customer-facing digital brands and services.';
 
 const companyFacts = [
   {
@@ -107,31 +107,31 @@ const operatingModel = [
 
 const portfolio = [
   {
-    name: 'Profile Centre',
+    name: 'Sousa Murray Profiles',
     type: 'Digital profile platform',
     icon: Users,
     description:
       'A platform for creating and managing professional digital profiles, contact information, links, media, documents and QR-based sharing.',
     highlights: ['Personal and organisation profiles', 'Digital identity tools', 'Profile and sharing controls'],
-    href: 'https://profilecentre.jagroupservices.co.uk/',
+    href: 'https://sousamurrayprofiles.jagroupservices.co.uk/',
   },
   {
-    name: 'Planyx',
+    name: 'Sousa Murray Planeia',
     type: 'Experience and itinerary platform',
     icon: Globe2,
     description:
       'A planning platform that helps users organise travel, days out, activities and shared itineraries while discovering selected partner options.',
     highlights: ['Itinerary planning', 'Shared plans', 'Selected affiliate discovery'],
-    href: 'https://planyx.jagroupservices.co.uk/',
+    href: 'https://sousamurrayplaneia.jagroupservices.co.uk/',
   },
   {
-    name: 'JA Domain Hub',
+    name: 'Sousa Murray Domains',
     type: 'Domain and digital identity support',
     icon: Network,
     description:
       'A customer-facing domain support and reseller service providing access to domain-related products through authorised provider platforms.',
     highlights: ['First-line customer support', 'Domain and account assistance', 'Provider escalation where required'],
-    href: 'https://jadomainhub.jagroupservices.co.uk/',
+    href: 'https://sousamurraydomains.jagroupservices.co.uk/',
   },
 ] as const;
 
@@ -192,7 +192,7 @@ export default function HomePage() {
                 transition={{ duration: 0.5 }}
               >
                 <div className="mb-5 inline-flex items-center gap-2 border-l-2 border-blue-400 pl-3 text-xs font-bold uppercase tracking-[0.2em] text-blue-200 sm:text-sm">
-                  Digital platforms · Customer services · Partner-supported solutions
+                  JA Group Services Ltd · Home of the Sousa Murray master brand
                 </div>
 
                 <h1 className="max-w-4xl text-4xl font-extrabold leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl">
@@ -200,9 +200,9 @@ export default function HomePage() {
                 </h1>
 
                 <div className="mt-6 max-w-3xl space-y-4 text-base leading-relaxed text-white/80 sm:text-lg">
-                  <p>JA Group Services Ltd develops, operates and manages digital platforms and customer services.</p>
+                  <p>JA Group Services Ltd is the legal operating company behind the Sousa Murray master brand.</p>
                   <p>
-                    We combine our own technology, central support functions and selected partner services to provide practical online solutions for individuals and organisations.
+                    Through Sousa Murray, the Company operates approved customer-facing brands while retaining central legal responsibility, governance and operational accountability.
                   </p>
                 </div>
 
@@ -219,7 +219,7 @@ export default function HomePage() {
                     variant="outline"
                     className="min-h-12 border-white/35 bg-white/5 px-7 font-semibold text-white hover:bg-white/10 hover:text-white"
                   >
-                    <Link to="/about-our-divisions">Our Brands and Division</Link>
+                    <Link to="/about-our-divisions">Sousa Murray Brands</Link>
                   </Button>
                 </div>
               </motion.div>
@@ -292,10 +292,10 @@ export default function HomePage() {
               >
                 <p className="text-sm font-bold uppercase tracking-[0.18em] text-primary">Who we are</p>
                 <h2 className="mt-3 text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-                  One company supporting a focused digital portfolio
+                  One legal company behind the Sousa Murray brand family
                 </h2>
                 <p className="mt-5 leading-relaxed text-muted-foreground sm:text-lg">
-                  JA Group Services Ltd brings its platforms, customer services and operational functions together under one managed company structure. This allows us to maintain consistent support, administration, governance and accountability across the services we operate.
+                  JA Group Services Ltd brings the Sousa Murray brands, customer services and operational functions together under one managed legal company structure. This allows us to maintain consistent support, administration, governance and accountability across the services we operate.
                 </p>
                 <p className="mt-4 leading-relaxed text-muted-foreground sm:text-lg">
                   Our role can differ by service. Some technology and customer functions are managed directly by us, while selected underlying services are supplied through authorised commercial partners.

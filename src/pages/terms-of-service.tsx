@@ -68,8 +68,8 @@ export default function TermsOfServicePage() {
                       <h2 className="text-2xl font-bold text-[#0A1F44] mt-8 mb-4">1. Introduction</h2>
                       <p className="mb-4">1.1 These Terms of Service ("Terms") govern your access to and use of the websites, platforms, services, and digital environments operated by or on behalf of JA Group Services Ltd (the "Company", "we", "us", or "our").</p>
                       <p className="mb-4">1.2 JA Group Services Ltd is a company incorporated in England and Wales with company number 16314179 and registered office at 167–169 Great Portland Street, 5th Floor, London, W1W 5PF, United Kingdom.</p>
-                      <p className="mb-4">1.3 The Company operates under the trading name "JA Group Services" as its primary brand.</p>
-                      <p className="mb-4">1.4 The Company also operates "JA Domain Hub" as a division and trading name. It forms part of JA Group Services Ltd and does not constitute a separate legal entity.</p>
+                      <p className="mb-4">1.3 JA Group Services Ltd remains the legal operating company. Sousa Murray is the Company’s master brand and trading identity.</p>
+                      <p className="mb-4">1.4 The Company operates the customer-facing brands Sousa Murray Domains, Sousa Murray Planeia, Sousa Murray Profiles and Sousa Murray eLearning. Sousa Murray Sites is an approved forthcoming brand and has not yet launched. None of these brands constitutes a separate legal entity or has independent contracting authority.</p>
                       <p className="mb-4">1.5 These Terms apply to:</p>
                       <ul className="list-disc pl-6 mb-4">
                         <li>jagroupservices.co.uk and all associated domains;</li>

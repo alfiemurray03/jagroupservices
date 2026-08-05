@@ -426,7 +426,7 @@ export const translations: Record<SupportedLanguage, Record<TranslationKey, stri
     
     // Homepage - Featured Division Content
     'featured.badge': 'Our Featured Division',
-    'featured.sectionTitle': 'Introducing JA Domain Hub',
+    'featured.sectionTitle': 'Introducing Sousa Murray Domains',
     'featured.description': 'Professional domain and hosting services designed for businesses of all sizes.',
     'featured.features.domain': 'Domain Registration',
     'featured.features.email': 'Professional Email',
@@ -440,7 +440,7 @@ export const translations: Record<SupportedLanguage, Record<TranslationKey, stri
     'featured.feature3.desc': 'Reliable and protected web hosting',
     'featured.feature4.title': 'Expert Support',
     'featured.feature4.desc': 'UK-based customer assistance',
-    'featured.cta': 'Visit JA Domain Hub',
+    'featured.cta': 'Visit Sousa Murray Domains',
     'featured.viewall': 'View All Recommended Services',
     
     // About Us - Body Content
@@ -720,7 +720,7 @@ export const translations: Record<SupportedLanguage, Record<TranslationKey, stri
     
     // Homepage - Featured Division Content
     'featured.badge': 'A Nossa Divisão em Destaque',
-    'featured.sectionTitle': 'Apresentamos o JA Domain Hub',
+    'featured.sectionTitle': 'Apresentamos o Sousa Murray Domains',
     'featured.description': 'Serviços profissionais de domínio e alojamento concebidos para empresas de todos os tamanhos.',
     'featured.features.domain': 'Registo de Domínio',
     'featured.features.email': 'Email Profissional',
@@ -734,7 +734,7 @@ export const translations: Record<SupportedLanguage, Record<TranslationKey, stri
     'featured.feature3.desc': 'Alojamento web fiável e protegido',
     'featured.feature4.title': 'Suporte Especializado',
     'featured.feature4.desc': 'Assistência ao cliente baseada no Reino Unido',
-    'featured.cta': 'Visitar JA Domain Hub',
+    'featured.cta': 'Visitar Sousa Murray Domains',
     'featured.viewall': 'Ver Todos os Serviços Recomendados',
     
     // About Us - Body Content
@@ -1014,7 +1014,7 @@ export const translations: Record<SupportedLanguage, Record<TranslationKey, stri
     
     // Homepage - Featured Division Content
     'featured.badge': 'Nuestra División Destacada',
-    'featured.sectionTitle': 'Presentamos JA Domain Hub',
+    'featured.sectionTitle': 'Presentamos Sousa Murray Domains',
     'featured.description': 'Servicios profesionales de dominio y alojamiento diseñados para empresas de todos los tamaños.',
     'featured.features.domain': 'Registro de Dominio',
     'featured.features.email': 'Correo Electrónico Profesional',
@@ -1028,7 +1028,7 @@ export const translations: Record<SupportedLanguage, Record<TranslationKey, stri
     'featured.feature3.desc': 'Alojamiento web fiable y protegido',
     'featured.feature4.title': 'Soporte Experto',
     'featured.feature4.desc': 'Asistencia al cliente con sede en el Reino Unido',
-    'featured.cta': 'Visitar JA Domain Hub',
+    'featured.cta': 'Visitar Sousa Murray Domains',
     'featured.viewall': 'Ver Todos los Servicios Recomendados',
     
     // About Us - Body Content
@@ -1308,7 +1308,7 @@ export const translations: Record<SupportedLanguage, Record<TranslationKey, stri
     
     // Homepage - Featured Division Content
     'featured.badge': 'Notre Division Vedette',
-    'featured.sectionTitle': 'Présentation de JA Domain Hub',
+    'featured.sectionTitle': 'Présentation de Sousa Murray Domains',
     'featured.description': 'Services professionnels de domaine et d\'hébergement conçus pour les entreprises de toutes tailles.',
     'featured.features.domain': 'Enregistrement de Domaine',
     'featured.features.email': 'Email Professionnel',
@@ -1322,7 +1322,7 @@ export const translations: Record<SupportedLanguage, Record<TranslationKey, stri
     'featured.feature3.desc': 'Hébergement web fiable et protégé',
     'featured.feature4.title': 'Support Expert',
     'featured.feature4.desc': 'Assistance client basée au Royaume-Uni',
-    'featured.cta': 'Visiter JA Domain Hub',
+    'featured.cta': 'Visiter Sousa Murray Domains',
     'featured.viewall': 'Voir Tous les Services Recommandés',
     
     // About Us - Body Content
@@ -1602,7 +1602,7 @@ export const translations: Record<SupportedLanguage, Record<TranslationKey, stri
     
     // Homepage - Featured Division Content
     'featured.badge': 'Ein Hadran Nodedig',
-    'featured.sectionTitle': 'Cyflwyno JA Domain Hub',
+    'featured.sectionTitle': 'Cyflwyno Sousa Murray Domains',
     'featured.description': 'Gwasanaethau parth a chynnal proffesiynol wedi\'u cynllunio ar gyfer busnesau o bob maint.',
     'featured.features.domain': 'Cofrestru Parth',
     'featured.features.email': 'E-bost Proffesiynol',
@@ -1616,7 +1616,7 @@ export const translations: Record<SupportedLanguage, Record<TranslationKey, stri
     'featured.feature3.desc': 'Cynnal gwe dibynadwy a diogeledig',
     'featured.feature4.title': 'Cymorth Arbenigol',
     'featured.feature4.desc': 'Cymorth cwsmeriaid wedi\'i leoli yn y DU',
-    'featured.cta': 'Ymweld â JA Domain Hub',
+    'featured.cta': 'Ymweld â Sousa Murray Domains',
     'featured.viewall': 'Gweld Pob Gwasanaeth a Argymhellir',
     
     // About Us - Body Content

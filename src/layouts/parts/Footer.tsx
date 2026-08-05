@@ -168,24 +168,27 @@ export default function Footer() {
               <li><Link to="/services" className={linkClass}>Managed Websites</Link></li>
               <li><Link to="/services" className={linkClass}>Digital Platforms</Link></li>
               <li>
-                <a href="https://profilecentre.jagroupservices.co.uk/" target="_blank" rel="noopener noreferrer" className={`${linkClass} inline-flex items-center gap-1`}>
-                  Profile Centre <ExternalLink className="h-3 w-3" />
+                <a href="https://sousamurrayprofiles.jagroupservices.co.uk/" target="_blank" rel="noopener noreferrer" className={`${linkClass} inline-flex items-center gap-1`}>
+                  Sousa Murray Profiles <ExternalLink className="h-3 w-3" />
                 </a>
               </li>
               <li>
-                <a href="https://planyx.jagroupservices.co.uk/" target="_blank" rel="noopener noreferrer" className={`${linkClass} inline-flex items-center gap-1`}>
-                  Planyx <ExternalLink className="h-3 w-3" />
+                <a href="https://sousamurrayplaneia.jagroupservices.co.uk/" target="_blank" rel="noopener noreferrer" className={`${linkClass} inline-flex items-center gap-1`}>
+                  Sousa Murray Planeia <ExternalLink className="h-3 w-3" />
                 </a>
               </li>
               <li>
-                <a href="https://aptenvo.jagroupservices.co.uk/" target="_blank" rel="noopener noreferrer" className={`${linkClass} inline-flex items-center gap-1`}>
-                  Aptenvo <ExternalLink className="h-3 w-3" />
+                <a href="https://sousamurrayelearning.jagroupservices.co.uk/" target="_blank" rel="noopener noreferrer" className={`${linkClass} inline-flex items-center gap-1`}>
+                  Sousa Murray eLearning <ExternalLink className="h-3 w-3" />
                 </a>
               </li>
               <li>
-                <a href="https://jadomainhub.jagroupservices.co.uk/" target="_blank" rel="noopener noreferrer" className={`${linkClass} inline-flex items-center gap-1`}>
-                  JA Domain Hub <ExternalLink className="h-3 w-3" />
+                <a href="https://sousamurraydomains.jagroupservices.co.uk/" target="_blank" rel="noopener noreferrer" className={`${linkClass} inline-flex items-center gap-1`}>
+                  Sousa Murray Domains <ExternalLink className="h-3 w-3" />
                 </a>
+              </li>
+              <li>
+                <span className={`${linkClass} cursor-default`}>Sousa Murray Sites — Coming soon</span>
               </li>
             </ul>
           </div>
@@ -195,7 +198,7 @@ export default function Footer() {
             <ul className="space-y-2.5">
               <li><Link to="/about-us" className={linkClass}>About Us</Link></li>
               <li><Link to="/meet-the-team" className={linkClass}>Meet the Team</Link></li>
-              <li><Link to="/about-our-divisions" className={linkClass}>Divisions and Platforms</Link></li>
+              <li><Link to="/about-our-divisions" className={linkClass}>Sousa Murray Brands</Link></li>
               <li><Link to="/our-group-structure" className={linkClass}>Our Group Structure</Link></li>
               <li><Link to="/governance" className={linkClass}>Governance</Link></li>
               <li><Link to="/announcements" className={linkClass}>Announcements</Link></li>
