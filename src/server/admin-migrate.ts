@@ -29,6 +29,24 @@ const ADMIN_TABLES_SQL = [
     CONSTRAINT \`admin_policies_id\` PRIMARY KEY(\`id\`),
     CONSTRAINT \`admin_policies_slug_unique\` UNIQUE(\`slug\`)
   )`,
+  `CREATE TABLE IF NOT EXISTS \`admin_announcements\` (
+    \`id\` int AUTO_INCREMENT NOT NULL,
+    \`title\` varchar(255) NOT NULL,
+    \`slug\` varchar(255) NOT NULL,
+    \`summary\` text NOT NULL,
+    \`content\` text NOT NULL,
+    \`category\` varchar(100) NOT NULL DEFAULT 'Corporate',
+    \`author_name\` varchar(255) NOT NULL DEFAULT 'JA Group Services Ltd',
+    \`status\` varchar(20) NOT NULL DEFAULT 'draft',
+    \`is_featured\` boolean NOT NULL DEFAULT false,
+    \`seo_title\` varchar(255),
+    \`seo_description\` text,
+    \`published_at\` timestamp NULL,
+    \`created_at\` timestamp NOT NULL DEFAULT (now()),
+    \`updated_at\` timestamp NOT NULL DEFAULT (now()) ON UPDATE CURRENT_TIMESTAMP,
+    CONSTRAINT \`admin_announcements_id\` PRIMARY KEY(\`id\`),
+    CONSTRAINT \`admin_announcements_slug_unique\` UNIQUE(\`slug\`)
+  )`,
   `CREATE TABLE IF NOT EXISTS \`admin_pages\` (
     \`id\` int AUTO_INCREMENT NOT NULL,
     \`page_key\` varchar(100) NOT NULL,
@@ -78,6 +96,23 @@ const ADMIN_TABLES_SQL = [
     \`created_at\` timestamp NOT NULL DEFAULT (now()),
     CONSTRAINT \`admin_audit_log_id\` PRIMARY KEY(\`id\`)
   )`,
+  `INSERT INTO \`admin_announcements\`
+    (\`title\`, \`slug\`, \`summary\`, \`content\`, \`category\`, \`author_name\`, \`status\`, \`is_featured\`, \`seo_title\`, \`seo_description\`, \`published_at\`)
+    SELECT
+      'JA Group Services Ltd confirms the Sousa Murray website structure',
+      'sousa-murray-website-structure-confirmed',
+      'The corporate website now acts as the central information point for the approved Sousa Murray brands and their public website destinations.',
+      '## A single corporate home\n\nJA Group Services Ltd has confirmed the public website structure for the Sousa Murray master brand. The corporate website remains the central source of company, governance, support, supplier, partner and legal information.\n\n## Approved website destinations\n\n- **Sousa Murray Domains:** sousamurraydomains.jagroupservices.co.uk\n- **Sousa Murray Planeia:** sousamurrayplaneia.jagroupservices.co.uk\n- **Sousa Murray Profiles:** sousamurrayprofiles.jagroupservices.co.uk\n- **Sousa Murray eLearning:** sousamurrayelearning.jagroupservices.co.uk\n\n**Sousa Murray Sites** is the Managed Website Services area within the Sousa Murray Domains website and does not use a separate public subdomain.\n\n## Central accountability\n\nJA Group Services Ltd remains the legal operating company behind the approved services, with central responsibility for governance, customer operations, complaints and data protection unless a service-specific notice explains a third-party provider role.',
+      'Corporate',
+      'JA Group Services Ltd',
+      'published',
+      true,
+      'Sousa Murray website structure confirmed | JA Group Services Ltd',
+      'JA Group Services Ltd confirms the approved Sousa Murray brands, subdomains and the position of Sousa Murray Sites within Sousa Murray Domains.',
+      NOW()
+    WHERE NOT EXISTS (
+      SELECT 1 FROM \`admin_announcements\` WHERE \`slug\` = 'sousa-murray-website-structure-confirmed'
+    )`,
 ];
 
 async function _runMigrations(): Promise<void> {
