@@ -8,7 +8,7 @@ import {
   Tag,
   UserRound,
 } from 'lucide-react';
-import ReactMarkdown from 'react-markdown';
+import ReactMarkdown, { type Components } from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
@@ -31,6 +31,27 @@ type Announcement = PublicAnnouncement | {
   publishedAt: string | null;
   createdAt: string;
   updatedAt: string;
+};
+
+const markdownComponents: Components = {
+  h1: ({ children }) => <h1 className="mb-4 mt-10 text-3xl font-bold leading-tight text-foreground first:mt-0">{children}</h1>,
+  h2: ({ children }) => <h2 className="mb-4 mt-10 text-2xl font-bold leading-tight text-foreground first:mt-0 sm:text-3xl">{children}</h2>,
+  h3: ({ children }) => <h3 className="mb-3 mt-8 text-xl font-bold leading-tight text-foreground">{children}</h3>,
+  p: ({ children }) => <p className="mb-5 text-base leading-8 text-muted-foreground last:mb-0">{children}</p>,
+  ul: ({ children }) => <ul className="mb-6 space-y-3 pl-6 text-muted-foreground">{children}</ul>,
+  ol: ({ children }) => <ol className="mb-6 list-decimal space-y-3 pl-6 text-muted-foreground">{children}</ol>,
+  li: ({ children }) => <li className="list-disc pl-1 leading-7 marker:text-primary">{children}</li>,
+  strong: ({ children }) => <strong className="font-bold text-foreground">{children}</strong>,
+  a: ({ href, children }) => (
+    <a href={href} className="font-semibold text-primary underline-offset-4 hover:underline">
+      {children}
+    </a>
+  ),
+  blockquote: ({ children }) => (
+    <blockquote className="my-6 border-l-4 border-primary bg-primary/5 px-5 py-4 text-muted-foreground">
+      {children}
+    </blockquote>
+  ),
 };
 
 export default function AnnouncementDetailPage() {
@@ -144,12 +165,12 @@ export default function AnnouncementDetailPage() {
         <section className="py-12 sm:py-16 lg:py-20">
           <div className="mx-auto grid max-w-7xl gap-8 px-4 sm:px-6 lg:grid-cols-[minmax(0,1fr)_280px] lg:px-8">
             <article className="min-w-0 rounded-3xl border border-border bg-card p-6 shadow-sm sm:p-8 lg:p-10">
-              <div className="prose prose-slate max-w-none dark:prose-invert prose-headings:scroll-mt-24 prose-headings:text-foreground prose-p:text-muted-foreground prose-li:text-muted-foreground prose-strong:text-foreground prose-a:text-primary prose-a:no-underline hover:prose-a:underline">
-                <ReactMarkdown remarkPlugins={[remarkGfm]}>{announcement.content}</ReactMarkdown>
-              </div>
+              <ReactMarkdown remarkPlugins={[remarkGfm]} components={markdownComponents}>
+                {announcement.content}
+              </ReactMarkdown>
             </article>
 
-            <aside className="space-y-5 lg:sticky lg:top-24 lg:self-start">
+            <aside className="space-y-5 lg:sticky lg:top-36 lg:self-start">
               <div className="rounded-2xl border border-border bg-card p-5 shadow-sm">
                 <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10">
                   <Megaphone className="h-5 w-5 text-primary" />
@@ -165,7 +186,7 @@ export default function AnnouncementDetailPage() {
                   <div>
                     <h2 className="font-bold text-foreground">Corporate enquiries</h2>
                     <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                      Suppliers, partners, investors, shareholders and other stakeholders may contact the Company for clarification.
+                      Customers, suppliers, partners, shareholders, advisers and other stakeholders may contact the Company for clarification.
                     </p>
                     <Link to="/contactus" className="mt-3 inline-flex text-sm font-semibold text-primary hover:underline">Contact JA Group Services Ltd</Link>
                   </div>
