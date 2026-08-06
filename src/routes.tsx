@@ -26,6 +26,7 @@ import AnnouncementDetailPage from './pages/announcement-detail';
 import SitemapPage from './pages/sitemap';
 import PartnerWithUsPage from './pages/partner-with-us';
 import AffiliatePartnersPage from './pages/affiliate-partners';
+import CareersPage from './pages/careers';
 import JAGroupServicesIDPage from './pages/ja-group-services-id';
 
 // Admin pages
@@ -63,6 +64,7 @@ export const routes: RouteObject[] = [
   { path: '/safeguarding', element: <SafeguardingPage /> },
   { path: '/partner-with-us', element: <PartnerWithUsPage /> },
   { path: '/affiliate-partners', element: <AffiliatePartnersPage /> },
+  { path: '/careers', element: <CareersPage /> },
   { path: '/cookies-policy', element: <CookiesPolicyPage /> },
   { path: '/contactus', element: <ContactUsPage /> },
   { path: '/complaints-policy', element: <ComplaintsPolicyPage /> },
@@ -109,6 +111,7 @@ export type Path =
   | '/safeguarding'
   | '/partner-with-us'
   | '/affiliate-partners'
+  | '/careers'
   | '/cookies-policy'
   | '/contactus'
   | '/complaints-policy'
