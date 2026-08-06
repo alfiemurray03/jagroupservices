@@ -1,339 +1,220 @@
-import { motion } from 'motion/react';
-import { AlertCircle, Mail, FileText, Clock, CheckCircle, Shield } from 'lucide-react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Separator } from '@/components/ui/separator';
+import { Link } from 'react-router-dom';
+
+import { PolicyLayout, PolicyNotice, PolicySection } from '@/components/legal/PolicyLayout';
+
+const effectiveDate = '6 August 2026';
 
 export default function ComplaintsPolicyPage() {
   return (
-    <>
-      <title>Complaints Policy - JA Group Services</title>
-      <meta name="description" content="Our complaints policy and procedure. Learn how to raise concerns and how we handle complaints professionally and transparently." />
+    <PolicyLayout
+      title="Complaints & Refunds Policy"
+      description="How JA Group Services Ltd receives, investigates and reviews complaints, cancellations and refund requests across its corporate and Sousa Murray services."
+      canonicalPath="/complaints-policy"
+      effectiveDate={effectiveDate}
+    >
+      <PolicySection number="1" title="Purpose and scope">
+        <p>
+          JA Group Services Ltd aims to provide clear, fair and reliable services. This Policy explains how customers, users, suppliers, partners and other affected persons may raise a complaint and how cancellation or refund requests are assessed.
+        </p>
+        <p>
+          It applies to the corporate website and the services operated under Sousa Murray Domains, Sousa Murray Sites, Sousa Murray Planeia, Sousa Murray Profiles and Sousa Murray eLearning. It also applies to central account, billing, customer-support and administrative functions.
+        </p>
+        <p>
+          A complaint is an expression of dissatisfaction that requires a response. A routine request for help, information or a technical fix may initially be handled as a support enquiry, but you may ask for it to be recorded as a complaint at any time.
+        </p>
+        <PolicyNotice title="Your legal rights remain protected">
+          <p>
+            This Policy does not replace or reduce any statutory right, contractual remedy, chargeback right, data-protection right or right to seek independent advice.
+          </p>
+        </PolicyNotice>
+      </PolicySection>
 
-      <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
-        {/* Hero Section */}
-        <motion.section
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6 }}
-          className="bg-gradient-to-br from-[#0A1F44] to-[#1e3a5f] text-white py-20 relative overflow-hidden"
-        >
-          <div className="absolute inset-0 opacity-10">
-            <div className="absolute inset-0" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23ffffff" fill-opacity="1"%3E%3Cpath d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")' }}></div>
-          </div>
-          <div className="container mx-auto px-4 relative z-10">
-            <motion.div
-              initial={{ y: 20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.2, duration: 0.6 }}
-              className="max-w-3xl mx-auto text-center"
-            >
-              <div className="inline-flex items-center gap-2 bg-blue-500/20 px-4 py-2 rounded-full mb-6 border border-blue-300/30">
-                <Shield className="w-4 h-4 text-blue-300" />
-                <span className="text-blue-200 text-sm font-semibold tracking-wide">CORPORATE POLICY</span>
-              </div>
-              <h1 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight">Complaints Policy</h1>
-              <p className="text-xl text-white/90 leading-relaxed">
-                We are committed to handling all complaints professionally, transparently, and in accordance with our governance standards.
-              </p>
-            </motion.div>
-          </div>
-        </motion.section>
+      <PolicySection number="2" title="How to make a complaint or refund request">
+        <p>Email <a href="mailto:contact@jagroupservices.co.uk">contact@jagroupservices.co.uk</a> or use the relevant website contact or support route. Please include:</p>
+        <ul>
+          <li>your name and preferred contact details;</li>
+          <li>the relevant Sousa Murray service, account, order, invoice or customer reference;</li>
+          <li>what happened and when;</li>
+          <li>the outcome you are seeking;</li>
+          <li>copies of relevant correspondence, screenshots or evidence; and</li>
+          <li>any accessibility, vulnerability or communication need we should consider.</li>
+        </ul>
+        <p>
+          You do not need to use formal or legal language. A representative may complain for you where they have appropriate authority. We may verify identity or authority before discussing confidential information or changing an account.
+        </p>
+        <p>
+          Postal complaints may be sent to JA Group Services Ltd, 167-169 Great Portland Street, 5th Floor, London, W1W 5PF.
+        </p>
+      </PolicySection>
 
-        {/* Main Content */}
-        <div className="container mx-auto px-4 py-16">
-          <div className="max-w-4xl mx-auto space-y-8">
-            {/* Introduction */}
-            <motion.div
-              initial={{ y: 20, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-            >
-              <Card className="border-l-4 border-l-[#2563eb]">
-                <CardContent className="pt-6">
-                  <p className="text-[#0A1F44]/80 leading-relaxed">
-                    At JA Group Services Ltd, we value feedback and take all complaints seriously. This policy outlines how we receive, investigate, and resolve complaints in a fair, timely, and professional manner.
-                  </p>
-                </CardContent>
-              </Card>
-            </motion.div>
+      <PolicySection number="3" title="Our complaint-handling standards">
+        <p>We will aim to:</p>
+        <ul>
+          <li>acknowledge a complaint within five working days;</li>
+          <li>identify the issues, relevant service and requested outcome;</li>
+          <li>investigate impartially and review relevant records;</li>
+          <li>coordinate with a provider where the underlying service is provider-controlled;</li>
+          <li>keep you informed if more time or information is needed; and</li>
+          <li>give a clear written outcome with reasons and any next steps.</li>
+        </ul>
+        <p>
+          We aim to issue a substantive response within 20 working days. Complex, safeguarding, fraud, technical or provider-dependent matters may take longer. If so, we will explain the delay and provide an updated target date.
+        </p>
+      </PolicySection>
 
-            {/* What is a Complaint */}
-            <motion.div
-              initial={{ y: 20, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-            >
-              <Card>
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-3 text-[#0A1F44]">
-                    <div className="p-2 bg-blue-100 rounded-lg">
-                      <AlertCircle className="w-5 h-5 text-[#2563eb]" />
-                    </div>
-                    What is a Complaint?
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <p className="text-[#0A1F44]/80 leading-relaxed">
-                    A complaint is an expression of dissatisfaction about our services, actions, or lack of action by our company or staff. This may include:
-                  </p>
-                  <ul className="space-y-2 ml-6">
-                    <li className="text-[#0A1F44]/80 flex items-start gap-2">
-                      <span className="text-[#2563eb] mt-1">•</span>
-                      <span>Service quality or delivery issues</span>
-                    </li>
-                    <li className="text-[#0A1F44]/80 flex items-start gap-2">
-                      <span className="text-[#2563eb] mt-1">•</span>
-                      <span>Communication or response time concerns</span>
-                    </li>
-                    <li className="text-[#0A1F44]/80 flex items-start gap-2">
-                      <span className="text-[#2563eb] mt-1">•</span>
-                      <span>Billing or contractual disputes</span>
-                    </li>
-                    <li className="text-[#0A1F44]/80 flex items-start gap-2">
-                      <span className="text-[#2563eb] mt-1">•</span>
-                      <span>Staff conduct or professionalism</span>
-                    </li>
-                    <li className="text-[#0A1F44]/80 flex items-start gap-2">
-                      <span className="text-[#2563eb] mt-1">•</span>
-                      <span>Data protection or privacy concerns</span>
-                    </li>
-                  </ul>
-                </CardContent>
-              </Card>
-            </motion.div>
+      <PolicySection number="4" title="Complaint stages">
+        <h3>Stage 1 — Initial investigation</h3>
+        <p>
+          The relevant operational team reviews the matter, attempts to resolve it and issues a written response. Where appropriate, we may offer an explanation, correction, apology, repeat performance, service credit, refund or another proportionate remedy.
+        </p>
+        <h3>Stage 2 — Internal review</h3>
+        <p>
+          If you remain dissatisfied, request a review within 20 working days of the Stage 1 response. Explain what you believe was missed or why the outcome is unreasonable. A person not responsible for the original decision will review the complaint where practicable.
+        </p>
+        <p>
+          We aim to complete the review within 15 working days. The review response is normally our final internal response and will identify any available external route.
+        </p>
+        <h3>Urgent handling</h3>
+        <p>
+          Immediate safety, safeguarding, fraud, service-security and suspected personal-data incidents may be escalated outside the ordinary timetable. Emergencies should be reported to the appropriate emergency service first.
+        </p>
+      </PolicySection>
 
-            {/* How to Make a Complaint */}
-            <motion.div
-              initial={{ y: 20, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-            >
-              <Card>
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-3 text-[#0A1F44]">
-                    <div className="p-2 bg-blue-100 rounded-lg">
-                      <FileText className="w-5 h-5 text-[#2563eb]" />
-                    </div>
-                    How to Make a Complaint
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-6">
-                  <div>
-                    <h4 className="font-semibold text-[#0A1F44] mb-3">Step 1: Contact Us</h4>
-                    <p className="text-[#0A1F44]/80 leading-relaxed mb-4">
-                      Please submit your complaint in writing to our dedicated complaints email address:
-                    </p>
-                    <div className="bg-slate-50 border border-slate-200 rounded-lg p-4">
-                      <div className="flex items-center gap-3">
-                        <Mail className="w-5 h-5 text-[#2563eb]" />
-                        <a href="mailto:complaints@jagroupservices.co.uk" className="text-[#2563eb] font-semibold hover:underline">
-                          complaints@jagroupservices.co.uk
-                        </a>
-                      </div>
-                    </div>
-                  </div>
+      <PolicySection number="5" title="Working with third-party providers">
+        <p>
+          Some products and services are supplied or controlled by authorised third parties, including domain, hosting, payment, identity, training or activity providers. JA Group Services Ltd may provide first-line support and coordinate the matter, but a provider may need to decide a technical action, registry outcome, course decision, supplier refund or other provider-controlled remedy.
+        </p>
+        <p>
+          We will explain the provider’s role, share relevant information lawfully, keep a record of escalation and communicate the outcome where we are able to do so. A provider’s separate terms and complaint route may also apply.
+        </p>
+      </PolicySection>
 
-                  <Separator />
+      <PolicySection number="6" title="General refund principles">
+        <p>A refund is considered by reference to:</p>
+        <ul>
+          <li>your statutory rights and the type of contract;</li>
+          <li>the applicable order, quotation, subscription or service-specific terms;</li>
+          <li>whether the service has started, digital content or access has been supplied, or work has been completed;</li>
+          <li>non-recoverable third-party charges already committed;</li>
+          <li>whether the service was faulty, misdescribed, delayed or not supplied with reasonable care and skill;</li>
+          <li>the reason for cancellation and any required consent to early performance; and</li>
+          <li>any credit, repeat performance, repair or alternative remedy already provided.</li>
+        </ul>
+        <p>
+          We do not use a “no refunds” rule to remove legal rights. Equally, cancellation or dissatisfaction does not automatically create a right to recover charges for services properly supplied or third-party costs validly committed.
+        </p>
+      </PolicySection>
 
-                  <div>
-                    <h4 className="font-semibold text-[#0A1F44] mb-3">Step 2: Provide Details</h4>
-                    <p className="text-[#0A1F44]/80 leading-relaxed mb-3">
-                      To help us investigate your complaint effectively, please include:
-                    </p>
-                    <ul className="space-y-2 ml-6">
-                      <li className="text-[#0A1F44]/80 flex items-start gap-2">
-                        <span className="text-[#2563eb] mt-1">•</span>
-                        <span>Your full name and contact details</span>
-                      </li>
-                      <li className="text-[#0A1F44]/80 flex items-start gap-2">
-                        <span className="text-[#2563eb] mt-1">•</span>
-                        <span>A clear description of the issue</span>
-                      </li>
-                      <li className="text-[#0A1F44]/80 flex items-start gap-2">
-                        <span className="text-[#2563eb] mt-1">•</span>
-                        <span>Relevant dates, times, and reference numbers</span>
-                      </li>
-                      <li className="text-[#0A1F44]/80 flex items-start gap-2">
-                        <span className="text-[#2563eb] mt-1">•</span>
-                        <span>Any supporting documentation or evidence</span>
-                      </li>
-                      <li className="text-[#0A1F44]/80 flex items-start gap-2">
-                        <span className="text-[#2563eb] mt-1">•</span>
-                        <span>Your desired outcome or resolution</span>
-                      </li>
-                    </ul>
-                  </div>
-                </CardContent>
-              </Card>
-            </motion.div>
+      <PolicySection number="7" title="Consumer cooling-off rights">
+        <p>
+          A consumer entering an eligible distance or off-premises service contract normally has 14 days from the day after the contract is entered into to cancel without giving a reason. Different rules and exceptions may apply depending on the service and how it is supplied.
+        </p>
+        <p>
+          If you expressly ask us to begin a service during the cancellation period, we may deduct a proportionate amount for work supplied before cancellation. If a service has been fully performed after the required request and acknowledgement, the cancellation right may be lost.
+        </p>
+        <p>
+          For digital content supplied immediately, the statutory cancellation right may be lost only where you expressly consent to supply beginning during the cancellation period and acknowledge the consequence required by law.
+        </p>
+        <p>
+          To exercise a cancellation right, send a clear statement to <a href="mailto:contact@jagroupservices.co.uk">contact@jagroupservices.co.uk</a>. Include your name, order reference and the service being cancelled. A reason is helpful but is not required where a statutory no-reason cancellation right applies.
+        </p>
+      </PolicySection>
 
-            {/* Our Complaints Process */}
-            <motion.div
-              initial={{ y: 20, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-            >
-              <Card>
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-3 text-[#0A1F44]">
-                    <div className="p-2 bg-blue-100 rounded-lg">
-                      <Clock className="w-5 h-5 text-[#2563eb]" />
-                    </div>
-                    Our Complaints Process
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-6">
-                    {/* Stage 1 */}
-                    <div className="relative pl-8 pb-6 border-l-2 border-[#2563eb]/30">
-                      <div className="absolute left-0 top-0 -translate-x-1/2 w-8 h-8 bg-[#2563eb] rounded-full flex items-center justify-center text-white font-bold text-sm">
-                        1
-                      </div>
-                      <h4 className="font-semibold text-[#0A1F44] mb-2">Acknowledgment (Within 2 Business Days)</h4>
-                      <p className="text-[#0A1F44]/80 leading-relaxed">
-                        We will acknowledge receipt of your complaint and provide a reference number for tracking purposes.
-                      </p>
-                    </div>
+      <PolicySection number="8" title="Service-specific refund considerations">
+        <h3>Sousa Murray Domains</h3>
+        <p>
+          Domain registrations, renewals, transfers, hosting activations and other provider products may create immediate and non-recoverable supplier charges. Once a domain or provider product has been submitted or activated, a change-of-mind refund may be unavailable. We will still provide any remedy required by law, correct Company error and apply any available provider refund policy.
+        </p>
+        <h3>Sousa Murray Sites</h3>
+        <p>
+          Managed Website Services are often customised. A quotation or statement of work may divide fees into deposits, milestones, third-party purchases and recurring support. On cancellation, we may retain or charge a fair amount for completed work and committed costs, subject to consumer cancellation rights and remedies for defective service.
+        </p>
+        <h3>Sousa Murray Planeia and Sousa Murray Profiles</h3>
+        <p>
+          Cancelling a subscription stops future renewal in accordance with the plan terms. Charges for an elapsed billing period are not automatically refundable solely because the service was unused. We will assess faults, duplicate charges, unauthorised payments and statutory cancellation rights separately.
+        </p>
+        <h3>Sousa Murray eLearning</h3>
+        <p>
+          Course enrolment, licence allocation or access-code issue may commit a non-recoverable provider charge. Refund availability may therefore change once enrolment or access has been processed. This does not remove remedies where a course is misdescribed, access is not supplied as agreed, or another legal right applies.
+        </p>
+      </PolicySection>
 
-                    {/* Stage 2 */}
-                    <div className="relative pl-8 pb-6 border-l-2 border-[#2563eb]/30">
-                      <div className="absolute left-0 top-0 -translate-x-1/2 w-8 h-8 bg-[#2563eb] rounded-full flex items-center justify-center text-white font-bold text-sm">
-                        2
-                      </div>
-                      <h4 className="font-semibold text-[#0A1F44] mb-2">Investigation (Within 10 Business Days)</h4>
-                      <p className="text-[#0A1F44]/80 leading-relaxed">
-                        A designated complaints officer will investigate the matter thoroughly, reviewing all relevant information and speaking with involved parties.
-                      </p>
-                    </div>
+      <PolicySection number="9" title="Faulty, misdescribed or poorly performed services">
+        <p>
+          Consumers are entitled to services performed with reasonable care and skill and in accordance with binding information given about the service. Where the law requires it, we may provide repeat performance within a reasonable time and without significant inconvenience. If repeat performance is impossible or not completed as required, a proportionate price reduction may be due.
+        </p>
+        <p>
+          Digital content must meet the applicable legal standards. Depending on the issue, remedies may include repair, replacement, a price reduction or compensation for qualifying damage to a device or other digital content.
+        </p>
+        <p>
+          Business-customer remedies are governed by the applicable contract and law, including any statement of work, service level, acceptance process or agreed limitation of liability.
+        </p>
+      </PolicySection>
 
-                    {/* Stage 3 */}
-                    <div className="relative pl-8 pb-6 border-l-2 border-[#2563eb]/30">
-                      <div className="absolute left-0 top-0 -translate-x-1/2 w-8 h-8 bg-[#2563eb] rounded-full flex items-center justify-center text-white font-bold text-sm">
-                        3
-                      </div>
-                      <h4 className="font-semibold text-[#0A1F44] mb-2">Response (Within 15 Business Days)</h4>
-                      <p className="text-[#0A1F44]/80 leading-relaxed">
-                        We will provide a detailed written response outlining our findings, any actions taken, and proposed resolution.
-                      </p>
-                    </div>
+      <PolicySection number="10" title="Approved refund processing">
+        <p>
+          An approved refund is normally returned to the original payment method unless law, fraud prevention or the payment provider requires another approach. We may need to verify the payer, account and transaction before processing it.
+        </p>
+        <p>
+          Where a statutory distance-cancellation refund is due for a service or digital content, it will be made without undue delay and normally within 14 days after we are informed of the cancellation, subject to any lawful deduction. Other approved refunds are normally submitted within 10 working days of approval. Banks and payment providers may take additional time to display the credit.
+        </p>
+        <p>
+          Refunds do not include consequential loss, time spent or third-party costs unless required by law or expressly agreed.
+        </p>
+      </PolicySection>
 
-                    {/* Stage 4 */}
-                    <div className="relative pl-8">
-                      <div className="absolute left-0 top-0 -translate-x-1/2 w-8 h-8 bg-[#2563eb] rounded-full flex items-center justify-center text-white font-bold text-sm">
-                        4
-                      </div>
-                      <h4 className="font-semibold text-[#0A1F44] mb-2">Escalation (If Required)</h4>
-                      <p className="text-[#0A1F44]/80 leading-relaxed">
-                        If you are not satisfied with our response, you may request an escalation to senior management for further review.
-                      </p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </motion.div>
+      <PolicySection number="11" title="Payment disputes and chargebacks">
+        <p>
+          Please contact us promptly about an unknown, duplicate or disputed charge so we can investigate and, where appropriate, correct it. Contacting us does not remove any right to approach your card issuer, bank or payment provider.
+        </p>
+        <p>
+          We may provide transaction, delivery and account records to a payment provider when responding to a chargeback or fraud investigation. We will handle personal data in accordance with our <Link to="/privacy-policy">Privacy Policy</Link>.
+        </p>
+      </PolicySection>
 
-            {/* Our Commitments */}
-            <motion.div
-              initial={{ y: 20, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.4 }}
-            >
-              <Card>
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-3 text-[#0A1F44]">
-                    <div className="p-2 bg-blue-100 rounded-lg">
-                      <CheckCircle className="w-5 h-5 text-[#2563eb]" />
-                    </div>
-                    Our Commitments
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="grid md:grid-cols-2 gap-4">
-                    <div className="bg-slate-50 rounded-lg p-4 border border-slate-200">
-                      <h4 className="font-semibold text-[#0A1F44] mb-2">Impartiality</h4>
-                      <p className="text-sm text-[#0A1F44]/70">
-                        All complaints are handled fairly and without bias.
-                      </p>
-                    </div>
-                    <div className="bg-slate-50 rounded-lg p-4 border border-slate-200">
-                      <h4 className="font-semibold text-[#0A1F44] mb-2">Confidentiality</h4>
-                      <p className="text-sm text-[#0A1F44]/70">
-                        Your complaint details are kept confidential and secure.
-                      </p>
-                    </div>
-                    <div className="bg-slate-50 rounded-lg p-4 border border-slate-200">
-                      <h4 className="font-semibold text-[#0A1F44] mb-2">Transparency</h4>
-                      <p className="text-sm text-[#0A1F44]/70">
-                        We provide clear explanations of our findings and actions.
-                      </p>
-                    </div>
-                    <div className="bg-slate-50 rounded-lg p-4 border border-slate-200">
-                      <h4 className="font-semibold text-[#0A1F44] mb-2">Continuous Improvement</h4>
-                      <p className="text-sm text-[#0A1F44]/70">
-                        We learn from complaints to improve our services.
-                      </p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </motion.div>
+      <PolicySection number="12" title="External advice and escalation">
+        <p>
+          Consumers in England and Wales may obtain independent consumer advice through Citizens Advice. Matters may be referred to Trading Standards through the appropriate consumer-advice route.
+        </p>
+        <p>
+          Data-protection concerns may be raised with the Information Commissioner’s Office. Details are available through our <Link to="/privacy-centre">Privacy Centre</Link>.
+        </p>
+        <p>
+          We do not claim membership of a sector-specific ombudsman or alternative dispute resolution scheme unless a final response expressly identifies one. Where law or a relevant contract requires an ADR route, we will provide the applicable details.
+        </p>
+        <p>
+          You may seek legal advice or use a court or tribunal with jurisdiction. We encourage proportionate attempts to resolve the matter first where appropriate.
+        </p>
+      </PolicySection>
 
-            {/* Contact Information */}
-            <motion.div
-              initial={{ y: 20, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.5 }}
-            >
-              <Card className="bg-gradient-to-br from-slate-50 to-white border-2 border-[#2563eb]/20">
-                <CardContent className="pt-6">
-                  <div className="text-center space-y-4">
-                    <h3 className="text-xl font-bold text-[#0A1F44]">Need to Make a Complaint?</h3>
-                    <p className="text-[#0A1F44]/70">
-                      Contact our complaints team directly:
-                    </p>
-                    <div className="flex flex-col items-center gap-3">
-                      <a
-                        href="mailto:complaints@jagroupservices.co.uk"
-                        className="inline-flex items-center gap-2 px-6 py-3 bg-[#2563eb] text-white rounded-lg font-semibold hover:bg-[#1d4ed8] transition-colors"
-                      >
-                        <Mail className="w-5 h-5" />
-                        complaints@jagroupservices.co.uk
-                      </a>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </motion.div>
+      <PolicySection number="13" title="Unreasonable conduct and repeat complaints">
+        <p>
+          We will not reject a complaint merely because it is critical, persistent or firmly expressed. However, we may manage contact where conduct becomes threatening, abusive, discriminatory, knowingly false, excessively repetitive or disproportionately disruptive.
+        </p>
+        <p>
+          Any restriction will be proportionate, recorded and explained. It will not prevent us from considering genuinely new evidence, urgent risk, safeguarding information or a statutory request.
+        </p>
+      </PolicySection>
 
-            {/* Company Information */}
-            <motion.div
-              initial={{ y: 20, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.6 }}
-              className="bg-slate-50 rounded-lg p-6 border border-slate-200"
-            >
-              <div className="text-center space-y-2">
-                <p className="text-sm text-[#0A1F44]/60">
-                  <strong className="text-[#0A1F44]">JA Group Services Ltd</strong> • Company No. 16314179
-                </p>
-                <p className="text-sm text-[#0A1F44]/60">
-                  Registered in England and Wales
-                </p>
-                <p className="text-sm text-[#0A1F44]/60">
-                  Last Updated: February 2026
-                </p>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </div>
-    </>
+      <PolicySection number="14" title="Records, learning and confidentiality">
+        <p>
+          We keep proportionate complaint and refund records for accountability, trend analysis, legal compliance, service improvement and the prevention of fraud or repeated error. Access is limited according to role and need.
+        </p>
+        <p>
+          Complaint information is handled confidentially but may be shared with relevant staff, providers, advisers, insurers, regulators or authorities where necessary and lawful.
+        </p>
+      </PolicySection>
+
+      <PolicySection number="15" title="Contact and policy review">
+        <p>
+          Complaints and refund requests: <a href="mailto:contact@jagroupservices.co.uk">contact@jagroupservices.co.uk</a>.<br />
+          Data-protection matters: <a href="mailto:alfie@jagroupservices.co.uk">alfie@jagroupservices.co.uk</a>.<br />
+          Postal address: JA Group Services Ltd, 167-169 Great Portland Street, 5th Floor, London, W1W 5PF.
+        </p>
+        <p>
+          We review this Policy when services, law or complaint arrangements materially change. The date at the top identifies the current published version.
+        </p>
+      </PolicySection>
+    </PolicyLayout>
   );
 }
