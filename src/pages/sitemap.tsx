@@ -2,6 +2,7 @@ import { Helmet } from '@dr.pogodin/react-helmet';
 import {
   Accessibility,
   AlertCircle,
+  BriefcaseBusiness,
   Building2,
   Cookie,
   ExternalLink,
@@ -11,6 +12,7 @@ import {
   Handshake,
   Headphones,
   Home,
+  Landmark,
   Mail,
   Megaphone,
   Network,
@@ -38,26 +40,37 @@ const siteStructure: readonly {
 }[] = [
   {
     category: 'Main and Services',
-    description: 'Start here to understand the Company, explore services or make contact.',
+    description: 'Start here to understand the Company, explore services, read announcements or make contact.',
     icon: Home,
     links: [
       { path: '/', label: 'Home', icon: Home, internal: true },
       { path: '/services', label: 'Our Services', icon: Globe, internal: true },
-      { path: '/partner-with-us', label: 'Partner With Us', icon: Handshake, internal: true },
-      { path: '/contactus', label: 'Contact Us', icon: Mail, internal: true },
+      { path: '/about-our-divisions', label: 'Sousa Murray Brands', icon: Network, internal: true },
       { path: '/announcements', label: 'Announcements', icon: Megaphone, internal: true },
+      { path: '/contactus', label: 'Contact Us', icon: Mail, internal: true },
     ],
   },
   {
-    category: 'Company',
-    description: 'Corporate identity, leadership, brands, divisions and governance.',
+    category: 'Company and Stakeholders',
+    description: 'Corporate identity, leadership, governance and information for business stakeholders.',
     icon: Building2,
     links: [
       { path: '/about-us', label: 'About Us', icon: Building2, internal: true },
       { path: '/meet-the-team', label: 'Meet the Team', icon: Users, internal: true },
-      { path: '/about-our-divisions', label: 'Brands and Divisions', icon: Globe, internal: true },
-      { path: '/our-group-structure', label: 'Our Group Structure', icon: Network, internal: true },
-      { path: '/governance', label: 'Governance and Corporate Information', icon: Scale, internal: true },
+      { path: '/our-group-structure', label: 'Company and Brand Structure', icon: Network, internal: true },
+      { path: '/governance', label: 'Governance', icon: Scale, internal: true },
+      { path: '/corporate-information', label: 'Stakeholder Centre', icon: Landmark, internal: true },
+    ],
+  },
+  {
+    category: 'Work With Us',
+    description: 'Information for suppliers, commercial partners, future affiliates, applicants and investors.',
+    icon: Handshake,
+    links: [
+      { path: '/partner-with-us', label: 'Partners and Suppliers', icon: Handshake, internal: true },
+      { path: '/affiliate-partners', label: 'Affiliate Partner Programme — Coming Soon', icon: Users, internal: true },
+      { path: '/careers', label: 'Careers and Vacancies — Coming Soon', icon: BriefcaseBusiness, internal: true },
+      { path: '/corporate-information#investors', label: 'Investor and Future Shareholder Information', icon: Landmark, internal: true },
     ],
   },
   {
@@ -70,30 +83,30 @@ const siteStructure: readonly {
       { path: '/security', label: 'Security and Vulnerability Disclosure', icon: ShieldCheck, internal: true },
       { path: '/accessibility-statement', label: 'Accessibility Statement', icon: Accessibility, internal: true },
       { path: '/safeguarding', label: 'Safeguarding and Trust', icon: Users, internal: true },
-      { path: '/complaints-policy', label: 'Complaints Policy', icon: AlertCircle, internal: true },
+      { path: '/complaints-policy', label: 'Complaints & Refunds Policy', icon: AlertCircle, internal: true },
     ],
   },
   {
-    category: 'Operating Brands',
-    description: 'Customer-facing platforms, learning services and trading operations managed by JA Group Services Ltd.',
+    category: 'Sousa Murray Websites',
+    description: 'The four approved customer-facing website destinations operated through JA Group Services Ltd.',
     icon: Globe,
     links: [
-      { path: 'https://sousamurrayprofiles.jagroupservices.co.uk/', label: 'Sousa Murray Profiles', icon: Users, internal: false },
-      { path: 'https://sousamurrayplaneia.jagroupservices.co.uk/', label: 'Sousa Murray Planeia', icon: Globe, internal: false },
-      { path: 'https://sousamurrayelearning.jagroupservices.co.uk/', label: 'Sousa Murray eLearning', icon: GraduationCap, internal: false },
       { path: 'https://sousamurraydomains.jagroupservices.co.uk/', label: 'Sousa Murray Domains', icon: Globe, internal: false },
-      { path: '/about-our-divisions', label: 'Sousa Murray Sites — Coming soon', icon: Globe, internal: true },
+      { path: 'https://sousamurraydomains.jagroupservices.co.uk/managed-websites', label: 'Sousa Murray Sites — Managed Websites', icon: Network, internal: false },
+      { path: 'https://sousamurrayplaneia.jagroupservices.co.uk/', label: 'Sousa Murray Planeia', icon: Globe, internal: false },
+      { path: 'https://sousamurrayprofiles.jagroupservices.co.uk/', label: 'Sousa Murray Profiles', icon: Users, internal: false },
+      { path: 'https://sousamurrayelearning.jagroupservices.co.uk/', label: 'Sousa Murray eLearning', icon: GraduationCap, internal: false },
     ],
   },
   {
     category: 'Legal and Policies',
-    description: 'Terms, privacy information, cookie information and formal policies.',
+    description: 'Terms, privacy information, cookie information and formal complaint and refund arrangements.',
     icon: Scale,
     links: [
       { path: '/terms-of-service', label: 'Terms of Service', icon: FileText, internal: true },
       { path: '/privacy-policy', label: 'Privacy Policy', icon: Shield, internal: true },
       { path: '/cookies-policy', label: 'Cookies Policy', icon: Cookie, internal: true },
-      { path: '/complaints-policy', label: 'Complaints Policy', icon: AlertCircle, internal: true },
+      { path: '/complaints-policy', label: 'Complaints & Refunds Policy', icon: AlertCircle, internal: true },
     ],
   },
 ] as const;
@@ -103,7 +116,10 @@ export default function SitemapPage() {
     <>
       <Helmet>
         <title>Sitemap | JA Group Services Ltd</title>
-        <meta name="description" content="Browse the complete JA Group Services Ltd website structure, including Sousa Murray eLearning, services, operating brands, company information, support, trust and legal pages." />
+        <meta
+          name="description"
+          content="Browse the JA Group Services Ltd corporate website, including Company information, Sousa Murray brands, careers, partners, suppliers, announcements, support and legal pages."
+        />
         <link rel="canonical" href="https://jagroupservices.co.uk/sitemap" />
       </Helmet>
 
@@ -112,13 +128,13 @@ export default function SitemapPage() {
           <div className="pointer-events-none absolute -right-24 -top-24 h-96 w-96 rounded-full bg-blue-500/20 blur-3xl" />
           <div className="relative mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
-              <div className="mx-auto inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-semibold">
+              <div className="mx-auto inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-semibold text-white">
                 <Network className="h-4 w-4" />
                 Website Directory
               </div>
-              <h1 className="mt-6 text-4xl font-extrabold sm:text-5xl lg:text-6xl">Sitemap</h1>
+              <h1 className="mt-6 text-4xl font-extrabold text-white sm:text-5xl lg:text-6xl">Sitemap</h1>
               <p className="mx-auto mt-5 max-w-3xl text-base leading-relaxed text-white/80 sm:text-lg">
-                Find company information, services, support routes, policies and customer-facing brands, including Sousa Murray eLearning, from one structured directory.
+                Find Company information, services, stakeholder routes, support, policies, careers and every approved Sousa Murray website from one structured directory.
               </p>
             </motion.div>
           </div>
@@ -179,7 +195,9 @@ export default function SitemapPage() {
         <section className="border-t border-border bg-secondary py-14 text-center">
           <div className="mx-auto max-w-3xl px-4 sm:px-6">
             <h2 className="text-3xl font-bold text-foreground">Need help finding the right route?</h2>
-            <p className="mt-4 leading-relaxed text-muted-foreground">The Customer Support Centre can direct Sousa Murray eLearning course and enrolment enquiries, account, billing, privacy, security, safeguarding and general enquiries.</p>
+            <p className="mt-4 leading-relaxed text-muted-foreground">
+              The Customer Support Centre can direct account, service, billing, privacy, security, safeguarding, learner and general enquiries.
+            </p>
             <Link to="/customer-support" className="mt-7 inline-flex min-h-11 items-center rounded-xl bg-primary px-6 py-3 font-semibold text-primary-foreground transition-colors hover:bg-primary/90">
               Open Customer Support
             </Link>
