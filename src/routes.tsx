@@ -9,6 +9,7 @@ import AlfieThomasHolywoodMurrayPage from './pages/team/alfie-thomas-holywood-mu
 import AboutOurDivisionsPage from './pages/brands';
 import OurGroupStructurePage from './pages/group-structure-with-aptenvo';
 import CorporateInformationPage from './pages/corporate-information';
+import ShareholderInformationPage from './pages/shareholder-information';
 import ServicesPage from './pages/services';
 import CustomerSupportPage from './pages/customer-support';
 import AccessibilityStatementPage from './pages/accessibility-statement';
@@ -55,6 +56,7 @@ export const routes: RouteObject[] = [
   { path: '/about-our-divisions', element: <AboutOurDivisionsPage /> },
   { path: '/our-group-structure', element: <OurGroupStructurePage /> },
   { path: '/corporate-information', element: <CorporateInformationPage /> },
+  { path: '/shareholder-information', element: <ShareholderInformationPage /> },
   { path: '/services', element: <ServicesPage /> },
   { path: '/customer-support', element: <CustomerSupportPage /> },
   { path: '/accessibility-statement', element: <AccessibilityStatementPage /> },
@@ -102,6 +104,7 @@ export type Path =
   | '/about-our-divisions'
   | '/our-group-structure'
   | '/corporate-information'
+  | '/shareholder-information'
   | '/services'
   | '/customer-support'
   | '/accessibility-statement'

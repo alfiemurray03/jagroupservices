@@ -202,6 +202,7 @@ export default function Footer() {
               <li><Link to="/our-group-structure" className={linkClass}>Our Group Structure</Link></li>
               <li><Link to="/governance" className={linkClass}>Governance</Link></li>
               <li><Link to="/corporate-information" className={linkClass}>Stakeholder Centre</Link></li>
+              <li><Link to="/shareholder-information" className={linkClass}>Shareholder Information</Link></li>
               <li><Link to="/announcements" className={linkClass}>Announcements</Link></li>
             </ul>
           </div>
@@ -212,7 +213,6 @@ export default function Footer() {
               <li><Link to="/partner-with-us" className={linkClass}>Partners and Suppliers</Link></li>
               <li><Link to="/affiliate-partners" className={linkClass}>Affiliate Partners — Coming Soon</Link></li>
               <li><Link to="/careers" className={linkClass}>Careers and Vacancies</Link></li>
-              <li><Link to="/corporate-information#investors" className={linkClass}>Investor Information</Link></li>
               <li><Link to="/contactus" className={linkClass}>Contact Us</Link></li>
             </ul>
           </div>
@@ -252,7 +252,7 @@ export default function Footer() {
                 ZB877370
               </a>
             </p>
-            <p className="mt-1 text-xs leading-relaxed">Registered Office: 167-169 Great Portland Street, 5th Floor, London, W1W 5PF</p>
+            <p className="mt-1 text-xs leading-relaxed">Registered Office: 167–169 Great Portland Street, 5th Floor, London, W1W 5PF</p>
           </div>
           <LanguageSwitcher />
         </div>

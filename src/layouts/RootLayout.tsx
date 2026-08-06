@@ -6,6 +6,7 @@ import { AppHeader } from '@/components/AppHeader';
 import CentralCustomerServiceAssistant from '@/components/CentralCustomerServiceAssistant';
 import FooterCorporateDisclosure from '@/components/FooterCorporateDisclosure';
 import HeadOfficeLaunchGate from '@/components/HeadOfficeLaunchGate';
+import MaintenanceNotice from '@/components/MaintenanceNotice';
 import ScrollToTop from '@/components/ScrollToTop';
 import Footer from '@/layouts/parts/Footer';
 import Header from '@/layouts/parts/Header';
@@ -80,6 +81,8 @@ export default function RootLayout({ children }: RootLayoutProps) {
       '/meet-the-team': 'Meet the Team',
       '/about-our-divisions': 'Brands and Divisions',
       '/our-group-structure': 'Our Group Structure',
+      '/corporate-information': 'Stakeholder Centre',
+      '/shareholder-information': 'Shareholder Information',
       '/services': 'Our Services',
       '/customer-support': 'Customer Support',
       '/accessibility-statement': 'Accessibility',
@@ -88,6 +91,8 @@ export default function RootLayout({ children }: RootLayoutProps) {
       '/governance': 'Governance',
       '/safeguarding': 'Safeguarding',
       '/partner-with-us': 'Partner With Us',
+      '/affiliate-partners': 'Affiliate Partners',
+      '/careers': 'Careers and Vacancies',
       '/contactus': 'Contact Us',
       '/announcements': 'Announcements',
     };
@@ -102,6 +107,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
         <HeadOfficeLaunchGate />
         <div className="min-h-screen bg-gray-50">
           <AppHeader title={getPageTitle()} />
+          <MaintenanceNotice />
           <main className="pb-8">{children}</main>
           <AppBottomNav />
         </div>
