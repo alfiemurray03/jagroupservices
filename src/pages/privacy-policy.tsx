@@ -24,7 +24,7 @@ export default function PrivacyPolicyPage() {
         </p>
         <PolicyNotice title="Data Protection Officer">
           <p>
-            Our Data Protection Officer is Mr Alfie Thomas Holywood Murray. Contact him at <a href="mailto:alfie@jagroupservices.co.uk">alfie@jagroupservices.co.uk</a> or through our <Link to="/privacy-centre">Privacy Centre</Link>.
+            Our Data Protection Officer is Mr Alfie Thomas Holywood Murray. Contact the Data Protection Office at <a href="mailto:dataprotection@jagroupservices.co.uk">dataprotection@jagroupservices.co.uk</a> or through our <Link to="/privacy-centre">Privacy Centre</Link>.
           </p>
         </PolicyNotice>
       </PolicySection>
@@ -194,7 +194,7 @@ export default function PrivacyPolicyPage() {
           Rights are not always absolute. We may need to verify identity or authority and may ask for information needed to locate the relevant records. We normally respond without undue delay and within one calendar month, subject to lawful extensions and exemptions.
         </p>
         <p>
-          Submit a request through the <Link to="/privacy-centre">Privacy Centre</Link> or email <a href="mailto:alfie@jagroupservices.co.uk">alfie@jagroupservices.co.uk</a>.
+          Submit a request through the <Link to="/privacy-centre">Privacy Centre</Link> or email <a href="mailto:dataprotection@jagroupservices.co.uk">dataprotection@jagroupservices.co.uk</a>.
         </p>
       </PolicySection>
 
@@ -218,7 +218,7 @@ export default function PrivacyPolicyPage() {
 
       <PolicySection number="15" title="Complaints and the Information Commissioner">
         <p>
-          Please contact the Data Protection Officer first so we can investigate. You also have the right to complain to the Information Commissioner’s Office. Its complaint service is available at <a href="https://ico.org.uk/make-a-complaint/" target="_blank" rel="noopener noreferrer">ico.org.uk/make-a-complaint</a>.
+          Please contact the Data Protection Officer first at <a href="mailto:dataprotection@jagroupservices.co.uk">dataprotection@jagroupservices.co.uk</a> so we can investigate. You also have the right to complain to the Information Commissioner’s Office. Its complaint service is available at <a href="https://ico.org.uk/make-a-complaint/" target="_blank" rel="noopener noreferrer">ico.org.uk/make-a-complaint</a>.
         </p>
         <p>
           A privacy complaint may also be handled under our <Link to="/complaints-policy">Complaints &amp; Refunds Policy</Link>, but using that process does not remove your right to contact the Information Commissioner.
@@ -230,8 +230,9 @@ export default function PrivacyPolicyPage() {
           We may update this Policy to reflect legal, regulatory, organisational or service changes. Material changes will be highlighted where reasonably practicable. The effective and review dates shown at the top identify the current published version.
         </p>
         <p>
-          General enquiries: <a href="mailto:contact@jagroupservices.co.uk">contact@jagroupservices.co.uk</a>.<br />
-          Data Protection Officer: <a href="mailto:alfie@jagroupservices.co.uk">alfie@jagroupservices.co.uk</a>.<br />
+          General company enquiries: <a href="mailto:contact@jagroupservices.co.uk">contact@jagroupservices.co.uk</a>.<br />
+          Data Protection Office: <a href="mailto:dataprotection@jagroupservices.co.uk">dataprotection@jagroupservices.co.uk</a>.<br />
+          Complaints: <a href="mailto:complaints@jagroupservices.co.uk">complaints@jagroupservices.co.uk</a>.<br />
           Postal address: JA Group Services Ltd, 167-169 Great Portland Street, 5th Floor, London, W1W 5PF.
         </p>
       </PolicySection>
