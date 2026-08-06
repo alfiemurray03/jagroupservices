@@ -14,8 +14,9 @@ import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 
 import { Button } from '@/components/ui/button';
+import { getFallbackAnnouncement, type PublicAnnouncement } from '@/data/public-announcements';
 
-interface Announcement {
+type Announcement = PublicAnnouncement | {
   id: number;
   title: string;
   slug: string;
@@ -30,20 +31,29 @@ interface Announcement {
   publishedAt: string | null;
   createdAt: string;
   updatedAt: string;
-}
+};
 
 export default function AnnouncementDetailPage() {
   const { slug } = useParams<{ slug: string }>();
-  const [announcement, setAnnouncement] = useState<Announcement | null>(null);
-  const [loading, setLoading] = useState(true);
+  const approvedFallback = slug ? getFallbackAnnouncement(slug) ?? null : null;
+  const [announcement, setAnnouncement] = useState<Announcement | null>(approvedFallback);
+  const [loading, setLoading] = useState(!approvedFallback);
   const [notFound, setNotFound] = useState(false);
-  const [error, setError] = useState('');
 
   useEffect(() => {
     if (!slug) {
       setNotFound(true);
       setLoading(false);
       return;
+    }
+
+    const fallback = getFallbackAnnouncement(slug) ?? null;
+    if (fallback) {
+      setAnnouncement(fallback);
+      setNotFound(false);
+      setLoading(false);
+    } else {
+      setLoading(true);
     }
 
     const controller = new AbortController();
@@ -53,7 +63,7 @@ export default function AnnouncementDetailPage() {
     })
       .then(async (response) => {
         if (response.status === 404) {
-          setNotFound(true);
+          if (!fallback) setNotFound(true);
           setLoading(false);
           return null;
         }
@@ -61,12 +71,21 @@ export default function AnnouncementDetailPage() {
         return response.json() as Promise<Announcement>;
       })
       .then((data) => {
-        if (data) setAnnouncement(data);
+        if (data) {
+          setAnnouncement(data);
+          setNotFound(false);
+        }
         setLoading(false);
       })
       .catch((fetchError) => {
         if (fetchError instanceof DOMException && fetchError.name === 'AbortError') return;
-        setError('This announcement is temporarily unavailable.');
+        console.warn('Editable announcement service unavailable; using approved published content.', fetchError);
+        if (fallback) {
+          setAnnouncement(fallback);
+          setNotFound(false);
+        } else {
+          setNotFound(true);
+        }
         setLoading(false);
       });
 
@@ -74,8 +93,9 @@ export default function AnnouncementDetailPage() {
   }, [slug]);
 
   if (loading) return <AnnouncementLoading />;
-  if (notFound) return <AnnouncementUnavailable title="Announcement not found" description="The requested announcement may have been removed, unpublished or entered incorrectly." />;
-  if (error || !announcement) return <AnnouncementUnavailable title="Unable to load announcement" description={error || 'Please try again later.'} />;
+  if (notFound || !announcement) {
+    return <AnnouncementUnavailable title="Announcement not found" description="The requested announcement may have been removed, unpublished or entered incorrectly." />;
+  }
 
   const canonicalUrl = `https://jagroupservices.co.uk/announcements/${announcement.slug}`;
   const publishedDate = announcement.publishedAt ?? announcement.createdAt;

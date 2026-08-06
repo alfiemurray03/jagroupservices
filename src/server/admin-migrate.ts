@@ -145,11 +145,22 @@ async function _runMigrations(): Promise<void> {
 
 /**
  * Ensure admin tables exist. Safe to call on every request — only runs once per process.
+ *
+ * A content-database outage must not take the public corporate website offline.
+ * The public handlers provide approved published fallback content, while admin
+ * endpoints will still report their own database errors if editing is unavailable.
  */
 export async function runAdminMigrations(): Promise<void> {
   if (global.__adminMigrationRan) return;
   if (!global.__adminMigrationPromise) {
     global.__adminMigrationPromise = _runMigrations();
   }
-  return global.__adminMigrationPromise;
+
+  try {
+    await global.__adminMigrationPromise;
+  } catch (error) {
+    console.error('[admin-migrate] Continuing with public content fallbacks:', {
+      error: error instanceof Error ? error.message : String(error),
+    });
+  }
 }
