@@ -4,6 +4,7 @@ import { ChevronDown, CircleUserRound, Menu, Phone, X } from 'lucide-react';
 
 import CustomerWebsitesMenu, { MobileCustomerWebsitesMenu } from '@/components/CustomerWebsitesMenu';
 import { useLanguage } from '@/components/LanguageProvider';
+import MaintenanceNotice from '@/components/MaintenanceNotice';
 import ThemeToggle from '@/components/ThemeToggle';
 import {
   DropdownMenu,
@@ -95,7 +96,8 @@ export default function Header() {
                 <DesktopMenuItem to="/meet-the-team" title="Meet the Team" description="Company leadership and responsibilities" />
                 <DesktopMenuItem to="/our-group-structure" title="Company and Brand Structure" description="Legal company, master brand and services" />
                 <DesktopMenuItem to="/governance" title="Governance" description="Authority, oversight and accountability" />
-                <DesktopMenuItem to="/corporate-information" title="Stakeholder Centre" description="Suppliers, investors and shareholders" />
+                <DesktopMenuItem to="/corporate-information" title="Stakeholder Centre" description="Corporate information for customers and stakeholders" />
+                <DesktopMenuItem to="/shareholder-information" title="Shareholder Information" description="Information for existing shareholders and authorised representatives" />
                 <DesktopMenuItem to="/announcements" title="Announcements" description="Official corporate newsroom" />
               </DropdownMenuContent>
             </DropdownMenu>
@@ -108,7 +110,6 @@ export default function Header() {
                 <DesktopMenuItem to="/partner-with-us" title="Partners and Suppliers" description="Commercial, technology and supplier relationships" />
                 <DesktopMenuItem to="/affiliate-partners" title="Affiliate Partners — Coming Soon" description="Planned programme for approved promoters" />
                 <DesktopMenuItem to="/careers" title="Careers and Vacancies — Coming Soon" description="Future opportunities and recruitment information" />
-                <DesktopMenuItem to="/corporate-information#investors" title="Corporate and Investor Enquiries" description="Information for investors and future shareholders" />
               </DropdownMenuContent>
             </DropdownMenu>
 
@@ -159,6 +160,8 @@ export default function Header() {
         </div>
       </div>
 
+      <MaintenanceNotice />
+
       {mobileMenuOpen && (
         <div id="mobile-menu" className="absolute left-0 right-0 top-full max-h-[calc(100dvh-4rem)] overflow-y-auto overscroll-contain border-t border-border bg-card shadow-2xl 2xl:hidden">
           <nav className="mx-auto flex max-w-7xl flex-col gap-1 px-4 py-4 sm:px-6" aria-label="Mobile navigation">
@@ -178,6 +181,7 @@ export default function Header() {
               <MobileLink to="/our-group-structure" onClick={closeMobileMenu}>Company and Brand Structure</MobileLink>
               <MobileLink to="/governance" onClick={closeMobileMenu}>Governance</MobileLink>
               <MobileLink to="/corporate-information" onClick={closeMobileMenu}>Stakeholder Centre</MobileLink>
+              <MobileLink to="/shareholder-information" onClick={closeMobileMenu}>Shareholder Information</MobileLink>
               <MobileLink to="/announcements" onClick={closeMobileMenu}>Announcements</MobileLink>
             </MobileGroup>
 
@@ -185,7 +189,6 @@ export default function Header() {
               <MobileLink to="/partner-with-us" onClick={closeMobileMenu}>Partners and Suppliers</MobileLink>
               <MobileLink to="/affiliate-partners" onClick={closeMobileMenu}>Affiliate Partners — Coming Soon</MobileLink>
               <MobileLink to="/careers" onClick={closeMobileMenu}>Careers and Vacancies — Coming Soon</MobileLink>
-              <MobileLink to="/corporate-information#investors" onClick={closeMobileMenu}>Investor Information</MobileLink>
             </MobileGroup>
 
             <MobileGroup title="Support and Trust">
