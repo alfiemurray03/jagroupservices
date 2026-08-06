@@ -16,6 +16,7 @@ import './styles/desktop-density.css';
 import './styles/email-addresses.css';
 import './styles/header-responsive.css';
 import './styles/ja-id-connected-sessions.css';
+import './styles/dark-surface-contrast.css';
 
 // Register Service Worker with update checking
 import { HelmetProvider } from "@dr.pogodin/react-helmet";
