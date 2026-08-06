@@ -1,12 +1,21 @@
 import type { Request, Response } from 'express';
 import { desc, eq } from 'drizzle-orm';
 
+import { getFallbackAnnouncementSummaries } from '@/data/public-announcements';
 import { db } from '@/server/db/client';
 import { adminAnnouncements } from '@/server/db/schema';
 
+function sendFallbackAnnouncements(res: Response) {
+  return res
+    .status(200)
+    .set('Cache-Control', 'public, max-age=60, stale-while-revalidate=300')
+    .set('X-Announcements-Source', 'published-fallback')
+    .json(getFallbackAnnouncementSummaries());
+}
+
 export async function publicAnnouncementsGetHandler(_req: Request, res: Response) {
   try {
-    const announcements = await db!
+    const announcements = await db
       .select({
         id: adminAnnouncements.id,
         title: adminAnnouncements.title,
@@ -22,10 +31,16 @@ export async function publicAnnouncementsGetHandler(_req: Request, res: Response
       .where(eq(adminAnnouncements.status, 'published'))
       .orderBy(desc(adminAnnouncements.isFeatured), desc(adminAnnouncements.publishedAt), desc(adminAnnouncements.createdAt));
 
-    return res.json(announcements);
+    if (announcements.length === 0) return sendFallbackAnnouncements(res);
+
+    return res
+      .status(200)
+      .set('Cache-Control', 'public, max-age=60, stale-while-revalidate=300')
+      .set('X-Announcements-Source', 'database')
+      .json(announcements);
   } catch (err) {
-    console.error('Public announcements error:', err);
-    return res.status(500).json({ error: 'Failed to fetch announcements.' });
+    console.error('Public announcements database unavailable; serving published fallback:', err);
+    return sendFallbackAnnouncements(res);
   }
 }
 
