@@ -1,6 +1,5 @@
 import { Helmet } from '@dr.pogodin/react-helmet';
 import {
-  AlertCircle,
   ArrowRight,
   Building2,
   CalendarDays,
@@ -15,6 +14,7 @@ import { Link } from 'react-router-dom';
 
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import { getFallbackAnnouncementSummaries } from '@/data/public-announcements';
 
 interface AnnouncementSummary {
   id: number;
@@ -31,14 +31,14 @@ interface AnnouncementSummary {
 const pageUrl = 'https://jagroupservices.co.uk/announcements';
 
 export default function AnnouncementsPage() {
-  const [announcements, setAnnouncements] = useState<AnnouncementSummary[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState('');
+  const [announcements, setAnnouncements] = useState<AnnouncementSummary[]>(() => getFallbackAnnouncementSummaries());
+  const [loading, setLoading] = useState(false);
   const [query, setQuery] = useState('');
   const [category, setCategory] = useState('All');
 
   useEffect(() => {
     const controller = new AbortController();
+    setLoading(true);
 
     fetch('/api/announcements', {
       signal: controller.signal,
@@ -49,12 +49,13 @@ export default function AnnouncementsPage() {
         return response.json() as Promise<AnnouncementSummary[]>;
       })
       .then((data) => {
-        setAnnouncements(Array.isArray(data) ? data : []);
+        if (Array.isArray(data) && data.length > 0) setAnnouncements(data);
         setLoading(false);
       })
       .catch((fetchError) => {
         if (fetchError instanceof DOMException && fetchError.name === 'AbortError') return;
-        setError('Announcements are temporarily unavailable. Please try again later.');
+        console.warn('Editable announcements service unavailable; using approved published content.', fetchError);
+        setAnnouncements(getFallbackAnnouncementSummaries());
         setLoading(false);
       });
 
@@ -165,21 +166,9 @@ export default function AnnouncementsPage() {
               </div>
             </div>
 
-            {loading && <LoadingState />}
+            {loading && announcements.length === 0 && <LoadingState />}
 
-            {!loading && error && (
-              <div className="rounded-2xl border border-red-200 bg-red-50 p-6 text-red-800 dark:border-red-900/40 dark:bg-red-950/20 dark:text-red-200">
-                <div className="flex items-start gap-3">
-                  <AlertCircle className="mt-0.5 h-5 w-5 shrink-0" />
-                  <div>
-                    <h2 className="font-bold">Unable to load announcements</h2>
-                    <p className="mt-1 text-sm">{error}</p>
-                  </div>
-                </div>
-              </div>
-            )}
-
-            {!loading && !error && filtered.length === 0 && (
+            {!loading && filtered.length === 0 && (
               <div className="rounded-3xl border border-dashed border-border bg-card p-10 text-center sm:p-14">
                 <FileText className="mx-auto h-12 w-12 text-muted-foreground/50" />
                 <h2 className="mt-4 text-2xl font-bold text-foreground">No matching announcements</h2>
@@ -199,7 +188,7 @@ export default function AnnouncementsPage() {
               </div>
             )}
 
-            {!loading && !error && featured && (
+            {featured && (
               <>
                 <motion.article
                   className="overflow-hidden rounded-3xl border border-border bg-card shadow-lg"
