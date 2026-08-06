@@ -37,10 +37,10 @@ interface ContactRoute {
 const contactRoutes: readonly ContactRoute[] = [
   {
     icon: MessageSquare,
-    title: 'General enquiries',
-    description: 'Company information, help finding the right service, website feedback and enquiries that do not fit another route.',
+    title: 'General company enquiries',
+    description: 'Company information, help finding the right service and enquiries that do not fit another dedicated route.',
     email: 'contact@jagroupservices.co.uk',
-    subject: 'General Enquiry',
+    subject: 'General Company Enquiry',
   },
   {
     icon: Headphones,
@@ -53,29 +53,36 @@ const contactRoutes: readonly ContactRoute[] = [
     icon: Building2,
     title: 'Corporate and governance enquiries',
     description: 'Formal corporate correspondence, governance matters, professional advisers, authorised business enquiries and media requests.',
-    email: 'alfie@jagroupservices.co.uk',
+    email: 'corporate@jagroupservices.co.uk',
     subject: 'Corporate Enquiry',
   },
   {
     icon: Users,
     title: 'Shareholder enquiries',
     description: 'For existing shareholders, authorised representatives and professional advisers. Identity and authority checks may be required.',
-    href: '/shareholder-information',
-    linkLabel: 'Open Shareholder Information',
+    email: 'corporate@jagroupservices.co.uk',
+    subject: 'Shareholder Enquiry',
   },
   {
     icon: ShieldCheck,
-    title: 'Privacy and data protection',
-    description: 'Data-subject rights, privacy questions and correspondence for the Data Protection Officer. Mark the email clearly for the attention of the DPO.',
-    email: 'contact@jagroupservices.co.uk',
-    subject: 'For the Attention of the Data Protection Officer',
+    title: 'Data protection and privacy',
+    description: 'Data-subject rights, privacy questions, personal-data concerns and correspondence for the Data Protection Officer.',
+    email: 'dataprotection@jagroupservices.co.uk',
+    subject: 'Data Protection or Privacy Enquiry',
   },
   {
     icon: AlertCircle,
     title: 'Complaints and refunds',
-    description: 'Formal complaints, service dissatisfaction and refund requests should follow the published complaints and refunds process.',
-    href: '/complaints-policy',
-    linkLabel: 'Read Complaints & Refunds',
+    description: 'Formal complaints, service dissatisfaction, escalations and refund requests under the published complaints process.',
+    email: 'complaints@jagroupservices.co.uk',
+    subject: 'Formal Complaint or Refund Request',
+  },
+  {
+    icon: MessageSquare,
+    title: 'Feedback and suggestions',
+    description: 'Comments, compliments, suggestions and non-complaint feedback about the Company, its websites or the services it provides.',
+    email: 'feedback@jagroupservices.co.uk',
+    subject: 'Feedback or Suggestion',
   },
   {
     icon: ShieldCheck,
@@ -88,8 +95,8 @@ const contactRoutes: readonly ContactRoute[] = [
     icon: Landmark,
     title: 'Suppliers and partnerships',
     description: 'Introductions from technology providers, professional advisers, suppliers and potential commercial partners.',
-    href: '/partner-with-us',
-    linkLabel: 'Partners and Suppliers',
+    email: 'corporate@jagroupservices.co.uk',
+    subject: 'Supplier or Partnership Enquiry',
   },
 ] as const;
 
@@ -107,13 +114,13 @@ export default function ContactUsPage() {
         <title>Contact JA Group Services Ltd</title>
         <meta
           name="description"
-          content="Contact JA Group Services Ltd for general, customer, corporate, shareholder, privacy, complaints, security, supplier and partnership enquiries."
+          content="Contact JA Group Services Ltd by telephone or through its dedicated general, corporate, data protection, complaints and feedback email channels."
         />
         <link rel="canonical" href={pageUrl} />
         <meta property="og:title" content="Contact JA Group Services Ltd" />
         <meta
           property="og:description"
-          content="Telephone, email, registered-office and dedicated enquiry routes for JA Group Services Ltd."
+          content="Telephone, departmental email, registered-office and dedicated enquiry routes for JA Group Services Ltd."
         />
         <meta property="og:url" content={pageUrl} />
         <meta property="og:type" content="website" />
@@ -128,15 +135,15 @@ export default function ContactUsPage() {
             <motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
               <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-sm font-semibold">
                 <MessageSquare className="h-4 w-4" />
-                Corporate contact centre
+                Company contact centre
               </div>
               <h1 className="mt-6 text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl lg:text-6xl">Contact Us</h1>
               <p className="mt-5 max-w-3xl text-base leading-relaxed text-white/80 sm:text-lg">
-                Contact JA Group Services Ltd through the route that best matches your enquiry. Clear routing helps us protect information, identify the right service and respond appropriately.
+                Contact JA Group Services Ltd through the route that best matches your enquiry. Using the correct departmental address helps us protect information and direct your message efficiently.
               </p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                 <Button asChild size="lg" className="bg-white font-bold text-[#0A1F44] hover:bg-blue-50">
-                  <a href="mailto:contact@jagroupservices.co.uk?subject=General%20Enquiry">Email general enquiries</a>
+                  <a href="mailto:contact@jagroupservices.co.uk?subject=General%20Company%20Enquiry">Email general enquiries</a>
                 </Button>
                 <Button asChild size="lg" variant="outline" className="border-white/35 bg-white/5 font-semibold text-white hover:bg-white/10 hover:text-white">
                   <a href="tel:02038342790"><Phone className="mr-2 h-4 w-4" />020 3834 2790</a>
@@ -153,9 +160,9 @@ export default function ContactUsPage() {
             >
               <p className="text-xs font-bold uppercase tracking-[0.18em] text-blue-200">Main contact details</p>
               <div className="mt-5 space-y-4">
-                <QuickContact icon={Phone} label="Main switchboard" value="020 3834 2790" href="tel:02038342790" />
-                <QuickContact icon={Mail} label="General enquiries" value="contact@jagroupservices.co.uk" href="mailto:contact@jagroupservices.co.uk" />
-                <QuickContact icon={Mail} label="Corporate office" value="alfie@jagroupservices.co.uk" href="mailto:alfie@jagroupservices.co.uk" />
+                <QuickContact icon={Phone} label="Main telephone" value="020 3834 2790" href="tel:02038342790" />
+                <QuickContact icon={Mail} label="General company email" value="contact@jagroupservices.co.uk" href="mailto:contact@jagroupservices.co.uk" />
+                <QuickContact icon={Mail} label="Corporate email" value="corporate@jagroupservices.co.uk" href="mailto:corporate@jagroupservices.co.uk" />
                 <div className="rounded-2xl border border-white/15 bg-white/10 p-4">
                   <div className="flex items-start gap-3">
                     <Clock className="mt-0.5 h-5 w-5 shrink-0 text-blue-200" />
@@ -171,6 +178,15 @@ export default function ContactUsPage() {
           </div>
         </section>
 
+        <section className="border-b border-border bg-card py-8">
+          <div className="mx-auto grid max-w-7xl gap-4 px-4 sm:px-6 md:grid-cols-2 lg:px-8 xl:grid-cols-4">
+            <DepartmentEmail title="Corporate" email="corporate@jagroupservices.co.uk" />
+            <DepartmentEmail title="Data Protection & Privacy" email="dataprotection@jagroupservices.co.uk" />
+            <DepartmentEmail title="Complaints" email="complaints@jagroupservices.co.uk" />
+            <DepartmentEmail title="Feedback" email="feedback@jagroupservices.co.uk" />
+          </div>
+        </section>
+
         <section className="border-b border-border py-14 sm:py-16 lg:py-20">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="mx-auto mb-10 max-w-3xl text-center">
@@ -181,7 +197,7 @@ export default function ContactUsPage() {
               </p>
             </div>
 
-            <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+            <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
               {contactRoutes.map((route, index) => (
                 <ContactRouteCard key={route.title} route={route} index={index} />
               ))}
@@ -221,12 +237,12 @@ export default function ContactUsPage() {
                   W1W 5PF<br />
                   United Kingdom
                 </address>
-                <div className="mt-6 rounded-2xl border border-amber-200 bg-amber-50 p-5 text-amber-950 dark:border-amber-900/40 dark:bg-amber-950/25 dark:text-amber-100">
+                <div className="mt-6 rounded-2xl !border-[#D7A72B] !bg-[#FFF4C2] p-5 !text-[#3D2800] shadow-sm">
                   <div className="flex items-start gap-3">
-                    <AlertCircle className="mt-0.5 h-5 w-5 shrink-0" />
+                    <AlertCircle className="mt-0.5 h-5 w-5 shrink-0 !text-[#6B4300]" />
                     <div>
-                      <h3 className="font-bold">Registered office—not a public walk-in reception</h3>
-                      <p className="mt-2 text-sm leading-relaxed">
+                      <h3 className="font-bold !text-[#3D2800]">Registered office — not a public walk-in reception</h3>
+                      <p className="mt-2 text-sm leading-relaxed !text-[#4A3100]">
                         Please do not attend without a confirmed appointment. The registered office is the Company’s statutory and formal correspondence address and may not be staffed for unscheduled visitors or customer support.
                       </p>
                     </div>
@@ -266,7 +282,7 @@ export default function ContactUsPage() {
             <Headphones className="mx-auto h-10 w-10 text-blue-200" />
             <h2 className="mt-5 text-3xl font-bold">Already a customer?</h2>
             <p className="mx-auto mt-4 max-w-2xl leading-relaxed text-white/75">
-              Use the Customer Support Centre for account, billing, service, learner, complaint and technical-support routes before sending a general corporate enquiry.
+              Use the Customer Support Centre for account, billing, service, learner and technical-support routes before sending a general company enquiry.
             </p>
             <Button asChild size="lg" className="mt-7 bg-white font-bold text-[#0A1F44] hover:bg-blue-50">
               <Link to="/customer-support">Open Customer Support</Link>
@@ -288,6 +304,16 @@ function QuickContact({ icon: Icon, label, value, href }: { icon: LucideIcon; la
         <span className="block text-xs text-white/60">{label}</span>
         <span className="block break-words text-sm font-semibold">{value}</span>
       </span>
+    </a>
+  );
+}
+
+function DepartmentEmail({ title, email }: { title: string; email: string }) {
+  return (
+    <a href={`mailto:${email}`} className="group rounded-2xl border border-border bg-background p-5 shadow-sm transition hover:border-primary/35 hover:shadow-md">
+      <Mail className="h-5 w-5 text-primary" />
+      <p className="mt-3 text-sm font-bold text-foreground">{title}</p>
+      <p className="mt-1 break-all text-sm text-primary group-hover:underline">{email}</p>
     </a>
   );
 }

@@ -13,53 +13,18 @@
   color: rgb(255 255 255) !important;
 }
 
-[class~="text-white/95"] {
-  color: rgb(255 255 255 / 0.95) !important;
-}
-
-[class~="text-white/90"] {
-  color: rgb(255 255 255 / 0.90) !important;
-}
-
-[class~="text-white/85"] {
-  color: rgb(255 255 255 / 0.85) !important;
-}
-
-[class~="text-white/82"] {
-  color: rgb(255 255 255 / 0.82) !important;
-}
-
-[class~="text-white/80"] {
-  color: rgb(255 255 255 / 0.80) !important;
-}
-
-[class~="text-white/78"] {
-  color: rgb(255 255 255 / 0.78) !important;
-}
-
-[class~="text-white/75"] {
-  color: rgb(255 255 255 / 0.75) !important;
-}
-
-[class~="text-white/70"] {
-  color: rgb(255 255 255 / 0.70) !important;
-}
-
-[class~="text-white/65"] {
-  color: rgb(255 255 255 / 0.65) !important;
-}
-
-[class~="text-white/60"] {
-  color: rgb(255 255 255 / 0.60) !important;
-}
-
-[class~="text-white/55"] {
-  color: rgb(255 255 255 / 0.55) !important;
-}
-
-[class~="text-white/50"] {
-  color: rgb(255 255 255 / 0.50) !important;
-}
+[class~="text-white/95"] { color: rgb(255 255 255 / 0.95) !important; }
+[class~="text-white/90"] { color: rgb(255 255 255 / 0.90) !important; }
+[class~="text-white/85"] { color: rgb(255 255 255 / 0.85) !important; }
+[class~="text-white/82"] { color: rgb(255 255 255 / 0.82) !important; }
+[class~="text-white/80"] { color: rgb(255 255 255 / 0.80) !important; }
+[class~="text-white/78"] { color: rgb(255 255 255 / 0.78) !important; }
+[class~="text-white/75"] { color: rgb(255 255 255 / 0.75) !important; }
+[class~="text-white/70"] { color: rgb(255 255 255 / 0.70) !important; }
+[class~="text-white/65"] { color: rgb(255 255 255 / 0.65) !important; }
+[class~="text-white/60"] { color: rgb(255 255 255 / 0.60) !important; }
+[class~="text-white/55"] { color: rgb(255 255 255 / 0.55) !important; }
+[class~="text-white/50"] { color: rgb(255 255 255 / 0.50) !important; }
 
 /* Headings have a global colour declaration, so make them inherit again when
    their containing surface deliberately declares white foreground text. */
@@ -81,69 +46,22 @@
 
 /* Preserve translucent white fills and borders. Without these final overrides,
    some exported light-mode rules flatten the tint into an opaque white box. */
-[class~="bg-white/5"] {
-  background-color: rgb(255 255 255 / 0.05) !important;
-}
-
-[class~="bg-white/10"] {
-  background-color: rgb(255 255 255 / 0.10) !important;
-}
-
-[class~="bg-white/15"] {
-  background-color: rgb(255 255 255 / 0.15) !important;
-}
-
-[class~="bg-white/20"] {
-  background-color: rgb(255 255 255 / 0.20) !important;
-}
-
-[class~="hover:bg-white/10"]:hover {
-  background-color: rgb(255 255 255 / 0.10) !important;
-}
-
-[class~="hover:bg-white/15"]:hover {
-  background-color: rgb(255 255 255 / 0.15) !important;
-}
-
-[class~="hover:bg-white/20"]:hover {
-  background-color: rgb(255 255 255 / 0.20) !important;
-}
-
-[class~="bg-black/5"] {
-  background-color: rgb(0 0 0 / 0.05) !important;
-}
-
-[class~="bg-black/10"] {
-  background-color: rgb(0 0 0 / 0.10) !important;
-}
-
-[class~="bg-black/15"] {
-  background-color: rgb(0 0 0 / 0.15) !important;
-}
-
-[class~="border-white/10"] {
-  border-color: rgb(255 255 255 / 0.10) !important;
-}
-
-[class~="border-white/15"] {
-  border-color: rgb(255 255 255 / 0.15) !important;
-}
-
-[class~="border-white/20"] {
-  border-color: rgb(255 255 255 / 0.20) !important;
-}
-
-[class~="border-white/30"] {
-  border-color: rgb(255 255 255 / 0.30) !important;
-}
-
-[class~="border-white/35"] {
-  border-color: rgb(255 255 255 / 0.35) !important;
-}
-
-[class~="border-white/60"] {
-  border-color: rgb(255 255 255 / 0.60) !important;
-}
+[class~="bg-white/5"] { background-color: rgb(255 255 255 / 0.05) !important; }
+[class~="bg-white/10"] { background-color: rgb(255 255 255 / 0.10) !important; }
+[class~="bg-white/15"] { background-color: rgb(255 255 255 / 0.15) !important; }
+[class~="bg-white/20"] { background-color: rgb(255 255 255 / 0.20) !important; }
+[class~="hover:bg-white/10"]:hover { background-color: rgb(255 255 255 / 0.10) !important; }
+[class~="hover:bg-white/15"]:hover { background-color: rgb(255 255 255 / 0.15) !important; }
+[class~="hover:bg-white/20"]:hover { background-color: rgb(255 255 255 / 0.20) !important; }
+[class~="bg-black/5"] { background-color: rgb(0 0 0 / 0.05) !important; }
+[class~="bg-black/10"] { background-color: rgb(0 0 0 / 0.10) !important; }
+[class~="bg-black/15"] { background-color: rgb(0 0 0 / 0.15) !important; }
+[class~="border-white/10"] { border-color: rgb(255 255 255 / 0.10) !important; }
+[class~="border-white/15"] { border-color: rgb(255 255 255 / 0.15) !important; }
+[class~="border-white/20"] { border-color: rgb(255 255 255 / 0.20) !important; }
+[class~="border-white/30"] { border-color: rgb(255 255 255 / 0.30) !important; }
+[class~="border-white/35"] { border-color: rgb(255 255 255 / 0.35) !important; }
+[class~="border-white/60"] { border-color: rgb(255 255 255 / 0.60) !important; }
 
 /* Outline actions placed on dark surfaces must never inherit the light-mode
    white button fill. Match on their explicit white border/text intent rather
@@ -170,5 +88,28 @@
 [class~="bg-black/10"] :is(h1, h2, h3, h4, h5, h6),
 [class~="bg-white/10"] :is(h1, h2, h3, h4, h5, h6),
 [class~="bg-white/5"] :is(h1, h2, h3, h4, h5, h6) {
+  color: inherit !important;
+}
+
+/* Amber notices are deliberately light warning surfaces, including when the
+   surrounding page is in dark mode. Prevent white-heading safeguards or theme
+   variants from producing white-on-yellow text. */
+[class~="bg-amber-50"] {
+  background-color: rgb(255 244 194) !important;
+  border-color: rgb(215 167 43) !important;
+  color: rgb(61 40 0) !important;
+}
+
+[class~="bg-amber-50"] :is(h1, h2, h3, h4, h5, h6, p, span, strong, svg) {
+  color: inherit !important;
+}
+
+[class~="!bg-[#FFF4C2]"] {
+  background-color: rgb(255 244 194) !important;
+  border-color: rgb(215 167 43) !important;
+  color: rgb(61 40 0) !important;
+}
+
+[class~="!bg-[#FFF4C2]"] :is(h1, h2, h3, h4, h5, h6, p, span, strong, svg) {
   color: inherit !important;
 }

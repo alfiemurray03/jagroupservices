@@ -18,6 +18,8 @@ import {
 
 import CorporateInformationPage from '@/components/CorporateInformationPage';
 
+const dataProtectionEmail = 'dataprotection@jagroupservices.co.uk';
+
 const sections = [
   {
     eyebrow: 'Your information rights',
@@ -31,7 +33,7 @@ const sections = [
         title: 'Access your information',
         description:
           'Ask whether we process your personal data and request a copy of relevant information together with the supplementary information required by law.',
-        href: 'mailto:alfie@jagroupservices.co.uk?subject=Data%20protection%20request%20-%20access',
+        href: `mailto:${dataProtectionEmail}?subject=Data%20protection%20request%20-%20access`,
         linkLabel: 'Make an access request',
       },
       {
@@ -39,7 +41,7 @@ const sections = [
         title: 'Correct inaccurate data',
         description:
           'Ask us to correct personal data that is inaccurate or complete information that is materially incomplete.',
-        href: 'mailto:alfie@jagroupservices.co.uk?subject=Data%20protection%20request%20-%20rectification',
+        href: `mailto:${dataProtectionEmail}?subject=Data%20protection%20request%20-%20rectification`,
         linkLabel: 'Request a correction',
       },
       {
@@ -47,7 +49,7 @@ const sections = [
         title: 'Request erasure',
         description:
           'Ask us to erase personal data where the legal conditions apply. We may need to retain information for legal, regulatory, security or dispute-related reasons.',
-        href: 'mailto:alfie@jagroupservices.co.uk?subject=Data%20protection%20request%20-%20erasure',
+        href: `mailto:${dataProtectionEmail}?subject=Data%20protection%20request%20-%20erasure`,
         linkLabel: 'Request erasure',
       },
       {
@@ -55,7 +57,7 @@ const sections = [
         title: 'Restrict processing',
         description:
           'Ask us to limit the use of personal data in specified circumstances, for example while accuracy or an objection is being considered.',
-        href: 'mailto:alfie@jagroupservices.co.uk?subject=Data%20protection%20request%20-%20restriction',
+        href: `mailto:${dataProtectionEmail}?subject=Data%20protection%20request%20-%20restriction`,
         linkLabel: 'Request restriction',
       },
       {
@@ -63,7 +65,7 @@ const sections = [
         title: 'Data portability',
         description:
           'Request eligible personal data in a structured, commonly used and machine-readable format where the statutory conditions are met.',
-        href: 'mailto:alfie@jagroupservices.co.uk?subject=Data%20protection%20request%20-%20portability',
+        href: `mailto:${dataProtectionEmail}?subject=Data%20protection%20request%20-%20portability`,
         linkLabel: 'Request portability',
       },
       {
@@ -71,7 +73,7 @@ const sections = [
         title: 'Object to processing',
         description:
           'Object to certain processing based on legitimate interests or public-task grounds, and object at any time to the use of personal data for direct marketing.',
-        href: 'mailto:alfie@jagroupservices.co.uk?subject=Data%20protection%20request%20-%20objection',
+        href: `mailto:${dataProtectionEmail}?subject=Data%20protection%20request%20-%20objection`,
         linkLabel: 'Raise an objection',
       },
       {
@@ -79,7 +81,7 @@ const sections = [
         title: 'Withdraw consent',
         description:
           'Where processing relies on consent, you may withdraw that consent for future processing without affecting activity that was lawful before withdrawal.',
-        href: 'mailto:alfie@jagroupservices.co.uk?subject=Data%20protection%20request%20-%20withdraw%20consent',
+        href: `mailto:${dataProtectionEmail}?subject=Data%20protection%20request%20-%20withdraw%20consent`,
         linkLabel: 'Withdraw consent',
       },
       {
@@ -87,7 +89,7 @@ const sections = [
         title: 'Automated decisions and profiling',
         description:
           'Ask about relevant solely automated decisions or profiling and request appropriate human involvement where the applicable legal right arises.',
-        href: 'mailto:alfie@jagroupservices.co.uk?subject=Data%20protection%20request%20-%20automated%20decision',
+        href: `mailto:${dataProtectionEmail}?subject=Data%20protection%20request%20-%20automated%20decision`,
         linkLabel: 'Ask for a review',
       },
       {
@@ -95,7 +97,7 @@ const sections = [
         title: 'Report a suspected data incident',
         description:
           'Tell the Data Protection Officer promptly if personal information connected with one of our services appears to have been lost, disclosed, altered or accessed improperly.',
-        href: 'mailto:alfie@jagroupservices.co.uk?subject=Urgent%20-%20suspected%20personal%20data%20incident',
+        href: `mailto:${dataProtectionEmail}?subject=Urgent%20-%20suspected%20personal%20data%20incident`,
         linkLabel: 'Report a data incident',
       },
     ],
@@ -151,8 +153,8 @@ const sections = [
         title: 'Data Protection Officer',
         description:
           'Mr Alfie Thomas Holywood Murray serves as Director of Data Protection and Data Protection Officer for JA Group Services Ltd.',
-        items: ['Email: alfie@jagroupservices.co.uk', 'ICO registration: ZB877370', 'Registered company: JA Group Services Ltd'],
-        href: 'mailto:alfie@jagroupservices.co.uk?subject=Data%20protection%20enquiry',
+        items: [`Email: ${dataProtectionEmail}`, 'ICO registration: ZB877370', 'Registered company: JA Group Services Ltd'],
+        href: `mailto:${dataProtectionEmail}?subject=Data%20protection%20enquiry`,
         linkLabel: 'Contact the Data Protection Officer',
       },
       {
@@ -168,7 +170,7 @@ const sections = [
         title: 'General privacy enquiry',
         description:
           'For a general question that is not a formal rights request, contact the Data Protection Officer and identify the relevant service or processing activity.',
-        href: 'mailto:alfie@jagroupservices.co.uk?subject=General%20privacy%20enquiry',
+        href: `mailto:${dataProtectionEmail}?subject=General%20privacy%20enquiry`,
         linkLabel: 'Send a privacy enquiry',
       },
       {
@@ -204,7 +206,7 @@ export default function PrivacyCentrePage() {
       closingTitle="Contact the Data Protection Officer"
       closingDescription="Explain the service involved and the action you are asking us to take. We will identify the appropriate data protection process and any verification needed."
       actions={[
-        { label: 'Email the Data Protection Officer', href: 'mailto:alfie@jagroupservices.co.uk?subject=Data%20protection%20enquiry' },
+        { label: 'Email the Data Protection Officer', href: `mailto:${dataProtectionEmail}?subject=Data%20protection%20enquiry` },
         { label: 'Read the Privacy Policy', href: '/privacy-policy', variant: 'outline' },
       ]}
     />

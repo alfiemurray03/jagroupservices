@@ -206,7 +206,7 @@ export default function ShareholderInformationPage() {
             </p>
             <div className="mt-7 flex flex-col justify-center gap-3 sm:flex-row">
               <Button asChild size="lg" className="bg-white font-bold text-[#0A1F44] hover:bg-blue-50">
-                <a href="mailto:alfie@jagroupservices.co.uk?subject=Shareholder%20Enquiry">Email the corporate office</a>
+                <a href="mailto:corporate@jagroupservices.co.uk?subject=Shareholder%20Enquiry">corporate@jagroupservices.co.uk</a>
               </Button>
               <Button asChild size="lg" variant="outline" className="border-white/35 bg-white/5 font-semibold text-white hover:bg-white/10 hover:text-white">
                 <Link to="/contactus">View all contact routes</Link>

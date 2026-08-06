@@ -105,7 +105,7 @@ const sections = [
         title: 'Report an accessibility problem',
         description:
           'Explain the page or feature involved, what you were trying to do, the device or assistive technology used and the barrier you encountered.',
-        href: 'mailto:contact@jagroupservices.co.uk?subject=Website%20accessibility%20feedback',
+        href: 'mailto:feedback@jagroupservices.co.uk?subject=Website%20accessibility%20feedback',
         linkLabel: 'Email accessibility feedback',
       },
       {
@@ -152,7 +152,7 @@ export default function AccessibilityStatementPage() {
       closingTitle="Accessibility feedback is welcome"
       closingDescription="A brief description of the barrier, page and technology used can help us understand the issue and identify the most effective adjustment."
       actions={[
-        { label: 'Report an accessibility issue', href: 'mailto:contact@jagroupservices.co.uk?subject=Website%20accessibility%20feedback' },
+        { label: 'Report an accessibility issue', href: 'mailto:feedback@jagroupservices.co.uk?subject=Website%20accessibility%20feedback' },
         { label: 'Contact Us', href: '/contactus', variant: 'outline' },
       ]}
     />
