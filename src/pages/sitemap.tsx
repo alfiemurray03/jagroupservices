@@ -52,7 +52,7 @@ const siteStructure: readonly {
   },
   {
     category: 'Company and Stakeholders',
-    description: 'Corporate identity, leadership, governance and information for business stakeholders.',
+    description: 'Corporate identity, leadership, governance and information for legitimate business stakeholders.',
     icon: Building2,
     links: [
       { path: '/about-us', label: 'About Us', icon: Building2, internal: true },
@@ -60,17 +60,17 @@ const siteStructure: readonly {
       { path: '/our-group-structure', label: 'Company and Brand Structure', icon: Network, internal: true },
       { path: '/governance', label: 'Governance', icon: Scale, internal: true },
       { path: '/corporate-information', label: 'Stakeholder Centre', icon: Landmark, internal: true },
+      { path: '/shareholder-information', label: 'Shareholder Information', icon: Users, internal: true },
     ],
   },
   {
     category: 'Work With Us',
-    description: 'Information for suppliers, commercial partners, future affiliates, applicants and investors.',
+    description: 'Information for suppliers, commercial partners, future affiliates and prospective applicants.',
     icon: Handshake,
     links: [
       { path: '/partner-with-us', label: 'Partners and Suppliers', icon: Handshake, internal: true },
       { path: '/affiliate-partners', label: 'Affiliate Partner Programme — Coming Soon', icon: Users, internal: true },
       { path: '/careers', label: 'Careers and Vacancies — Coming Soon', icon: BriefcaseBusiness, internal: true },
-      { path: '/corporate-information#investors', label: 'Investor and Future Shareholder Information', icon: Landmark, internal: true },
     ],
   },
   {
@@ -118,7 +118,7 @@ export default function SitemapPage() {
         <title>Sitemap | JA Group Services Ltd</title>
         <meta
           name="description"
-          content="Browse the JA Group Services Ltd corporate website, including Company information, Sousa Murray brands, careers, partners, suppliers, announcements, support and legal pages."
+          content="Browse the JA Group Services Ltd corporate website, including Company information, Sousa Murray brands, shareholder information, careers, partners, suppliers, announcements, support and legal pages."
         />
         <link rel="canonical" href="https://jagroupservices.co.uk/sitemap" />
       </Helmet>
@@ -196,10 +196,10 @@ export default function SitemapPage() {
           <div className="mx-auto max-w-3xl px-4 sm:px-6">
             <h2 className="text-3xl font-bold text-foreground">Need help finding the right route?</h2>
             <p className="mt-4 leading-relaxed text-muted-foreground">
-              The Customer Support Centre can direct account, service, billing, privacy, security, safeguarding, learner and general enquiries.
+              The Contact Us directory and Customer Support Centre can direct account, service, billing, privacy, security, safeguarding, learner and general enquiries.
             </p>
-            <Link to="/customer-support" className="mt-7 inline-flex min-h-11 items-center rounded-xl bg-primary px-6 py-3 font-semibold text-primary-foreground transition-colors hover:bg-primary/90">
-              Open Customer Support
+            <Link to="/contactus" className="mt-7 inline-flex min-h-11 items-center rounded-xl bg-primary px-6 py-3 font-semibold text-primary-foreground transition-colors hover:bg-primary/90">
+              View Contact Routes
             </Link>
           </div>
         </section>
