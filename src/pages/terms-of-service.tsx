@@ -99,7 +99,7 @@ export default function TermsOfServicePage() {
           Custom or personalised work, domain registrations, activated third-party products and other services may be subject to legal or practical restrictions described before purchase. These restrictions do not affect remedies for faulty, misdescribed or improperly supplied services.
         </p>
         <p>
-          To cancel, email <a href="mailto:contact@jagroupservices.co.uk">contact@jagroupservices.co.uk</a> with your name, order or account reference, the relevant brand and a clear statement that you wish to cancel.
+          To cancel, email <a href="mailto:complaints@jagroupservices.co.uk">complaints@jagroupservices.co.uk</a> with your name, order or account reference, the relevant brand and a clear statement that you wish to cancel.
         </p>
       </PolicySection>
 
@@ -187,7 +187,7 @@ export default function TermsOfServicePage() {
           Personal data is handled in accordance with our <Link to="/privacy-policy">Privacy Policy</Link>. Cookie information is available in our <Link to="/cookies-policy">Cookies Policy</Link>.
         </p>
         <p>
-          Complaints and refund requests are handled under our <Link to="/complaints-policy">Complaints &amp; Refunds Policy</Link>. Contact us at <a href="mailto:contact@jagroupservices.co.uk">contact@jagroupservices.co.uk</a> or write to the registered office shown above.
+          Complaints, cancellations and refund requests are handled under our <Link to="/complaints-policy">Complaints &amp; Refunds Policy</Link>. Email <a href="mailto:complaints@jagroupservices.co.uk">complaints@jagroupservices.co.uk</a> or write to the registered office shown above.
         </p>
       </PolicySection>
 
