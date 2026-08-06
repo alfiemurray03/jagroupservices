@@ -1,0 +1,109 @@
+/*
+ * Site-wide contrast safeguards for dark hero sections, profile panels and CTAs.
+ *
+ * Several legacy and current pages use Tailwind white-text utilities on dark,
+ * hard-coded backgrounds. The global heading colour rules and exported theme
+ * styles can otherwise override those utilities in light mode. This stylesheet
+ * is imported last so explicit dark-surface presentation remains readable in
+ * both light and dark appearance modes.
+ */
+
+.text-white,
+[class~="text-white"] {
+  color: rgb(255 255 255) !important;
+}
+
+[class~="text-white/95"] {
+  color: rgb(255 255 255 / 0.95) !important;
+}
+
+[class~="text-white/90"] {
+  color: rgb(255 255 255 / 0.90) !important;
+}
+
+[class~="text-white/85"] {
+  color: rgb(255 255 255 / 0.85) !important;
+}
+
+[class~="text-white/82"] {
+  color: rgb(255 255 255 / 0.82) !important;
+}
+
+[class~="text-white/80"] {
+  color: rgb(255 255 255 / 0.80) !important;
+}
+
+[class~="text-white/78"] {
+  color: rgb(255 255 255 / 0.78) !important;
+}
+
+[class~="text-white/75"] {
+  color: rgb(255 255 255 / 0.75) !important;
+}
+
+[class~="text-white/70"] {
+  color: rgb(255 255 255 / 0.70) !important;
+}
+
+[class~="text-white/65"] {
+  color: rgb(255 255 255 / 0.65) !important;
+}
+
+[class~="text-white/60"] {
+  color: rgb(255 255 255 / 0.60) !important;
+}
+
+[class~="text-white/55"] {
+  color: rgb(255 255 255 / 0.55) !important;
+}
+
+[class~="text-white/50"] {
+  color: rgb(255 255 255 / 0.50) !important;
+}
+
+/* Headings have a global colour declaration, so make them inherit again when
+   their containing surface deliberately declares white foreground text. */
+.text-white :is(h1, h2, h3, h4, h5, h6),
+[class~="text-white"] :is(h1, h2, h3, h4, h5, h6) {
+  color: inherit !important;
+}
+
+/* Keep common light-blue supporting copy readable on navy surfaces. */
+.text-blue-100,
+[class~="text-blue-100"] {
+  color: rgb(219 234 254) !important;
+}
+
+.text-blue-200,
+[class~="text-blue-200"] {
+  color: rgb(191 219 254) !important;
+}
+
+/* Outline actions placed on dark surfaces must never inherit the light-mode
+   white button fill. Match on their explicit white border/text intent rather
+   than changing ordinary outline buttons used on light cards. */
+:is(a, button)[class*="border-white"][class*="text-white"] {
+  border-color: rgb(255 255 255 / 0.60) !important;
+  background-color: rgb(255 255 255 / 0.06) !important;
+  color: rgb(255 255 255) !important;
+}
+
+:is(a, button)[class*="border-white"][class*="text-white"]:hover,
+:is(a, button)[class*="border-white"][class*="text-white"]:focus-visible {
+  border-color: rgb(255 255 255 / 0.80) !important;
+  background-color: rgb(255 255 255 / 0.16) !important;
+  color: rgb(255 255 255) !important;
+}
+
+:is(a, button)[class*="border-white"][class*="text-white"] svg {
+  color: currentColor !important;
+}
+
+/* Some exported pages put white supporting copy on an element whose parent
+   carries the dark-surface colour. Preserve that inherited colour instead of
+   allowing a generic foreground class to wash it out. */
+[class~="bg-black/10"] [class*="text-white"],
+[class~="bg-white/10"] [class*="text-white"],
+[class~="bg-white/5"] [class*="text-white"] {
+  color: inherit;
+}
