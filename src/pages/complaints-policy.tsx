@@ -30,7 +30,7 @@ export default function ComplaintsPolicyPage() {
       </PolicySection>
 
       <PolicySection number="2" title="How to make a complaint or refund request">
-        <p>Email <a href="mailto:contact@jagroupservices.co.uk">contact@jagroupservices.co.uk</a> or use the relevant website contact or support route. Please include:</p>
+        <p>Email <a href="mailto:complaints@jagroupservices.co.uk">complaints@jagroupservices.co.uk</a> or use the relevant website contact or support route. Please include:</p>
         <ul>
           <li>your name and preferred contact details;</li>
           <li>the relevant Sousa Murray service, account, order, invoice or customer reference;</li>
@@ -116,7 +116,7 @@ export default function ComplaintsPolicyPage() {
           For digital content supplied immediately, the statutory cancellation right may be lost only where you expressly consent to supply beginning during the cancellation period and acknowledge the consequence required by law.
         </p>
         <p>
-          To exercise a cancellation right, send a clear statement to <a href="mailto:contact@jagroupservices.co.uk">contact@jagroupservices.co.uk</a>. Include your name, order reference and the service being cancelled. A reason is helpful but is not required where a statutory no-reason cancellation right applies.
+          To exercise a cancellation right, send a clear statement to <a href="mailto:complaints@jagroupservices.co.uk">complaints@jagroupservices.co.uk</a>. Include your name, order reference and the service being cancelled. A reason is helpful but is not required where a statutory no-reason cancellation right applies.
         </p>
       </PolicySection>
 
@@ -207,8 +207,8 @@ export default function ComplaintsPolicyPage() {
 
       <PolicySection number="15" title="Contact and policy review">
         <p>
-          Complaints and refund requests: <a href="mailto:contact@jagroupservices.co.uk">contact@jagroupservices.co.uk</a>.<br />
-          Data-protection matters: <a href="mailto:alfie@jagroupservices.co.uk">alfie@jagroupservices.co.uk</a>.<br />
+          Complaints and refund requests: <a href="mailto:complaints@jagroupservices.co.uk">complaints@jagroupservices.co.uk</a>.<br />
+          Data-protection matters: <a href="mailto:dataprotection@jagroupservices.co.uk">dataprotection@jagroupservices.co.uk</a>.<br />
           Postal address: JA Group Services Ltd, 167-169 Great Portland Street, 5th Floor, London, W1W 5PF.
         </p>
         <p>
