@@ -165,8 +165,11 @@ export default function Footer() {
             <h3 className="mb-4 text-xs font-semibold uppercase tracking-widest text-muted-foreground">Services</h3>
             <ul className="space-y-2.5">
               <li><Link to="/services" className={linkClass}>Our Services</Link></li>
-              <li><Link to="/services" className={linkClass}>Managed Websites</Link></li>
-              <li><Link to="/services" className={linkClass}>Digital Platforms</Link></li>
+              <li>
+                <a href="https://sousamurraydomains.jagroupservices.co.uk/managed-websites" target="_blank" rel="noopener noreferrer" className={`${linkClass} inline-flex items-center gap-1`}>
+                  Sousa Murray Sites <ExternalLink className="h-3 w-3" />
+                </a>
+              </li>
               <li>
                 <a href="https://sousamurrayprofiles.jagroupservices.co.uk/" target="_blank" rel="noopener noreferrer" className={`${linkClass} inline-flex items-center gap-1`}>
                   Sousa Murray Profiles <ExternalLink className="h-3 w-3" />
@@ -187,9 +190,6 @@ export default function Footer() {
                   Sousa Murray Domains <ExternalLink className="h-3 w-3" />
                 </a>
               </li>
-              <li>
-                <span className={`${linkClass} cursor-default`}>Sousa Murray Sites — Coming soon</span>
-              </li>
             </ul>
           </div>
 
@@ -201,27 +201,31 @@ export default function Footer() {
               <li><Link to="/about-our-divisions" className={linkClass}>Sousa Murray Brands</Link></li>
               <li><Link to="/our-group-structure" className={linkClass}>Our Group Structure</Link></li>
               <li><Link to="/governance" className={linkClass}>Governance</Link></li>
+              <li><Link to="/corporate-information" className={linkClass}>Stakeholder Centre</Link></li>
               <li><Link to="/announcements" className={linkClass}>Announcements</Link></li>
-              <li><Link to="/partner-with-us" className={linkClass}>Partner With Us</Link></li>
             </ul>
           </div>
 
           <div>
-            <h3 className="mb-4 text-xs font-semibold uppercase tracking-widest text-muted-foreground">Support and Trust</h3>
+            <h3 className="mb-4 text-xs font-semibold uppercase tracking-widest text-muted-foreground">Work With Us</h3>
+            <ul className="space-y-2.5">
+              <li><Link to="/partner-with-us" className={linkClass}>Partners and Suppliers</Link></li>
+              <li><Link to="/affiliate-partners" className={linkClass}>Affiliate Partners — Coming Soon</Link></li>
+              <li><Link to="/careers" className={linkClass}>Careers and Vacancies</Link></li>
+              <li><Link to="/corporate-information#investors" className={linkClass}>Investor Information</Link></li>
+              <li><Link to="/contactus" className={linkClass}>Contact Us</Link></li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="mb-4 text-xs font-semibold uppercase tracking-widest text-muted-foreground">Support and Legal</h3>
             <ul className="space-y-2.5">
               <li><Link to="/customer-support" className={linkClass}>Customer Support</Link></li>
               <li><Link to="/privacy-centre" className={linkClass}>Privacy Centre</Link></li>
               <li><Link to="/security" className={linkClass}>Security and Disclosure</Link></li>
               <li><Link to="/accessibility-statement" className={linkClass}>Accessibility</Link></li>
               <li><Link to="/safeguarding" className={linkClass}>Safeguarding and Trust</Link></li>
-              <li><Link to="/complaints-policy" className={linkClass}>Complaints</Link></li>
-              <li><Link to="/contactus" className={linkClass}>Contact Us</Link></li>
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="mb-4 text-xs font-semibold uppercase tracking-widest text-muted-foreground">{t('footer.legal', language)}</h3>
-            <ul className="space-y-2.5">
+              <li><Link to="/complaints-policy" className={linkClass}>Complaints & Refunds</Link></li>
               <li><Link to="/terms-of-service" className={linkClass}>{t('footer.legal.terms', language)}</Link></li>
               <li><Link to="/privacy-policy" className={linkClass}>{t('footer.legal.privacy', language)}</Link></li>
               <li><Link to="/cookies-policy" className={linkClass}>{t('footer.legal.cookies', language)}</Link></li>

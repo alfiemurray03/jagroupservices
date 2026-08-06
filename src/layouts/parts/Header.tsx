@@ -104,9 +104,10 @@ export default function Header() {
               <DropdownMenuTrigger className={`${navigationLinkClass} flex items-center gap-1 outline-none`}>
                 Work With Us <ChevronDown className="h-3.5 w-3.5" />
               </DropdownMenuTrigger>
-              <DropdownMenuContent className="w-[310px] rounded-2xl border-border bg-popover p-1.5 text-popover-foreground shadow-xl">
+              <DropdownMenuContent className="w-[320px] rounded-2xl border-border bg-popover p-1.5 text-popover-foreground shadow-xl">
                 <DesktopMenuItem to="/partner-with-us" title="Partners and Suppliers" description="Commercial, technology and supplier relationships" />
                 <DesktopMenuItem to="/affiliate-partners" title="Affiliate Partners — Coming Soon" description="Planned programme for approved promoters" />
+                <DesktopMenuItem to="/careers" title="Careers and Vacancies — Coming Soon" description="Future opportunities and recruitment information" />
                 <DesktopMenuItem to="/corporate-information#investors" title="Corporate and Investor Enquiries" description="Information for investors and future shareholders" />
               </DropdownMenuContent>
             </DropdownMenu>
@@ -183,6 +184,7 @@ export default function Header() {
             <MobileGroup title="Work With Us">
               <MobileLink to="/partner-with-us" onClick={closeMobileMenu}>Partners and Suppliers</MobileLink>
               <MobileLink to="/affiliate-partners" onClick={closeMobileMenu}>Affiliate Partners — Coming Soon</MobileLink>
+              <MobileLink to="/careers" onClick={closeMobileMenu}>Careers and Vacancies — Coming Soon</MobileLink>
               <MobileLink to="/corporate-information#investors" onClick={closeMobileMenu}>Investor Information</MobileLink>
             </MobileGroup>
 
