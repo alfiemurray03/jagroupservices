@@ -1,395 +1,204 @@
-import { motion } from 'motion/react';
-import { FileText } from 'lucide-react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Link } from 'react-router-dom';
+
+import { PolicyLayout, PolicyNotice, PolicySection } from '@/components/legal/PolicyLayout';
+import { BRAND_SITES } from '@/lib/brand-sites';
+
+const effectiveDate = '6 August 2026';
 
 export default function TermsOfServicePage() {
   return (
-    <>
-      <title>Terms of Service - JA Group Services</title>
-      <meta
-        name="description"
-        content="Terms of Service for JA Group Services Ltd. Read our terms governing the use of our platform and services."
-      />
+    <PolicyLayout
+      title="Terms of Service"
+      description="The terms governing access to JA Group Services Ltd websites, accounts, platforms, subscriptions, reseller services and Managed Website Services."
+      canonicalPath="/terms-of-service"
+      effectiveDate={effectiveDate}
+    >
+      <PolicySection number="1" title="About these Terms">
+        <p>
+          These Terms of Service (the <strong>Terms</strong>) govern access to and use of websites, customer accounts, platforms, services and digital environments operated by or on behalf of JA Group Services Ltd.
+        </p>
+        <p>
+          JA Group Services Ltd is the legal operating company and contracting party unless a checkout page, order confirmation or service-specific notice expressly identifies a third-party provider as the contracting party for a particular product or service.
+        </p>
+        <p>
+          Sousa Murray is the Company’s master brand. Sousa Murray Domains, Sousa Murray Sites, Sousa Murray Planeia, Sousa Murray Profiles and Sousa Murray eLearning are trading and service brands of JA Group Services Ltd; they are not separate legal entities.
+        </p>
+        <PolicyNotice title="Five services, four website destinations">
+          <p>
+            Sousa Murray Sites is the Managed Website Services area within <a href={BRAND_SITES.sites.url}>Sousa Murray Domains</a>. It does not operate through a separate public subdomain.
+          </p>
+        </PolicyNotice>
+      </PolicySection>
 
-      <div className="min-h-screen">
-        {/* Hero Section */}
-        <section className="relative bg-gradient-to-br from-[#0A1F44] via-[#0A1F44] to-[#1a3a5c] text-white py-20 overflow-hidden">
-          <div className="container mx-auto px-4 relative z-10">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="max-w-3xl mx-auto text-center"
-            >
-              <div className="inline-flex items-center gap-2 bg-[#2563EB]/20 text-[#60A5FA] px-4 py-2 rounded-full text-sm font-medium mb-6 border border-[#2563EB]/30">
-                <FileText className="h-4 w-4" />
-                LEGAL INFORMATION
-              </div>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-                Terms of Service
-              </h1>
-              <p className="text-xl text-white/80 leading-relaxed">
-                Terms governing your use of JA Group Services Ltd platforms and services
-              </p>
-            </motion.div>
-          </div>
+      <PolicySection number="2" title="Scope and order of documents">
+        <p>These Terms apply to:</p>
+        <ul>
+          <li>jagroupservices.co.uk and Company-operated subdomains;</li>
+          <li>the Sousa Murray websites and service areas;</li>
+          <li>JA Group Services ID and other account, administration or customer portals;</li>
+          <li>orders, subscriptions, service agreements and digital services supplied directly by the Company; and</li>
+          <li>Company support, billing and customer-operation services.</li>
+        </ul>
+        <p>
+          A service may also have supplementary terms, an order form, statement of work, checkout description or third-party provider terms. Those documents form part of the contract where they are presented before purchase or otherwise agreed. If there is a conflict, the more specific document takes priority for that specific service, but nothing excludes rights that cannot lawfully be excluded.
+        </p>
+      </PolicySection>
 
-          {/* Wave Divider */}
-          <div className="absolute bottom-0 left-0 right-0">
-            <svg className="w-full h-12 md:h-16" viewBox="0 0 1200 120" preserveAspectRatio="none">
-              <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" fill="#ffffff"></path>
-            </svg>
-          </div>
-        </section>
+      <PolicySection number="3" title="Eligibility and authority">
+        <p>
+          You must be legally capable of entering into a contract. Unless a service expressly permits otherwise, consumer purchases and customer accounts are intended for persons aged 18 or over.
+        </p>
+        <p>
+          If you act for a company, charity, public body or other organisation, you confirm that you have authority to bind it. You must provide accurate information and promptly update details that change.
+        </p>
+      </PolicySection>
 
-        {/* Main Content */}
-        <section className="py-16 bg-white">
-          <div className="container mx-auto px-4">
-            <div className="max-w-4xl mx-auto">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5 }}
-              >
-                <Card className="border-2">
-                  <CardHeader className="bg-gradient-to-r from-[#0A1F44] to-[#1a3a5c] text-white">
-                    <CardTitle className="text-2xl">JA Group Services Ltd – Terms of Service</CardTitle>
-                  </CardHeader>
-                  <CardContent className="p-8">
-                    <div className="prose prose-slate max-w-none">
-                      <p className="text-sm text-[#1A1A1A]/60 mb-8">
-                        <strong>Effective Date:</strong> 21 March 2026
-                      </p>
+      <PolicySection number="4" title="Our services and third-party providers">
+        <p>The Company provides a mixture of direct services, digital platforms, administrative services and authorised reseller or affiliate services.</p>
+        <ul>
+          <li><strong>Sousa Murray Domains</strong> provides supported access to domain, hosting and related authorised reseller services.</li>
+          <li><strong>Sousa Murray Sites</strong> covers websites designed, built, configured, maintained or managed directly by JA Group Services Ltd.</li>
+          <li><strong>Sousa Murray Planeia</strong> provides planning and collaboration tools; it is not a travel agency, carrier, accommodation provider or package-holiday organiser.</li>
+          <li><strong>Sousa Murray Profiles</strong> provides digital profile and contact-sharing tools.</li>
+          <li><strong>Sousa Murray eLearning</strong> provides authorised reseller and learner-administration services; course content, assessment and certification may be controlled by the relevant training provider.</li>
+        </ul>
+        <p>
+          Where a third party supplies the underlying product or service, its identity and applicable terms will be shown or made available. The Company may provide first-line support and coordinate escalation, but it cannot control a provider’s systems, stock, course content, registry decisions, availability or fulfilment.
+        </p>
+      </PolicySection>
 
-                      <div className="border-b border-[#0A1F44]/10 pb-4 mb-8"></div>
+      <PolicySection number="5" title="Orders and contract formation">
+        <p>
+          Website content, quotations and price displays are invitations to place an order unless expressly stated otherwise. A contract is formed when the Company accepts the order, sends an order confirmation, activates the service, or both parties sign or otherwise agree a service document.
+        </p>
+        <p>
+          We may decline or cancel an order before acceptance where information is incomplete, pricing is clearly erroneous, fraud or security checks are not satisfied, a service is unavailable, a third-party provider rejects the order, or the order would breach law or provider rules. Any payment taken for an unaccepted order will be returned.
+        </p>
+      </PolicySection>
 
-                      {/* Section 1 */}
-                      <h2 className="text-2xl font-bold text-[#0A1F44] mt-8 mb-4">1. Introduction</h2>
-                      <p className="mb-4">1.1 These Terms of Service ("Terms") govern your access to and use of the websites, platforms, services, and digital environments operated by or on behalf of JA Group Services Ltd (the "Company", "we", "us", or "our").</p>
-                      <p className="mb-4">1.2 JA Group Services Ltd is a company incorporated in England and Wales with company number 16314179 and registered office at 167–169 Great Portland Street, 5th Floor, London, W1W 5PF, United Kingdom.</p>
-                      <p className="mb-4">1.3 JA Group Services Ltd remains the legal operating company. Sousa Murray is the Company’s master brand and trading identity.</p>
-                      <p className="mb-4">1.4 The Company operates the customer-facing brands Sousa Murray Domains, Sousa Murray Planeia, Sousa Murray Profiles and Sousa Murray eLearning. Sousa Murray Sites is an approved forthcoming brand and has not yet launched. None of these brands constitutes a separate legal entity or has independent contracting authority.</p>
-                      <p className="mb-4">1.5 These Terms apply to:</p>
-                      <ul className="list-disc pl-6 mb-4">
-                        <li>jagroupservices.co.uk and all associated domains;</li>
-                        <li>any subdomains, applications, or portals operated by the Company;</li>
-                        <li>all services, tools, features, and systems made available by the Company;</li>
-                        <li>all divisions and branded environments operated under JA Group Services Ltd.</li>
-                      </ul>
-                      <p className="mb-4">1.6 By accessing or using the Platform, you agree to be legally bound by these Terms.</p>
+      <PolicySection number="6" title="Prices, payments and subscriptions">
+        <p>
+          Prices, taxes, billing intervals and minimum terms are displayed before purchase or recorded in the applicable quotation or order. Payments may be processed by Stripe or another disclosed payment provider. The Company does not normally receive full card details.
+        </p>
+        <p>
+          Recurring subscriptions continue for the stated billing period until cancelled in accordance with the applicable service terms. Cancellation stops future renewals; it does not automatically reverse charges already validly incurred.
+        </p>
+        <p>
+          If a payment is overdue, we may retry payment, restrict paid features, suspend the affected service or terminate it after reasonable notice. You remain responsible for charges properly due up to the effective cancellation or termination date.
+        </p>
+      </PolicySection>
 
-                      <div className="border-b border-[#0A1F44]/10 my-8"></div>
+      <PolicySection number="7" title="Consumer cancellation rights">
+        <p>
+          Consumers who enter a distance contract may have a statutory right to cancel within 14 days without giving a reason. The cancellation period normally begins on the day after the contract is entered into for services and digital content, subject to the applicable law and any exceptions.
+        </p>
+        <p>
+          If you expressly request that a service begins during the cancellation period, you may have to pay a proportionate amount for work supplied before cancellation. For digital content supplied immediately, the statutory cancellation right may be lost only where the required express consent and acknowledgement have been obtained.
+        </p>
+        <p>
+          Custom or personalised work, domain registrations, activated third-party products and other services may be subject to legal or practical restrictions described before purchase. These restrictions do not affect remedies for faulty, misdescribed or improperly supplied services.
+        </p>
+        <p>
+          To cancel, email <a href="mailto:contact@jagroupservices.co.uk">contact@jagroupservices.co.uk</a> with your name, order or account reference, the relevant brand and a clear statement that you wish to cancel.
+        </p>
+      </PolicySection>
 
-                      {/* Section 2 */}
-                      <h2 className="text-2xl font-bold text-[#0A1F44] mt-8 mb-4">2. Definitions</h2>
-                      <p className="mb-2"><strong>"Business User"</strong> means a person acting for purposes relating to a trade, business, craft, or profession.</p>
-                      <p className="mb-2"><strong>"Consumer"</strong> means an individual acting for purposes wholly or mainly outside their trade, business, craft, or profession.</p>
-                      <p className="mb-2"><strong>"Platform"</strong> means any website, system, application, or digital environment operated by or on behalf of the Company.</p>
-                      <p className="mb-2"><strong>"Third Party Services"</strong> means services, products, or systems provided by external providers and made accessible through the Platform.</p>
-                      <p className="mb-4"><strong>"User"</strong> means any individual or organisation accessing or using the Platform.</p>
+      <PolicySection number="8" title="Refunds and service remedies">
+        <p>
+          Refund eligibility depends on the service, the reason for the request, work already completed, third-party charges already committed and your statutory rights. Where services are not performed with reasonable care and skill, are not as agreed, or digital content does not conform to the contract, consumers may be entitled to repeat performance, repair, replacement, a price reduction or refund as provided by law.
+        </p>
+        <p>
+          Detailed refund rules and the complaints process are set out in our <Link to="/complaints-policy">Complaints &amp; Refunds Policy</Link>. Nothing in these Terms limits mandatory consumer rights.
+        </p>
+      </PolicySection>
 
-                      <div className="border-b border-[#0A1F44]/10 my-8"></div>
+      <PolicySection number="9" title="Accounts and security">
+        <p>You are responsible for keeping account credentials secure and for activity carried out through your account unless caused by our breach.</p>
+        <ul>
+          <li>Use accurate registration and recovery information.</li>
+          <li>Do not share credentials or bypass multi-factor authentication controls.</li>
+          <li>Tell us promptly about suspected compromise, unauthorised access or incorrect account ownership.</li>
+          <li>Follow reasonable identity, fraud-prevention and security checks.</li>
+        </ul>
+        <p>
+          We may temporarily restrict access where reasonably necessary to protect customers, systems, data, payment integrity or third-party providers.
+        </p>
+      </PolicySection>
 
-                      {/* Section 3 */}
-                      <h2 className="text-2xl font-bold text-[#0A1F44] mt-8 mb-4">3. Nature of Services</h2>
-                      <p className="mb-4">3.1 JA Group Services Ltd operates as a digital platform provider, intermediary, introducer, and service organiser.</p>
-                      <p className="mb-4">3.2 The Company may:</p>
-                      <ul className="list-disc pl-6 mb-4">
-                        <li>provide access to digital platforms, tools, and systems;</li>
-                        <li>present, organise, or promote services under its branding;</li>
-                        <li>facilitate introductions between users and third-party providers;</li>
-                        <li>provide administrative, informational, and customer support functions;</li>
-                        <li>operate branded divisions and digital environments.</li>
-                      </ul>
-                      <p className="mb-4">3.3 The Company's role is facilitative in nature.</p>
-                      <p className="mb-4">3.4 Unless expressly stated otherwise, the Company does not provide the underlying services made available through the Platform.</p>
-                      <p className="mb-4">3.5 The Company does not:</p>
-                      <ul className="list-disc pl-6 mb-4">
-                        <li>operate third-party infrastructure or systems;</li>
-                        <li>control the delivery or performance of Third Party Services;</li>
-                        <li>act as merchant of record for Third Party Services unless expressly stated;</li>
-                        <li>assume contractual responsibility for third-party services.</li>
-                      </ul>
+      <PolicySection number="10" title="Acceptable use">
+        <p>You must not use a Company service to:</p>
+        <ul>
+          <li>break the law, infringe rights, facilitate fraud or misrepresent identity or authority;</li>
+          <li>upload malware, probe systems without permission, evade security controls or disrupt availability;</li>
+          <li>publish unlawful, threatening, abusive, discriminatory, exploitative or harmful content;</li>
+          <li>send spam, conduct deceptive marketing or scrape data contrary to law or service rules;</li>
+          <li>resell, copy or commercially exploit a service except where expressly permitted; or</li>
+          <li>use a service in a way that places another person, especially a child or vulnerable adult, at risk.</li>
+        </ul>
+        <p>
+          We may remove content, suspend functionality, preserve evidence or report matters to the appropriate authority where reasonably necessary and lawful.
+        </p>
+      </PolicySection>
 
-                      <div className="border-b border-[#0A1F44]/10 my-8"></div>
+      <PolicySection number="11" title="Customer content and intellectual property">
+        <p>
+          You retain ownership of content and materials you lawfully provide. You grant the Company a limited, non-exclusive licence to host, copy, process, display and transmit that content only as needed to provide, secure, support and improve the contracted service.
+        </p>
+        <p>
+          You confirm that you have the rights and permissions needed for content you provide. The Company and its licensors retain ownership of platform software, templates, systems, branding, documentation and other intellectual property except where a written agreement states otherwise.
+        </p>
+        <p>
+          Intellectual-property arrangements for a Managed Website Services project may be set out in its quotation, statement of work or handover terms.
+        </p>
+      </PolicySection>
 
-                      {/* Section 4 */}
-                      <h2 className="text-2xl font-bold text-[#0A1F44] mt-8 mb-4">4. Operation of the Platform</h2>
-                      <p className="mb-4">4.1 The Platform provides a structured digital environment through which users may access services, tools, and third-party offerings.</p>
-                      <p className="mb-4">4.2 Depending on the section of the Platform, users may:</p>
-                      <ul className="list-disc pl-6 mb-4">
-                        <li>access information published by the Company;</li>
-                        <li>interact with services presented under Company branding;</li>
-                        <li>be redirected to external websites or systems;</li>
-                        <li>engage with services provided by third-party providers.</li>
-                      </ul>
-                      <p className="mb-4">4.3 Certain parts of the Platform may:</p>
-                      <ul className="list-disc pl-6 mb-4">
-                        <li>operate using third-party infrastructure;</li>
-                        <li>include embedded or integrated third-party systems;</li>
-                        <li>redirect users to external platforms or providers.</li>
-                      </ul>
-                      <p className="mb-4">4.4 The presentation of services within the Platform does not indicate that the Company provides or operates those services.</p>
-                      <p className="mb-4">4.5 Users are responsible for reviewing and accepting the terms of any third-party provider before engaging with their services.</p>
+      <PolicySection number="12" title="Availability, changes and maintenance">
+        <p>
+          We aim to provide reliable services but cannot guarantee uninterrupted or error-free operation. Maintenance, security work, supplier outages, internet failures and events outside reasonable control may affect availability.
+        </p>
+        <p>
+          We may make reasonable changes to improve security, comply with law, respond to provider changes or develop functionality. Material changes that significantly disadvantage an active paid customer will be communicated where reasonably practicable, together with any cancellation right required by law or contract.
+        </p>
+      </PolicySection>
 
-                      <div className="border-b border-[#0A1F44]/10 my-8"></div>
+      <PolicySection number="13" title="Liability">
+        <p>
+          Nothing in these Terms excludes or limits liability for death or personal injury caused by negligence, fraud or fraudulent misrepresentation, breach of statutory title obligations, or any liability that cannot lawfully be excluded.
+        </p>
+        <p>
+          For consumers, we are responsible for foreseeable loss or damage caused by our breach of contract or failure to use reasonable care and skill. We are not responsible for loss that was not foreseeable, business loss arising from consumer use, or failure caused solely by a third-party service outside our reasonable control where we have exercised reasonable care in selecting and managing the relationship.
+        </p>
+        <p>
+          For business customers, any additional liability limits will be stated in the relevant business service terms, quotation or statement of work. In the absence of a specific written limit, liability will be assessed under applicable law and these Terms.
+        </p>
+      </PolicySection>
 
-                      {/* Section 5 */}
-                      <h2 className="text-2xl font-bold text-[#0A1F44] mt-8 mb-4">5. Contracting and Intermediary Role</h2>
-                      <p className="mb-4">5.1 The Company operates as an intermediary and introducer of services.</p>
-                      <p className="mb-4">5.2 Where services are provided directly by the Company, any contract shall be between you and JA Group Services Ltd.</p>
-                      <p className="mb-4">5.3 Where services are provided by a Third Party Provider:</p>
-                      <ul className="list-disc pl-6 mb-4">
-                        <li>this will be clearly indicated;</li>
-                        <li>your contract will be formed directly with that provider;</li>
-                        <li>the provider's terms and conditions shall apply.</li>
-                      </ul>
-                      <p className="mb-4">5.4 In such cases, the Company is not a party to that contract and does not assume responsibility for service delivery, performance, or outcomes.</p>
-                      <p className="mb-4">5.5 Any assistance or support provided by the Company does not constitute responsibility for the underlying service.</p>
+      <PolicySection number="14" title="Suspension and termination">
+        <p>
+          You may cancel or terminate in accordance with the applicable service terms. We may suspend or terminate a service for material breach, non-payment, unlawful or harmful use, security risk, provider withdrawal, or where continuing the service would be unlawful or technically impossible.
+        </p>
+        <p>
+          Except in urgent security, safeguarding, fraud or legal circumstances, we will normally give reasonable notice and an opportunity to remedy a remediable breach. Provisions intended to continue after termination, including payment obligations, intellectual property, confidentiality and liability provisions, remain effective.
+        </p>
+      </PolicySection>
 
-                      <div className="border-b border-[#0A1F44]/10 my-8"></div>
+      <PolicySection number="15" title="Privacy, complaints and contact">
+        <p>
+          Personal data is handled in accordance with our <Link to="/privacy-policy">Privacy Policy</Link>. Cookie information is available in our <Link to="/cookies-policy">Cookies Policy</Link>.
+        </p>
+        <p>
+          Complaints and refund requests are handled under our <Link to="/complaints-policy">Complaints &amp; Refunds Policy</Link>. Contact us at <a href="mailto:contact@jagroupservices.co.uk">contact@jagroupservices.co.uk</a> or write to the registered office shown above.
+        </p>
+      </PolicySection>
 
-                      {/* Section 6 */}
-                      <h2 className="text-2xl font-bold text-[#0A1F44] mt-8 mb-4">6. Divisions and Trading Names</h2>
-                      <p className="mb-4">6.1 The Company may operate under various branding or trading names.</p>
-                      <p className="mb-4">6.2 Each division:</p>
-                      <ul className="list-disc pl-6 mb-4">
-                        <li>forms part of JA Group Services Ltd;</li>
-                        <li>is not a separate legal entity;</li>
-                        <li>may be subject to additional service-specific terms.</li>
-                      </ul>
-                      <p className="mb-4">6.3 Where division-specific or service-specific terms apply, those terms must be read alongside these Terms and shall take precedence in the event of any inconsistency.</p>
-
-                      <div className="border-b border-[#0A1F44]/10 my-8"></div>
-
-                      {/* Section 7 */}
-                      <h2 className="text-2xl font-bold text-[#0A1F44] mt-8 mb-4">7. Third Party Services</h2>
-                      <p className="mb-4">7.1 The Platform may include or provide access to Third Party Services.</p>
-                      <p className="mb-4">7.2 Where a user engages with such services:</p>
-                      <ul className="list-disc pl-6 mb-4">
-                        <li>the contract is formed directly with the third-party provider;</li>
-                        <li>the provider's terms apply;</li>
-                        <li>the Company is not a party to that contract.</li>
-                      </ul>
-                      <p className="mb-4">7.3 The Company shall not be responsible for:</p>
-                      <ul className="list-disc pl-6 mb-4">
-                        <li>the performance or quality of Third Party Services;</li>
-                        <li>availability, pricing, or delivery;</li>
-                        <li>delays, disruptions, or failures;</li>
-                        <li>disputes between users and providers.</li>
-                      </ul>
-
-                      <div className="border-b border-[#0A1F44]/10 my-8"></div>
-
-                      {/* Section 8 */}
-                      <h2 className="text-2xl font-bold text-[#0A1F44] mt-8 mb-4">8. Partnerships and Commercial Arrangements</h2>
-                      <p className="mb-4">8.1 The Company may enter into commercial relationships with third parties.</p>
-                      <p className="mb-4">8.2 These arrangements may include:</p>
-                      <ul className="list-disc pl-6 mb-4">
-                        <li>affiliate partnerships;</li>
-                        <li>reseller or referral arrangements;</li>
-                        <li>integrations with third-party systems;</li>
-                        <li>promotional or featured listings.</li>
-                      </ul>
-                      <p className="mb-4">8.3 Such arrangements do not create a partnership, joint venture, or agency relationship unless expressly agreed in writing.</p>
-                      <p className="mb-4">8.4 The Company may receive financial or non-financial benefits from such arrangements.</p>
-
-                      <div className="border-b border-[#0A1F44]/10 my-8"></div>
-
-                      {/* Section 9 */}
-                      <h2 className="text-2xl font-bold text-[#0A1F44] mt-8 mb-4">9. Recommended Services</h2>
-                      <p className="mb-4">9.1 The Platform may include sections such as:</p>
-                      <ul className="list-disc pl-6 mb-4">
-                        <li>Recommended Services;</li>
-                        <li>Find Activities & Tours;</li>
-                        <li>similar features linking to third parties.</li>
-                      </ul>
-                      <p className="mb-4">9.2 Where users access such services:</p>
-                      <ul className="list-disc pl-6 mb-4">
-                        <li>they do so at their own discretion;</li>
-                        <li>the contract is with the provider;</li>
-                        <li>the Company is not responsible for the service provided.</li>
-                      </ul>
-                      <p className="mb-4">9.3 The inclusion of services does not constitute endorsement or guarantee.</p>
-
-                      <div className="border-b border-[#0A1F44]/10 my-8"></div>
-
-                      {/* Section 10 */}
-                      <h2 className="text-2xl font-bold text-[#0A1F44] mt-8 mb-4">10. Direct Services</h2>
-                      <p className="mb-4">10.1 The Company does not generally provide services directly unless expressly stated.</p>
-                      <p className="mb-4">10.2 Where direct services are introduced:</p>
-                      <ul className="list-disc pl-6 mb-4">
-                        <li>this will be clearly communicated;</li>
-                        <li>separate terms may apply.</li>
-                      </ul>
-
-                      <div className="border-b border-[#0A1F44]/10 my-8"></div>
-
-                      {/* Section 11 */}
-                      <h2 className="text-2xl font-bold text-[#0A1F44] mt-8 mb-4">11. Pricing and Payments</h2>
-                      <p className="mb-4">11.1 Prices displayed on the Platform may change from time to time.</p>
-                      <p className="mb-4">11.2 Payments for services may be processed either by the Company or by Third Party Providers, depending on the nature of the service.</p>
-                      <p className="mb-4">11.3 Where payments are processed by Third Party Providers, the Company does not control their billing systems or payment processes.</p>
-                      <p className="mb-4">11.4 The Company may charge fees for certain services, features, or access to the Platform. Any applicable fees will be clearly communicated prior to the point of use or transaction.</p>
-
-                      <div className="border-b border-[#0A1F44]/10 my-8"></div>
-
-                      {/* Section 12 */}
-                      <h2 className="text-2xl font-bold text-[#0A1F44] mt-8 mb-4">12. Refunds and Cancellations</h2>
-                      <p className="mb-4">12.1 Refunds for Third Party Services are governed solely by the terms of the relevant provider.</p>
-                      <p className="mb-4">12.2 The Company does not process, administer, or guarantee refunds for Third Party Services.</p>
-
-                      <div className="border-b border-[#0A1F44]/10 my-8"></div>
-
-                      {/* Section 13 */}
-                      <h2 className="text-2xl font-bold text-[#0A1F44] mt-8 mb-4">13. Acceptable Use</h2>
-                      <p className="mb-4">13.1 Users must not:</p>
-                      <ul className="list-disc pl-6 mb-4">
-                        <li>use the Platform for unlawful purposes;</li>
-                        <li>attempt unauthorised access to systems or data;</li>
-                        <li>interfere with or disrupt the operation or security of the Platform;</li>
-                        <li>introduce malicious software, viruses, or harmful code;</li>
-                        <li>misuse any features, tools, or services provided.</li>
-                      </ul>
-                      <p className="mb-4">13.2 The Company reserves the right to suspend, restrict, or terminate access where a breach of this clause is identified.</p>
-
-                      <div className="border-b border-[#0A1F44]/10 my-8"></div>
-
-                      {/* Section 14 */}
-                      <h2 className="text-2xl font-bold text-[#0A1F44] mt-8 mb-4">14. User Accounts and Security</h2>
-                      <p className="mb-4">14.1 Where user accounts are required:</p>
-                      <ul className="list-disc pl-6 mb-4">
-                        <li>users must ensure that all information provided is accurate and up to date;</li>
-                        <li>users are responsible for maintaining the confidentiality and security of their account credentials.</li>
-                      </ul>
-                      <p className="mb-4">14.2 Users must notify the Company immediately of any unauthorised use or suspected breach of security.</p>
-
-                      <div className="border-b border-[#0A1F44]/10 my-8"></div>
-
-                      {/* Section 15 */}
-                      <h2 className="text-2xl font-bold text-[#0A1F44] mt-8 mb-4">15. Intellectual Property</h2>
-                      <p className="mb-4">15.1 All intellectual property rights in the Platform, including branding, content, designs, and materials, are owned by or licensed to JA Group Services Ltd.</p>
-                      <p className="mb-4">15.2 Where intellectual property is licensed, all rights remain with the relevant licensor.</p>
-                      <p className="mb-4">15.3 Users are granted a limited, non-exclusive, non-transferable licence to access and use the Platform.</p>
-                      <p className="mb-4">15.4 Users must not copy, reproduce, distribute, or exploit any content without prior written consent.</p>
-
-                      <div className="border-b border-[#0A1F44]/10 my-8"></div>
-
-                      {/* Section 16 */}
-                      <h2 className="text-2xl font-bold text-[#0A1F44] mt-8 mb-4">16. Data Protection</h2>
-                      <p className="mb-4">16.1 Personal data is processed in accordance with the Company's Privacy Policy.</p>
-                      <p className="mb-4">16.2 Third Party Providers may process personal data independently in accordance with their own privacy policies.</p>
-
-                      <div className="border-b border-[#0A1F44]/10 my-8"></div>
-
-                      {/* Section 17 */}
-                      <h2 className="text-2xl font-bold text-[#0A1F44] mt-8 mb-4">17. Regulatory Position and No Reliance</h2>
-                      <p className="mb-4">17.1 The Company does not provide regulated financial, legal, or professional services unless expressly stated.</p>
-                      <p className="mb-4">17.2 Nothing on the Platform constitutes advice, recommendation, or endorsement.</p>
-                      <p className="mb-4">17.3 Any content made available on the Platform is provided for general information purposes only and must not be relied upon as professional, financial, legal, or other advice.</p>
-
-                      <div className="border-b border-[#0A1F44]/10 my-8"></div>
-
-                      {/* Section 18 */}
-                      <h2 className="text-2xl font-bold text-[#0A1F44] mt-8 mb-4">18. Disclaimer</h2>
-                      <p className="mb-4">18.1 The Platform and services are provided on an "as is" and "as available" basis.</p>
-                      <p className="mb-4">18.2 The Company makes no representations or warranties, whether express or implied, regarding accuracy, completeness, reliability, availability, or uninterrupted access.</p>
-
-                      <div className="border-b border-[#0A1F44]/10 my-8"></div>
-
-                      {/* Section 19 */}
-                      <h2 className="text-2xl font-bold text-[#0A1F44] mt-8 mb-4">19. Limitation of Liability</h2>
-                      <p className="mb-4">19.1 Nothing in these Terms excludes or limits liability for death, personal injury, fraud, or any liability which cannot be excluded under applicable law.</p>
-                      <p className="mb-4">19.2 The Company shall not be liable for indirect or consequential loss, loss of profit, revenue, data, or business opportunity.</p>
-                      <p className="mb-4">19.3 The Company shall not be liable for acts or omissions of third parties.</p>
-                      <p className="mb-4">19.4 Where liability cannot be excluded for Business Users, it shall be limited to the total fees paid in the preceding twelve months.</p>
-                      <p className="mb-4">19.5 Nothing in these Terms affects Consumer rights under applicable law.</p>
-
-                      <div className="border-b border-[#0A1F44]/10 my-8"></div>
-
-                      {/* Section 20 */}
-                      <h2 className="text-2xl font-bold text-[#0A1F44] mt-8 mb-4">20. Complaints and Feedback</h2>
-                      <p className="mb-4">20.1 Formal complaints must be submitted to: <a href="mailto:complaints@jagroupservices.co.uk" className="text-[#2563EB] hover:underline">complaints@jagroupservices.co.uk</a></p>
-                      <p className="mb-4">20.2 General feedback, suggestions, or comments should be submitted to: <a href="mailto:contact@jagroupservices.co.uk" className="text-[#2563EB] hover:underline">contact@jagroupservices.co.uk</a></p>
-                      <p className="mb-4">20.3 Communications submitted to the incorrect channel may be redirected or may not be treated as formal complaints.</p>
-                      <p className="mb-4">20.4 Complaints will be handled in accordance with the Company's Complaints Policy.</p>
-
-                      <div className="border-b border-[#0A1F44]/10 my-8"></div>
-
-                      {/* Section 21 */}
-                      <h2 className="text-2xl font-bold text-[#0A1F44] mt-8 mb-4">21. Indemnity (Business Users)</h2>
-                      <p className="mb-4">21.1 Business Users agree to indemnify and hold harmless the Company against any claims, losses, damages, liabilities, and expenses arising from misuse of the Platform or breach of these Terms.</p>
-
-                      <div className="border-b border-[#0A1F44]/10 my-8"></div>
-
-                      {/* Section 22 */}
-                      <h2 className="text-2xl font-bold text-[#0A1F44] mt-8 mb-4">22. Force Majeure</h2>
-                      <p className="mb-4">22.1 The Company shall not be liable for any failure or delay caused by events beyond its reasonable control.</p>
-
-                      <div className="border-b border-[#0A1F44]/10 my-8"></div>
-
-                      {/* Section 23 */}
-                      <h2 className="text-2xl font-bold text-[#0A1F44] mt-8 mb-4">23. Relationship of the Parties</h2>
-                      <p className="mb-4">23.1 Nothing in these Terms creates any partnership, joint venture, employment, or agency relationship.</p>
-
-                      <div className="border-b border-[#0A1F44]/10 my-8"></div>
-
-                      {/* Section 24 */}
-                      <h2 className="text-2xl font-bold text-[#0A1F44] mt-8 mb-4">24. Assignment</h2>
-                      <p className="mb-4">24.1 The Company may assign or transfer its rights and obligations without restriction.</p>
-
-                      <div className="border-b border-[#0A1F44]/10 my-8"></div>
-
-                      {/* Section 25 */}
-                      <h2 className="text-2xl font-bold text-[#0A1F44] mt-8 mb-4">25. Severability</h2>
-                      <p className="mb-4">25.1 If any provision of these Terms is found to be invalid or unenforceable, such provision shall be modified to the minimum extent necessary, and the remaining provisions shall remain in full force and effect.</p>
-
-                      <div className="border-b border-[#0A1F44]/10 my-8"></div>
-
-                      {/* Section 26 */}
-                      <h2 className="text-2xl font-bold text-[#0A1F44] mt-8 mb-4">26. Third Party Rights</h2>
-                      <p className="mb-4">26.1 A person who is not a party to these Terms shall have no right to enforce any provision under the Contracts (Rights of Third Parties) Act 1999.</p>
-
-                      <div className="border-b border-[#0A1F44]/10 my-8"></div>
-
-                      {/* Section 27 */}
-                      <h2 className="text-2xl font-bold text-[#0A1F44] mt-8 mb-4">27. Entire Agreement</h2>
-                      <p className="mb-4">27.1 These Terms constitute the entire agreement between the user and the Company.</p>
-
-                      <div className="border-b border-[#0A1F44]/10 my-8"></div>
-
-                      {/* Section 28 */}
-                      <h2 className="text-2xl font-bold text-[#0A1F44] mt-8 mb-4">28. Variation</h2>
-                      <p className="mb-4">28.1 The Company may amend these Terms by publishing an updated version on the Platform.</p>
-
-                      <div className="border-b border-[#0A1F44]/10 my-8"></div>
-
-                      {/* Section 29 */}
-                      <h2 className="text-2xl font-bold text-[#0A1F44] mt-8 mb-4">29. Governing Law and Jurisdiction</h2>
-                      <p className="mb-4">29.1 These Terms are governed by the laws of England and Wales.</p>
-                      <p className="mb-4">29.2 Consumers may bring proceedings in their local UK courts.</p>
-                      <p className="mb-4">29.3 Business Users submit to the exclusive jurisdiction of the courts of England and Wales.</p>
-
-                      <div className="border-b border-[#0A1F44]/10 my-8"></div>
-
-                      {/* Section 30 */}
-                      <h2 className="text-2xl font-bold text-[#0A1F44] mt-8 mb-4">30. Contact</h2>
-                      <p className="mb-2"><strong>JA Group Services Ltd</strong></p>
-                      <p className="mb-2">167–169 Great Portland Street</p>
-                      <p className="mb-2">5th Floor</p>
-                      <p className="mb-2">London</p>
-                      <p className="mb-2">W1W 5PF</p>
-                      <p className="mb-4">United Kingdom</p>
-                      <p className="mb-4">Email: <a href="mailto:contact@jagroupservices.co.uk" className="text-[#2563EB] hover:underline">contact@jagroupservices.co.uk</a></p>
-                    </div>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            </div>
-          </div>
-        </section>
-      </div>
-    </>
+      <PolicySection number="16" title="General legal terms">
+        <p>
+          If any provision is unenforceable, it will be adjusted or removed only to the minimum extent necessary and the remaining provisions will continue. A delay in enforcing a right is not a waiver. You may not transfer a contract without our written consent, but we may transfer it as part of a genuine corporate reorganisation or business transfer provided this does not reduce consumer rights.
+        </p>
+        <p>
+          These Terms are governed by the law of England and Wales. Consumers may also benefit from mandatory protections and bring proceedings in the courts available to them under applicable law. Business customers submit to the exclusive jurisdiction of the courts of England and Wales unless a written agreement states otherwise.
+        </p>
+      </PolicySection>
+    </PolicyLayout>
   );
 }
