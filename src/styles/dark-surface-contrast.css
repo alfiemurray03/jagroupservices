@@ -97,6 +97,18 @@
   background-color: rgb(255 255 255 / 0.20) !important;
 }
 
+[class~="hover:bg-white/10"]:hover {
+  background-color: rgb(255 255 255 / 0.10) !important;
+}
+
+[class~="hover:bg-white/15"]:hover {
+  background-color: rgb(255 255 255 / 0.15) !important;
+}
+
+[class~="hover:bg-white/20"]:hover {
+  background-color: rgb(255 255 255 / 0.20) !important;
+}
+
 [class~="bg-black/5"] {
   background-color: rgb(0 0 0 / 0.05) !important;
 }
