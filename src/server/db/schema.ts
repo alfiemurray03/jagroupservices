@@ -78,6 +78,23 @@ export const adminPolicies = mysqlTable('admin_policies', {
   createdAt: timestamp('created_at').notNull().defaultNow(),
 });
 
+export const adminAnnouncements = mysqlTable('admin_announcements', {
+  id: int('id').primaryKey().autoincrement(),
+  title: varchar('title', { length: 255 }).notNull(),
+  slug: varchar('slug', { length: 255 }).notNull().unique(),
+  summary: text('summary').notNull(),
+  content: text('content').notNull(),
+  category: varchar('category', { length: 100 }).notNull().default('Corporate'),
+  authorName: varchar('author_name', { length: 255 }).notNull().default('JA Group Services Ltd'),
+  status: varchar('status', { length: 20 }).notNull().default('draft'), // 'draft' | 'published'
+  isFeatured: boolean('is_featured').notNull().default(false),
+  seoTitle: varchar('seo_title', { length: 255 }),
+  seoDescription: text('seo_description'),
+  publishedAt: timestamp('published_at'),
+  createdAt: timestamp('created_at').notNull().defaultNow(),
+  updatedAt: timestamp('updated_at').notNull().defaultNow().onUpdateNow(),
+});
+
 export const adminPages = mysqlTable('admin_pages', {
   id: int('id').primaryKey().autoincrement(),
   pageKey: varchar('page_key', { length: 100 }).notNull().unique(), // e.g. 'homepage', 'about-us'
